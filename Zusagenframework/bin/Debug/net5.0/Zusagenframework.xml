@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zusagenframework</name>
+    </assembly>
+    <members>
+        <member name="T:EzDoc.Zusagenframework.Bausteinabhängigkeit.Api.Bausteinberechner">
+            <summary>
+            Berechnet Bausteine.
+            </summary>
+        </member>
+        <member name="M:EzDoc.Zusagenframework.Bausteinabhängigkeit.Api.Bausteinberechner.BerechneBausteine(System.Int32)">
+            <summary>
+            Berechnet Bausteine der Art.
+            </summary>
+            <param name="art"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EzDoc.Zusagenframework.Bausteinabhängigkeit.Beschreibung.Bausteinberechnungskern">
+            <summary>
+            Beschreibt eine Methode zur Berechnung von Bausteinen.
+            </summary>
+        </member>
+        <member name="T:EzDoc.Zusagenframework.Bausteinabhängigkeit.Beschreibung.Bausteindefinition">
+            <summary>
+            Definiert einen Art von Bausteine.
+            </summary>
+        </member>
+        <member name="P:EzDoc.Zusagenframework.Bausteinabhängigkeit.Beschreibung.Bausteindefinition.Art">
+            <summary>
+            Art des Bausteins.
+            </summary>
+        </member>
+        <member name="P:EzDoc.Zusagenframework.Bausteinabhängigkeit.Beschreibung.Bausteindefinition.Bausteinberechnungskern">
+            <summary>
+            Beschreibt, wie Bausteine dieser Definition berechnet werden sollen.
+            </summary>
+        </member>
+        <member name="T:EzDoc.Zusagenframework.Bausteinabhängigkeit.Customizing.IBausteinberechnungsCustomizingprovider">
+            <summary>
+            Customizing der Bausteinberechnung.
+            </summary>
+        </member>
+        <member name="M:EzDoc.Zusagenframework.Bausteinabhängigkeit.Customizing.IBausteinberechnungsCustomizingprovider.BerechneCustomBausteine">
+            <summary>
+            Berechnet Bausteine.
+            Siehe <see cref="T:EzDoc.Zusagenframework.Bausteinabhängigkeit.Customizing.IBausteinberechnungsCustomizingprovider"/>
+            Siehe <see href="https://shorturl.at/guzL8"/>
+            </summary>
+            <returns>int</returns>
+        </member>
+    </members>
+</doc>

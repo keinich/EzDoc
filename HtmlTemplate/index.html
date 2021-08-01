@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="treeview">
+    <p class="mainhead">Zusagenframework</p>
+    <hr>
+    <ul id="myUL">
+      <li><span class="caret">EzDoc</span>
+        <ul class="nested">
+          <li id="Tree-link" class="content-link">Tree</li>
+          <li><span class="caret">Zusagenframework</span>
+            <ul class="nested">
+              <li><span class="caret">Bausteinabhängigkeit</span>
+                <ul class="nested">
+                  <li><span class="caret">Api</span>
+                    <ul class="nested">
+                      <li id="Bausteinberechner-link" class="content-link">Bausteinberechner</li>
+                    </ul>
+                  </li>
+                  <li><span class="caret">Customizing</span>
+                    <ul class="nested">
+                      <li id="IBausteinberechnungsCustomizingprovider-link" class="content-link">
+                        IBausteinberechnungsCustomizingprovider</li>
+                    </ul>
+                  </li>
+                  <li><span class="caret">Beschreibung</span>
+                    <ul class="nested">
+                      <li id="Bausteinberechnungskern-link" class="content-link">Bausteinberechnungskern</li>
+                      <li id="Bausteindefinition-link" class="content-link">Bausteindefinition</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+  <div class="content-container">
+    <div id="Tree" class="content">
+      <h3>Tree</h3>
+      <hr>
+      <h4>Description</h4>
+
+      <p class="content-link-inline">Tree</p> structure for xml-comments.
+
+    </div>
+    <div id="Bausteinberechner" class="content">
+      <h3>Bausteinberechner</h3>
+      <hr>
+      <h4>Description</h4>
+
+      Berechnet Bausteine.
+
+      <h4>Methods</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>BerechneBausteine</td>
+            <td>
+              Berechnet Bausteine der Art.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="IBausteinberechnungsCustomizingprovider" class="content">
+      <h3>IBausteinberechnungsCustomizingprovider</h3>
+      <hr>
+      <h4>Description</h4>
+
+      Customizing der Bausteinberechnung.
+
+      <h4>Methods</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>BerechneBausteine</td>
+            <td>
+              Berechnet Bausteine.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="Bausteinberechnungskern" class="content">
+      <h3>Bausteinberechnungskern</h3>
+      <hr>
+      <h4>Description</h4>
+
+      Beschreibt eine Methode zur Berechnung von Bausteinen.
+
+    </div>
+    <div id="Bausteindefinition" class="content">
+      <h3>Bausteindefinition</h3>
+      <hr>
+      <h4>Description</h4>
+
+      Definiert einen Art von Bausteine.
+
+      <h4>Properties</h4>
+      <table>
+        <tbody>
+          <tr>
+            <td>Art</td>
+            <td>
+              Art des Bausteins.
+            </td>
+          </tr>
+          <tr>
+            <td>Bausteinberechnungskern</td>
+            <td>
+              Beschreibt, wie Bausteine dieser Definition berechnet werden sollen.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="program.js"></script>
+</body>
+
+</html>

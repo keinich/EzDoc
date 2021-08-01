@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EzDoc</name>
+    </assembly>
+    <members>
+        <member name="T:EzDoc.DocuGeneration.DocuTree">
+            <summary>
+            Tree structure for xml-comments.
+            </summary>
+        </member>
+        <member name="T:EzDoc.DocuGeneration.DocuTreeNodeType">
+            <summary>
+            Type of the Node.
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Namespace">
+            <summary>
+            Namespace
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Type">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Property">
+            <summary>
+            Property
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Method">
+            <summary>
+            Method
+            </summary>
+        </member>
+        <member name="T:EzDoc.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.base_template">
+             <summary>
+               Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+            
+            &lt;html&gt;
+            
+            &lt;head&gt;
+              &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;
+                integrity=&quot;sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC&quot; crossorigin=&quot;anonymous&quot;&gt;
+              &lt;link rel=&quot;stylesheet&quot; href=&quot;navtree.css&quot;&gt;
+            &lt;/head&gt;
+            
+            &lt;body&gt;
+              {{body}}
+            
+              &lt;script src=&quot;navtree.js&quot;&gt;&lt;/script&gt;
+              &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js&quot;
+                      integrity=&quot;sha384-MrcW6ZMFYlzcLA8Nl [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.content_entry_template">
+             <summary>
+               Looks up a localized string similar to &lt;div class=&quot;content-container&quot;&gt;
+              &lt;div id=&quot;content1&quot; class=&quot;content&quot;&gt;
+                Content 1. Go to &lt;p class=&quot;content-link-inline&quot; id=&quot;content2-link-inline&quot;&gt;Content 2&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div id=&quot;content2&quot; class=&quot;content&quot;&gt;
+                Content 2
+              &lt;/div&gt;
+            &lt;/div&gt;.
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.content_template">
+             <summary>
+               Looks up a localized string similar to &lt;div class=&quot;content-container&quot;&gt;
+              &lt;div id=&quot;content1&quot; class=&quot;content&quot;&gt;
+                Content 1. Go to &lt;p class=&quot;content-link-inline&quot; id=&quot;content2-link-inline&quot;&gt;Content 2&lt;/p&gt;
+              &lt;/div&gt;
+              &lt;div id=&quot;content2&quot; class=&quot;content&quot;&gt;
+                Content 2
+              &lt;/div&gt;
+            &lt;/div&gt;.
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.navbar_dropdownitem_entry_template">
+            <summary>
+              Looks up a localized string similar to &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;{{link}}&quot;&gt;{{text}}&lt;/a&gt;&lt;/li&gt;.
+            </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.navbar_dropdownitem_template">
+             <summary>
+               Looks up a localized string similar to &lt;li class=&quot;nav-item dropdown&quot;&gt;
+              &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; id=&quot;navbarDropdown&quot; role=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot;
+                 aria-expanded=&quot;false&quot;&gt;
+                {{text}}
+              &lt;/a&gt;
+              &lt;ul class=&quot;dropdown-menu&quot; aria-labelledby=&quot;navbarDropdown&quot;&gt;
+                {{entries}}   
+                &lt;li&gt;
+                  &lt;hr class=&quot;dropdown-divider&quot;&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/li&gt;.
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.navbar_item_template">
+             <summary>
+               Looks up a localized string similar to &lt;li class=&quot;nav-item&quot;&gt;
+              &lt;a class=&quot;nav-link active&quot; aria-current=&quot;page&quot; href=&quot;{{link}}&quot;&gt;{{text}}&lt;/a&gt;
+            &lt;/li&gt;.
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.navbar_template">
+             <summary>
+               Looks up a localized string similar to &lt;nav class=&quot;navbar navbar-expand-lg navbar-light bg-light&quot;&gt;
+            
+              &lt;div class=&quot;container-fluid&quot;&gt;
+                &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Zusagenframework&lt;/a&gt;
+                &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarSupportedContent&quot;
+                  aria-controls=&quot;navbarSupportedContent&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+                  &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarSupportedContent&quot;&gt;
+                 [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.navtree_contentLink_template">
+            <summary>
+              Looks up a localized string similar to &lt;li id=&quot;{{name}}-link&quot; class=&quot;content-link&quot;&gt;{{name}}&lt;/li&gt;.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:EzDoc.Properties.Resources.navtree_css" -->
+        <!-- Badly formed XML comment ignored for member "P:EzDoc.Properties.Resources.navtree_js" -->
+        <member name="P:EzDoc.Properties.Resources.navtree_template">
+             <summary>
+               Looks up a localized string similar to &lt;div class=&quot;treeview&quot;&gt;
+              &lt;p class=&quot;mainhead&quot;&gt;{{title}}&lt;/p&gt;
+              &lt;form class=&quot;d-flex&quot;&gt;
+                &lt;input id=&quot;filter-box&quot; class=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Filter&quot; aria-label=&quot;Search&quot;&gt;
+              &lt;/form&gt;
+              &lt;hr&gt;
+              &lt;ul id=&quot;navTree&quot;&gt;
+                {{items}}
+              &lt;/ul&gt;
+            &lt;/div&gt;
+            
+            
+            .
+             </summary>
+        </member>
+        <member name="P:EzDoc.Properties.Resources.navtree_toggler_template">
+             <summary>
+               Looks up a localized string similar to &lt;li&gt;
+              &lt;span class=&quot;caret&quot;&gt;{{name}}&lt;/span&gt;
+              &lt;ul class=&quot;nested&quot;&gt;
+                {{children}}
+              &lt;/ul&gt;
+            &lt;/li&gt;.
+             </summary>
+        </member>
+    </members>
+</doc>
