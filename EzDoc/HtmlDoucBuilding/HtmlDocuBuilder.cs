@@ -42,18 +42,11 @@ namespace EzDoc.HtmlDoucBuilding {
           }
         }
       }
-
-      StringBuilder navStuff = new StringBuilder();
-      StringBuilder contentStuff = new StringBuilder();
-      BuildNavAndContentHtml(navTree, navStuff, contentStuff);
-
-      StringBuilder result = new StringBuilder();
-      BuildFinalHtml(navStuff, contentStuff, result);
-      await File.WriteAllTextAsync("Result.html", result.ToString());
+     
     }
 
     private static void CreateStaticFiles(string outputPath) {
-      File.WriteAllText(Path.Combine(outputPath,"navtree.css"), Properties.Resources.navtree_css);
+      File.WriteAllText(Path.Combine(outputPath, "navtree.css"), Properties.Resources.navtree_css);
       File.WriteAllText(Path.Combine(outputPath, "navtree.js"), Properties.Resources.navtree_js);
     }
 
@@ -70,7 +63,7 @@ namespace EzDoc.HtmlDoucBuilding {
       filename += ".html";
       PageStructure pageStructure;
       if (entry.Href == "Api") {
-        pageStructure = BuildPageStructureFromApi(Path.Combine(inputPath, link), navTree);
+        pageStructure = BuildPageStructureFromApi(navTree);
       }
       else {
         pageStructure = BuildPageStructureFromFolder(Path.Combine(inputPath, link));
@@ -98,7 +91,7 @@ namespace EzDoc.HtmlDoucBuilding {
       StringBuilder navTreeItems = CreateNavTreeItems(nodes, contentItems);
 
       return PlaceholderResolver.Resolve(
-        navtreeTemplate, 
+        navtreeTemplate,
         Rule.Get("items", navTreeItems.ToString())
       );
     }
@@ -142,8 +135,20 @@ namespace EzDoc.HtmlDoucBuilding {
       return result;
     }
 
-    private static PageStructure BuildPageStructureFromApi(string v, DocuTree navTree) {
+    private static PageStructure BuildPageStructureFromApi(DocuTree navTree) {
       PageStructure result = new PageStructure();
+      result.Nodes = CreateChildren(navTree.RootNode.Children);
+      return result;
+    }
+
+    private static List<PageStructure.Node> CreateChildren(List<DocuTreeNode> nodes) {
+      List<PageStructure.Node> result = new List<PageStructure.Node>();
+      foreach (DocuTreeNode node in nodes) {
+        PageStructure.Node psNode = new PageStructure.Node() { Name = node.Identifier };
+        psNode.Content = node.Summary;
+        psNode.Children = CreateChildren(node.Children);
+        result.Add(psNode);
+      }
       return result;
     }
 
@@ -217,64 +222,7 @@ namespace EzDoc.HtmlDoucBuilding {
         }
       }
       return result;
-    }
-
-    private static void BuildNavAndContentHtml(
-      DocuTree navTree, StringBuilder navStuff, StringBuilder contentStuff
-    ) {
-      BuildNavAndContentHtml(
-        navTree.RootNode.Children, navStuff, contentStuff, navTree
-      );
-    }
-
-
-
-    private static void BuildNavAndContentHtml(List<DocuTreeNode> nodes, StringBuilder navResult, StringBuilder contentResult, DocuTree tree) {
-      foreach (DocuTreeNode child in nodes.OrderBy(n => n.Children.Where(c => c.Type == DocuTreeNodeType.Namespace || c.Type == DocuTreeNodeType.Type).ToList().Count)) {
-        if (child.Type == DocuTreeNodeType.Namespace) {
-          navResult.AppendLine("<li><span class=\"caret\">" + child.Identifier + "</span>");
-          navResult.AppendLine("<ul class=\"nested\">");
-          BuildNavAndContentHtml(child.Children, navResult, contentResult, tree); // Recursion
-          navResult.AppendLine("</ul>");
-          navResult.AppendLine("</li>");
-        }
-        else if (child.Type == DocuTreeNodeType.Type) {
-          navResult.AppendLine("<li id=\"" + child.Identifier + "-link\" class=\"content-link\">" + child.Identifier + "</li>");
-          CreateContentDiv(contentResult, child, tree);
-        }
-      }
-    }
-
-    private static void BuildFinalHtml(StringBuilder navStuff, StringBuilder contentStuff, StringBuilder result) {
-      result.AppendLine("<!DOCTYPE html>");
-      result.AppendLine("<html>");
-      result.AppendLine();
-      result.AppendLine("<head>");
-      result.AppendLine("<link rel=\"stylesheet\" href=\"style.css\">");
-      result.AppendLine("</head>");
-      result.AppendLine();
-      result.AppendLine("<body>");
-      result.AppendLine();
-      result.AppendLine("<div class=\"treeview\">");
-      result.AppendLine("<p class=\"mainhead\">Zusagenframework</p>");
-      result.AppendLine("<hr>");
-      result.AppendLine("<ul id=\"myUL\">");
-      result.Append(navStuff);
-      result.AppendLine("</ul>");
-      result.AppendLine();
-      result.AppendLine("</div>");
-
-      result.AppendLine("<div class=\"content-container\">");
-      result.Append(contentStuff);
-      result.AppendLine("</div>");
-
-      result.AppendLine("<script src=\"program.js\"></script>");
-      result.AppendLine("</body>");
-      result.AppendLine();
-      result.AppendLine("</html>");
-
-    }
-
+    }  
 
     private static void CreateContentDiv(StringBuilder contentResult, DocuTreeNode node, DocuTree tree) {
       contentResult.AppendLine("<div id=\"" + node.Identifier + "\" class=\"content\">");
