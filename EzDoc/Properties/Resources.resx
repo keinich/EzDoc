@@ -121,11 +121,14 @@
   <data name="base_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\htmltemplates\base_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="content_css" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\htmltemplates\content_css.css;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="content_entry_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\htmltemplates\content_entry_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="content_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\htmltemplates\content_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="content_link_inline_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\htmltemplates\content_link_inline_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="navbar_dropdownitem_entry_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\htmltemplates\navbar_dropdownitem_entry_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -148,10 +151,22 @@
   <data name="navtree_js" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\htmltemplates\navtree_js.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="navtree_js_child_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\htmltemplates\navtree_js_child_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="navtree_js_item_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\htmltemplates\navtree_js_item_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="navtree_js_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\htmltemplates\navtree_js_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="navtree_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\htmltemplates\navtree_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="navtree_toggler_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\htmltemplates\navtree_toggler_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="summary_template" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\htmltemplates\summary_template.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

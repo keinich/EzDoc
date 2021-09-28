@@ -1,0 +1,9 @@
+.tj_container ul {
+  padding-left: 1em;
+  font-size: 16px;
+  word-break: break-all;
+}
+
+.tj_container li span.tj_mod_icon, .tj_container li span.tj_icon {
+  margin-right: 0em;
+}

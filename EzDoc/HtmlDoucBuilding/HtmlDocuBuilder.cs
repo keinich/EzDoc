@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using YamlDotNet.RepresentationModel;
@@ -13,6 +14,8 @@ namespace EzDoc.HtmlDoucBuilding {
 
     public static async Task BuildHtmlDocu(string path, DocuTree navTree) {
 
+      ConvertLinks(navTree.RootNode);
+
       string navbarFilename = "EzDoc/navbar_content.yaml";
       string navbarFilepath = System.IO.Path.Combine(path, navbarFilename);
       path = Path.Combine(path, "EzDoc");
@@ -20,65 +23,136 @@ namespace EzDoc.HtmlDoucBuilding {
       if (!Directory.Exists(outputPath)) {
         Directory.CreateDirectory(outputPath);
         while (!Directory.Exists(outputPath)) { }
-      }
-      else {
-        Directory.Delete(outputPath, true);
-        while (Directory.Exists(outputPath)) ;
-        Directory.CreateDirectory(outputPath);
-        while (!Directory.Exists(outputPath)) { }
+      } else {
+        //Directory.Delete(outputPath, true);
+        foreach (string file in Directory.EnumerateFiles(outputPath)) {
+          File.Delete(file);
+        }
+        //while (Directory.Exists(outputPath)) ;
+        //Directory.CreateDirectory(outputPath);
+        //while (!Directory.Exists(outputPath)) { }
       }
       CreateStaticFiles(outputPath);
 
-
       TableOfContent toc = ReadTableOfContent(navbarFilepath);
-      string navbarContent = BuildNavbarContent(toc);
       foreach (TableOfContent.Entry entry in toc.Entries) {
         if (entry.Items.Count == 0) {
-          await BuildPageAsync(path, outputPath, navbarContent, entry, navTree);
-        }
-        else {
+          await BuildPageAsync(path, outputPath, toc, entry, navTree);
+        } else {
           foreach (TableOfContent.Entry item in entry.Items) {
-            await BuildPageAsync(path, outputPath, navbarContent, item, navTree);
+            await BuildPageAsync(path, outputPath, toc, item, navTree);
           }
         }
       }
-     
+
+    }
+
+    private static void ConvertLinks(DocuTreeNode node) {
+      node.Summary = ConvertLinks(node.Summary);
+      foreach (DocuTreeNode cn in node.Children) {
+        ConvertLinks(cn);
+      }
+    }
+
+    private static string ConvertLinks(string text) {
+      if (string.IsNullOrEmpty(text)) {
+        return text;
+      }
+      string result = ConvertCRefs(text);
+      result = ConvertHRefs(result);
+      return result;
+    }
+
+    private static string ConvertCRefs(string text) {
+      string result = text;
+      string searchPattern = "<see cref=\"";
+      int currentStartIndex = text.IndexOf(searchPattern);
+      while (currentStartIndex >= 0) {
+        int currentEndIndex = text.IndexOf('"', currentStartIndex + searchPattern.Length);
+        int linkLength = currentEndIndex - (currentStartIndex + searchPattern.Length);
+        string linkNameFull = text.Substring(currentStartIndex + searchPattern.Length, linkLength);
+        string linkName = linkNameFull;
+        int lastIndexOfDot = linkNameFull.LastIndexOf(".");
+        if (lastIndexOfDot >= 0) {
+          linkName = linkNameFull.Substring(lastIndexOfDot + 1);
+        }
+        string linkFull = text.Substring(currentStartIndex, currentEndIndex - currentStartIndex + 4);
+        string innerLink = $"Api.html?elementId={linkName}";
+        string newLink = $"<a href=\"" + innerLink + "\">" + linkName + "</a>";
+        result = text.Replace(linkFull, newLink);
+        currentStartIndex = text.IndexOf(searchPattern, currentStartIndex + 1);
+      }
+
+      return result;
+    }
+
+    private static string ConvertHRefs(string text) {
+      string result = text;
+      string searchPattern = "<see href=\"";
+      int currentStartIndex = text.IndexOf(searchPattern);
+      while (currentStartIndex >= 0) {
+        int currentEndIndex = text.IndexOf('"', currentStartIndex + searchPattern.Length);
+        int linkLength = currentEndIndex - (currentStartIndex + searchPattern.Length);
+        string linkNameFull = text.Substring(currentStartIndex + searchPattern.Length, linkLength);
+        string linkName = linkNameFull;
+        int lastIndexOfDot = linkNameFull.LastIndexOf(".");
+        if (lastIndexOfDot >= 0) {
+          linkName = linkNameFull.Substring(lastIndexOfDot + 1);
+        }
+        int firstIndedOfDot = linkNameFull.IndexOf(".");
+        string pageName = linkNameFull;
+        if (firstIndedOfDot >= 0) {
+          pageName = linkNameFull.Substring(0, firstIndedOfDot);
+        }
+        string linkFull = text.Substring(currentStartIndex, currentEndIndex - currentStartIndex + 4);
+        string innerLink = $"{pageName}.html?elementId={linkName}";
+        string newLink = $"<a href=\"" + innerLink + "\">" + linkName + "</a>";
+        result = text.Replace(linkFull, newLink);
+        currentStartIndex = text.IndexOf(searchPattern, currentStartIndex + 1);
+      }
+
+      return result;
     }
 
     private static void CreateStaticFiles(string outputPath) {
-      File.WriteAllText(Path.Combine(outputPath, "navtree.css"), Properties.Resources.navtree_css);
-      File.WriteAllText(Path.Combine(outputPath, "navtree.js"), Properties.Resources.navtree_js);
+      //File.WriteAllText(Path.Combine(outputPath, "navtree.css"), Properties.Resources.navtree_css);
+      //File.WriteAllText(Path.Combine(outputPath, "navtree.js"), Properties.Resources.navtree_js);
+      //File.WriteAllText(Path.Combine(outputPath, "content.css"), Properties.Resources.content_css);
     }
 
     private static async Task BuildPageAsync(
       string inputPath, string outputPath,
-      string navbarContent,
+      TableOfContent toc,
       TableOfContent.Entry entry,
       DocuTree navTree
     ) {
       string link = entry.Href;
 
-      // Create the nav-tree
+      // navbar
+      string navbarContent = BuildNavbarHtml(toc);
+
+      // nav-tree + content
       string filename = Path.Combine(outputPath, link);
       filename += ".html";
       PageStructure pageStructure;
       if (entry.Href == "Api") {
         pageStructure = BuildPageStructureFromApi(navTree);
-      }
-      else {
+      } else {
         pageStructure = BuildPageStructureFromFolder(Path.Combine(inputPath, link));
       }
-      StringBuilder contentItems = new StringBuilder();
-      string navTreeHtml = CreateNavTreeAndContents(pageStructure.Nodes, contentItems);
-      navTreeHtml = PlaceholderResolver.Resolve(navTreeHtml, Rule.Get("title", entry.Text));
-
-      string contentTemplate = Properties.Resources.content_template;
-      string content = PlaceholderResolver.Resolve(contentTemplate, Rule.Get("items", contentItems.ToString()));
+      StringBuilder content = new StringBuilder();
+      string navTreeHtml = CreateNavTreeHtml();
+      string navTreeJs = CreateNavTreeJsAndContentHtml(pageStructure.Nodes, content);
 
       // Create the final html
-      string baseTemplate = Properties.Resources.base_template;
-      string body = navbarContent + navTreeHtml + content;
-      string result = PlaceholderResolver.Resolve(baseTemplate, Rule.Get("body", body));
+      string baseTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.base_template.html");
+      string result = PlaceholderResolver.Resolve(
+        baseTemplate,
+        Rule.Get("navtreejs", navTreeJs),
+        Rule.Get("navtree", navTreeHtml),
+        Rule.Get("content", content.ToString()),
+        Rule.Get("navbar", navbarContent)
+      );
       if (File.Exists(filename)) {
         File.Delete(filename);
       }
@@ -86,9 +160,28 @@ namespace EzDoc.HtmlDoucBuilding {
       await File.WriteAllTextAsync(filename, result);
     }
 
-    private static string CreateNavTreeAndContents(List<PageStructure.Node> nodes, StringBuilder contentItems) {
-      string navtreeTemplate = Properties.Resources.navtree_template;
-      StringBuilder navTreeItems = CreateNavTreeItems(nodes, contentItems);
+    private static string CreateNavTreeHtml() {
+      string navtreeTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navtree_template.html");
+
+      return PlaceholderResolver.Resolve(
+        navtreeTemplate,
+        Rule.Get("title", "Zusagenframework")
+      );
+    }
+
+    private static string CreateNavTreeJsAndContentHtml(List<PageStructure.Node> nodes, StringBuilder contentItems) {
+      string navtreeTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navtree_js_template.html"); 
+      StringBuilder navTreeItems = new StringBuilder();
+      foreach (PageStructure.Node node in nodes) {
+        CreateNavTreeItem(node, navTreeItems, contentItems);
+        string navTreeChildTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navtree_js_child_template.html"); 
+        string childHtml = PlaceholderResolver.Resolve(
+          navTreeChildTemplate,
+          Rule.Get("parentVariable", "root"),
+          Rule.Get("childVariable", node.Name)
+        );
+        navTreeItems.Append(childHtml);
+      }
 
       return PlaceholderResolver.Resolve(
         navtreeTemplate,
@@ -96,29 +189,30 @@ namespace EzDoc.HtmlDoucBuilding {
       );
     }
 
-    private static StringBuilder CreateNavTreeItems(List<PageStructure.Node> nodes, StringBuilder contentItems) {
-      StringBuilder navTreeItems = new StringBuilder();
-      foreach (PageStructure.Node node in nodes) {
-        if (node.IsLeaf()) {
-          string navTreeContentLinkTemplate = Properties.Resources.navtree_contentLink_template;
-          string navTreeContentLink = PlaceholderResolver.Resolve(navTreeContentLinkTemplate, Rule.Get("name", node.Name));
-          navTreeItems.Append(navTreeContentLink);
-          string contentItemTemplate = Properties.Resources.content_entry_template;
-          string content = node.Content;
-          string contentEntry = PlaceholderResolver.Resolve(contentItemTemplate, Rule.Get("name", node.Name), Rule.Get("content", content));
-          contentItems.Append(contentEntry);
-        }
-        else {
-          string navTreeTogglerTemplate = Properties.Resources.navtree_toggler_template;
-          string children = CreateNavTreeItems(node.Children, contentItems).ToString();
-          string navTreeToggler = PlaceholderResolver.Resolve(
-            navTreeTogglerTemplate, Rule.Get("name", node.Name), Rule.Get("children", children)
-          );
-          navTreeItems.Append(navTreeToggler);
-        }
+    private static void CreateNavTreeItem(PageStructure.Node node, StringBuilder navTreeItems, StringBuilder contentItems) {
+      string navTreeItemTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navtree_js_item_template.html");
+      string navTreeItem = PlaceholderResolver.Resolve(
+        navTreeItemTemplate,
+        Rule.Get("nodeName", node.Name)
+      );
+      navTreeItems.Append(navTreeItem);
+
+      foreach (PageStructure.Node childNode in node.Children) {
+        CreateNavTreeItem(childNode, navTreeItems, contentItems);
+        string navTreeChildTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navtree_js_child_template.html");
+        string childHtml = PlaceholderResolver.Resolve(
+          navTreeChildTemplate,
+          Rule.Get("parentVariable", node.Name),
+          Rule.Get("childVariable", childNode.Name)
+        );
+        navTreeItems.Append(childHtml);
       }
 
-      return navTreeItems;
+      string contentItemTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.content_entry_template.html"); 
+      string content = node.Content;
+      string contentEntry = PlaceholderResolver.Resolve(contentItemTemplate, Rule.Get("name", node.Name), Rule.Get("content", content));
+      contentItems.Append(contentEntry);
+
     }
 
     private static PageStructure BuildPageStructureFromFolder(string path) {
@@ -145,18 +239,36 @@ namespace EzDoc.HtmlDoucBuilding {
       List<PageStructure.Node> result = new List<PageStructure.Node>();
       foreach (DocuTreeNode node in nodes) {
         PageStructure.Node psNode = new PageStructure.Node() { Name = node.Identifier };
-        psNode.Content = node.Summary;
-        psNode.Children = CreateChildren(node.Children);
+        if (node.Type == DocuTreeNodeType.Namespace) {
+          psNode.Children = CreateChildren(node.Children);
+        } else {
+          psNode.Content = BuildContent(node);
+        }
         result.Add(psNode);
       }
       return result;
     }
 
-    private static string BuildNavbarContent(TableOfContent toc) {
-      string navbarTemplate = EzDoc.Properties.Resources.navbar_template;
-      string navbarDropdownItemTemplate = Properties.Resources.navbar_dropdownitem_template;
-      string navbarDropdownItemEntryTemplate = Properties.Resources.navbar_dropdownitem_entry_template;
-      string navbarItemTemplate = EzDoc.Properties.Resources.navbar_item_template;
+    private static string BuildContent(DocuTreeNode node) {
+      StringBuilder result = new StringBuilder();
+      BuildSummary(result, node);
+      BuildPropertiesTable(result, node);
+      BuildMethodsTable(result, node);
+      return result.ToString();
+    }
+
+    private static void BuildSummary(StringBuilder result, DocuTreeNode node) {
+      string summaryTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.summary_template.html");
+      string summary = PlaceholderResolver.Resolve(summaryTemplate, Rule.Get("name", node.Identifier), Rule.Get("content", node.Summary));
+      result.Append(summary);
+    }
+
+    private static string BuildNavbarHtml(TableOfContent toc) {
+      string navbarTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navbar_template.html");
+      string navbarDropdownItemTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navbar_dropdownitem_template.html");
+      string navbarDropdownItemEntryTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navbar_dropdownitem_entry_template.html");
+      string navbarItemTemplate = ResourceHelper.LoadResource("EzDoc.HtmlTemplates.navbar_item_template.html");
+
       StringBuilder navbarItems = new StringBuilder();
       foreach (TableOfContent.Entry entry in toc.Entries) {
         if (entry.Items.Count == 0) {
@@ -164,8 +276,7 @@ namespace EzDoc.HtmlDoucBuilding {
             navbarItemTemplate, Rule.Get("text", entry.Text), Rule.Get("link", entry.Href + ".html")
           );
           navbarItems.Append(navbarItem);
-        }
-        else {
+        } else {
           StringBuilder navbarDropdownItemEntries = new StringBuilder();
           foreach (TableOfContent.Entry item in entry.Items) {
             navbarDropdownItemEntries.Append(
@@ -222,22 +333,9 @@ namespace EzDoc.HtmlDoucBuilding {
         }
       }
       return result;
-    }  
-
-    private static void CreateContentDiv(StringBuilder contentResult, DocuTreeNode node, DocuTree tree) {
-      contentResult.AppendLine("<div id=\"" + node.Identifier + "\" class=\"content\">");
-      contentResult.AppendLine("<h3>" + node.Identifier + "</h3>");
-      contentResult.AppendLine("<hr>");
-      contentResult.AppendLine("<h4>Description</h4>");
-      string nodeSummary = CreateSummary(node.Summary, tree);
-      contentResult.AppendLine(nodeSummary);
-      BuildPropertiesTable(contentResult, node, tree);
-      BuildFieldsTable(contentResult, node, tree);
-      BuildMethodsTable(contentResult, node, tree);
-      contentResult.AppendLine("</div>");
     }
 
-    private static void BuildFieldsTable(StringBuilder contentResult, DocuTreeNode node, DocuTree tree) {
+    private static void BuildFieldsTable(StringBuilder contentResult, DocuTreeNode node) {
       IEnumerable<DocuTreeNode> fieldNodes = node.Children.Where(x => x.Type == DocuTreeNodeType.Field);
       if (!fieldNodes.Any()) {
         return;
@@ -248,7 +346,7 @@ namespace EzDoc.HtmlDoucBuilding {
       foreach (DocuTreeNode propertyNode in fieldNodes) {
         contentResult.AppendLine("<tr>");
         contentResult.AppendLine("<td>" + propertyNode.Identifier + "</td>");
-        string propertySummary = CreateSummary(propertyNode.Summary, tree);
+        string propertySummary = propertyNode.Summary;
         contentResult.AppendLine("<td>" + propertySummary + "</td>");
         contentResult.AppendLine("</tr>");
       }
@@ -256,18 +354,18 @@ namespace EzDoc.HtmlDoucBuilding {
       contentResult.AppendLine("</table>");
     }
 
-    private static void BuildPropertiesTable(StringBuilder contentResult, DocuTreeNode node, DocuTree tree) {
+    private static void BuildPropertiesTable(StringBuilder contentResult, DocuTreeNode node) {
       IEnumerable<DocuTreeNode> propertyNodes = node.Children.Where(x => x.Type == DocuTreeNodeType.Property);
       if (!propertyNodes.Any()) {
         return;
       }
       contentResult.AppendLine("<h4>Properties</h4>");
-      contentResult.AppendLine("<table>");
+      contentResult.AppendLine("<table class=\"table table-bordered table-striped table-dark\">");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode propertyNode in propertyNodes) {
         contentResult.AppendLine("<tr>");
         contentResult.AppendLine("<td>" + propertyNode.Identifier + "</td>");
-        string propertySummary = CreateSummary(propertyNode.Summary, tree);
+        string propertySummary = propertyNode.Summary;
         contentResult.AppendLine("<td>" + propertySummary + "</td>");
         contentResult.AppendLine("</tr>");
       }
@@ -275,49 +373,18 @@ namespace EzDoc.HtmlDoucBuilding {
       contentResult.AppendLine("</table>");
     }
 
-    private static string CreateSummary(string summary, DocuTree tree) {
-      DocuTreeNode rootNode = tree.RootNode;
-      Dictionary<string, string> replacements = new Dictionary<string, string>();
-      CreateSummary1(ref summary, rootNode, replacements);
-      foreach (KeyValuePair<string, string> replacement in replacements) {
-        summary = summary.Replace(replacement.Key, replacement.Value);
-      }
-      return summary;
-    }
-
-    private static void CreateSummary1(ref string summary, DocuTreeNode rootNode, Dictionary<string, string> replacements) {
-      if (summary is null) {
-        return;
-      }
-      foreach (DocuTreeNode node in rootNode.Children) {
-        if (node.Type == DocuTreeNodeType.Type) {
-          bool containsIdentifier = summary.Contains(node.Identifier);
-          if (containsIdentifier) {
-            if (!replacements.Keys.Any(r => r.Contains(node.Identifier))) {
-              replacements.Add(node.Identifier, "<p class=\"content-link-inline\">" + node.Identifier + "</p>");
-            }
-            IEnumerable<string> smallerOnes = replacements.Where(r => node.Identifier != r.Key && node.Identifier.Contains(r.Key)).Select(r => r.Key);
-            foreach (string smallerOne in smallerOnes) {
-              replacements.Remove(smallerOne);
-            }
-          }
-        }
-        CreateSummary1(ref summary, node, replacements);
-      }
-    }
-
-    private static void BuildMethodsTable(StringBuilder contentResult, DocuTreeNode node, DocuTree tree) {
+    private static void BuildMethodsTable(StringBuilder contentResult, DocuTreeNode node) {
       IEnumerable<DocuTreeNode> methodNodes = node.Children.Where(x => x.Type == DocuTreeNodeType.Method);
       if (!methodNodes.Any()) {
         return;
       }
       contentResult.AppendLine("<h4>Methods</h4>");
-      contentResult.AppendLine("<table>");
+      contentResult.AppendLine("<table class=\"table table-bordered table-striped table-dark\">");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode methodNode in methodNodes) {
         contentResult.AppendLine("<tr>");
         contentResult.AppendLine("<td>" + methodNode.Identifier + "</td>");
-        string methodSummary = CreateSummary(methodNode.Summary, tree);
+        string methodSummary = methodNode.Summary;
         contentResult.AppendLine("<td>" + methodSummary + "</td>");
         contentResult.AppendLine("</tr>");
       }

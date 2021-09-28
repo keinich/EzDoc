@@ -10,14 +10,14 @@
         "projectUniqueName": "D:\\Raftek\\EzDoc\\Zusagenframework\\Zusagenframework.csproj",
         "projectName": "Zusagenframework",
         "projectPath": "D:\\Raftek\\EzDoc\\Zusagenframework\\Zusagenframework.csproj",
-        "packagesPath": "C:\\Users\\KeinIch\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
         "outputPath": "D:\\Raftek\\EzDoc\\Zusagenframework\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\KeinIch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

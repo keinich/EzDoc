@@ -1,4 +1,4 @@
-﻿namespace EzDoc.Zusagenframework.Bausteinabhängigkeit.Customizing {
+﻿namespace Zusagenframework.Bausteinabhängigkeit.Customizing {
 
   /// <summary>
   /// Customizing der Bausteinberechnung.
@@ -8,7 +8,7 @@
     /// <summary>
     /// Berechnet Bausteine.
     /// Siehe <see cref="IBausteinberechnungsCustomizingprovider"/>
-    /// Siehe <see href="https://shorturl.at/guzL8"/>
+    /// Siehe <see href="Conceptual.Concept"/>
     /// </summary>
     /// <returns>int</returns>
     public int BerechneCustomBausteine();

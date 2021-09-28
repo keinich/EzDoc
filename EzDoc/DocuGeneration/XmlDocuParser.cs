@@ -28,7 +28,7 @@ namespace EzDoc.DocuGeneration {
       return navTree;
     }
 
-        private static void HandleXmlNode(XmlTextReader reader, DocuTree navTree, ref DocuTreeNode currentNode, ref string currentNodeType) {
+    private static void HandleXmlNode(XmlTextReader reader, DocuTree navTree, ref DocuTreeNode currentNode, ref string currentNodeType) {
       switch (reader.NodeType) {
         case XmlNodeType.Element:
           currentNodeType = "other";
@@ -56,7 +56,7 @@ namespace EzDoc.DocuGeneration {
               currentNodeType = "summary";
               string innerXml = reader.ReadInnerXml();
               currentNode.Summary = innerXml;
-              HandleXmlNode(reader, navTree,ref currentNode, ref currentNodeType);
+              HandleXmlNode(reader, navTree, ref currentNode, ref currentNodeType);
               break;
             case "param":
               currentNodeType = "param";

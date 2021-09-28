@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EzDoc.Zusagenframework.Bausteinabhängigkeit.Api {
+namespace Zusagenframework.Bausteinabhängigkeit.Api {
   
   /// <summary>
   /// Berechnet Bausteine.

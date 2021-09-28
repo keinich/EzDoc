@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EzDoc.Zusagenframework.Bausteinabhängigkeit.Beschreibung {
+namespace Zusagenframework.Bausteinabhängigkeit.Beschreibung {
   
   /// <summary>
   /// Definiert einen Art von Bausteine.

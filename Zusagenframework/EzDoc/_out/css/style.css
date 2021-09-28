@@ -1,0 +1,78 @@
+body {
+  background-color: rgb(57, 53, 53);
+  /* background-color: rgb(236, 229, 229); */
+  color: rgb(230, 220, 220);
+}
+
+.my-breadcrumb {
+  /* background-color: rgba(0.1, 0.1, 0.1, 0.02); */
+  background-color: rgba(90, 82, 82, 1.0);
+  /* background-color: white; */
+  font-size: large;
+  padding: 1em;
+  border-radius: 0.5em;
+  border-color: rgba(0.1, 0.1, 0.1, 0.1);
+  /* border-style: solid; */
+}
+
+.content {
+  visibility: hidden;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.active-content {
+  visibility: visible;
+}
+
+hr {
+  margin-left: 12px;
+  margin-right: 12px;
+  opacity: 12%;
+  color: black;
+  background-color: black;
+}
+
+.mainhead {
+  font-size: 30px;
+  margin: 0;
+}
+
+.content-container {
+  margin-top: 2em;
+  height: 100px;
+}
+
+/*Property Tables*/
+
+/* table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td, th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px 20px;
+}
+
+th {
+  background-color: rgb(235, 235, 235);
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(even) td {
+  background-color: rgb(250, 250, 250);
+}
+
+tr:nth-child(odd) td {
+  background-color: rgb(245, 245, 245);
+}
+
+caption {
+  padding: 10px;
+} */

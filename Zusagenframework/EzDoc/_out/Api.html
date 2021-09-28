@@ -3,13 +3,18 @@
 <html>
 
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="navtree.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/treejs.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="js/trumbowyg/ui/trumbowyg.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navtree.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Zusagenframework</a>
@@ -43,97 +48,178 @@
       </form>
     </div>
   </div>
-</nav><div class="treeview">
-  <p class="mainhead">Api Documentation</p>
-  <form class="d-flex">
-    <input id="filter-box" class="form-control me-2" type="search" placeholder="Filter" aria-label="Search">
-  </form>
-  <hr>
-  <ul id="navTree">
-    <li>
-  <span class="caret">EzDoc</span>
-  <ul class="nested">
-    <li>
-  <span class="caret">Zusagenframework</span>
-  <ul class="nested">
-    <li>
-  <span class="caret">Bausteinabhängigkeit</span>
-  <ul class="nested">
-    <li>
-  <span class="caret">Api</span>
-  <ul class="nested">
-    <li>
-  <span class="caret">Bausteinberechner</span>
-  <ul class="nested">
-    <li id="BerechneBausteine-link" class="content-link">BerechneBausteine</li>
-  </ul>
-</li>
-  </ul>
-</li><li>
-  <span class="caret">Beschreibung</span>
-  <ul class="nested">
-    <li id="Bausteinberechnungskern-link" class="content-link">Bausteinberechnungskern</li><li>
-  <span class="caret">Bausteindefinition</span>
-  <ul class="nested">
-    <li id="Art-link" class="content-link">Art</li><li id="Bausteinberechnungskern-link" class="content-link">Bausteinberechnungskern</li>
-  </ul>
-</li>
-  </ul>
-</li><li>
-  <span class="caret">Customizing</span>
-  <ul class="nested">
-    <li>
-  <span class="caret">IBausteinberechnungsCustomizingprovider</span>
-  <ul class="nested">
-    <li id="BerechneCustomBausteine-link" class="content-link">BerechneCustomBausteine</li>
-  </ul>
-</li>
-  </ul>
-</li>
-  </ul>
-</li>
-  </ul>
-</li>
-  </ul>
-</li>
-  </ul>
-</div>
+</nav>
 
-
-<div class="content-container">
-  <div id="BerechneBausteine" class="content">
-  
-            Berechnet Bausteine der Art.
-            
-</div>
-<div id="Bausteinberechnungskern" class="content">
-  
-            Beschreibt eine Methode zur Berechnung von Bausteinen.
-            
-</div>
-<div id="Art" class="content">
-  
-            Art des Bausteins.
-            
-</div>
-<div id="Bausteinberechnungskern" class="content">
-  
-            Beschreibt, wie Bausteine dieser Definition berechnet werden sollen.
-            
-</div>
-<div id="BerechneCustomBausteine" class="content">
-  
+  <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
+    <div class="fixed-top row mb-3" style="margin-top: 60px;">
+      <div class="col-md-3 navtree">
+        <p class="mainhead">Zusagenframework</p>
+<form class="d-flex">
+  <input id="filter-box" class="form-control me-2 bg-dark text-light" type="search" placeholder="Filter" aria-label="Search">
+</form>
+<hr>
+<div id="container"></div>
+      </div>
+      <div class="col-md-9">
+        <div class="content-container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb" id="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+          <!-- <div id="trumbowyg-demo"></div> -->
+          <div id="Bausteinberechner" class="content">
+  <h2>Bausteinberechner</h2>
+<p>
             Berechnet Bausteine.
-            Siehe <see cref="T:EzDoc.Zusagenframework.Bausteinabhängigkeit.Customizing.IBausteinberechnungsCustomizingprovider" />
-            Siehe <see href="https://shorturl.at/guzL8" />
-</div>
+            </p><h4>Methods</h4>
+<table class="table table-bordered table-striped table-dark">
+<tbody>
+<tr>
+<td>BerechneBausteine</td>
+<td>
+            Berechnet Bausteine der Art.
+            </td>
+</tr>
+</tbody>
+</table>
 
 </div>
+<div id="Api" class="content">
+  
+</div>
+<div id="Bausteinberechnungskern" class="content">
+  <h2>Bausteinberechnungskern</h2>
+<p>
+            Beschreibt eine Methode zur Berechnung von Bausteinen.
+            Siehe <a href="Api.html?elementId=Bausteindefinition">Bausteindefinition</a></p>
+</div>
+<div id="Bausteindefinition" class="content">
+  <h2>Bausteindefinition</h2>
+<p>
+            Definiert einen Art von Bausteine.
+            </p><h4>Properties</h4>
+<table class="table table-bordered table-striped table-dark">
+<tbody>
+<tr>
+<td>Art</td>
+<td>
+            Art des Bausteins.
+            </td>
+</tr>
+<tr>
+<td>Bausteinberechnungskern</td>
+<td>
+            Beschreibt, wie Bausteine dieser Definition berechnet werden sollen.
+            </td>
+</tr>
+</tbody>
+</table>
 
-  <script src="navtree.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="IBausteinberechnungsCustomizingprovider" class="content">
+  <h2>IBausteinberechnungsCustomizingprovider</h2>
+<p>
+            Customizing der Bausteinberechnung.
+            </p><h4>Methods</h4>
+<table class="table table-bordered table-striped table-dark">
+<tbody>
+<tr>
+<td>BerechneCustomBausteine</td>
+<td>
+            Berechnet Bausteine.
+            Siehe <a href="Api.html?elementId=IBausteinberechnungsCustomizingprovider">IBausteinberechnungsCustomizingprovider</a>
+            Siehe <a href="Conceptual.html?elementId=Concept">Concept</a></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="Bausteinabhängigkeit" class="content">
+  
+</div>
+<div id="Zusagenframework" class="content">
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/tree.min.js"></script>
+  <script src="js/navtree.js"></script>
+  <script>
+    var root = new TreeNode("Zusagenframework");
+var Zusagenframework = new TreeNode("Zusagenframework");
+Zusagenframework.on('select', function (e, node) {
+    onNodeClick(Zusagenframework)
+});
+
+var Bausteinabhängigkeit = new TreeNode("Bausteinabhängigkeit");
+Bausteinabhängigkeit.on('select', function (e, node) {
+    onNodeClick(Bausteinabhängigkeit)
+});
+
+var Api = new TreeNode("Api");
+Api.on('select', function (e, node) {
+    onNodeClick(Api)
+});
+
+var Bausteinberechner = new TreeNode("Bausteinberechner");
+Bausteinberechner.on('select', function (e, node) {
+    onNodeClick(Bausteinberechner)
+});
+
+Api.addChild(Bausteinberechner);Bausteinabhängigkeit.addChild(Api);var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var Bausteinberechnungskern = new TreeNode("Bausteinberechnungskern");
+Bausteinberechnungskern.on('select', function (e, node) {
+    onNodeClick(Bausteinberechnungskern)
+});
+
+Beschreibung.addChild(Bausteinberechnungskern);var Bausteindefinition = new TreeNode("Bausteindefinition");
+Bausteindefinition.on('select', function (e, node) {
+    onNodeClick(Bausteindefinition)
+});
+
+Beschreibung.addChild(Bausteindefinition);Bausteinabhängigkeit.addChild(Beschreibung);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var IBausteinberechnungsCustomizingprovider = new TreeNode("IBausteinberechnungsCustomizingprovider");
+IBausteinberechnungsCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IBausteinberechnungsCustomizingprovider)
+});
+
+Customizing.addChild(IBausteinberechnungsCustomizingprovider);Bausteinabhängigkeit.addChild(Customizing);Zusagenframework.addChild(Bausteinabhängigkeit);root.addChild(Zusagenframework);
+treeView = new TreeView(root, "#container");
+setupTree();
+  </script>
+  <script src="js/program.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <script src="js/ajax.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="js/trumbowyg/trumbowyg.min.js"></script>
+  <script>
+    $('#trumbowyg-demo').trumbowyg({
+      svgPath: false // or a path like '/assets/my-custom-path/icons.svg'
+    });
+    $.trumbowyg.svgPath = false;
+  </script>
 </body>
 
 </html>

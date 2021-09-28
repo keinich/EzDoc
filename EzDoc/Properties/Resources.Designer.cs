@@ -66,17 +66,19 @@ namespace EzDoc.Properties {
         ///&lt;html&gt;
         ///
         ///&lt;head&gt;
-        ///  &lt;link href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;
-        ///    integrity=&quot;sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC&quot; crossorigin=&quot;anonymous&quot;&gt;
-        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;navtree.css&quot;&gt;
+        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/bootstrap.min.css&quot;&gt;
+        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/treejs.min.css&quot;&gt;
+        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://use.fontawesome.com/releases/v5.0.13/css/all.css&quot;&gt;
+        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;js/trumbowyg/ui/trumbowyg.min.css&quot;&gt;
+        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;
+        ///  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/navtree.css&quot;&gt;
         ///&lt;/head&gt;
         ///
         ///&lt;body&gt;
-        ///  {{body}}
         ///
-        ///  &lt;script src=&quot;navtree.js&quot;&gt;&lt;/script&gt;
-        ///  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js&quot;
-        ///          integrity=&quot;sha384-MrcW6ZMFYlzcLA8Nl [rest of string was truncated]&quot;;.
+        ///  {{navbar}}
+        ///
+        ///  &lt;main role=&quot;main&quot; class=&quot;row&quot; style=&quot;margin-top: 60px;&quot; class=&quot;fixed-t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string base_template {
             get {
@@ -85,14 +87,52 @@ namespace EzDoc.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;div class=&quot;content-container&quot;&gt;
-        ///  &lt;div id=&quot;content1&quot; class=&quot;content&quot;&gt;
-        ///    Content 1. Go to &lt;p class=&quot;content-link-inline&quot; id=&quot;content2-link-inline&quot;&gt;Content 2&lt;/p&gt;
-        ///  &lt;/div&gt;
-        ///  &lt;div id=&quot;content2&quot; class=&quot;content&quot;&gt;
-        ///    Content 2
-        ///  &lt;/div&gt;
-        ///&lt;/div&gt;.
+        ///   Looks up a localized string similar to /*Property Tables*/
+        ///
+        ///table {
+        ///  border-collapse: collapse;
+        ///  border: 2px solid rgb(200, 200, 200);
+        ///  letter-spacing: 1px;
+        ///  font-size: 0.8rem;
+        ///}
+        ///
+        ///td, th {
+        ///  border: 1px solid rgb(190, 190, 190);
+        ///  padding: 10px 20px;
+        ///}
+        ///
+        ///th {
+        ///  background-color: rgb(235, 235, 235);
+        ///}
+        ///
+        ///td {
+        ///  text-align: center;
+        ///}
+        ///
+        ///tr:nth-child(even) td {
+        ///  background-color: rgb(250, 250, 250);
+        ///}
+        ///
+        ///tr:nth-child(odd) td {
+        ///  background-color: rgb(245, 245, 245);
+        ///}
+        ///
+        ///caption {
+        ///  padding: 10px;
+        ///}
+        ///.
+        /// </summary>
+        internal static string content_css {
+            get {
+                return ResourceManager.GetString("content_css", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;div id=&quot;{{name}}&quot; class=&quot;content&quot;&gt;
+        ///  {{content}}
+        ///&lt;/div&gt;
+        ///.
         /// </summary>
         internal static string content_entry_template {
             get {
@@ -101,18 +141,11 @@ namespace EzDoc.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;div class=&quot;content-container&quot;&gt;
-        ///  &lt;div id=&quot;content1&quot; class=&quot;content&quot;&gt;
-        ///    Content 1. Go to &lt;p class=&quot;content-link-inline&quot; id=&quot;content2-link-inline&quot;&gt;Content 2&lt;/p&gt;
-        ///  &lt;/div&gt;
-        ///  &lt;div id=&quot;content2&quot; class=&quot;content&quot;&gt;
-        ///    Content 2
-        ///  &lt;/div&gt;
-        ///&lt;/div&gt;.
+        ///   Looks up a localized string similar to &lt;p class=&quot;content-link-inline&quot; id=&quot;{{link}}-link-inline&quot;&gt;{{name}}&lt;/p&gt;.
         /// </summary>
-        internal static string content_template {
+        internal static string content_link_inline_template {
             get {
-                return ResourceManager.GetString("content_template", resourceCulture);
+                return ResourceManager.GetString("content_link_inline_template", resourceCulture);
             }
         }
         
@@ -158,7 +191,8 @@ namespace EzDoc.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;nav class=&quot;navbar navbar-expand-lg navbar-light bg-light&quot;&gt;
+        ///   Looks up a localized string similar to &lt;!-- &lt;nav class=&quot;navbar navbar-expand-lg navbar-light bg-light&quot;&gt; --&gt;
+        ///&lt;nav class=&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot;&gt;
         ///
         ///  &lt;div class=&quot;container-fluid&quot;&gt;
         ///    &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Zusagenframework&lt;/a&gt;
@@ -166,8 +200,7 @@ namespace EzDoc.Properties {
         ///      aria-controls=&quot;navbarSupportedContent&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
         ///      &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
         ///    &lt;/button&gt;
-        ///    &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarSupportedContent&quot;&gt;
-        ///     [rest of string was truncated]&quot;;.
+        ///    &lt;div [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string navbar_template {
             get {
@@ -231,10 +264,12 @@ namespace EzDoc.Properties {
         ///var currentActiveLinkId = &quot;&quot;
         ///var i;
         ///
-        ///// Register event listeners
-        ///for (i = 0; i &lt; toggler.length; i++) {
-        ///  toggler[i].addEventListener(&quot;click&quot;, function () {
-        ///    this.parentElement.querySelector(&quot;.nested&quot;).clas [rest of string was truncated]&quot;;.
+        ///window.onhashchange = function () {
+        ///  console.log(&quot;On Window Change&quot;, location.hash);
+        ///  onContentLinkClicked(location.hash.replace(&quot;#&quot;, &quot;&quot;));
+        ///}
+        ///
+        ///window.onload = function  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string navtree_js {
             get {
@@ -243,19 +278,47 @@ namespace EzDoc.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;div class=&quot;treeview&quot;&gt;
-        ///  &lt;p class=&quot;mainhead&quot;&gt;{{title}}&lt;/p&gt;
-        ///  &lt;form class=&quot;d-flex&quot;&gt;
-        ///    &lt;input id=&quot;filter-box&quot; class=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Filter&quot; aria-label=&quot;Search&quot;&gt;
-        ///  &lt;/form&gt;
-        ///  &lt;hr&gt;
-        ///  &lt;ul id=&quot;navTree&quot;&gt;
-        ///    {{items}}
-        ///  &lt;/ul&gt;
-        ///&lt;/div&gt;
-        ///
+        ///   Looks up a localized string similar to {{parentVariable}}.addChild({{childVariable}});.
+        /// </summary>
+        internal static string navtree_js_child_template {
+            get {
+                return ResourceManager.GetString("navtree_js_child_template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to var {{nodeName}} = new TreeNode(&quot;{{nodeName}}&quot;);
+        ///{{nodeName}}.on(&apos;select&apos;, function (e, node) {
+        ///    onNodeClick({{nodeName}})
+        ///});
         ///
         ///.
+        /// </summary>
+        internal static string navtree_js_item_template {
+            get {
+                return ResourceManager.GetString("navtree_js_item_template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to var root = new TreeNode(&quot;Zusagenframework&quot;);
+        ///{{items}}
+        ///treeView = new TreeView(root, &quot;#container&quot;);
+        ///setupTree();.
+        /// </summary>
+        internal static string navtree_js_template {
+            get {
+                return ResourceManager.GetString("navtree_js_template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;p class=&quot;mainhead&quot;&gt;{{title}}&lt;/p&gt;
+        ///&lt;form class=&quot;d-flex&quot;&gt;
+        ///  &lt;input id=&quot;filter-box&quot; class=&quot;form-control me-2&quot; type=&quot;search&quot; placeholder=&quot;Filter&quot; aria-label=&quot;Search&quot;&gt;
+        ///&lt;/form&gt;
+        ///&lt;hr&gt;
+        ///&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;.
         /// </summary>
         internal static string navtree_template {
             get {
@@ -274,6 +337,16 @@ namespace EzDoc.Properties {
         internal static string navtree_toggler_template {
             get {
                 return ResourceManager.GetString("navtree_toggler_template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;h2&gt;{{name}}&lt;/h2&gt;
+        ///&lt;p&gt;{{content}}&lt;/p&gt;.
+        /// </summary>
+        internal static string summary_template {
+            get {
+                return ResourceManager.GetString("summary_template", resourceCulture);
             }
         }
     }

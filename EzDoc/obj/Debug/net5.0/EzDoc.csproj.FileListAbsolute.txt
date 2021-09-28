@@ -10,7 +10,6 @@ D:\Raftek\EzDoc\EzDoc\bin\Debug\net5.0\EzDoc.pdb
 D:\Raftek\EzDoc\EzDoc\bin\Debug\net5.0\EzDoc.xml
 D:\Raftek\EzDoc\EzDoc\bin\Debug\net5.0\Markdig.dll
 D:\Raftek\EzDoc\EzDoc\bin\Debug\net5.0\YamlDotNet.dll
-D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.csprojAssemblyReference.cache
 D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.Properties.Resources.resources
 D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.csproj.GenerateResource.cache
 D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.GeneratedMSBuildEditorConfig.editorconfig
@@ -22,3 +21,4 @@ D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.dll
 D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\ref\EzDoc.dll
 D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.pdb
 D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.genruntimeconfig.cache
+D:\Raftek\EzDoc\EzDoc\obj\Debug\net5.0\EzDoc.csproj.AssemblyReference.cache

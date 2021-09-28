@@ -6,6 +6,16 @@ var currentActiveContentId = ""
 var currentActiveLinkId = ""
 var i;
 
+window.onhashchange = function () {
+  console.log("On Window Change", location.hash);
+  onContentLinkClicked(location.hash.replace("#", ""));
+}
+
+window.onload = function () {
+  console.log("On Window Load", location.hash);
+  onContentLinkClicked(location.hash.replace("#", ""));
+}
+
 // Register event listeners
 for (i = 0; i < toggler.length; i++) {
   toggler[i].addEventListener("click", function () {
@@ -16,7 +26,6 @@ for (i = 0; i < toggler.length; i++) {
 
 for (i = 0; i < contentLinks.length; i++) {
   contentLinks[i].addEventListener("click", function () {
-    console.log("click content link", this.id);
     var contentId = getContentIdFromContentLink(this);
     onContentLinkClicked(contentId);
   });
@@ -65,9 +74,7 @@ function filterTree(text) {
   for (i = 0; i < toggler.length; ++i) {
     var caret = toggler[i];
     var li = caret.parentElement;
-    console.log("try unfilter", caret);
     var childrenLis = li.getElementsByTagName("li");
-    console.log("childrenLis", childrenLis);
     var visible = false;
     loop1:
     for (j = 0; j < childrenLis.length; ++j) {
@@ -79,7 +86,6 @@ function filterTree(text) {
         break loop2;
       }
     }
-    console.log("visibility", visible);
     if (!visible) {
       li.classList.add("filtered-out");
     }
@@ -97,7 +103,6 @@ function getContentIdFromContentLinkInline(contentLinkElement) {
 }
 
 function onContentLinkClicked(contentId) {
-  console.log("opening content", contentId);
   if (currentActiveContentId !== "") {
     var activeContentElement = document.getElementById(currentActiveContentId);
     if (activeContentElement) {
@@ -127,16 +132,11 @@ function openParents(linkElement) {
 
   var parents = tryGetParentLinkElement(linkElement, parentUl, parentLi, parentCaret);
   if (parents.length == 0) {
-    console.log("No parents for", linkElement);
     return;
   }
   var parentUl = parents[0];
   var parentLi = parents[1];
   var parentCaret = parents[2];
-
-  console.log("parentUl", parentUl);
-  console.log("parentLi", parentLi);
-  console.log("parentCaret", parentCaret);
 
   if (!parentUl.classList.contains("active")) {
     parentUl.classList.add("active");
@@ -150,17 +150,14 @@ function openParents(linkElement) {
 
 function tryGetParentLinkElement(linkElement, parentUl, parentLi, parentCaret) {
   var parent = linkElement.parentElement;
-  console.log("parent", parent);
   if (!parent) {
     return null;
   }
   var parentParent = parent.parentElement;
-  console.log("parentParent", parentParent);
   if (!parentParent) {
     return null;
   }
   var carets = parentParent.children;
-  console.log("children", carets);
   for (i = 0; i < carets.length; ++i) {
     if (carets[i].classList.contains("caret"))
       return [parent, parentParent, carets[i]];
