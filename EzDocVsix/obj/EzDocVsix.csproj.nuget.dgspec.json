@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Raftek\\EzDoc\\EzDocVsix\\EzDocVsix.csproj": {}
+  },
+  "projects": {
+    "D:\\Raftek\\EzDoc\\EzDoc1\\EzDoc1.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Raftek\\EzDoc\\EzDoc1\\EzDoc1.csproj",
+        "projectName": "EzDoc1",
+        "projectPath": "D:\\Raftek\\EzDoc\\EzDoc1\\EzDoc1.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "D:\\Raftek\\EzDoc\\EzDocVsix\\EzDocVsix.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Raftek\\EzDoc\\EzDocVsix\\EzDocVsix.csproj",
+        "projectName": "EzDocVsix",
+        "projectPath": "D:\\Raftek\\EzDoc\\EzDocVsix\\EzDocVsix.csproj",
+        "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
+        "outputPath": "D:\\Raftek\\EzDoc\\EzDocVsix\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "D:\\Raftek\\EzDoc\\EzDoc1\\EzDoc1.csproj": {
+                "projectPath": "D:\\Raftek\\EzDoc\\EzDoc1\\EzDoc1.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Microsoft.VSSDK.BuildTools": {
+              "target": "Package",
+              "version": "[16.11.15, )"
+            },
+            "Microsoft.VisualStudio.SDK": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[16.0.206, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

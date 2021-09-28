@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GWZbaRsEFVIrjwDQwzYwlLVdMuyO1vrYlBIIx4naCis2ZgYnU/jiHo55ZP5pkMM5KulH/nifx7V+MYL958uO6A==",
+  "success": true,
+  "projectFilePath": "D:\\Raftek\\EzDoc\\EzDoc.ConsoleApp\\EzDoc.ConsoleApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rafae\\.nuget\\packages\\markdig\\0.25.0\\markdig.0.25.0.nupkg.sha512",
+    "C:\\Users\\rafae\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}

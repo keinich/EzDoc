@@ -1,10 +1,12 @@
 body {
+  /* Dark Mode */
   background-color: rgb(57, 53, 53);
-  /* background-color: rgb(236, 229, 229); */
+  /*background-color: rgb(236, 229, 229);*/
   color: rgb(230, 220, 220);
 }
 
 .my-breadcrumb {
+  /* Dark Mode */
   /* background-color: rgba(0.1, 0.1, 0.1, 0.02); */
   background-color: rgba(90, 82, 82, 1.0);
   /* background-color: white; */

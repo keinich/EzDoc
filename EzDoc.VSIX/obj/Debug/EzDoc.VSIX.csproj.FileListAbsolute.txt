@@ -1,0 +1,4 @@
+D:\Raftek\EzDoc\EzDoc.VSIX\obj\Debug\EzDoc.VSIX.csproj.AssemblyReference.cache
+D:\Raftek\EzDoc\EzDoc.VSIX\obj\Debug\_EmptyResource.resources
+D:\Raftek\EzDoc\EzDoc.VSIX\obj\Debug\EzDoc.VSIX.csproj.GenerateResource.cache
+D:\Raftek\EzDoc\EzDoc.VSIX\obj\Debug\EzDoc.VSIX.csproj.CoreCompileInputs.cache

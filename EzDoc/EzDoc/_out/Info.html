@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/treejs.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navtree.css">
+</head>
+
+<body>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Zusagenframework</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Api.html">Reference</a>
+</li><li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Info.html">Info</a>
+</li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+  <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
+    <div class="fixed-top row mb-3" style="margin-top: 60px;">
+      <div class="col-md-3 navtree">
+        <p class="mainhead">Zusagenframework</p>
+<form class="d-flex">
+  <input id="filter-box" class="form-control me-2 bg-dark text-light" type="search" placeholder="Filter" aria-label="Search">
+</form>
+<hr>
+<div id="container"></div>
+      </div>
+      <div class="col-md-9">
+        <div class="content-container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb" id="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+          <!-- <div id="trumbowyg-demo"></div> -->
+          <div id="Manual" class="content">
+  <p>#Hallo Manual</p>
+<ul>
+<li>cool1</li>
+<li>cool2</li>
+</ul>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/tree.min.js"></script>
+  <script src="js/navtree.js"></script>
+  <script>
+    var root = new TreeNode("Zusagenframework");
+var Manual = new TreeNode("Manual");
+Manual.on('select', function (e, node) {
+    onNodeClick(Manual)
+});
+
+root.addChild(Manual);
+treeView = new TreeView(root, "#container");
+setupTree();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- <script src="js/ajax.js"></script> -->
+  <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script> -->
+  <!-- <script src="js/trumbowyg/trumbowyg.min.js"></script>
+  <script>
+    $('#trumbowyg-demo').trumbowyg({
+      svgPath: false // or a path like '/assets/my-custom-path/icons.svg'
+    });
+    $.trumbowyg.svgPath = false;
+  </script> -->
+</body>
+
+</html>

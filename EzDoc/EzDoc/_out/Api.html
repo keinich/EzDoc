@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/treejs.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navtree.css">
+</head>
+
+<body>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Zusagenframework</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Api.html">Reference</a>
+</li><li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Info.html">Info</a>
+</li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+  <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
+    <div class="fixed-top row mb-3" style="margin-top: 60px;">
+      <div class="col-md-3 navtree">
+        <p class="mainhead">Zusagenframework</p>
+<form class="d-flex">
+  <input id="filter-box" class="form-control me-2 bg-dark text-light" type="search" placeholder="Filter" aria-label="Search">
+</form>
+<hr>
+<div id="container"></div>
+      </div>
+      <div class="col-md-9">
+        <div class="content-container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb" id="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+          <!-- <div id="trumbowyg-demo"></div> -->
+          <div id="DocuGenerator" class="content">
+  <h2>DocuGenerator</h2>
+<p>
+            Creates Html-Docu from xml-Docu
+            </p>
+</div>
+<div id="DocuTree" class="content">
+  <h2>DocuTree</h2>
+<p>
+            Tree structure for xml-comments.
+            </p>
+</div>
+<div id="DocuTreeNodeType" class="content">
+  <h2>DocuTreeNodeType</h2>
+<p>
+            Type of the Node.
+            </p>
+</div>
+<div id="DocuGeneration" class="content">
+  
+</div>
+<div id="Resources" class="content">
+  <h2>Resources</h2>
+<p>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </p><h4>Properties</h4>
+<table class="table table-bordered table-striped table-dark">
+<tbody>
+<tr>
+<td>ResourceManager</td>
+<td>
+              Returns the cached ResourceManager instance used by this class.
+            </td>
+</tr>
+<tr>
+<td>Culture</td>
+<td>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </td>
+</tr>
+<tr>
+<td>base_template</td>
+<td>
+               Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+            
+            &lt;html&gt;
+            
+            &lt;head&gt;
+              &lt;link rel="stylesheet" href="css/bootstrap.min.css"&gt;
+              &lt;link rel="stylesheet" href="css/treejs.min.css"&gt;
+              &lt;link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"&gt;
+              &lt;link rel="stylesheet" href="js/trumbowyg/ui/trumbowyg.min.css"&gt;
+              &lt;link rel="stylesheet" href="css/style.css"&gt;
+              &lt;link rel="stylesheet" href="css/navtree.css"&gt;
+            &lt;/head&gt;
+            
+            &lt;body&gt;
+            
+              <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Zusagenframework</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Api.html">Reference</a>
+</li><li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Info.html">Info</a>
+</li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+            
+              &lt;main role="main" class="row" style="margin-top: 60px;" class="fixed-t [rest of string was truncated]";.
+             </td>
+</tr>
+<tr>
+<td>content_css</td>
+<td>
+               Looks up a localized string similar to /*Property Tables*/
+            
+            table {
+              border-collapse: collapse;
+              border: 2px solid rgb(200, 200, 200);
+              letter-spacing: 1px;
+              font-size: 0.8rem;
+            }
+            
+            td, th {
+              border: 1px solid rgb(190, 190, 190);
+              padding: 10px 20px;
+            }
+            
+            th {
+              background-color: rgb(235, 235, 235);
+            }
+            
+            td {
+              text-align: center;
+            }
+            
+            tr:nth-child(even) td {
+              background-color: rgb(250, 250, 250);
+            }
+            
+            tr:nth-child(odd) td {
+              background-color: rgb(245, 245, 245);
+            }
+            
+            caption {
+              padding: 10px;
+            }
+            .
+             </td>
+</tr>
+<tr>
+<td>content_entry_template</td>
+<td>
+               Looks up a localized string similar to &lt;div id="{{name}}" class="content"&gt;
+              {{content}}
+            &lt;/div&gt;
+            .
+             </td>
+</tr>
+<tr>
+<td>content_link_inline_template</td>
+<td>
+              Looks up a localized string similar to &lt;p class="content-link-inline" id="{{link}}-link-inline"&gt;{{name}}&lt;/p&gt;.
+            </td>
+</tr>
+<tr>
+<td>navbar_dropdownitem_entry_template</td>
+<td>
+              Looks up a localized string similar to &lt;li&gt;&lt;a class="dropdown-item" href="{{link}}"&gt;{{text}}&lt;/a&gt;&lt;/li&gt;.
+            </td>
+</tr>
+<tr>
+<td>navbar_dropdownitem_template</td>
+<td>
+               Looks up a localized string similar to &lt;li class="nav-item dropdown"&gt;
+              &lt;a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                 aria-expanded="false"&gt;
+                {{text}}
+              &lt;/a&gt;
+              &lt;ul class="dropdown-menu" aria-labelledby="navbarDropdown"&gt;
+                {{entries}}   
+                &lt;li&gt;
+                  &lt;hr class="dropdown-divider"&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/li&gt;.
+             </td>
+</tr>
+<tr>
+<td>navbar_item_template</td>
+<td>
+               Looks up a localized string similar to &lt;li class="nav-item"&gt;
+              &lt;a class="nav-link active" aria-current="page" href="{{link}}"&gt;{{text}}&lt;/a&gt;
+            &lt;/li&gt;.
+             </td>
+</tr>
+<tr>
+<td>navbar_template</td>
+<td>
+               Looks up a localized string similar to &lt;!-- &lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt; --&gt;
+            &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+            
+              &lt;div class="container-fluid"&gt;
+                &lt;a class="navbar-brand" href="#"&gt;Zusagenframework&lt;/a&gt;
+                &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"&gt;
+                  &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;div [rest of string was truncated]";.
+             </td>
+</tr>
+<tr>
+<td>navtree_contentLink_template</td>
+<td>
+              Looks up a localized string similar to &lt;li id="{{name}}-link" class="content-link"&gt;{{name}}&lt;/li&gt;.
+            </td>
+</tr>
+<tr>
+<td>navtree_js</td>
+<td>
+               Looks up a localized string similar to var toggler = document.getElementsByClassName("caret");
+            var contentLinks = document.getElementsByClassName("content-link");
+            var contentLinksInline = document.getElementsByClassName("content-link-inline");
+            var filterBox = document.getElementById("filter-box");
+            var currentActiveContentId = ""
+            var currentActiveLinkId = ""
+            var i;
+            
+            window.onhashchange = function () {
+              console.log("On Window Change", location.hash);
+              onContentLinkClicked(location.hash.replace("#", ""));
+            }
+            
+            window.onload = function  [rest of string was truncated]";.
+             </td>
+</tr>
+<tr>
+<td>navtree_js_child_template</td>
+<td>
+              Looks up a localized string similar to {{parentVariable}}.addChild({{childVariable}});.
+            </td>
+</tr>
+<tr>
+<td>navtree_js_item_template</td>
+<td>
+               Looks up a localized string similar to var {{nodeName}} = new TreeNode("{{nodeName}}");
+            {{nodeName}}.on('select', function (e, node) {
+                onNodeClick({{nodeName}})
+            });
+            
+            .
+             </td>
+</tr>
+<tr>
+<td>navtree_js_template</td>
+<td>
+               Looks up a localized string similar to var root = new TreeNode("Zusagenframework");
+            {{items}}
+            treeView = new TreeView(root, "#container");
+            setupTree();.
+             </td>
+</tr>
+<tr>
+<td>navtree_template</td>
+<td>
+               Looks up a localized string similar to &lt;p class="mainhead"&gt;{{title}}&lt;/p&gt;
+            &lt;form class="d-flex"&gt;
+              &lt;input id="filter-box" class="form-control me-2" type="search" placeholder="Filter" aria-label="Search"&gt;
+            &lt;/form&gt;
+            &lt;hr&gt;
+            &lt;div id="container"&gt;&lt;/div&gt;.
+             </td>
+</tr>
+<tr>
+<td>navtree_toggler_template</td>
+<td>
+               Looks up a localized string similar to &lt;li&gt;
+              &lt;span class="caret"&gt;{{name}}&lt;/span&gt;
+              &lt;ul class="nested"&gt;
+                {{children}}
+              &lt;/ul&gt;
+            &lt;/li&gt;.
+             </td>
+</tr>
+<tr>
+<td>summary_template</td>
+<td>
+               Looks up a localized string similar to &lt;h2&gt;{{name}}&lt;/h2&gt;
+            &lt;p&gt;{{content}}&lt;/p&gt;.
+             </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div id="Properties" class="content">
+  
+</div>
+<div id="EzDoc" class="content">
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/tree.min.js"></script>
+  <script src="js/navtree.js"></script>
+  <script>
+    var root = new TreeNode("Zusagenframework");
+var EzDoc = new TreeNode("EzDoc");
+EzDoc.on('select', function (e, node) {
+    onNodeClick(EzDoc)
+});
+
+var DocuGeneration = new TreeNode("DocuGeneration");
+DocuGeneration.on('select', function (e, node) {
+    onNodeClick(DocuGeneration)
+});
+
+var DocuGenerator = new TreeNode("DocuGenerator");
+DocuGenerator.on('select', function (e, node) {
+    onNodeClick(DocuGenerator)
+});
+
+DocuGeneration.addChild(DocuGenerator);var DocuTree = new TreeNode("DocuTree");
+DocuTree.on('select', function (e, node) {
+    onNodeClick(DocuTree)
+});
+
+DocuGeneration.addChild(DocuTree);var DocuTreeNodeType = new TreeNode("DocuTreeNodeType");
+DocuTreeNodeType.on('select', function (e, node) {
+    onNodeClick(DocuTreeNodeType)
+});
+
+DocuGeneration.addChild(DocuTreeNodeType);EzDoc.addChild(DocuGeneration);var Properties = new TreeNode("Properties");
+Properties.on('select', function (e, node) {
+    onNodeClick(Properties)
+});
+
+var Resources = new TreeNode("Resources");
+Resources.on('select', function (e, node) {
+    onNodeClick(Resources)
+});
+
+Properties.addChild(Resources);EzDoc.addChild(Properties);root.addChild(EzDoc);
+treeView = new TreeView(root, "#container");
+setupTree();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- <script src="js/ajax.js"></script> -->
+  <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script> -->
+  <!-- <script src="js/trumbowyg/trumbowyg.min.js"></script>
+  <script>
+    $('#trumbowyg-demo').trumbowyg({
+      svgPath: false // or a path like '/assets/my-custom-path/icons.svg'
+    });
+    $.trumbowyg.svgPath = false;
+  </script> -->
+</body>
+
+</html>

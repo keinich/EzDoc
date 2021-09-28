@@ -5,7 +5,7 @@ using System.Xml;
 namespace EzDoc.DocuGeneration {
 
   class XmlDocuParser {
-    public static DocuTree CreateDocuTree(string[] categories, string filename) {
+    public static DocuTree CreateDocuTree(string filename) {
 
       XmlTextReader reader = new XmlTextReader(filename);
       DocuTree navTree = new DocuTree();

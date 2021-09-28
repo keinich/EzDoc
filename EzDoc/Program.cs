@@ -3,12 +3,26 @@ using System;
 
 namespace EzDoc {
   class Program {
-    static async System.Threading.Tasks.Task Main(string[] args) {
+    static async System.Threading.Tasks.Task<int> Main(string[] args) {
       string[] categories = { };
-      string[] namespacesToStrip = {};
-      await DocuGenerator.ConvertAsync(
-        categories
-      );
+      string[] namespacesToStrip = { };
+      string docuFile = "D:/Raftek/EzDoc/EzDoc/EzDoc.xml";
+      string outputPath = "D:/Raftek/EzDoc/EzDoc";
+      if (args.Length == 2) {
+        docuFile = args[0];
+        outputPath = args[1];
+      }
+      try {
+        await DocuGenerator.ConvertAsync(
+          docuFile,
+          outputPath
+        );
+        return 0;
+      } catch (Exception ex) {
+        Console.Write(ex.Message);
+        Console.Write(ex.StackTrace);
+        return 1;
+      }
     }
   }
 }

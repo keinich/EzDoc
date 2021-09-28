@@ -1,0 +1,7 @@
+D:\Raftek\EzDoc\EzDoc1\bin\Release\EzDoc1.exe.config
+D:\Raftek\EzDoc\EzDoc1\bin\Release\EzDoc1.exe
+D:\Raftek\EzDoc\EzDoc1\bin\Release\EzDoc1.pdb
+D:\Raftek\EzDoc\EzDoc1\obj\Release\EzDoc1.csproj.AssemblyReference.cache
+D:\Raftek\EzDoc\EzDoc1\obj\Release\EzDoc1.csproj.CoreCompileInputs.cache
+D:\Raftek\EzDoc\EzDoc1\obj\Release\EzDoc1.exe
+D:\Raftek\EzDoc\EzDoc1\obj\Release\EzDoc1.pdb

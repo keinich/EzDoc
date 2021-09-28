@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,6 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="HtmlStaticFiles\css\navtree.css" />
+    <None Remove="HtmlStaticFiles\css\style.css" />
+    <None Remove="HtmlStaticFiles\css\treejs.min.css" />
+    <None Remove="HtmlStaticFiles\js\navtree.js" />
+    <None Remove="HtmlStaticFiles\js\tree.min.js" />
+    <None Remove="HtmlStaticFiles\navbar_default.yaml" />
     <None Remove="HtmlTemplates\base_template.html" />
     <None Remove="HtmlTemplates\content_css.css" />
     <None Remove="HtmlTemplates\content_entry_template.html" />
@@ -30,6 +38,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="HtmlStaticFiles\css\navtree.css" />
+    <EmbeddedResource Include="HtmlStaticFiles\css\style.css" />
+    <EmbeddedResource Include="HtmlStaticFiles\css\treejs.min.css" />
+    <EmbeddedResource Include="HtmlStaticFiles\js\navtree.js" />
+    <EmbeddedResource Include="HtmlStaticFiles\js\tree.min.js" />
+    <EmbeddedResource Include="HtmlStaticFiles\navbar_default.yaml" />
     <EmbeddedResource Include="HtmlTemplates\base_template.html" />
     <EmbeddedResource Include="HtmlTemplates\content_css.css" />
     <EmbeddedResource Include="HtmlTemplates\content_entry_template.html" />

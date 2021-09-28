@@ -4,6 +4,11 @@
         <name>EzDoc</name>
     </assembly>
     <members>
+        <member name="T:EzDoc.DocuGeneration.DocuGenerator">
+            <summary>
+            Creates Html-Docu from xml-Docu
+            </summary>
+        </member>
         <member name="T:EzDoc.DocuGeneration.DocuTree">
             <summary>
             Tree structure for xml-comments.

@@ -16,24 +16,15 @@ namespace EzDoc.HtmlDoucBuilding {
 
       ConvertLinks(navTree.RootNode);
 
-      string navbarFilename = "EzDoc/navbar_content.yaml";
-      string navbarFilepath = System.IO.Path.Combine(path, navbarFilename);
+      
       path = Path.Combine(path, "EzDoc");
       string outputPath = Path.Combine(path, "_out");
-      if (!Directory.Exists(outputPath)) {
-        Directory.CreateDirectory(outputPath);
-        while (!Directory.Exists(outputPath)) { }
-      } else {
-        //Directory.Delete(outputPath, true);
-        foreach (string file in Directory.EnumerateFiles(outputPath)) {
-          File.Delete(file);
-        }
-        //while (Directory.Exists(outputPath)) ;
-        //Directory.CreateDirectory(outputPath);
-        //while (!Directory.Exists(outputPath)) { }
-      }
+      EnsureEmptyDirExists(outputPath);
       CreateStaticFiles(outputPath);
 
+      string navbarFilename = "navbar_content.yaml";
+      string navbarFilepath = System.IO.Path.Combine(path, navbarFilename);
+      EnsureNavbarFileExists(navbarFilepath);
       TableOfContent toc = ReadTableOfContent(navbarFilepath);
       foreach (TableOfContent.Entry entry in toc.Entries) {
         if (entry.Items.Count == 0) {
@@ -45,6 +36,24 @@ namespace EzDoc.HtmlDoucBuilding {
         }
       }
 
+    }
+
+    private static void EnsureNavbarFileExists(string navbarFilepath) {
+      if (!File.Exists(navbarFilepath)) { 
+        string navbarDefault = ResourceHelper.LoadResource("EzDoc.HtmlStaticFiles.navbar_default.yaml");        
+        File.WriteAllText(navbarFilepath, navbarDefault);
+      }
+   }
+
+    private static void EnsureEmptyDirExists(string path) {
+      if (!Directory.Exists(path)) {
+        Directory.CreateDirectory(path);
+        while (!Directory.Exists(path)) { }
+      } else {
+        foreach (string file in Directory.EnumerateFiles(path)) {
+          File.Delete(file);
+        }
+      }
     }
 
     private static void ConvertLinks(DocuTreeNode node) {
@@ -115,9 +124,22 @@ namespace EzDoc.HtmlDoucBuilding {
     }
 
     private static void CreateStaticFiles(string outputPath) {
-      //File.WriteAllText(Path.Combine(outputPath, "navtree.css"), Properties.Resources.navtree_css);
-      //File.WriteAllText(Path.Combine(outputPath, "navtree.js"), Properties.Resources.navtree_js);
-      //File.WriteAllText(Path.Combine(outputPath, "content.css"), Properties.Resources.content_css);
+      string navTreeCss = ResourceHelper.LoadResource("EzDoc.HtmlStaticFiles.css.navtree.css");
+      string styleCss = ResourceHelper.LoadResource("EzDoc.HtmlStaticFiles.css.style.css");
+      string treejsMinCss = ResourceHelper.LoadResource("EzDoc.HtmlStaticFiles.css.treejs.min.css");
+
+      string outputPathCss = Path.Combine(outputPath, "css");
+      EnsureEmptyDirExists(outputPathCss);
+      File.WriteAllText(Path.Combine(outputPathCss, "navtree.css"), navTreeCss);
+      File.WriteAllText(Path.Combine(outputPathCss, "style.css"), styleCss);
+      File.WriteAllText(Path.Combine(outputPathCss, "treejs.min.css"), treejsMinCss);
+
+      string outputPathJs = Path.Combine(outputPath, "js");
+      EnsureEmptyDirExists(outputPathJs);
+      string navTreeJs = ResourceHelper.LoadResource("EzDoc.HtmlStaticFiles.js.navtree.js");
+      string treeMinJs = ResourceHelper.LoadResource("EzDoc.HtmlStaticFiles.js.tree.min.js");
+      File.WriteAllText(Path.Combine(outputPathJs, "navtree.js"), navTreeJs);
+      File.WriteAllText(Path.Combine(outputPathJs, "tree.min.js"), treeMinJs);
     }
 
     private static async Task BuildPageAsync(

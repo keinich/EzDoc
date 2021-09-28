@@ -6,14 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EzDoc.DocuGeneration {
-  class DocuGenerator {
+  
+  /// <summary>
+  /// Creates Html-Docu from xml-Docu
+  /// </summary>
+  public class DocuGenerator {
 
-    internal static async Task ConvertAsync(string[] categories) {
-      string filename = "D:/Raftek/EzDoc/Zusagenframework/Zusagenframework.xml";
+    public static async Task ConvertAsync(string filenameXmlDocu, string projectPath) {
 
-      DocuTree navTree = XmlDocuParser.CreateDocuTree(categories, filename);
+      DocuTree navTree = XmlDocuParser.CreateDocuTree(filenameXmlDocu);
 
-      await HtmlDocuBuilder.BuildHtmlDocu("D:/Raftek/EzDoc/Zusagenframework", navTree);
+      await HtmlDocuBuilder.BuildHtmlDocu(projectPath, navTree);
     }
 
 
