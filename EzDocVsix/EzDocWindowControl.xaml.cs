@@ -3,6 +3,7 @@ using EnvDTE80;
 using Microsoft.VisualStudio.Shell;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -47,7 +48,9 @@ namespace EzDocVsix {
     private void OnProjectButtonClick(object sender, RoutedEventArgs e) {
       Button b = (Button)sender;
       Project p = (Project)b.Tag;
-      ProjectHelpers.Result r = ProjectHelpers.GenerateDocu(p);
+      Task<ProjectHelpers.Result> generateTask = ProjectHelpers.GenerateDocu1Async(p);
+      generateTask.Wait();
+      ProjectHelpers.Result r = generateTask.Result;
       if (r.Success) {
         MessageBox.Show(r.Message, "Success");
       } else {

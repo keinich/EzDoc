@@ -1,5 +1,3 @@
-D:\Raftek\EzDoc\EzDoc\bin\Release\net5.0\program.js
-D:\Raftek\EzDoc\EzDoc\bin\Release\net5.0\style.css
 D:\Raftek\EzDoc\EzDoc\bin\Release\net5.0\EzDoc.exe
 D:\Raftek\EzDoc\EzDoc\bin\Release\net5.0\EzDoc.deps.json
 D:\Raftek\EzDoc\EzDoc\bin\Release\net5.0\EzDoc.runtimeconfig.json

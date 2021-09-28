@@ -19,7 +19,6 @@ D:\Raftek\EzDoc\EzDocVsix\obj\Release\VSCT.read.1.tlog
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\VSCT.write.1.tlog
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\resources.json
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\ctoFiles.json
-D:\Raftek\EzDoc\EzDocVsix\obj\Release\_EmptyResource.resources.original
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\mergeCto.cache
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\EzDocVsix.csproj.CoreCompileInputs.cache
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\EzDocVsix.dll
@@ -34,3 +33,14 @@ D:\Raftek\EzDoc\EzDocVsix\bin\Release\EzDoc1.pdb
 D:\Raftek\EzDoc\EzDocVsix\bin\Release\EzDoc1.exe.config
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\EzDocVsix.csproj.AssemblyReference.cache
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\EzDocVsix.csproj.CopyComplete
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\YamlDotNet.dll
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\Markdig.dll
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Memory.dll
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Numerics.Vectors.dll
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\YamlDotNet.xml
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\Markdig.xml
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Memory.xml
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Numerics.Vectors.xml
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
+D:\Raftek\EzDoc\EzDocVsix\obj\Release\_EmptyResource.resources.original

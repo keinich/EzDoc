@@ -1,12 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EzDoc.DocuGeneration;
+using System;
 
-namespace EzDoc1 {
+namespace EzDoc {
+  //class Program {
+  //  static void Main(string[] args) {
+  //  }
+  //}
   class Program {
-    static void Main(string[] args) {
+
+    static async System.Threading.Tasks.Task<int> Main(string[] args) {
+      string[] categories = { };
+      string[] namespacesToStrip = { };
+      string docuFile = "D:/Raftek/EzDoc/EzDoc/EzDoc.xml";
+      string outputPath = "D:/Raftek/EzDoc/EzDoc";
+      if (args.Length == 2) {
+        docuFile = args[0];
+        outputPath = args[1];
+      }
+      try {
+        await DocuGenerator.ConvertAsync(
+          docuFile,
+          outputPath
+        );
+        return 0;
+      } catch (Exception ex) {
+        Console.Write(ex.Message);
+        Console.Write(ex.StackTrace);
+        return 1;
+      }
     }
   }
 }

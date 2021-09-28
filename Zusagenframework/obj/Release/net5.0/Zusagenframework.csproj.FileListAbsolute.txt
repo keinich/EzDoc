@@ -1,0 +1,12 @@
+D:\Raftek\EzDoc\Zusagenframework\bin\Release\net5.0\Zusagenframework.deps.json
+D:\Raftek\EzDoc\Zusagenframework\bin\Release\net5.0\Zusagenframework.dll
+D:\Raftek\EzDoc\Zusagenframework\bin\Release\net5.0\ref\Zusagenframework.dll
+D:\Raftek\EzDoc\Zusagenframework\bin\Release\net5.0\Zusagenframework.pdb
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.csproj.AssemblyReference.cache
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.GeneratedMSBuildEditorConfig.editorconfig
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.AssemblyInfoInputs.cache
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.AssemblyInfo.cs
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.csproj.CoreCompileInputs.cache
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.dll
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\ref\Zusagenframework.dll
+D:\Raftek\EzDoc\Zusagenframework\obj\Release\net5.0\Zusagenframework.pdb

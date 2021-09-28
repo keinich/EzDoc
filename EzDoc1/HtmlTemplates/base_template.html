@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/treejs.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navtree.css">
+</head>
+
+<body>
+
+  {{navbar}}
+
+  <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
+    <div class="fixed-top row mb-3" style="margin-top: 60px;">
+      <div class="col-md-3 navtree">
+        {{navtree}}
+      </div>
+      <div class="col-md-9">
+        <div class="content-container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb" id="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+          <!-- <div id="trumbowyg-demo"></div> -->
+          {{content}}
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/tree.min.js"></script>
+  <script src="js/navtree.js"></script>
+  <script>
+    {{navtreejs}}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- <script src="js/ajax.js"></script> -->
+  <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script> -->
+  <!-- <script src="js/trumbowyg/trumbowyg.min.js"></script>
+  <script>
+    $('#trumbowyg-demo').trumbowyg({
+      svgPath: false // or a path like '/assets/my-custom-path/icons.svg'
+    });
+    $.trumbowyg.svgPath = false;
+  </script> -->
+</body>
+
+</html>

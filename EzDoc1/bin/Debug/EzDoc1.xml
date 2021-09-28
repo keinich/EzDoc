@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EzDoc1</name>
+    </assembly>
+    <members>
+        <member name="T:EzDoc.DocuGeneration.DocuGenerator">
+            <summary>
+            Creates Html-Docu from xml-Docu
+            </summary>
+        </member>
+        <member name="T:EzDoc.DocuGeneration.DocuTree">
+            <summary>
+            Tree structure for xml-comments.
+            </summary>
+        </member>
+        <member name="T:EzDoc.DocuGeneration.DocuTreeNodeType">
+            <summary>
+            Type of the Node.
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Namespace">
+            <summary>
+            Namespace
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Type">
+            <summary>
+            Type
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Property">
+            <summary>
+            Property
+            </summary>
+        </member>
+        <member name="F:EzDoc.DocuGeneration.DocuTreeNodeType.Method">
+            <summary>
+            Method
+            </summary>
+        </member>
+    </members>
+</doc>

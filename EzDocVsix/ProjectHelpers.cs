@@ -43,16 +43,16 @@ namespace EzDocVsix {
       string filename = Path.Combine(cPath, "EzDoc.exe");
       string cParams = docuFile + " " + outputPath;
       var process = new System.Diagnostics.Process {
-        StartInfo = { 
-          FileName = filename, 
+        StartInfo = {
+          FileName = filename,
           Arguments = cParams,
           RedirectStandardOutput = true,
           CreateNoWindow = true,
           UseShellExecute = false
         },
         EnableRaisingEvents = true
-      };      
-      
+      };
+
       process.Start();
       string output = "";
       while (!process.StandardOutput.EndOfStream) {
@@ -66,6 +66,30 @@ namespace EzDocVsix {
       } else {
         return Result.Failed(output);
       }
+    }
+
+    public static async Task<Result> GenerateDocu1Async(Project project) {
+      string projectFile = project.FileName;
+      var config = project.ConfigurationManager;
+      if (string.IsNullOrEmpty(projectFile)) {
+        return Result.Failed("No Porject File");
+      }
+      string docuFile = TryGetDocuFile(projectFile);
+      if (string.IsNullOrEmpty(docuFile)) {
+        return Result.Failed("No Documentation File");
+      }
+      string outputPath = Path.GetDirectoryName(project.FileName);
+
+      try {
+        await EzDoc.DocuGeneration.DocuGenerator.ConvertAsync(docuFile, outputPath);
+      } catch (Exception ex) {
+        string message = ex.Message;
+        message += Environment.NewLine + ex.StackTrace;
+        return Result.Failed(message);
+      }
+
+      return Result.Ok($"Succesfully created to {outputPath} from {docuFile}");
+
     }
 
     private static string TryGetDocuFile(string filename) {
@@ -88,7 +112,13 @@ namespace EzDocVsix {
               break;
             case XmlNodeType.Text:
               if (foundDocumentationFile) {
-                return reader.Value;
+                string result = reader.Value;
+                if (Path.IsPathRooted(result)) {
+                  return result;
+                } else {
+                  string basePath = Path.GetDirectoryName(filename);
+                  return Path.Combine(basePath, result);
+                }
               }
               break;
             default:
