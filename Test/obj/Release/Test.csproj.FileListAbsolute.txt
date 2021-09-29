@@ -1,0 +1,7 @@
+D:\Raftek\EzDoc\Test\bin\Release\Test.exe.config
+D:\Raftek\EzDoc\Test\bin\Release\Test.exe
+D:\Raftek\EzDoc\Test\bin\Release\Test.pdb
+D:\Raftek\EzDoc\Test\obj\Release\Test.csproj.AssemblyReference.cache
+D:\Raftek\EzDoc\Test\obj\Release\Test.csproj.CoreCompileInputs.cache
+D:\Raftek\EzDoc\Test\obj\Release\Test.exe
+D:\Raftek\EzDoc\Test\obj\Release\Test.pdb

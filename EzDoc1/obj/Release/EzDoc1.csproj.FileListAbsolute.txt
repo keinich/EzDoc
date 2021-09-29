@@ -18,3 +18,5 @@ D:\Raftek\EzDoc\EzDoc1\bin\Release\System.Numerics.Vectors.xml
 D:\Raftek\EzDoc\EzDoc1\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 D:\Raftek\EzDoc\EzDoc1\bin\Release\YamlDotNet.xml
 D:\Raftek\EzDoc\EzDoc1\obj\Release\EzDoc1.csproj.CopyComplete
+D:\Raftek\EzDoc\EzDoc1\bin\Release\Newtonsoft.Json.dll
+D:\Raftek\EzDoc\EzDoc1\bin\Release\Newtonsoft.Json.xml

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EzDoc.DocuGeneration {
-  
+
   /// <summary>
   /// Creates Html-Docu from xml-Docu
   /// </summary>
@@ -15,8 +15,8 @@ namespace EzDoc.DocuGeneration {
 
     public static async Task ConvertAsync(string filenameXmlDocu, string projectPath) {
 
-      DocuTree navTree = XmlDocuParser.CreateDocuTree(filenameXmlDocu);
-            
+      DocuTree navTree = XmlDocuParser.CreateDocuTree(filenameXmlDocu, projectPath);
+
       await HtmlDocuBuilder.BuildHtmlDocu(projectPath, navTree, Path.GetFileNameWithoutExtension(filenameXmlDocu));
     }
 

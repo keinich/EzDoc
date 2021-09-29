@@ -75,7 +75,7 @@
 <p>
             Berechnet Bausteine.
             </p><h4>Methods</h4>
-<table class="table table-bordered table-striped table-dark">
+<table class="table table-bordered table-dark">
 <tbody>
 <tr>
 <td>BerechneBausteine</td>
@@ -101,7 +101,7 @@
 <p>
             Definiert einen Art von Bausteine.
             </p><h4>Properties</h4>
-<table class="table table-bordered table-striped table-dark">
+<table class="table table-bordered table-dark">
 <tbody>
 <tr>
 <td>Art</td>
@@ -127,7 +127,7 @@
 <p>
             Customizing der Bausteinberechnung.
             </p><h4>Methods</h4>
-<table class="table table-bordered table-striped table-dark">
+<table class="table table-bordered table-dark">
 <tbody>
 <tr>
 <td>BerechneCustomBausteine</td>
@@ -141,6 +141,26 @@
 
 </div>
 <div id="Customizing" class="content">
+  
+</div>
+<div id="WeirdClass" class="content">
+  <h2>WeirdClass</h2>
+<p>
+            Super weird class
+            </p><h4>Properties</h4>
+<table class="table table-bordered table-dark">
+<tbody>
+<tr>
+<td>WeirdProp</td>
+<td>
+            Super Weird Property
+            </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div id="WeirdStuff" class="content">
   
 </div>
 <div id="Bausteinabhängigkeit" class="content">
@@ -158,7 +178,7 @@
   <script src="js/tree.min.js"></script>
   <script src="js/navtree.js"></script>
   <script>
-    var root = new TreeNode("Zusagenframework");
+    var root = new TreeNode("root");
 var Zusagenframework = new TreeNode("Zusagenframework");
 Zusagenframework.on('select', function (e, node) {
     onNodeClick(Zusagenframework)
@@ -204,7 +224,17 @@ IBausteinberechnungsCustomizingprovider.on('select', function (e, node) {
     onNodeClick(IBausteinberechnungsCustomizingprovider)
 });
 
-Customizing.addChild(IBausteinberechnungsCustomizingprovider);Bausteinabhängigkeit.addChild(Customizing);Zusagenframework.addChild(Bausteinabhängigkeit);root.addChild(Zusagenframework);
+Customizing.addChild(IBausteinberechnungsCustomizingprovider);Bausteinabhängigkeit.addChild(Customizing);var WeirdStuff = new TreeNode("WeirdStuff");
+WeirdStuff.on('select', function (e, node) {
+    onNodeClick(WeirdStuff)
+});
+
+var WeirdClass = new TreeNode("WeirdClass");
+WeirdClass.on('select', function (e, node) {
+    onNodeClick(WeirdClass)
+});
+
+WeirdStuff.addChild(WeirdClass);Bausteinabhängigkeit.addChild(WeirdStuff);Zusagenframework.addChild(Bausteinabhängigkeit);root.addChild(Zusagenframework);
 treeView = new TreeView(root, "#container");
 setupTree();
   </script>

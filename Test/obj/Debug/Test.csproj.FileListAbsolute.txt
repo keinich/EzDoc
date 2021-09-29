@@ -1,0 +1,6 @@
+D:\Raftek\EzDoc\Test\bin\Debug\Test.exe.config
+D:\Raftek\EzDoc\Test\bin\Debug\Test.exe
+D:\Raftek\EzDoc\Test\bin\Debug\Test.pdb
+D:\Raftek\EzDoc\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+D:\Raftek\EzDoc\Test\obj\Debug\Test.exe
+D:\Raftek\EzDoc\Test\obj\Debug\Test.pdb

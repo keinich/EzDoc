@@ -44,3 +44,4 @@ D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Memory.xml
 D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Numerics.Vectors.xml
 D:\Raftek\EzDoc\EzDocVsix\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 D:\Raftek\EzDoc\EzDocVsix\obj\Release\_EmptyResource.resources.original
+D:\Raftek\EzDoc\EzDocVsix\bin\Release\Newtonsoft.Json.dll

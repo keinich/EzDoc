@@ -3,6 +3,7 @@ D:\Raftek\EzDoc\Zusagenframework\bin\Debug\net5.0\Zusagenframework.dll
 D:\Raftek\EzDoc\Zusagenframework\bin\Debug\net5.0\ref\Zusagenframework.dll
 D:\Raftek\EzDoc\Zusagenframework\bin\Debug\net5.0\Zusagenframework.pdb
 D:\Raftek\EzDoc\Zusagenframework\bin\Debug\net5.0\Zusagenframework.xml
+D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.csproj.AssemblyReference.cache
 D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.GeneratedMSBuildEditorConfig.editorconfig
 D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.AssemblyInfoInputs.cache
 D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.AssemblyInfo.cs
@@ -10,4 +11,3 @@ D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.csproj.CoreCo
 D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.dll
 D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\ref\Zusagenframework.dll
 D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.pdb
-D:\Raftek\EzDoc\Zusagenframework\obj\Debug\net5.0\Zusagenframework.csproj.AssemblyReference.cache

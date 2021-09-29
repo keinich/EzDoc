@@ -1,5 +1,7 @@
-D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\program.js
-D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\style.css
+D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.deps.json
+D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.runtimeconfig.json
+D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.runtimeconfig.dev.json
+D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.exe
 D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.ConsoleApp.exe
 D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.ConsoleApp.deps.json
 D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.ConsoleApp.runtimeconfig.json
@@ -22,7 +24,3 @@ D:\Raftek\EzDoc\EzDoc.ConsoleApp\obj\Debug\net5.0\EzDoc.ConsoleApp.dll
 D:\Raftek\EzDoc\EzDoc.ConsoleApp\obj\Debug\net5.0\ref\EzDoc.ConsoleApp.dll
 D:\Raftek\EzDoc\EzDoc.ConsoleApp\obj\Debug\net5.0\EzDoc.ConsoleApp.pdb
 D:\Raftek\EzDoc\EzDoc.ConsoleApp\obj\Debug\net5.0\EzDoc.ConsoleApp.genruntimeconfig.cache
-D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.deps.json
-D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.runtimeconfig.json
-D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.runtimeconfig.dev.json
-D:\Raftek\EzDoc\EzDoc.ConsoleApp\bin\Debug\net5.0\EzDoc.exe
