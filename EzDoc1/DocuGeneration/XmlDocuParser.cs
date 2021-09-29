@@ -11,7 +11,6 @@ namespace EzDoc.DocuGeneration {
   class XmlDocuParser {
 
     private static Config ReadConfig(string path) {
-      path = Path.Combine(path, "EzDoc");
       string configFilename = "EzDoc.json";
       string configFilepath = Path.Combine(path, configFilename);
       EnsureConfigFileExists(configFilepath);
@@ -31,6 +30,8 @@ namespace EzDoc.DocuGeneration {
 
     public static DocuTree CreateDocuTree(string filename, string path) {
 
+      path = Path.Combine(path, "EzDoc");
+      Utils.EnsureEmptyDirExists(Path.Combine(path, "_out"));
       Config config = ReadConfig(path);
 
       XmlTextReader reader = new XmlTextReader(filename);

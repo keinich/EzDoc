@@ -27,7 +27,7 @@ namespace EzDocVsix {
     private void InitProjects() {
       List<Project> projects = TryGetProjects();
       this.MyContainer.Children.Clear();
-      if (projects.Count == 0) {
+      if (projects.Count >= 0) {
         Button b = new Button() {
           Content = $"Reload Projects"
         };
@@ -86,6 +86,7 @@ namespace EzDocVsix {
         var subProject = x as Project;
         if (subProject != null) {
           //Carried out work and added projects as appropriate
+          projects.Add(subProject);
         }
       }
 

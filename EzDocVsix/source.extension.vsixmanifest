@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="EzDocVsix.a8e620eb-6d15-4bf1-9d04-6996a5b8d6aa" Version="1.0" Language="en-US" Publisher="Rafael Weschle" />
-        <DisplayName>EzDocVsix</DisplayName>
+        <Identity Id="EzDocVsix.a8e620eb-6d15-4bf1-9d04-6996a5b8d6aa" Version="1.1" Language="en-US" Publisher="Rafael Weschle" />
+        <DisplayName>EzDoc</DisplayName>
         <Description xml:space="preserve">Generates HTML Documentation.</Description>
     </Metadata>
     <Installation>
@@ -16,5 +16,6 @@
     </Prerequisites>
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="Newtonsoft.Json.dll" AssemblyName="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed" />
     </Assets>
 </PackageManifest>

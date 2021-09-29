@@ -19,7 +19,6 @@ namespace EzDoc.HtmlDoucBuilding {
 
       path = Path.Combine(path, "EzDoc");
       string outputPath = Path.Combine(path, "_out");
-      EnsureEmptyDirExists(outputPath);
       CreateStaticFiles(outputPath);
 
       string navbarFilename = "navbar_content.yaml";
@@ -42,17 +41,6 @@ namespace EzDoc.HtmlDoucBuilding {
       if (!File.Exists(navbarFilepath)) {
         string navbarDefault = ResourceHelper.LoadResource("EzDoc1.HtmlStaticFiles.navbar_default.yaml");
         File.WriteAllText(navbarFilepath, navbarDefault);
-      }
-    }
-
-    private static void EnsureEmptyDirExists(string path) {
-      if (!Directory.Exists(path)) {
-        Directory.CreateDirectory(path);
-        while (!Directory.Exists(path)) { }
-      } else {
-        foreach (string file in Directory.EnumerateFiles(path)) {
-          File.Delete(file);
-        }
       }
     }
 
@@ -85,7 +73,11 @@ namespace EzDoc.HtmlDoucBuilding {
         if (lastIndexOfDot >= 0) {
           linkName = linkNameFull.Substring(lastIndexOfDot + 1);
         }
-        string linkFull = text.Substring(currentStartIndex, currentEndIndex - currentStartIndex + 4);
+        int offset = 4;
+        if (currentStartIndex + currentEndIndex - currentStartIndex + 4 > text.Length) {
+          offset = 3;
+        }
+        string linkFull = text.Substring(currentStartIndex, currentEndIndex - currentStartIndex + offset);
         string innerLink = $"Api.html?elementId={linkName}";
         string newLink = $"<a href=\"" + innerLink + "\">" + linkName + "</a>";
         result = text.Replace(linkFull, newLink);
@@ -129,13 +121,13 @@ namespace EzDoc.HtmlDoucBuilding {
       string treejsMinCss = ResourceHelper.LoadResource("EzDoc1.HtmlStaticFiles.css.treejs.min.css");
 
       string outputPathCss = Path.Combine(outputPath, "css");
-      EnsureEmptyDirExists(outputPathCss);
+      Utils.EnsureEmptyDirExists(outputPathCss);
       File.WriteAllText(Path.Combine(outputPathCss, "navtree.css"), navTreeCss);
       File.WriteAllText(Path.Combine(outputPathCss, "style.css"), styleCss);
       File.WriteAllText(Path.Combine(outputPathCss, "treejs.min.css"), treejsMinCss);
 
       string outputPathJs = Path.Combine(outputPath, "js");
-      EnsureEmptyDirExists(outputPathJs);
+      Utils.EnsureEmptyDirExists(outputPathJs);
       string navTreeJs = ResourceHelper.LoadResource("EzDoc1.HtmlStaticFiles.js.navtree.js");
       string treeMinJs = ResourceHelper.LoadResource("EzDoc1.HtmlStaticFiles.js.tree.min.js");
       File.WriteAllText(Path.Combine(outputPathJs, "navtree.js"), navTreeJs);
@@ -243,6 +235,7 @@ namespace EzDoc.HtmlDoucBuilding {
       foreach (string file in Directory.EnumerateFiles(path, "*.md")) {
         string filename = Path.GetFileName(file);
         string fileContentMd = File.ReadAllText(file);
+        fileContentMd = ConvertLinks(fileContentMd);
         string fileContentHtml = MdConverter.ConvertToHtml(fileContentMd);
         List<string> parts = filename.Split('.').ToList();
         parts.Remove(parts[parts.Count - 1]);
@@ -390,7 +383,7 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Properties</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-dark\">");
+      contentResult.AppendLine("<table class=\"table table-bordered table-dark\" style=\"width: 95vw; \">");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode propertyNode in propertyNodes) {
         contentResult.AppendLine("<tr>");
@@ -409,7 +402,7 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Methods</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-dark\">");
+      contentResult.AppendLine("<table class=\"table table-bordered table-dark\" style=\"width: 95vw; \">");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode methodNode in methodNodes) {
         contentResult.AppendLine("<tr>");
