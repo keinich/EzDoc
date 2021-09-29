@@ -1,8 +1,12 @@
 EzDoc/obj/
 EzDoc/bin/
+EzDoc1/obj/
+EzDoc1/bin/
 .vs/
 EzDoc.ConsoleApp/
 Test/
 Zusagenframework/obj/
 Zusagenframework/bin/
+EzDocVsix/obj/
+EzDocVsix/bin/
 EzDocVsix/obj/
