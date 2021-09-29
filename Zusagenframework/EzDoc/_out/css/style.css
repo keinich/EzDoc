@@ -21,6 +21,8 @@ body {
   visibility: hidden;
   position: absolute;
   margin-left: 10px;
+  overflow-y: auto;
+  height: 80vh;
 }
 
 .active-content {
@@ -32,7 +34,8 @@ hr {
   margin-right: 12px;
   opacity: 12%;
   color: black;
-  background-color: black;
+  /*background-color: black;*/
+  background-color: rgb(193 193 193);
 }
 
 .mainhead {

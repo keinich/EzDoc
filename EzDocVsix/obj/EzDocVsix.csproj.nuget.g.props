@@ -20,7 +20,6 @@
     <Import Project="$(NuGetPackageRoot)microsoft.vssdk.buildtools\16.11.15\build\Microsoft.VSSDK.BuildTools.props" Condition="Exists('$(NuGetPackageRoot)microsoft.vssdk.buildtools\16.11.15\build\Microsoft.VSSDK.BuildTools.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgNewtonsoft_Json Condition=" '$(PkgNewtonsoft_Json)' == '' ">C:\Users\rafae\.nuget\packages\newtonsoft.json\9.0.1</PkgNewtonsoft_Json>
     <PkgMicrosoft_VisualStudio_Threading_Analyzers Condition=" '$(PkgMicrosoft_VisualStudio_Threading_Analyzers)' == '' ">C:\Users\rafae\.nuget\packages\microsoft.visualstudio.threading.analyzers\16.3.52</PkgMicrosoft_VisualStudio_Threading_Analyzers>
     <PkgMicrosoft_CodeAnalysis_BannedApiAnalyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_BannedApiAnalyzers)' == '' ">C:\Users\rafae\.nuget\packages\microsoft.codeanalysis.bannedapianalyzers\2.9.4</PkgMicrosoft_CodeAnalysis_BannedApiAnalyzers>
     <PkgMicrosoft_VisualStudio_SDK_Analyzers Condition=" '$(PkgMicrosoft_VisualStudio_SDK_Analyzers)' == '' ">C:\Users\rafae\.nuget\packages\microsoft.visualstudio.sdk.analyzers\16.3.14</PkgMicrosoft_VisualStudio_SDK_Analyzers>

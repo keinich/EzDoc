@@ -1,0 +1,6 @@
+{
+  "filter": {
+    "exclude": [ "NsToExclude.*", "NsToInclude.TypeToInclude.MemberToExclude"],
+    "include": [ "NsToInclude.TypeToInclude" ]
+  }
+}

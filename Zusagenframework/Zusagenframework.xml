@@ -50,5 +50,15 @@
             </summary>
             <returns>int</returns>
         </member>
+        <member name="T:Zusagenframework.Bausteinabhängigkeit.WeirdStuff.WeirdClass">
+            <summary>
+            Super weird class
+            </summary>
+        </member>
+        <member name="P:Zusagenframework.Bausteinabhängigkeit.WeirdStuff.WeirdClass.WeirdProp">
+            <summary>
+            Super Weird Property
+            </summary>
+        </member>
     </members>
 </doc>

@@ -1,0 +1,6 @@
+{
+  "filter": {
+    "exclude": [ "EzDoc.DocuGeneration.*", "EzDoc.Properties.Resources.base_template"],
+    "include": [ "EzDoc.Properties.Resources" ]
+  }
+}

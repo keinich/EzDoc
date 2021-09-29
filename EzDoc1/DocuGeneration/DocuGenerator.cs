@@ -15,7 +15,7 @@ namespace EzDoc.DocuGeneration {
 
     public static async Task ConvertAsync(string filenameXmlDocu, string projectPath) {
 
-      DocuTree navTree = XmlDocuParser.CreateDocuTree(filenameXmlDocu);
+      DocuTree navTree = XmlDocuParser.CreateDocuTree(filenameXmlDocu, projectPath);
             
       await HtmlDocuBuilder.BuildHtmlDocu(projectPath, navTree, Path.GetFileNameWithoutExtension(filenameXmlDocu));
     }

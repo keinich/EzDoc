@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WQ2PaHL+2UnNXm+/+vbdh5vJQrUVSB9g2XGiPCssEI7SVj96blnXYsfbfuNG0ZZaF73+cTX6KRCESu7TprpNlA==",
+  "dgSpecHash": "oStAXnm8n/bb0PILlWDQe3lsJAii16rBvLcQ2AaPxMUNFwCUM3LOgNium4BO+zcIQ8d+TyJF3cnHhSbM9ymPDQ==",
   "success": true,
   "projectFilePath": "D:\\Raftek\\EzDoc\\EzDocVsix\\EzDocVsix.csproj",
   "expectedPackageFiles": [
@@ -78,7 +78,7 @@
     "C:\\Users\\rafae\\.nuget\\packages\\microsoft.visualstudio.workspace.vsintegration\\15.0.485\\microsoft.visualstudio.workspace.vsintegration.15.0.485.nupkg.sha512",
     "C:\\Users\\rafae\\.nuget\\packages\\microsoft.vssdk.buildtools\\16.11.15\\microsoft.vssdk.buildtools.16.11.15.nupkg.sha512",
     "C:\\Users\\rafae\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\rafae\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\rafae\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\rafae\\.nuget\\packages\\stdole\\7.0.3302\\stdole.7.0.3302.nupkg.sha512",
     "C:\\Users\\rafae\\.nuget\\packages\\streamjsonrpc\\1.5.43\\streamjsonrpc.1.5.43.nupkg.sha512",
     "C:\\Users\\rafae\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

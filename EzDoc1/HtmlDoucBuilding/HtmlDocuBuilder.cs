@@ -1,5 +1,6 @@
 ﻿using EzDoc.DocuGeneration;
 using EzDoc.PlacehoderResolving;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +17,6 @@ namespace EzDoc.HtmlDoucBuilding {
 
       ConvertLinks(navTree.RootNode);
 
-      
       path = Path.Combine(path, "EzDoc");
       string outputPath = Path.Combine(path, "_out");
       EnsureEmptyDirExists(outputPath);
@@ -39,11 +39,11 @@ namespace EzDoc.HtmlDoucBuilding {
     }
 
     private static void EnsureNavbarFileExists(string navbarFilepath) {
-      if (!File.Exists(navbarFilepath)) { 
-        string navbarDefault = ResourceHelper.LoadResource("EzDoc1.HtmlStaticFiles.navbar_default.yaml");        
+      if (!File.Exists(navbarFilepath)) {
+        string navbarDefault = ResourceHelper.LoadResource("EzDoc1.HtmlStaticFiles.navbar_default.yaml");
         File.WriteAllText(navbarFilepath, navbarDefault);
       }
-   }
+    }
 
     private static void EnsureEmptyDirExists(string path) {
       if (!Directory.Exists(path)) {
@@ -193,11 +193,11 @@ namespace EzDoc.HtmlDoucBuilding {
     }
 
     private static string CreateNavTreeJsAndContentHtml(List<PageStructure.Node> nodes, StringBuilder contentItems) {
-      string navtreeTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navtree_js_template.html"); 
+      string navtreeTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navtree_js_template.html");
       StringBuilder navTreeItems = new StringBuilder();
       foreach (PageStructure.Node node in nodes) {
         CreateNavTreeItem(node, navTreeItems, contentItems);
-        string navTreeChildTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navtree_js_child_template.html"); 
+        string navTreeChildTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navtree_js_child_template.html");
         string childHtml = PlaceholderResolver.Resolve(
           navTreeChildTemplate,
           Rule.Get("parentVariable", "root"),
@@ -231,7 +231,7 @@ namespace EzDoc.HtmlDoucBuilding {
         navTreeItems.Append(childHtml);
       }
 
-      string contentItemTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.content_entry_template.html"); 
+      string contentItemTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.content_entry_template.html");
       string content = node.Content;
       string contentEntry = PlaceholderResolver.Resolve(contentItemTemplate, Rule.Get("name", node.Name), Rule.Get("content", content));
       contentItems.Append(contentEntry);
@@ -311,15 +311,15 @@ namespace EzDoc.HtmlDoucBuilding {
             );
           }
           string navbarDropdownItem = PlaceholderResolver.Resolve(
-            navbarDropdownItemTemplate, 
-            Rule.Get("entries", navbarDropdownItemEntries.ToString()), 
+            navbarDropdownItemTemplate,
+            Rule.Get("entries", navbarDropdownItemEntries.ToString()),
             Rule.Get("text", entry.Text)
           );
           navbarItems.Append(navbarDropdownItem);
         }
       }
       return PlaceholderResolver.Resolve(
-        navbarTemplate, 
+        navbarTemplate,
         Rule.Get("items", navbarItems.ToString()),
         Rule.Get("name", frameworkName)
       );
@@ -390,7 +390,7 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Properties</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-striped table-dark\">");
+      contentResult.AppendLine("<table class=\"table table-bordered table-dark\">");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode propertyNode in propertyNodes) {
         contentResult.AppendLine("<tr>");
@@ -409,7 +409,7 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Methods</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-striped table-dark\">");
+      contentResult.AppendLine("<table class=\"table table-bordered table-dark\">");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode methodNode in methodNodes) {
         contentResult.AppendLine("<tr>");
