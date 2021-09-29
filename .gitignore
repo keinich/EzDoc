@@ -1,2 +1,8 @@
-/EzDoc/obj/
-/EzDoc/bin/
+EzDoc/obj/
+EzDoc/bin/
+.vs/
+EzDoc.ConsoleApp/
+Test/
+Zusagenframework/obj/
+Zusagenframework/bin/
+EzDocVsix/obj/
