@@ -45,16 +45,22 @@ namespace EzDocVsix {
       }
     }
 
-    private void OnProjectButtonClick(object sender, RoutedEventArgs e) {
+    private async void OnProjectButtonClick(object sender, RoutedEventArgs e) {
+      try {
       Button b = (Button)sender;
       Project p = (Project)b.Tag;
-      Task<ProjectHelpers.Result> generateTask = ProjectHelpers.GenerateDocu1Async(p);
-      generateTask.Wait();
-      ProjectHelpers.Result r = generateTask.Result;
+
+      ProjectHelpers.Result r = await ProjectHelpers.GenerateDocu1Async(p);
+
       if (r.Success) {
         MessageBox.Show(r.Message, "Success");
       } else {
         MessageBox.Show(r.Message, "Failure");
+        }
+
+      } catch (System.Exception) {
+
+        throw;
       }
     }
 

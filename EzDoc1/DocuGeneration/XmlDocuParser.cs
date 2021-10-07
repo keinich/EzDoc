@@ -73,7 +73,7 @@ namespace EzDoc.DocuGeneration {
                 currentNode = HandleTypeOrProperty(reader, name, navTree, DocuTreeNodeType.Field, config);
                 currentNodeType = "property";
               } else if (name.StartsWith("M:")) {
-                currentNode = HandleMethod(reader, name, navTree);
+                currentNode = HandleMethod(reader, name, navTree, config);
                 currentNodeType = "property";
               }
               break;
@@ -139,7 +139,8 @@ namespace EzDoc.DocuGeneration {
     private static DocuTreeNode HandleMethod(
       XmlTextReader reader,
       string name,
-      DocuTree navStuff
+      DocuTree navStuff,
+      Config config
     ) {
       int indexOfBracket = name.IndexOf("(");
       if (indexOfBracket < 0) {
@@ -148,6 +149,10 @@ namespace EzDoc.DocuGeneration {
 
 
       List<string> typeNames = name.Substring(2, indexOfBracket - 2).Split('.').ToList();
+
+      if (!config.Include(name.Substring(2))) {
+        return new DocuTreeNode { Identifier = "", Type = DocuTreeNodeType.Method };
+      }
 
       DocuTreeNode node = navStuff.GetOrCreateNode(typeNames);
       node.Type = DocuTreeNodeType.Method;

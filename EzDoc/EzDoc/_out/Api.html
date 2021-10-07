@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">EzDoc</a>
+    <a class="navbar-brand" href="#">ZusagenFramework</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
   <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
     <div class="fixed-top row mb-3" style="margin-top: 60px;">
       <div class="col-md-3 navtree">
-        <p class="mainhead">EzDoc</p>
+        <p class="mainhead">Api Documentation</p>
 <form class="d-flex">
   <input id="filter-box" class="form-control me-2 bg-dark text-light" type="search" placeholder="Filter" aria-label="Search">
 </form>
@@ -58,215 +58,162 @@
             </ol>
           </nav>
           <!-- <div id="trumbowyg-demo"></div> -->
-          <div id="Resources" class="content">
-  <h2>Resources</h2>
+          <div id="BeitragsberechnungMitEinkommensprozente" class="content">
+  <h2>BeitragsberechnungMitEinkommensprozente</h2>
 <p>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </p><h4>Properties</h4>
-<table class="table table-bordered table-dark">
+ Berechnet einen Jahresbeitrag. 
+ Es werden zunächst Entgeltinformation und Dienstzeitinformation im Zeitraum vom letzten Jahrestag vor Berechnungsstichtag gemäß EinkommenJahrestag bis zum Berechnungsstichtag berechnet. 
+ Aus diesen Informationen wird mit BerechneBeiträgeMitEinkommensprozenten ein Beitrag berechnet.
+ </p>
+</div>
+<div id="CustomBeitragsberechnung" class="content">
+  <h2>CustomBeitragsberechnung</h2>
+<p>
+ Dieser Beitragsberechnungskern führt zum Aufrufen des Hooks BerechneCustomBeiträge während Beitragsberechner.BerechneBeiträge.as Siehe auch <a href="Info.html?elementId=Manual">Manual</a>
+ </p>
+</div>
+<div id="Beitragsberechnungskern" class="content">
+  <h2>Beitragsberechnungskern</h2>
+<p>
+   Beschreibt die Methode zur Berechnung eines Beitrags.
+ </p><h4>Methods</h4>
+<table class="table table-bordered table-dark" style="width: 95vw; ">
 <tbody>
 <tr>
-<td>ResourceManager</td>
+<td>Custom</td>
 <td>
-              Returns the cached ResourceManager instance used by this class.
-            </td>
+ Erzeugt eine CustomBeitragsberechnung und führt zum Aufrufen des Hooks BerechneCustomBeiträge während Beitragsberechner.BerechneBeiträge.
+ </td>
 </tr>
 <tr>
-<td>Culture</td>
+<td>Einkommensprozente</td>
 <td>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </td>
-</tr>
-<tr>
-<td>content_css</td>
-<td>
-               Looks up a localized string similar to /*Property Tables*/
-            
-            table {
-              border-collapse: collapse;
-              border: 2px solid rgb(200, 200, 200);
-              letter-spacing: 1px;
-              font-size: 0.8rem;
-            }
-            
-            td, th {
-              border: 1px solid rgb(190, 190, 190);
-              padding: 10px 20px;
-            }
-            
-            th {
-              background-color: rgb(235, 235, 235);
-            }
-            
-            td {
-              text-align: center;
-            }
-            
-            tr:nth-child(even) td {
-              background-color: rgb(250, 250, 250);
-            }
-            
-            tr:nth-child(odd) td {
-              background-color: rgb(245, 245, 245);
-            }
-            
-            caption {
-              padding: 10px;
-            }
-            .
-             </td>
-</tr>
-<tr>
-<td>content_entry_template</td>
-<td>
-               Looks up a localized string similar to &lt;div id="{{name}}" class="content"&gt;
-              {{content}}
-            &lt;/div&gt;
-            .
-             </td>
-</tr>
-<tr>
-<td>content_link_inline_template</td>
-<td>
-              Looks up a localized string similar to &lt;p class="content-link-inline" id="{{link}}-link-inline"&gt;{{name}}&lt;/p&gt;.
-            </td>
-</tr>
-<tr>
-<td>navbar_dropdownitem_entry_template</td>
-<td>
-              Looks up a localized string similar to &lt;li&gt;&lt;a class="dropdown-item" href="{{link}}"&gt;{{text}}&lt;/a&gt;&lt;/li&gt;.
-            </td>
-</tr>
-<tr>
-<td>navbar_dropdownitem_template</td>
-<td>
-               Looks up a localized string similar to &lt;li class="nav-item dropdown"&gt;
-              &lt;a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                 aria-expanded="false"&gt;
-                {{text}}
-              &lt;/a&gt;
-              &lt;ul class="dropdown-menu" aria-labelledby="navbarDropdown"&gt;
-                {{entries}}   
-                &lt;li&gt;
-                  &lt;hr class="dropdown-divider"&gt;
-                &lt;/li&gt;
-                &lt;li&gt;&lt;a class="dropdown-item" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
-              &lt;/ul&gt;
-            &lt;/li&gt;.
-             </td>
-</tr>
-<tr>
-<td>navbar_item_template</td>
-<td>
-               Looks up a localized string similar to &lt;li class="nav-item"&gt;
-              &lt;a class="nav-link active" aria-current="page" href="{{link}}"&gt;{{text}}&lt;/a&gt;
-            &lt;/li&gt;.
-             </td>
-</tr>
-<tr>
-<td>navbar_template</td>
-<td>
-               Looks up a localized string similar to &lt;!-- &lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt; --&gt;
-            &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
-            
-              &lt;div class="container-fluid"&gt;
-                &lt;a class="navbar-brand" href="#"&gt;Zusagenframework&lt;/a&gt;
-                &lt;button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"&gt;
-                  &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
-                &lt;/button&gt;
-                &lt;div [rest of string was truncated]";.
-             </td>
-</tr>
-<tr>
-<td>navtree_contentLink_template</td>
-<td>
-              Looks up a localized string similar to &lt;li id="{{name}}-link" class="content-link"&gt;{{name}}&lt;/li&gt;.
-            </td>
-</tr>
-<tr>
-<td>navtree_js</td>
-<td>
-               Looks up a localized string similar to var toggler = document.getElementsByClassName("caret");
-            var contentLinks = document.getElementsByClassName("content-link");
-            var contentLinksInline = document.getElementsByClassName("content-link-inline");
-            var filterBox = document.getElementById("filter-box");
-            var currentActiveContentId = ""
-            var currentActiveLinkId = ""
-            var i;
-            
-            window.onhashchange = function () {
-              console.log("On Window Change", location.hash);
-              onContentLinkClicked(location.hash.replace("#", ""));
-            }
-            
-            window.onload = function  [rest of string was truncated]";.
-             </td>
-</tr>
-<tr>
-<td>navtree_js_child_template</td>
-<td>
-              Looks up a localized string similar to {{parentVariable}}.addChild({{childVariable}});.
-            </td>
-</tr>
-<tr>
-<td>navtree_js_item_template</td>
-<td>
-               Looks up a localized string similar to var {{nodeName}} = new TreeNode("{{nodeName}}");
-            {{nodeName}}.on('select', function (e, node) {
-                onNodeClick({{nodeName}})
-            });
-            
-            .
-             </td>
-</tr>
-<tr>
-<td>navtree_js_template</td>
-<td>
-               Looks up a localized string similar to var root = new TreeNode("Zusagenframework");
-            {{items}}
-            treeView = new TreeView(root, "#container");
-            setupTree();.
-             </td>
-</tr>
-<tr>
-<td>navtree_template</td>
-<td>
-               Looks up a localized string similar to &lt;p class="mainhead"&gt;{{title}}&lt;/p&gt;
-            &lt;form class="d-flex"&gt;
-              &lt;input id="filter-box" class="form-control me-2" type="search" placeholder="Filter" aria-label="Search"&gt;
-            &lt;/form&gt;
-            &lt;hr&gt;
-            &lt;div id="container"&gt;&lt;/div&gt;.
-             </td>
-</tr>
-<tr>
-<td>navtree_toggler_template</td>
-<td>
-               Looks up a localized string similar to &lt;li&gt;
-              &lt;span class="caret"&gt;{{name}}&lt;/span&gt;
-              &lt;ul class="nested"&gt;
-                {{children}}
-              &lt;/ul&gt;
-            &lt;/li&gt;.
-             </td>
-</tr>
-<tr>
-<td>summary_template</td>
-<td>
-               Looks up a localized string similar to &lt;h2&gt;{{name}}&lt;/h2&gt;
-            &lt;p&gt;{{content}}&lt;/p&gt;.
-             </td>
+ Erzeugt eine BeitragsberechnungMitEinkommensprozente.
+ Berechnet einen Jahresbeitrag. 
+ Es werden zunächst Entgeltinformation und Dienstzeitinformation im Zeitraum vom letzten Jahrestag vor Berechnungsstichtag gemäß EinkommenJahrestag bis zum Berechnungsstichtag berechnet. 
+ Aus diesen Informationen wird mit BerechneBeiträgeMitEinkommensprozenten ein Beitrag berechnet.
+ </td>
 </tr>
 </tbody>
 </table>
 
 </div>
-<div id="Properties" class="content">
+<div id="Beitragsberechnungskomponente" class="content">
+  <h2>Beitragsberechnungskomponente</h2>
+<p>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Beiträge für beitragsabhängige Konten.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Company</th>
+<th>Company</th>
+</tr>
+<tr>
+<td>Beitragsdefinitionen</td>
+<td>
+ Beitragsdefinitionen
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsdefinition" class="content">
+  <h2>Beitragsdefinition</h2>
+<p>
+ Beschreibt eine Art von Beitrag und wie Beiträge dieser Art zu berechnen sind.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Company</th>
+<th>Company</th>
+</tr>
+<tr>
+<td>Berechnungskern</td>
+<td>
+ Berechnungskern zur Berechnung der hier definierten Beiträge.
+ </td>
+</tr>
+<tr>
+<td>Bedingungen</td>
+<td>
+ Beiträge werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </td>
+</tr>
+<tr>
+<td>Beitragsart</td>
+<td>
+ CustomEnum mit dem Namen CustomEnumNames.Beitragsart.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
   
 </div>
-<div id="EzDoc" class="content">
+<div id="OptionalBeitragsberechnungCustomizing" class="content">
+  <h2>OptionalBeitragsberechnungCustomizing</h2>
+<p>
+ Optionales Customizing der Beitragsberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Company</th>
+<th>Company</th>
+</tr>
+<tr>
+<td>InstantieteBeitragMethod</td>
+<td>
+ Falls die berechneten Beiträge nicht vom Type PensionLib.Domain.Beitrag sein sollen, kann in dieser Funktion ein anderer Typ instanziiert werden.
+ </td>
+</tr>
+<tr>
+<td>AddOrUpdateBeitragMethod</td>
+<td>
+ Falls nötig, kann hier die AddOrUpdate-Funktion auf dem konkreten Beitragstyp aufgerufen werden, falls der PensionLib.Domain.Beitrag
+ so erweitert wurde, dass sich auch die Eindeutigkeit verändert hat. 
+ Falls True zurückgegeben wird, findet kein Mapping vom Framework statt.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IBeitragsberechnungCustomizingProvider" class="content">
+  <h2>IBeitragsberechnungCustomizingProvider</h2>
+<p>
+ Customizing der Beitragsberechnung.
+ </p><h4>Methods</h4>
+<table class="table table-bordered table-dark" style="width: 95vw; ">
+<tbody>
+<tr>
+<td>GetEndeBeitragsberechtigung</td>
+<td>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>GetBeginnBeitragsberechtigung</td>
+<td>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>BerechneCustomBeiträge</td>
+<td>
+ Wird aufgerufen, wenn die CustomBeitragsberechnung (Beitragsberechnung.Beschreibung.Beitragsberechnungskern.Custom) greift
+ </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="Beitragsberechnung" class="content">
+  
+</div>
+<div id="Pension" class="content">
   
 </div>
 
@@ -279,22 +226,62 @@
   <script src="js/navtree.js"></script>
   <script>
     var root = new TreeNode("root");
-var EzDoc = new TreeNode("EzDoc");
-EzDoc.on('select', function (e, node) {
-    onNodeClick(EzDoc)
+var Pension = new TreeNode("Pension");
+Pension.on('select', function (e, node) {
+    onNodeClick(Pension)
 });
 
-var Properties = new TreeNode("Properties");
-Properties.on('select', function (e, node) {
-    onNodeClick(Properties)
+var Beitragsberechnung = new TreeNode("Beitragsberechnung");
+Beitragsberechnung.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnung)
 });
 
-var Resources = new TreeNode("Resources");
-Resources.on('select', function (e, node) {
-    onNodeClick(Resources)
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
 });
 
-Properties.addChild(Resources);EzDoc.addChild(Properties);root.addChild(EzDoc);
+var BeitragsberechnungMitEinkommensprozente = new TreeNode("BeitragsberechnungMitEinkommensprozente");
+BeitragsberechnungMitEinkommensprozente.on('select', function (e, node) {
+    onNodeClick(BeitragsberechnungMitEinkommensprozente)
+});
+
+Beschreibung.addChild(BeitragsberechnungMitEinkommensprozente);var CustomBeitragsberechnung = new TreeNode("CustomBeitragsberechnung");
+CustomBeitragsberechnung.on('select', function (e, node) {
+    onNodeClick(CustomBeitragsberechnung)
+});
+
+Beschreibung.addChild(CustomBeitragsberechnung);var Beitragsberechnungskern = new TreeNode("Beitragsberechnungskern");
+Beitragsberechnungskern.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnungskern)
+});
+
+Beschreibung.addChild(Beitragsberechnungskern);var Beitragsberechnungskomponente = new TreeNode("Beitragsberechnungskomponente");
+Beitragsberechnungskomponente.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnungskomponente)
+});
+
+Beschreibung.addChild(Beitragsberechnungskomponente);var Beitragsdefinition = new TreeNode("Beitragsdefinition");
+Beitragsdefinition.on('select', function (e, node) {
+    onNodeClick(Beitragsdefinition)
+});
+
+Beschreibung.addChild(Beitragsdefinition);Beitragsberechnung.addChild(Beschreibung);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var OptionalBeitragsberechnungCustomizing = new TreeNode("OptionalBeitragsberechnungCustomizing");
+OptionalBeitragsberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalBeitragsberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalBeitragsberechnungCustomizing);var IBeitragsberechnungCustomizingProvider = new TreeNode("IBeitragsberechnungCustomizingProvider");
+IBeitragsberechnungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IBeitragsberechnungCustomizingProvider)
+});
+
+Customizing.addChild(IBeitragsberechnungCustomizingProvider);Beitragsberechnung.addChild(Customizing);Pension.addChild(Beitragsberechnung);root.addChild(Pension);
 treeView = new TreeView(root, "#container");
 setupTree();
   </script>

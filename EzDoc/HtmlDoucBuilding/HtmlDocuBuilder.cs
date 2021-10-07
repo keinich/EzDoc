@@ -241,7 +241,7 @@ namespace EzDoc.HtmlDoucBuilding {
       PageStructure result = new PageStructure();
       foreach (string file in Directory.EnumerateFiles(path, "*.md")) {
         string filename = Path.GetFileName(file);
-        string fileContentMd = File.ReadAllText(file);
+        string fileContentMd = File.ReadAllText(file);        
         string fileContentHtml = MdConverter.ConvertToHtml(fileContentMd);
         IEnumerable<string> parts = filename.Split(".").SkipLast(1);
 
@@ -382,7 +382,8 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Properties</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-striped table-dark\">");
+      //contentResult.AppendLine("<table class=\"table table-bordered table-striped table-dark\">");
+      contentResult.AppendLine("<table>");
       contentResult.AppendLine("<tbody>");
       foreach (DocuTreeNode propertyNode in propertyNodes) {
         contentResult.AppendLine("<tr>");

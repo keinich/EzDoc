@@ -17,7 +17,7 @@ namespace EzDoc.HtmlDoucBuilding {
       foreach (string includeString in Filter.Include) {
         if (includeString.EndsWith(".*")) {
           int indexOfPattern = includeString.LastIndexOf('.');
-          if (v.StartsWith(includeString.Substring(indexOfPattern))) {
+          if (v.StartsWith(includeString.Substring(0, indexOfPattern))) {
             return true;
           }
         } else {

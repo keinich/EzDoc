@@ -17,9 +17,16 @@ namespace EzDoc.DocuGeneration {
 
       DocuTree navTree = XmlDocuParser.CreateDocuTree(filenameXmlDocu, projectPath);
 
-      await HtmlDocuBuilder.BuildHtmlDocu(projectPath, navTree, Path.GetFileNameWithoutExtension(filenameXmlDocu));
+      await HtmlDocuBuilder.BuildHtmlDocu(projectPath, navTree, GetFrameworkNameFromFile(filenameXmlDocu));
     }
-
-
+    
+    private static string GetFrameworkNameFromFile(string filenameXmlDocu) {
+      string result = Path.GetFileNameWithoutExtension(filenameXmlDocu);
+      int indexOfLastDot = result.LastIndexOf(".");
+      if (indexOfLastDot < 0) {
+        return result;
+      }
+      return result.Substring(indexOfLastDot + 1, result.Length - indexOfLastDot - 1);
+    }
   }
 }

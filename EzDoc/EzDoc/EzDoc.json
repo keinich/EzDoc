@@ -1,6 +1,10 @@
 {
   "filter": {
-    "exclude": [ "EzDoc.DocuGeneration.*", "EzDoc.Properties.Resources.base_template"],
-    "include": [ "EzDoc.Properties.Resources" ]
+    "exclude": [ "Pension.*"],
+    "include": [
+       "Pension.Beitragsberechnung.Beschreibung.*",
+       "Pension.Beitragsberechnung.Customizing.*",
+       "Pension.Beitragsberechnung.Api.*"
+    ]           
   }
 }

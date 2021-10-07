@@ -57,6 +57,41 @@ namespace EzDoc.HtmlDoucBuilding {
       }
       string result = ConvertCRefs(text);
       result = ConvertHRefs(result);
+      result = ConvertEzLinks(result);
+      return result;
+    }
+
+    private static string ConvertEzLinks(string text) {
+      string result = text;
+      string searchPattern = "[EzLink \"";
+      int currentStartIndex = text.IndexOf(searchPattern);
+      while (currentStartIndex >= 0) {
+        int currentEndIndex = text.IndexOf('"', currentStartIndex + searchPattern.Length);
+        int linkLength = currentEndIndex - (currentStartIndex + searchPattern.Length);
+        string linkNameFull = text.Substring(currentStartIndex + searchPattern.Length, linkLength);
+        string linkContent = linkNameFull;
+        int lastIndexOfDot = linkNameFull.LastIndexOf(".");
+        if (lastIndexOfDot >= 0) {
+          linkContent = linkNameFull.Substring(lastIndexOfDot + 1);
+        }
+        int offset = 2;
+        if (currentStartIndex + currentEndIndex - currentStartIndex + 4 > text.Length) {
+          offset = 1;
+        }
+
+        int indexOfColumn = linkContent.IndexOf(":");
+        if (indexOfColumn >= 0) {
+          string site = linkContent.Substring(0, indexOfColumn);
+          string elemendId = linkContent.Substring(indexOfColumn + 1, linkContent.Length - indexOfColumn - 1);
+
+          string linkFull = text.Substring(currentStartIndex, currentEndIndex - currentStartIndex + offset);
+          string innerLink = $"{site}.html?elementId={elemendId}";
+          string newLink = $"<a href=\"" + innerLink + "\">" + elemendId + "</a>";
+          result = text.Replace(linkFull, newLink);
+        }
+        currentStartIndex = text.IndexOf(searchPattern, currentStartIndex + 1);
+      }
+
       return result;
     }
 
@@ -156,7 +191,7 @@ namespace EzDoc.HtmlDoucBuilding {
         pageStructure = BuildPageStructureFromFolder(Path.Combine(inputPath, link));
       }
       StringBuilder content = new StringBuilder();
-      string navTreeHtml = CreateNavTreeHtml(frameworkName);
+      string navTreeHtml = CreateNavTreeHtml(entry.Text);
       string navTreeJs = CreateNavTreeJsAndContentHtml(pageStructure.Nodes, content);
 
       // Create the final html
@@ -383,8 +418,19 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Properties</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-dark\" style=\"width: 95vw; \">");
-      contentResult.AppendLine("<tbody>");
+      //contentResult.AppendLine("<table class=\"table table-bordered table-dark\" style=\"width: 95vw; \">");
+      contentResult.AppendLine("<table style=\"width: 70vw; \">");
+      //contentResult.Append("<thead>");
+      //contentResult.Append("<tr>");
+      //contentResult.Append($"<th> Name </th>");
+      //contentResult.Append($"<th> Beschreibung </th>");
+      //contentResult.Append("</tr>");
+      //contentResult.Append("</thead>");
+      //contentResult.AppendLine("<tbody>");
+      contentResult.AppendLine("<tr>");
+      contentResult.AppendLine($"<th>Company</th>");
+      contentResult.AppendLine($"<th>Company</th>");
+      contentResult.AppendLine("</tr>");
       foreach (DocuTreeNode propertyNode in propertyNodes) {
         contentResult.AppendLine("<tr>");
         contentResult.AppendLine("<td>" + propertyNode.Identifier + "</td>");
@@ -392,7 +438,7 @@ namespace EzDoc.HtmlDoucBuilding {
         contentResult.AppendLine("<td>" + propertySummary + "</td>");
         contentResult.AppendLine("</tr>");
       }
-      contentResult.AppendLine("</tbody>");
+      //contentResult.AppendLine("</tbody>");
       contentResult.AppendLine("</table>");
     }
 

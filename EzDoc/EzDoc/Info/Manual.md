@@ -1,4 +1,16 @@
-﻿This is cool Info
+﻿# This is cool Info
 
-- Haha
-- Biatches
+### Gruppen:
+
+|Name | Nummer | Beschreibung|
+|--|--|--|
+Hans|1|Cool
+
+|asd  | **asd** | sd |
+|--|--| -- |
+| asd | asd |
+
+## Smaller Info
+
+- Haha [EzLink "Api:Beitragsberechnungskern"]
+- Lalala
