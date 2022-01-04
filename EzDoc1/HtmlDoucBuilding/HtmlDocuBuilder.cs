@@ -418,18 +418,11 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Properties</h4>");
-      //contentResult.AppendLine("<table class=\"table table-bordered table-dark\" style=\"width: 95vw; \">");
       contentResult.AppendLine("<table style=\"width: 70vw; \">");
-      //contentResult.Append("<thead>");
-      //contentResult.Append("<tr>");
-      //contentResult.Append($"<th> Name </th>");
-      //contentResult.Append($"<th> Beschreibung </th>");
-      //contentResult.Append("</tr>");
-      //contentResult.Append("</thead>");
-      //contentResult.AppendLine("<tbody>");
+     
       contentResult.AppendLine("<tr>");
-      contentResult.AppendLine($"<th>Company</th>");
-      contentResult.AppendLine($"<th>Company</th>");
+      contentResult.AppendLine($"<th>Name</th>");
+      contentResult.AppendLine($"<th>Beschreibung</th>");
       contentResult.AppendLine("</tr>");
       foreach (DocuTreeNode propertyNode in propertyNodes) {
         contentResult.AppendLine("<tr>");
@@ -438,7 +431,6 @@ namespace EzDoc.HtmlDoucBuilding {
         contentResult.AppendLine("<td>" + propertySummary + "</td>");
         contentResult.AppendLine("</tr>");
       }
-      //contentResult.AppendLine("</tbody>");
       contentResult.AppendLine("</table>");
     }
 
@@ -448,8 +440,13 @@ namespace EzDoc.HtmlDoucBuilding {
         return;
       }
       contentResult.AppendLine("<h4>Methods</h4>");
-      contentResult.AppendLine("<table class=\"table table-bordered table-dark\" style=\"width: 95vw; \">");
-      contentResult.AppendLine("<tbody>");
+      contentResult.AppendLine("<table style=\"width: 70vw; \">");
+
+      contentResult.AppendLine("<tr>");
+      contentResult.AppendLine($"<th>Name</th>");
+      contentResult.AppendLine($"<th>Beschreibung</th>");
+      contentResult.AppendLine("</tr>");
+
       foreach (DocuTreeNode methodNode in methodNodes) {
         contentResult.AppendLine("<tr>");
         contentResult.AppendLine("<td>" + methodNode.Identifier + "</td>");
@@ -457,7 +454,6 @@ namespace EzDoc.HtmlDoucBuilding {
         contentResult.AppendLine("<td>" + methodSummary + "</td>");
         contentResult.AppendLine("</tr>");
       }
-      contentResult.AppendLine("</tbody>");
       contentResult.AppendLine("</table>");
     }
 

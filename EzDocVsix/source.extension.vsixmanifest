@@ -4,6 +4,7 @@
         <Identity Id="EzDocVsix.a8e620eb-6d15-4bf1-9d04-6996a5b8d6aa" Version="1.2" Language="en-US" Publisher="Rafael Weschle" />
         <DisplayName>EzDoc</DisplayName>
         <Description xml:space="preserve">Generates HTML Documentation.</Description>
+        <Icon>Book.png</Icon>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[16.0, 17.0)" />

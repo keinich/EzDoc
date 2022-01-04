@@ -60,7 +60,7 @@ function updateBreadcrumb() {
     breadcrumbLinks.push(currentNode.getUserObject());
     currentNode = currentNode.parent;
   }
-  for (var i = breadcrumbLinks.length - 1; i >= 0; --i) {    
+  for (var i = breadcrumbLinks.length - 2; i >= 0; --i) {    
     // breadcrumbElement.innerHTML += "<li class=\"breadcrumb-item\"><a href=\"#\" onclick=\"goToElement(" + breadcrumbLinks[i] + ");\">"+breadcrumbLinks[i]+"</a></li>"
     breadcrumbElement.innerHTML += "<li class=\"breadcrumb-item\">"+breadcrumbLinks[i]+"</a></li>"
   }
