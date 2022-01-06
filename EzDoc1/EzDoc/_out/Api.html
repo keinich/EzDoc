@@ -17,7 +17,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">EzDoc1</a>
+    <a class="navbar-brand" href="#">Api</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,8 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
   <a class="nav-link active" aria-current="page" href="Api.html">Api Documentation</a>
+</li><li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Handbuch.html">Handbuch</a>
 </li>
       </ul>
       <form class="d-flex">
@@ -39,7 +41,7 @@
   <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
     <div class="fixed-top row mb-3" style="margin-top: 60px;">
       <div class="col-md-3 navtree">
-        <p class="mainhead">EzDoc1</p>
+        <p class="mainhead">Api Documentation</p>
 <form class="d-flex">
   <input id="filter-box" class="form-control me-2 bg-dark text-light" type="search" placeholder="Filter" aria-label="Search">
 </form>
@@ -56,28 +58,282 @@
             </ol>
           </nav>
           <!-- <div id="trumbowyg-demo"></div> -->
-          <div id="DocuGenerator" class="content">
-  <h2>DocuGenerator</h2>
+          <div id="Altersbedingung" class="content">
+  <h2>Altersbedingung</h2>
 <p>
-            Creates Html-Docu from xml-Docu
-            </p>
+ Bedingung für die Kontofortschreibung gemäß Startalter und Endalter.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Startalter</td>
+<td>
+ Berechtigungsbeginn ist das Erreichen des Startalters.
+ </td>
+</tr>
+<tr>
+<td>Endalter</td>
+<td>
+ Berechtigungsbeginn ist das Erreichen des Endalters.
+ </td>
+</tr>
+</table>
+
 </div>
-<div id="DocuTree" class="content">
-  <h2>DocuTree</h2>
+<div id="Custombedingung" class="content">
+  <h2>Custombedingung</h2>
 <p>
-            Tree structure for xml-comments.
-            </p>
+ Führt zum Aufruf von <a href="Api.html?elementId=IKontofortschreibungCustomizingProvider">IKontofortschreibungCustomizingProvider</a>.IstKontoRelevantCustom
+ </p>
 </div>
-<div id="DocuTreeNodeType" class="content">
-  <h2>DocuTreeNodeType</h2>
+<div id="Kontostatusbedingung" class="content">
+  <h2>Kontostatusbedingung</h2>
 <p>
-            Type of the Node.
-            </p>
+ Bedingung für die Kontofortschreibung gemäß relevanten Kontostatus.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>RelevanteKontostatus</td>
+<td>
+ Ein Konto erfüllt die Bedingung, wen es in einem dieser Kontostatus ist.
+ </td>
+</tr>
+</table>
+
 </div>
-<div id="DocuGeneration" class="content">
+<div id="KontofortschreibungsZusagenkomponente" class="content">
+  <h2>KontofortschreibungsZusagenkomponente</h2>
+<p>
+ Zur Angabe und Gruppierung der beteiligten Zusagenkomponenten im Kontofortschreibungsprozess.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ZusagenkomponentenKennzeichen</td>
+<td>
+ CustomEnum mit Name CustomEnumNames.BerechnungskennzeichenName
+ </td>
+</tr>
+<tr>
+<td>Gruppe</td>
+<td>
+ Zur Sortierung der beteiligten Zusagenkomponenten im Kontofortschreibungsprozess. 
+ Zusagenkomponenten mit niedrigerer Nummer werden vor denen mit höherer Nummer berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Bedingung" class="content">
+  <h2>Bedingung</h2>
+<p>
+ 	Beschreibt eine Bedingung unter der ein Konto in einer zu einem gegebenen Berechnungskennzeichen gehörenden Kontofortschreibung relevant ist.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Altersbedingt</td>
+<td>
+ Altersbedingung von Startalter bis Endalter.
+ </td>
+</tr>
+<tr>
+<td>Kontostatusbedingt</td>
+<td>
+ Kontostatusbedingung, die nur die übergebenen Kontostatus zulässt.
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erzeugt eine Custombedingung und führt zum Aufruf von IKontofortschreibungCustomizingProvider.IstKontoRelevantCustom.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Kontofortschreibungsprozessdefinition" class="content">
+  <h2>Kontofortschreibungsprozessdefinition</h2>
+<p>
+ Definition des Standard Kontofortschreibungsprozesses.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ZusagenKomponenten</td>
+<td>
+ Gibt an welche Zusagenkomponenten im Prozess beteiligt sind und in welcher Reihenfolge sie berechnet werden.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
   
 </div>
-<div id="EzDoc" class="content">
+<div id="Kontofortschreiber" class="content">
+  <h2>Kontofortschreiber</h2>
+<p>
+ Stellt Funktionen zur Kontofortschreibung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>KontofortschreibungDurchführen</td>
+<td>
+ Führt die Kontofortschreibung aller Zusagenkomponenten in ProzessParameter.Zusagenkomponenten zum ProzessParameter.Stichtag aus. 
+ Es werden alle Konten berücksichtigt, deren Zusagendetail mindestens eine der relevanten Zusagenkomponenten beinhaltet.
+ </td>
+</tr>
+<tr>
+<td>KontoFortschreiben</td>
+<td>
+ Schreibt das die relevanten Zusagenkomponenten des Kontos fort.
+ </td>
+</tr>
+<tr>
+<td>KontoergebnisVerarbeiten</td>
+<td>
+ Validiert das Kontoergebnis und persistiert die Ergebnisse im Konto falls die Validierung erfolgreich ist.
+ </td>
+</tr>
+<tr>
+<td>KontofortschreibungValidieren</td>
+<td>
+ Validiert Konto, Vv, Person einzeln und jeweils mit Stichtag sowie alle von der Zusagenkomponente festgelegten Entitäten 
+ gegen den zum Berechnungskennzeichen gehörenden Zusagenkomponentenvertrag.
+ </td>
+</tr>
+<tr>
+<td>KontofortschreibungBerechnen</td>
+<td>
+ Berechnet die Kontofortschreibung der relevanten Zusagenkomponenten des Kontos.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IKontofortschreibungCustomizingProvider" class="content">
+  <h2>IKontofortschreibungCustomizingProvider</h2>
+<p>
+ Customizing der Kontofortschreibung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>IstKontoRelevantCustom</td>
+<td>
+ Wird aufgerufen, wenn die Custombedingung <a href="Api.html?elementId=Custombedingung">Custombedingung</a> greift
+ </td>
+</tr>
+<tr>
+<td>ValidiereProzessparameter</td>
+<td>
+ Wird aufgerufen, wenn die Custombedingung (Kontofortschreibung.Beschreibung.Bedingung.Custom) greift
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="KontoExtensions" class="content">
+  <h2>KontoExtensions</h2>
+<p>
+ Allgemeine Konto-Extensions.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneKontostand</td>
+<td>
+ Berechnet den Kontostand des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneLetztenKontostand</td>
+<td>
+ Berechnet den Kontostand des Kontos zum letzten Fortscrheibungsstichtag vor dem Stichtag gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandUva</td>
+<td>
+ Berechnet den Kontostand beim Austritt des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandImLeistungsfall</td>
+<td>
+ Berechnet den Kontostand im Leistungsfall gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostand1</td>
+<td>
+ Berechnet den Kontostand des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandUva1</td>
+<td>
+ Berechnet den Kontostand des Kontos beim Austritt gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandImLeistungsfall1</td>
+<td>
+ Berechnet den Kontostand des Kontos im Leistungsfall gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </td>
+</tr>
+<tr>
+<td>GetKontostandsinformation</td>
+<td>
+ Liefert die Kontostandsinformation der kontostansbestimmenden Zusagenkomponente des zum Konto gehörenden Zusagendetails
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="ZusagenKomponenten" class="content">
+  <h2>ZusagenKomponenten</h2>
+<p>
+ Für das Filtern beim Ausführen des Prozesses
+ </p>
+</div>
+<div id="ProzessParameter" class="content">
+  
+</div>
+<div id="Kontofortschreibung" class="content">
+  
+</div>
+<div id="Pension" class="content">
   
 </div>
 
@@ -90,32 +346,82 @@
   <script src="js/navtree.js"></script>
   <script>
     var root = new TreeNode("root");
-var EzDoc = new TreeNode("EzDoc");
-EzDoc.on('select', function (e, node) {
-    onNodeClick(EzDoc)
+var Pension = new TreeNode("Pension");
+Pension.on('select', function (e, node) {
+    onNodeClick(Pension)
 });
 
-var DocuGeneration = new TreeNode("DocuGeneration");
-DocuGeneration.on('select', function (e, node) {
-    onNodeClick(DocuGeneration)
+var Kontofortschreibung = new TreeNode("Kontofortschreibung");
+Kontofortschreibung.on('select', function (e, node) {
+    onNodeClick(Kontofortschreibung)
 });
 
-var DocuGenerator = new TreeNode("DocuGenerator");
-DocuGenerator.on('select', function (e, node) {
-    onNodeClick(DocuGenerator)
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
 });
 
-DocuGeneration.addChild(DocuGenerator);var DocuTree = new TreeNode("DocuTree");
-DocuTree.on('select', function (e, node) {
-    onNodeClick(DocuTree)
+var Altersbedingung = new TreeNode("Altersbedingung");
+Altersbedingung.on('select', function (e, node) {
+    onNodeClick(Altersbedingung)
 });
 
-DocuGeneration.addChild(DocuTree);var DocuTreeNodeType = new TreeNode("DocuTreeNodeType");
-DocuTreeNodeType.on('select', function (e, node) {
-    onNodeClick(DocuTreeNodeType)
+Beschreibung.addChild(Altersbedingung);var Custombedingung = new TreeNode("Custombedingung");
+Custombedingung.on('select', function (e, node) {
+    onNodeClick(Custombedingung)
 });
 
-DocuGeneration.addChild(DocuTreeNodeType);EzDoc.addChild(DocuGeneration);root.addChild(EzDoc);
+Beschreibung.addChild(Custombedingung);var Kontostatusbedingung = new TreeNode("Kontostatusbedingung");
+Kontostatusbedingung.on('select', function (e, node) {
+    onNodeClick(Kontostatusbedingung)
+});
+
+Beschreibung.addChild(Kontostatusbedingung);var KontofortschreibungsZusagenkomponente = new TreeNode("KontofortschreibungsZusagenkomponente");
+KontofortschreibungsZusagenkomponente.on('select', function (e, node) {
+    onNodeClick(KontofortschreibungsZusagenkomponente)
+});
+
+Beschreibung.addChild(KontofortschreibungsZusagenkomponente);var Bedingung = new TreeNode("Bedingung");
+Bedingung.on('select', function (e, node) {
+    onNodeClick(Bedingung)
+});
+
+Beschreibung.addChild(Bedingung);var Kontofortschreibungsprozessdefinition = new TreeNode("Kontofortschreibungsprozessdefinition");
+Kontofortschreibungsprozessdefinition.on('select', function (e, node) {
+    onNodeClick(Kontofortschreibungsprozessdefinition)
+});
+
+Beschreibung.addChild(Kontofortschreibungsprozessdefinition);Kontofortschreibung.addChild(Beschreibung);var Kontofortschreiber = new TreeNode("Kontofortschreiber");
+Kontofortschreiber.on('select', function (e, node) {
+    onNodeClick(Kontofortschreiber)
+});
+
+Kontofortschreibung.addChild(Kontofortschreiber);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var IKontofortschreibungCustomizingProvider = new TreeNode("IKontofortschreibungCustomizingProvider");
+IKontofortschreibungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IKontofortschreibungCustomizingProvider)
+});
+
+Customizing.addChild(IKontofortschreibungCustomizingProvider);Kontofortschreibung.addChild(Customizing);var KontoExtensions = new TreeNode("KontoExtensions");
+KontoExtensions.on('select', function (e, node) {
+    onNodeClick(KontoExtensions)
+});
+
+Kontofortschreibung.addChild(KontoExtensions);var ProzessParameter = new TreeNode("ProzessParameter");
+ProzessParameter.on('select', function (e, node) {
+    onNodeClick(ProzessParameter)
+});
+
+var ZusagenKomponenten = new TreeNode("ZusagenKomponenten");
+ZusagenKomponenten.on('select', function (e, node) {
+    onNodeClick(ZusagenKomponenten)
+});
+
+ProzessParameter.addChild(ZusagenKomponenten);Kontofortschreibung.addChild(ProzessParameter);Pension.addChild(Kontofortschreibung);root.addChild(Pension);
 treeView = new TreeView(root, "#container");
 setupTree();
   </script>

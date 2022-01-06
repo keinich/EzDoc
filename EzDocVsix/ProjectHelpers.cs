@@ -33,7 +33,8 @@ namespace EzDocVsix {
       if (string.IsNullOrEmpty(projectFile)) {
         return Result.Failed("No Porject File");
       }
-      string docuFile = TryGetDocuFile(projectFile);
+      string compileOutputPath = TryGetOutputPath(projectFile);
+      string docuFile = TryGetDocuFile(compileOutputPath, projectFile);
       if (string.IsNullOrEmpty(docuFile)) {
         return Result.Failed("No Documentation File");
       }
@@ -74,7 +75,8 @@ namespace EzDocVsix {
       if (string.IsNullOrEmpty(projectFile)) {
         return Result.Failed("No Porject File");
       }
-      string docuFile = TryGetDocuFile(projectFile);
+      string compileOutputPath = TryGetOutputPath(projectFile);
+      string docuFile = TryGetDocuFile(compileOutputPath, projectFile);
       if (string.IsNullOrEmpty(docuFile)) {
         return Result.Failed("No Documentation File");
       }
@@ -89,10 +91,9 @@ namespace EzDocVsix {
       }
 
       return Result.Ok($"Succesfully created to {outputPath} from {docuFile}");
-
     }
 
-    private static string TryGetDocuFile(string filename) {
+    private static string TryGetDocuFile(string compileOutputPath, string filename) {
       XmlTextReader reader = null;
 
       try {
@@ -112,6 +113,46 @@ namespace EzDocVsix {
               break;
             case XmlNodeType.Text:
               if (foundDocumentationFile) {
+                string result = reader.Value;
+                if (Path.IsPathRooted(result)) {
+                  return result;
+                } else {
+                  string basePath = Path.GetDirectoryName(filename);
+                  return Path.Combine(basePath, result);
+                }
+              }
+              break;
+            default:
+              break;
+          }
+        }
+      } finally {
+        if (reader != null)
+          reader.Close();
+      }
+      return string.Empty;
+    }
+
+    private static string TryGetOutputPath(string filename) {
+      XmlTextReader reader = null;
+
+      try {
+
+        // Load the reader with the data file and ignore all white space nodes.
+        reader = new XmlTextReader(filename);
+        reader.WhitespaceHandling = WhitespaceHandling.None;
+
+        bool outputPathFound = false;
+        // Parse the file and display each of the nodes.
+        while (reader.Read()) {
+          switch (reader.NodeType) {
+            case XmlNodeType.Element:
+              if (reader.Name == "OutputPath") {
+                outputPathFound = true;
+              }
+              break;
+            case XmlNodeType.Text:
+              if (outputPathFound) {
                 string result = reader.Value;
                 if (Path.IsPathRooted(result)) {
                   return result;

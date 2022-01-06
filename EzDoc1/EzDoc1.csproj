@@ -87,13 +87,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="EzDoc\Info\Manual.md" />
+    <None Include="EzDoc\EzDoc.json" />
+    <None Include="EzDoc\Handbuch\Handbuch.Tutorial.md" />
+    <None Include="EzDoc\Handbuch\Handbuch.Einstieg.md" />
     <None Include="EzDoc\navbar_content.yaml" />
     <EmbeddedResource Include="HtmlStaticFiles\navbar_default.yaml" />
     <EmbeddedResource Include="HtmlStaticFiles\EzDoc.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EzDoc\Api.xml" />
     <Content Include="EzDoc\_out\Api.html" />
     <Content Include="EzDoc\_out\css\navtree.css" />
     <Content Include="EzDoc\_out\css\style.css" />

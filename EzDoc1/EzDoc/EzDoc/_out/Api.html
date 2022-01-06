@@ -1,0 +1,5404 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/treejs.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navtree.css">
+</head>
+
+<body>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Api</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="Api.html">Api Documentation</a>
+</li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+  <main role="main" class="row" style="margin-top: 60px;" class="fixed-top">
+    <div class="fixed-top row mb-3" style="margin-top: 60px;">
+      <div class="col-md-3 navtree">
+        <p class="mainhead">Api Documentation</p>
+<form class="d-flex">
+  <input id="filter-box" class="form-control me-2 bg-dark text-light" type="search" placeholder="Filter" aria-label="Search">
+</form>
+<hr>
+<div id="container"></div>
+      </div>
+      <div class="col-md-9">
+        <div class="content-container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-breadcrumb" id="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+          <!-- <div id="trumbowyg-demo"></div> -->
+          <div id="Resources" class="content">
+  <h2>Resources</h2>
+<p>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ResourceManager</td>
+<td>
+  Returns the cached ResourceManager instance used by this class.
+</td>
+</tr>
+<tr>
+<td>Culture</td>
+<td>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</td>
+</tr>
+</table>
+
+</div>
+<div id="Resources" class="content">
+  
+</div>
+<div id="My" class="content">
+  
+</div>
+<div id="Bausteinberechner" class="content">
+  <h2>Bausteinberechner</h2>
+<p>
+ Stellt Funktionen zur unspezifischen Bausteinberechnung gemäß Zusagenbeschreibung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>KontoErgebnisVerarbeiten</td>
+<td>
+ Persistiert das Bausteinberechnungsergebnis in das Konto.
+ </td>
+</tr>
+<tr>
+<td>BerechneBausteine</td>
+<td>
+ 	Ermittelt die Bausteindefinitionen des zum Berechnungskennzeichen gehörenden Bausteinberechnungskomponente, 
+ 	die gemäß ihrer Bedingungen relevant sind und berechnet die Bausteine gemäß der zu diesen Bausteindefinitionen gehörenden Berechnungskernen.
+ </td>
+</tr>
+<tr>
+<td>BerechneBausteineDerArt</td>
+<td>
+ 	Berechnet die Bausteine gemäß des Berechnungskerns der übergebenen Bausteindefinition.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="BausteinberechnungAltersfaktoren" class="content">
+  <h2>BausteinberechnungAltersfaktoren</h2>
+<p>
+ Bausteinberechnungskern für die Berechnung von Bausteinen mit Altersfaktoren.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BeitragsartenParameter</td>
+<td>
+ Beiträge dieser Arten werden summiert und mit dem Altersfaktor multipliziert.
+ </td>
+</tr>
+<tr>
+<td>Berechtigungszeitraum</td>
+<td>
+ Beschreibt Beginn und Ende der Bausteinberechtigung. Gegen diese Grenzen wird anteilig gerechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="BausteinberechnungVerzinsung" class="content">
+  <h2>BausteinberechnungVerzinsung</h2>
+<p>
+ Bausteinberechnungskern für die Berechnung von Bausteinen durch Verzinsung des Kontostandes.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ZuVerzinsendeBausteinarten</td>
+<td>
+ Über Bausteine dieser Art wird der zu verzinsende Kontostand berechnet.
+ </td>
+</tr>
+<tr>
+<td>Berechtigungszeitraum</td>
+<td>
+ Beschreibt Beginn und Ende der Bausteinberechtigung. Gegen diese Grenzen wird anteilig gerechnet.
+ </td>
+</tr>
+<tr>
+<td>StichtagKontostand</td>
+<td>
+ Der zu verzinsende Kontostand wird zum letzten Jahrestag vor dem Berechnungsstichtag berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="CustomBausteinberechnung" class="content">
+  <h2>CustomBausteinberechnung</h2>
+<p>
+ Dieser Bausteinberechnungskern führt zum Aufrufen des Hooks <a href="Api.html?elementId=IBausteinberechnungCustomizingProvider">IBausteinberechnungCustomizingProvider</a>.BerechneCustomBausteine() während Bausteinberechner.BerechneBausteine
+ </p>
+</div>
+<div id="Bausteinberechnungskern" class="content">
+  <h2>Bausteinberechnungskern</h2>
+<p>
+ Beschreibt die Methode zur Berechnung von Bausteinen.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+   Erzeugt eine CustomBausteinberechnung und führt zum Aufrufen des Hooks <a href="Api.html?elementId=IBausteinberechnungCustomizingProvider">IBausteinberechnungCustomizingProvider</a>.BerechneCustomBausteine während Bausteinberechner.BerechneBausteine.
+ </td>
+</tr>
+<tr>
+<td>MitAltersfaktoren</td>
+<td>
+ Erzeugt eine BausteinberechnungAltersfaktoren.
+ Ermittelt zunächst passende Beiträge zum Berechnungsstichtag gemäß Parameter Beitragsarten. 
+ Berechnet dann einen Baustein durch Multiplikation der Summe der gefundenen Beiträge und dem Altersfaktor aus den Systemparametern.
+ </td>
+</tr>
+<tr>
+<td>MitVerzinsung</td>
+<td>
+   Erzeugt eine BausteinberechnungVerzinsung.
+   Ermittelt zum letzten Jahrestag gemäß JahrestagKontostand vor Berechnungsstichtag den Kontostand. 
+   Berechnet dann einen Baustein in Höhe der Zinsen des Kontstandes gemäß des (berechtigten) Zeitraums bis zum Berechnungsstichtag gemäß Parameter Zinssatz.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Bausteinberechnungskomponente" class="content">
+  <h2>Bausteinberechnungskomponente</h2>
+<p>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Bausteine für Bausteinkonten.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Bausteindefinitionen</td>
+<td>
+ Bausteindefinitionen
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Bausteindefinition" class="content">
+  <h2>Bausteindefinition</h2>
+<p>
+ Beschreibt eine Art von Baustein und wie Bausteine dieser Art zu berechnen sind.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Berechnungskern</td>
+<td>
+ Berechnungskern zur Berechnung der hier definierten Bausteine.
+ </td>
+</tr>
+<tr>
+<td>Bedingungen</td>
+<td>
+ Bausteine werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </td>
+</tr>
+<tr>
+<td>Bausteinart</td>
+<td>
+ CustomEnum mit dem Namen CustomEnumNames.Bausteinart.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Bausteinberechnungsgrenze" class="content">
+  <h2>Bausteinberechnungsgrenze</h2>
+<p>
+ Beschreibt Beginn und Ende einer Bausteinberechtigung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>EintrittBisAustritt</td>
+<td>
+ Beginn = GültigAb des jüngsten Aktivstatus.
+ Ende = Austrittsdatum im Versorgungsverhältnis.
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Beginn = <a href="Api.html?elementId=IBausteinberechnungCustomizingProvider">IBausteinberechnungCustomizingProvider</a>.BeginnBausteinberechnung
+ Ende = <a href="Api.html?elementId=IBausteinberechnungCustomizingProvider">IBausteinberechnungCustomizingProvider</a>.EndeBausteinberechnung
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Bausteinberechnungsfunktionen" class="content">
+  <h2>Bausteinberechnungsfunktionen</h2>
+<p>
+ Konkrete Funktionen zur Bausteinberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneBausteineViaAltersfaktoren</td>
+<td>
+ Ermittelt zunächst passende Beiträge zum Berechnungsstichtag gemäß Parameter Beitragsarten. 
+ Berechnet dann einen Baustein durch Multiplikation der Summe der gefundenen Beiträge und dem Altersfaktor aus den Systemparametern.
+ </td>
+</tr>
+<tr>
+<td>BerechneBonusbausteine</td>
+<td>
+   Ermittelt zum letzten Jahrestag gemäß JahrestagKontostand vor Berechnungsstichtag den Kontostand. 
+   Berechnet dann einen Baustein in Höhe der Zinsen des Kontstandes gemäß des (berechtigten) Zeitraums bis zum Berechnungsstichtag gemäß Parameter Zinssatz.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalBausteinberechnungCustomizing" class="content">
+  <h2>OptionalBausteinberechnungCustomizing</h2>
+<p>
+ Optionales Customizng der Bausteinberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>InstantiateBausteinMethod</td>
+<td>
+ Kann verwendet werden, um Bausteine zu instanziieren, die den Baustein aus der PensionLib erweitern.
+ </td>
+</tr>
+<tr>
+<td>AddOrUpdateBausteinMethod</td>
+<td>
+ Falls nötig, kann hier die AddOrUpdate-Funktion auf dem konkreten Beitragstyp aufgerufen werden, falls der PensionLib.Domain.Beitrag
+ so erweitert wurde, dass sich auch die Eindeutigkeit verändert hat. 
+ Falls True zurückgegeben wird, findet kein Mapping vom Framework statt.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IBausteinberechnungCustomizingProvider" class="content">
+  <h2>IBausteinberechnungCustomizingProvider</h2>
+<p>
+ Customizing der Bausteinberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ErmittleAltersfaktor</td>
+<td>
+ Ermittelt den Altersfaktor für die Bausteinberechnung mit Altersfaktoren
+ </td>
+</tr>
+<tr>
+<td>BerechneCustomBausteine</td>
+<td>
+ Wird aufgerufen, wenn die CustomBausteinberechnung (Bausteinberechnung.Beschreibung.Bausteinberechnungskern.Custom) greift
+ </td>
+</tr>
+<tr>
+<td>BeginnBausteinberechnung</td>
+<td>
+ Bestimmt den frühesten Zeitpunkt, ab dem Konten Bausteine der Bausteinart erhalten können.
+ </td>
+</tr>
+<tr>
+<td>EndeBausteinberechnung</td>
+<td>
+  Bestimmt den spätesten Zeitpunkt, bis zu dem Konten Bausteine der Bausteinart erhalten können.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="BausteinWirdGeändert" class="content">
+  <h2>BausteinWirdGeändert</h2>
+<p>
+ IValidationPredicate, das angibt, ob neu berechnete Bausteine im Konto bereits existieren und von diesen abweichen.
+ </p>
+</div>
+<div id="BeiträgeExistierenZumBaustein" class="content">
+  <h2>BeiträgeExistierenZumBaustein</h2>
+<p>
+ IValidationPredicate, das angibt, ob zum Stichtag relevante Beiträge existieren"
+ </p>
+</div>
+<div id="Validierung" class="content">
+  
+</div>
+<div id="Bausteinberechnung" class="content">
+  
+</div>
+<div id="BeitragsberechnungMitEinkommensprozente" class="content">
+  <h2>BeitragsberechnungMitEinkommensprozente</h2>
+<p>
+ Berechnet einen Jahresbeitrag. 
+ Es werden zunächst Entgeltinformation und Dienstzeitinformation im Zeitraum vom letzten Jahrestag vor Berechnungsstichtag gemäß EinkommenJahrestag bis zum Berechnungsstichtag berechnet. 
+ Aus diesen Informationen wird mit BerechneBeiträgeMitEinkommensprozenten ein Beitrag berechnet.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BbgErmittlungsArt</td>
+<td>
+ Zum Stichtag oder Jahresdurchschnitt.
+ </td>
+</tr>
+<tr>
+<td>Berechtigungszeitraum</td>
+<td>
+ Beschreibt Beginn und Ende der Beitragsberechtigung. Gegen diese Grenzen wird anteilig gerechnet.
+ </td>
+</tr>
+<tr>
+<td>Beitragssätze</td>
+<td>
+ Die Beitragssätze, gegen die das Einkommen aufgeteilt und mit den entsprechenden Prozentsätzen multipliziert wird.
+ </td>
+</tr>
+<tr>
+<td>Einkommensdefinition</td>
+<td>
+ Beschreibt, wie das Einkommen als Basis der Beitragsberechnung ermittelt wird.
+ </td>
+</tr>
+<tr>
+<td>Dienstzeitberechnungskern</td>
+<td>
+ Beschreibt, wie die Dienstzeitwerte als Basis der Beitragsberechnung ermittelt wird.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="CustomBeitragsberechnung" class="content">
+  <h2>CustomBeitragsberechnung</h2>
+<p>
+ Dieser Beitragsberechnungskern führt zum Aufrufen 
+ des Hooks <a href="Api.html?elementId=IBeitragsberechnungCustomizingProvider">IBeitragsberechnungCustomizingProvider</a>.BerechneCustomBeiträge während Beitragsberechner.BerechneBeiträge
+ </p>
+</div>
+<div id="Beitragsberechnungsgrenze" class="content">
+  <h2>Beitragsberechnungsgrenze</h2>
+<p>
+ Beschreibt Beginn und Ende einer Bausteinberechtigung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>EintrittBisAustritt</td>
+<td>
+ Beginn = GültigAb des jüngsten Aktivstatus.
+ Ende = Austrittsdatum im Versorgungsverhältnis.
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Beginn = <a href="Api.html?elementId=IBeitragsberechnungCustomizingProvider">IBeitragsberechnungCustomizingProvider</a>.GetBeginnBeitragsberechtigung
+ Ende = <a href="Api.html?elementId=IBeitragsberechnungCustomizingProvider">IBeitragsberechnungCustomizingProvider</a>.GetEndeBeitragsberechtigung
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsberechnungskern" class="content">
+  <h2>Beitragsberechnungskern</h2>
+<p>
+   Beschreibt die Methode zur Berechnung von Beiträgen.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erzeugt eine CustomBeitragsberechnung und führt zum Aufrufen des Hooks BerechneCustomBeiträge während Beitragsberechner.BerechneBeiträge.
+ </td>
+</tr>
+<tr>
+<td>Einkommensprozente</td>
+<td>
+ Erzeugt eine BeitragsberechnungMitEinkommensprozente.
+ Berechnet einen Jahresbeitrag. 
+ Es werden zunächst Entgeltinformation und Dienstzeitinformation im Zeitraum vom letzten Jahrestag vor Berechnungsstichtag gemäß EinkommenJahrestag bis zum Berechnungsstichtag berechnet. 
+ Aus diesen Informationen wird mit BerechneBeiträgeMitEinkommensprozenten ein Beitrag berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsberechnungskomponente" class="content">
+  <h2>Beitragsberechnungskomponente</h2>
+<p>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Beiträge für beitragsabhängige Konten.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Beitragsdefinitionen</td>
+<td>
+ Beitragsdefinitionen
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsdefinition" class="content">
+  <h2>Beitragsdefinition</h2>
+<p>
+ Beschreibt eine Art von Beitrag und wie Beiträge dieser Art zu berechnen sind.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Berechnungskern</td>
+<td>
+ Berechnungskern zur Berechnung der hier definierten Beiträge.
+ </td>
+</tr>
+<tr>
+<td>Bedingungen</td>
+<td>
+ Beiträge werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </td>
+</tr>
+<tr>
+<td>Beitragsart</td>
+<td>
+ CustomEnum mit dem Namen CustomEnumNames.Beitragsart.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragssatz" class="content">
+  <h2>Beitragssatz</h2>
+<p>
+ Wird von <a href="Api.html?elementId=BeitragsberechnungMitEinkommensprozente">BeitragsberechnungMitEinkommensprozente</a> verwendet.
+ Beschreibt einen Gehaltsabschnitt. Die Prozentsätze beziehen sich auf die anteilige Bbg.
+ BbgBis = 0 bedeutet, dass das volle Gehalt verwendet wird.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BbgAb</td>
+<td>
+ Untere Grenze des Gehaltsabschnitts = BbgAp Prozent vom Gehalt
+ </td>
+</tr>
+<tr>
+<td>BbgBis</td>
+<td>
+ Obere Grenze des Gehaltsabschnitts = BbgBis Prozent vom Gehalt.
+ Falls BbgBis = 0, ist die obere Grenze das volle Gehalt.
+ </td>
+</tr>
+<tr>
+<td>Beitragssatz</td>
+<td>
+ Prozentsatz, mit dem der Gehaltsabschnitt multipliziert wird.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Beitragsberechner" class="content">
+  <h2>Beitragsberechner</h2>
+<p>
+ Stellt Funktionen zur unspezifischen Beitragsberechnung gemäß Zusagenbeschreibung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneBeiträge</td>
+<td>
+ Ermittelt die Beitragsdefinitionen des zum Berechnungskennzeichen gehörenden Beitragsberechnungskomponente, 
+ die gemäß ihrer Bedingungen relevant sind und berechnet die Beiträge gemäß der zu diesen Beitragsdefinitionen gehörenden Berechnungskernen.
+ </td>
+</tr>
+<tr>
+<td>BerechneBeiträgeDerArt</td>
+<td>
+ Berechnet die Beiträge gemäß des Berechnungskerns der übergebenen Beitragsdefinition.
+ </td>
+</tr>
+<tr>
+<td>KontoErgebnisVerarbeiten</td>
+<td>
+ Persistiert das Beitragsberechnungsergebnis in das Konto
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsberechnungsfunktionen" class="content">
+  <h2>Beitragsberechnungsfunktionen</h2>
+<p>
+ Konkrete Funktionen zur Beitragsberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneBeiträgeMitEinkommensprozenten</td>
+<td>
+ Gemäß der Beitragssätze wird das Gehalt in Gehaltsabschnitte unterteilt.
+ Ein Gehaltsabschnitt ist die Differenz aus BbgBis Prozent von Bbg und BbgAb Prozent von Bbg, wobei die linke Seite mit dem Gehalt
+ minimiert wird.
+ Jeder Gehaltsabschnitt wird mit dem
+ entsprechenden Prozentsatz aus dem Beitragssatz multipliziert. Als Resultat wird ein Beitrag in Höhe der Summer all dieser Produkte
+ zurückgegeben.
+ </td>
+</tr>
+<tr>
+<td>BerechneBeitragByBeitragssätze</td>
+<td>
+ Gemäß der Beitragssätze wird das Gehalt in Gehaltsabschnitte unterteilt.
+ Ein Gehaltsabschnitt ist die Differenz aus BbgBis Prozent von Bbg und BbgAb Prozent von Bbg, wobei die linke Seite mit dem Gehalt
+ minimiert wird.
+ Jeder Gehaltsabschnitt wird mit dem
+ entsprechenden Prozentsatz aus dem Beitragssatz multipliziert. Als Resultat wird die Summer all dieser Produkte
+ zurückgegeben.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalBeitragsberechnungCustomizing" class="content">
+  <h2>OptionalBeitragsberechnungCustomizing</h2>
+<p>
+ Optionales Customizing der Beitragsberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>InstantieteBeitragMethod</td>
+<td>
+ Falls die berechneten Beiträge nicht vom Type PensionLib.Domain.Beitrag sein sollen, kann in dieser Funktion ein anderer Typ instanziiert werden.
+ </td>
+</tr>
+<tr>
+<td>AddOrUpdateBeitragMethod</td>
+<td>
+ Falls nötig, kann hier die AddOrUpdate-Funktion auf dem konkreten Beitragstyp aufgerufen werden, falls der PensionLib.Domain.Beitrag
+ so erweitert wurde, dass sich auch die Eindeutigkeit verändert hat. 
+ Falls True zurückgegeben wird, findet kein Mapping vom Framework statt.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IBeitragsberechnungCustomizingProvider" class="content">
+  <h2>IBeitragsberechnungCustomizingProvider</h2>
+<p>
+ Customizing der Beitragsberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetEndeBeitragsberechtigung</td>
+<td>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>GetBeginnBeitragsberechtigung</td>
+<td>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>BerechneCustomBeiträge</td>
+<td>
+ Wird aufgerufen, wenn die CustomBeitragsberechnung (Beitragsberechnung.Beschreibung.Beitragsberechnungskern.Custom) greift
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="BeitragWirdGeändert" class="content">
+  <h2>BeitragWirdGeändert</h2>
+<p>
+ IValidationPredicate, das angibt, ob neu berechnete Beiträge im Konto bereits existieren und von diesen abweichen.
+ </p>
+</div>
+<div id="Validierung" class="content">
+  
+</div>
+<div id="Beitragsberechnung" class="content">
+  
+</div>
+<div id="DelegateBeitragsverzinsungskern" class="content">
+  <h2>DelegateBeitragsverzinsungskern</h2>
+<p>
+ DelegateBeitragsverzinsungskern
+ </p>
+</div>
+<div id="Beitragsverzinsungskern" class="content">
+  <h2>Beitragsverzinsungskern</h2>
+<p>
+ Beschreibt die Methode zur Berechnung einer Beitragsverzinsung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Turnus</td>
+<td>
+ Verzinsungsturnus, in dem Verzinsungen berechnet werden sollen.
+ </td>
+</tr>
+<tr>
+<td>Berechtigungszeitraum</td>
+<td>
+ Berechtigungszeitraum, in dem Verzinsungen gutgeschrieben werden sollen.
+ </td>
+</tr>
+<tr>
+<td>Verzinsungsart</td>
+<td>
+ Jährlich, Unterjährig, Stetig oder Gemischt.
+ </td>
+</tr>
+<tr>
+<td>Zinsrechnung</td>
+<td>
+ OhneZinseszins oder MitZinseszins
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erzeugt eine CustomBeitragsverzinsung und führt zum Aufrufen des Hooks IBeitragsverzinsungCustomizingProvider.BerechneCustomVerzinsungen während Beitragsverzinsungsberechner.BerechneBeitragsverzinsungen.
+ </td>
+</tr>
+<tr>
+<td>Beitragsgenau</td>
+<td>
+ Beitragsverzinsungsberechnung mittels BeitragsgenaueBeitragsverzinsung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="BeitragsgenaueBeitragsverzinsung" class="content">
+  <h2>BeitragsgenaueBeitragsverzinsung</h2>
+<p>
+ Beitragsverzinsungskern mittels Beitragsverzinsungsberechner.BerechneBeitragsgenaueVerzinsungen.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Beitragsarten</td>
+<td>
+ Die Beitragsarten der zu verzinsenden Beiträge.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsverzinsungskomponente" class="content">
+  <h2>Beitragsverzinsungskomponente</h2>
+<p>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Beiträge mit Verzinsung für Konten mit Beitragsverzinsung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Verzinsungsdefinitionen</td>
+<td>
+ Beitragsverzinsungsdefinitionen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beitragsverzinsungsdefinition" class="content">
+  <h2>Beitragsverzinsungsdefinition</h2>
+<p>
+ Beschreibt eine Art von Beitragsverzinsung und wie Beitragsverzinsungen dieser Art zu berechnen sind.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Bedingungen</td>
+<td>
+ Beitragsverzinsungen werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </td>
+</tr>
+<tr>
+<td>Berechnungskern</td>
+<td>
+ Der Beitragsverzinsungskern zur Berechnung der Beitragsverzinsungen.
+ </td>
+</tr>
+<tr>
+<td>Bausteinart</td>
+<td>
+ Bausteinart der Beitragsverzinsungen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="CustomBeitragsverzinsung" class="content">
+  <h2>CustomBeitragsverzinsung</h2>
+<p>
+ Führt zum Aufruf von IBeitragsverzinsungCustomizingProvider.BerechneCustomVerzinsungen.
+ </p>
+</div>
+<div id="Verzinsungsturnus" class="content">
+  <h2>Verzinsungsturnus</h2>
+<p>
+ Beschreibt, in welchem Turnus eine Beitragverzinsung stattfinden soll.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Monatlich</td>
+<td>
+ Monatliche Beitragsverzinsung.
+ </td>
+</tr>
+<tr>
+<td>Jährlich</td>
+<td>
+ Jährliche Beitragsverzinsung zum Jahrestag.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Beitragsverzinsungsberechner" class="content">
+  <h2>Beitragsverzinsungsberechner</h2>
+<p>
+ Stellt Funktionen zur unspezifischen Beitragsverzinsungsberechnung gemäß Zusagenbeschreibung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneBeitragsgenaueVerzinsungen</td>
+<td>
+ Berechnet Beitragsverzinsungen für jeden Beitrag.
+ </td>
+</tr>
+<tr>
+<td>BerechneBeitragsverzinsungen</td>
+<td>
+ Berechnet Beitragsverzinsungen gemäß Zusagenbeschreibung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IBeitragsverzinsungCustomizingProvider" class="content">
+  <h2>IBeitragsverzinsungCustomizingProvider</h2>
+<p>
+ Customizing der Beitragsverzinsungsberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetEndeBeitragsverzinsungsberechtigung</td>
+<td>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>GetBeginnBeitragsverzinsungsberechtigung</td>
+<td>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>BerechneCustomVerzinsungen</td>
+<td>
+ Wird aufgerufen, wenn die CustomBeitragsverzinsung (Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Custom) greift
+ </td>
+</tr>
+<tr>
+<td>ErmittleZinssatz</td>
+<td>
+ Ermittelt den Zinssatz für die Beitragsverzinsgungsberechnung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalBeitragsverzinsungCustomizing" class="content">
+  <h2>OptionalBeitragsverzinsungCustomizing</h2>
+<p>
+ Optionales Customizing der Beitragsverzinsgungsberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>InstantiateVerzinsungMethod</td>
+<td>
+ Falls die berechneten Beiträge nicht vom Type PensionLib.Domain.Beitrag sein sollen, kann in dieser Funktion ein anderer Typ instanziiert werden.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="Beitragsverzinsung" class="content">
+  
+</div>
+<div id="DienstzeitberechnungImmerVoll" class="content">
+  <h2>DienstzeitberechnungImmerVoll</h2>
+<p>
+ Dienstzeitberechnungskern, der Dienstzeiten anhand von Dienstzeitberechner.BerechneDienstjahre berechnet.
+ </p>
+</div>
+<div id="DienstzeitberechnungStandard" class="content">
+  <h2>DienstzeitberechnungStandard</h2>
+<p>
+ Dienstzeitberechnungskern, der die Jahre anhand von Dienstzeitberechner.BerechneDienstjahre
+ und den Teilzeitgrad anhand von Einkommensberechnung.Api.BerechnungsExtensions.GetDienstzeitenDurchschnittlicherTZFaktor berechnet.
+ </p>
+</div>
+<div id="CustomLeistungsformel" class="content">
+  <h2>CustomLeistungsformel</h2>
+<p>
+ Führt bei der Kontostandsberechnung zum Aufruf des Customizing-Hooks IDienstzeitberechnungCustomizingProvider.GetKontostandCustom
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Einkommensstaffeln</td>
+<td>
+ Die Einkommensstaffeln zur Berechnung des Kontostandes.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="LeistungsformelEinkommensprozente" class="content">
+  <h2>LeistungsformelEinkommensprozente</h2>
+<p>
+ Leistungsformel zur Berechnung von Kontoständen mittels Einkommensstaffeln.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Einkommensstaffeln</td>
+<td>
+ Die Einkommensstaffeln zur Berechnung des Kontostandes.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Einkommensstaffel" class="content">
+  <h2>Einkommensstaffel</h2>
+<p>
+ Beschreibt Einkommensstaffeln zur Ermittlung eines dienstzeitabhängigen Kontostandes.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Einkommensdefinition</td>
+<td>
+ Einkommensberechnungskern zur Berechnung der Entgeltinformation, welches mit den Prozentsätzen verechnet wird.
+ </td>
+</tr>
+<tr>
+<td>Prozentsätze</td>
+<td>
+ Prozentsätze zur Verechnung mit den Entgeltinformationen mittels Beitragsberechnungsfunktionen.BerechneBeitragByBeitragssätze.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Dienstzeitberechnungskern" class="content">
+  <h2>Dienstzeitberechnungskern</h2>
+<p>
+ Methode zur Berechnung von Dienstzeitinformationen.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ImmerVoll</td>
+<td>
+ Erzeugt eine DienstzeitberechnungImmerVoll.
+ </td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>
+ Erzeugt eine DienstzeitberechnungStandard.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Dienstzeitberechnungskomponente" class="content">
+  <h2>Dienstzeitberechnungskomponente</h2>
+<p>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft, die sich direkt aus Dienstzeiten und Einkommen ergeben.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Leistungsformel</td>
+<td>
+ Die Leistungsformel zur Ermittlung der Kontostandes.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Leistungsformel" class="content">
+  <h2>Leistungsformel</h2>
+<p>
+ Beschreibt eine Methode zur Ermittlung dienstzeitabhängiger Kontostände.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Dienstzeitberechnungskern</td>
+<td>
+ Der Dienstzeitberechnungskern, mit dem die Dienstzeit berechnet wird, die der Kontostandsberechnung zugrunde gelegt wird.
+ </td>
+</tr>
+<tr>
+<td>Berechtigungszeitraum</td>
+<td>
+ Der Berechtigungszeitraum, in dem Dienstzeiten berücksichtigt werden sollen.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Einkommensprozente</td>
+<td>
+ Erstellt eine LeistungsformelEinkommensprozente zur Berechnung von dienstzeitabhängigen Kontoständen anhand von Einkommensstaffeln.  
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erstellt eine CustomLeistungsformel zur Leistungsberechnung mit den Customizing-Hooks IDienstzeitberechnungCustomizingProvider.GetKontostandCustom
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="IDienstzeitberechnungCustomizingProvider" class="content">
+  <h2>IDienstzeitberechnungCustomizingProvider</h2>
+<p>
+ Customizing für dienstzeitabhängige Zusagenberechnungen.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetEndeDienstzeitberechnung</td>
+<td>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>GetBeginnDienstzeitberechnung</td>
+<td>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </td>
+</tr>
+<tr>
+<td>GetDienstjahreprozent</td>
+<td>
+ GetDienstjahreprozent
+ </td>
+</tr>
+<tr>
+<td>GetKontostandCustom</td>
+<td>
+ Wird von der CustomLeistungsformel aufgerufen.
+ </td>
+</tr>
+<tr>
+<td>GetKontostandUvaCustom</td>
+<td>
+ Wird von der CustomLeistungsformel aufgerufen.
+ </td>
+</tr>
+<tr>
+<td>GetKontostandImLeistungsfallCustom</td>
+<td>
+ Wird von der CustomLeistungsformel aufgerufen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalDienstzeitberechnungCustomizing" class="content">
+  <h2>OptionalDienstzeitberechnungCustomizing</h2>
+<p>
+ Optionales Customizing für dienstzeitabhängige Zusagenberechnungen.
+ </p>
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="Dienstzeitberechner" class="content">
+  <h2>Dienstzeitberechner</h2>
+<p>
+ Stellt Funktionen zur dienstzeitabhängigen Zusagenberechnung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneKontostandMitEinkommensstaffeln</td>
+<td>
+ Berechnet einen Kontostand gemäß übergebenen Einkommenststaffeln und Beitragsberechnungsfunktionen.BerechneBeitragByBeitragssätze.
+ </td>
+</tr>
+<tr>
+<td>BerechneDienstjahre</td>
+<td>
+ Berechnet die Dienstjahre gemäß den Rundungsparametern.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Dienstzeitberechnung" class="content">
+  
+</div>
+<div id="Berechnungsblattgruppe" class="content">
+  <h2>Berechnungsblattgruppe</h2>
+<p>
+ Beschreibt die Erzeugung eines Berechnungsblatts durch die Angabe eines oder mehrerer Templates für eine Zusagengruppe.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Kontokennzeichen</td>
+<td>
+ Die Kontokennzeichen der Zusagen, die in diesem Berechnungsblatt berücksichtigt werden sollen.
+ </td>
+</tr>
+<tr>
+<td>Templates</td>
+<td>
+ Die Templates, die nacheinander dem Dokument hinzugefügt werden sollen.
+ </td>
+</tr>
+<tr>
+<td>HeaderFooterInfo</td>
+<td>
+ Templates für Header und Footer, die auf den Seiten dieses Berechnungsblattes verwendet werden sollen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Dokumentgruppe" class="content">
+  <h2>Dokumentgruppe</h2>
+<p>
+ Beschreibt, wie die Erzeugung eines Dokumentes mit Anschreiben, Berechnungsblättern und Abschluss erfolgen soll.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>AnschreibenTemplates</td>
+<td>
+ Diese Templates werden am Anfang des Dokuments nacheinander eingefügt.
+ </td>
+</tr>
+<tr>
+<td>AbschlussTemplates</td>
+<td>
+ Diese Templates werden am Ende des Dokuments nacheinander eingefügt.
+ </td>
+</tr>
+<tr>
+<td>Berechnungsblattgruppen</td>
+<td>
+ Für jede Berechnungsblattgruppe wird in der angegebenen Reihenfolge ein Berechnungsblatt erstellt.
+ Die Berechnungsblätter werden nach dem Hook OnBeforeCreateBerechnungsblätter und vor dem Hook OnBeforeCreateBerechnungsblätter eingefügt.
+ </td>
+</tr>
+<tr>
+<td>AnschreibenHeaderFooterInfo</td>
+<td>
+ Diese Header und Footer werden auf jeder Seite des Anschreibens verwendet.
+ </td>
+</tr>
+<tr>
+<td>AbschlussHeaderFooterInfo</td>
+<td>
+ Diese Header und Footer werden auf jeder Seite des Abschlusses verwendet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Dokumenterzeugungsinfo" class="content">
+  <h2>Dokumenterzeugungsinfo</h2>
+<p>
+ Beschreibung eines Dokumenterzeugungsprozesses.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Dokumentgruppierung</td>
+<td>
+ Dokumentgruppierungsinfo
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Dokumentgruppierungsinfo" class="content">
+  <h2>Dokumentgruppierungsinfo</h2>
+<p>
+ Beschreibt die Dokumentgruppen, für die jeweils ein Dokument erstellt werden soll.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GruppierungsArt</td>
+<td>
+ Art der Gruppierung. 
+ Pro Person bedeutet, dass für eine Person genau ein Dokument mit Anschreiben, Mittelteil inklusive Berechnungsblättern und Abschluss ersetllt wird.
+ Zusagengruppen bedeutet, dass für jede angegebene Zusagengruppe jewils ein Dokument ersellt wird.
+ </td>
+</tr>
+<tr>
+<td>Gruppierungen</td>
+<td>
+   { [KontokennzeichenListe1], [KontokennzeichenListe2] },{ [KontokennzeichenListe3], [KontokennzeichenListe4] }
+   --Berechnungsgruppe1----,---Berechnungsgruppe2------,---Berechnungsgruppe3-----,-----Berechnungsgruppe4---
+   ----------------Dokument 1--------------------------,-----------------Dokument 2-------------------------
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ProPerson</td>
+<td>
+ Es soll für eine Person genau ein Dokument mit Anschreiben, Mittelteil inklusive Berechnungsblättern und Abschluss ersetllt werden.
+ </td>
+</tr>
+<tr>
+<td>Zusagengruppen</td>
+<td>
+ Es soll für jede angegebene Zusagengruppe jewils ein Dokument ersellt werden.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Dokumenterzeugung" class="content">
+  
+</div>
+<div id="BbgErmittlungsart" class="content">
+  <h2>BbgErmittlungsart</h2>
+<p>
+ Beschreibt wie die Bbg ermittelt werden soll.
+ </p>
+</div>
+<div id="EinkommenParameter" class="content">
+  <h2>EinkommenParameter</h2>
+<p>
+ Beschreibt EinkommenParameter zur Einkommensberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Bemessungsgrundlage</td>
+<td>
+ JährlichesEinkommen oder MonatlichesEinkommen
+ </td>
+</tr>
+<tr>
+<td>Gehaltsart</td>
+<td>
+ Vollzeit oder Teilzeit
+ </td>
+</tr>
+<tr>
+<td>AnzahlGehälter</td>
+<td>
+ Kau 20.03.2020
+ Ist auch wichtig wenn das Gehalt monatlich gemeldet wird. Wenn es aber statt 12 Monatsgehälter 
+ 14 Monatsgehälter gibt dann muss das aus der EK Historie ermittelte EK noch einmal mit
+ 'AnzahlGehälter'/12 multipliziert werden.
+ </td>
+</tr>
+<tr>
+<td>Einkommensart</td>
+<td>
+ CustonEnum mit dem Namen Einkommensart.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="BemessungsgrundlageEinkommen" class="content">
+  <h2>BemessungsgrundlageEinkommen</h2>
+<p>
+ JährlichesEinkommen oder MonatlichesEinkommen
+ </p>
+</div>
+<div id="Dienstzeitenparameter" class="content">
+  <h2>Dienstzeitenparameter</h2>
+<p>
+ Dienstzeitparameter für Dienstzeitarten für einen GÜnstigervergleich
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>MaxmialeMonateFürGÜnstigervergleich</td>
+<td>
+ Maxmiale Monate für GÜnstigervergleich.
+ </td>
+</tr>
+<tr>
+<td>Dienstzeitarten</td>
+<td>
+ CustomEnum mit dem Namen Dienstzeitart.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="GehaltsArt" class="content">
+  <h2>GehaltsArt</h2>
+<p>
+ Vollzeit oder Teilzeit.
+ </p>
+</div>
+<div id="EinkommensberechnungskernMitGünstigervergleich" class="content">
+  <h2>EinkommensberechnungskernMitGünstigervergleich</h2>
+<p>
+ Einkommensberechnungskern zur Einkommensberechnung mittels Einkommensberechnungsfunktionen.GetEntgeltinformation1
+ </p>
+</div>
+<div id="EinkommensberechnungskernStandard" class="content">
+  <h2>EinkommensberechnungskernStandard</h2>
+<p>
+ Einkommensberechnungskern zur Einkommensberechnung mittels Einkommensberechnungsfunktionen.GetEntgeltinformation
+ </p>
+</div>
+<div id="Einkommensberechnungskern" class="content">
+  <h2>Einkommensberechnungskern</h2>
+<p>
+  Beschreibt die Methode zur Berechnung einer Entgeltinformation.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Einkommenparameter</td>
+<td>
+ EinkommenParameter
+ </td>
+</tr>
+<tr>
+<td>BbgErmittlungsart</td>
+<td>
+ ZumStichtag oder Jahresdurchschnitt
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Standard</td>
+<td>
+ Erzeugt einen EinkommensberechnungskernStandard.
+ </td>
+</tr>
+<tr>
+<td>MitGünstigervergleich</td>
+<td>
+ Erzeugt einen EinkommensberechnungskernMitGünstigervergleich. 
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Einkommensberechnungsfunktionen" class="content">
+  <h2>Einkommensberechnungsfunktionen</h2>
+<p>
+ Konkrete Funktionen zur Einkommensberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetDienstzeitenDurchschnittlicherTZFaktor``1</td>
+<td>
+ Liefert den durchschnittlichen Teilzeitgrad der übergebenen Dienstzeiten.
+ </td>
+</tr>
+<tr>
+<td>GetDienstzeitenByVonBis``1</td>
+<td>
+ Liefert alle Dienstzeiten mit Beginn kleiner gleich von und Ende größer gleich bis.
+ </td>
+</tr>
+<tr>
+<td>AddOrUpdateDienstzeit``1</td>
+<td>
+ Fügt Dienstzeiten hinzu, falls dadurch Änderungen entstehen - ?
+ </td>
+</tr>
+<tr>
+<td>GetEntgeltinformation1</td>
+<td>
+ Berechnet die Entgeltinformation im Berechtigungszeitraum. Dabei werden die Einkommen gemäß den EinkommenParameter berücksichtigt.
+ Im Dienstzeitenparameter kann gesteuert werden, welche Dienstzeiten dabei dazu führen, dass ein Günstigervergleich mit dem letzten 
+ Gehalt vor Beginn einer solchen Dienstzeitphase stattfinden soll.
+ </td>
+</tr>
+<tr>
+<td>TryGetDienstzeitByStichtagTzgArt</td>
+<td>
+ Sucht die aktuellste 'Dienstzeit' einer angegebenen 'TzgArt' bis zum angegebenen 'Stichtag' anhand der Eigenschaft: 'Beginn'.
+ Falls genau ein passendes Objekt gefunden wurde, wird dieses zurück gegeben.
+ Falls mehrere passende Objekte gefunden wurde, wird [nothing] zurück gegeben.
+ Falls kein passendes Objekt gefunden wurde, wird [nothing] zurück gegeben.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Entgeltinformation" class="content">
+  <h2>Entgeltinformation</h2>
+<p>
+ Gezahltes Gehalt und zugehörige Bemessungsgrenze.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GezahltesGehalt</td>
+<td>
+ Gezahltes Gehalt
+ </td>
+</tr>
+<tr>
+<td>Bemessungsgrenze</td>
+<td>
+ Zum gezahlten Gehalt passende Bemessungsgrenze.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="BbgExistiertZumStichtag" class="content">
+  <h2>BbgExistiertZumStichtag</h2>
+<p>
+ "Gibt an, ob BBG zum Stichtag existiert
+ </p>
+</div>
+<div id="EinkommenExistiertImStichtagsmonat" class="content">
+  <h2>EinkommenExistiertImStichtagsmonat</h2>
+<p>
+ Gibt an, ob ein Einkommen in dem Monat des Stichtags existiert
+ </p>
+</div>
+<div id="EinkommenVorSonderdienstzeitExistiert" class="content">
+  <h2>EinkommenVorSonderdienstzeitExistiert</h2>
+<p>
+ Einkommen vor Sonderdienstzeit existiert
+ </p>
+</div>
+<div id="ErforderlicheEinkommenExistieren" class="content">
+  <h2>ErforderlicheEinkommenExistieren</h2>
+<p>
+ Gibt an, ob die durch die Einkommenparameter definierten Einkommen im Konto existieren
+ </p>
+</div>
+<div id="Validierung" class="content">
+  
+</div>
+<div id="Einkommensberechnung" class="content">
+  
+</div>
+<div id="AllgemeineEingabenAltersleistung" class="content">
+  <h2>AllgemeineEingabenAltersleistung</h2>
+<p>
+ AllgemeineEingaben, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="AllgemeineErgebnisseAltersleistung" class="content">
+  <h2>AllgemeineErgebnisseAltersleistung</h2>
+<p>
+ AllgemeineErgebnisse, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="KontoEingabenAltersleistung" class="content">
+  <h2>KontoEingabenAltersleistung</h2>
+<p>
+ KontoEingaben, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="KontoErgebnisseAltersleistung" class="content">
+  <h2>KontoErgebnisseAltersleistung</h2>
+<p>
+ KontoErgebnisse, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="GeVoAltersleistungDefinition" class="content">
+  <h2>GeVoAltersleistungDefinition</h2>
+<p>
+ Definition des GeVos Altersleistung. 
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>DokumentgruppierungMeldebogen</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Meldebogen.
+ </td>
+</tr>
+<tr>
+<td>DokumentgruppierungVariantenbescheid</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Variantenbescheid.
+ </td>
+</tr>
+<tr>
+<td>DokumentgruppierungLeistungsbescheid</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Leistungsbescheid.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Altersleistung" class="content">
+  
+</div>
+<div id="IAustrittCustomizingprovider" class="content">
+  <h2>IAustrittCustomizingprovider</h2>
+<p>
+ Customizing für den Geschäftsvorfall Austritt.
+ </p>
+</div>
+<div id="OptionalAustrittsdokumenterzeugungCustomizing" class="content">
+  <h2>OptionalAustrittsdokumenterzeugungCustomizing</h2>
+<p>
+ Optionales Customizing der Dokumenterzeugung im GeVo Austritt.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnBeforeCreateBerechnungsblätterMethod</td>
+<td>
+ Wird aufgerufen nachdem das Anschreiben erstellt wurde und bevor die Berechnungsblätter erstellt werden.
+ </td>
+</tr>
+<tr>
+<td>OnAfterCreateBerechnungsblätterMethod</td>
+<td>
+ Wird aufgerufen nachdem die Berechnungsblätter erstellt wurden und bevor der Abschluss erstellt wurde.
+ </td>
+</tr>
+<tr>
+<td>AddAdditionalDatasourcesBerechnungsblattMethod</td>
+<td>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung der Berechnungsblätter hinzufügen.
+ </td>
+</tr>
+<tr>
+<td>AddAdditionalDatasourcesDokumentMethod</td>
+<td>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung des Anschreibens hinzufügen.
+ </td>
+</tr>
+<tr>
+<td>MustCreateDocumentMethod</td>
+<td>
+ Kann verhindern, dass ein Dokument erzeugt wird.
+ Der Default verhindert das Erstellen genau dann, wenn alle Konten der Kontengruppe verfallen sind.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalAustrittsberechnungCustomizing" class="content">
+  <h2>OptionalAustrittsberechnungCustomizing</h2>
+<p>
+ Optionales Customizing der Austrittsberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnAfterBerechneAustrittMethod</td>
+<td>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos Austritt im Austrittsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneKontoabschlussMethod</td>
+<td>
+ Wird aufgerufen nachdem die Standard-Kontoabschlussberechnung im Austrittsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneKontoständeMethod</td>
+<td>
+ Wird aufgerufen nachdem die Stanrd-Kontostandsberechnung im Austrittsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneUnverfallbarkeitsinformationenMethod</td>
+<td>
+ Wird aufgerufen nachdem die Stanrd-Unverfallbarkeitsbestimmung im Austrittsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneUvDatenMethod</td>
+<td>
+ Wird aufgerufen nachdem die Stanrd-UvDatenberechnung im Austrittsberechner durchgeführt wurde.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IAustrittImplementierungCustomizingprovider" class="content">
+  <h2>IAustrittImplementierungCustomizingprovider</h2>
+<p>
+ Customizing der Implementierung des Geschäftsvorfall Austritt.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>CreateAuftragsverwaltungkonfiguration</td>
+<td>
+ Erzeugt eine IAuftragskonfiguration.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IAustrittsberechnungCustomizingprovider" class="content">
+  <h2>IAustrittsberechnungCustomizingprovider</h2>
+<p>
+ Customizing der Austrittsberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneVertraglicheUnverfallbarkeitsinformationen</td>
+<td>
+ 	Für die Berechnung der vertraglich Unverfallbarkeit im Falle der Unverfallbarkeitsart "Vertraglich"
+ </td>
+</tr>
+<tr>
+<td>GetZuBerechnendeZusagenkomponenten</td>
+<td>
+ Liefert die im GeVo über die Kontofortschreibung zu berechnenden Zusagenkomponenten.
+ Die Zusagenkomponenten werden in der übergebenen Reihenfolge von der Kontofortschreibung berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IAustrittsdokumenterzeugungCustomizingProvider" class="content">
+  <h2>IAustrittsdokumenterzeugungCustomizingProvider</h2>
+<p>
+ Customizing der Dokumenterzeugung im Geschäftsvorfall Austritt.
+ </p>
+</div>
+<div id="IAustrittsmappingAnspruchCustomizingprovider" class="content">
+  <h2>IAustrittsmappingAnspruchCustomizingprovider</h2>
+<p>
+ Customizing der Mappings im Geschäftsvorfall Austritt.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>MapCustomKontoergebnisse</td>
+<td>
+ Ergänzendes Mapping der Kontoergebnisse, die nicht als Implementierung eines von IKontoErgebnisseAustritt geforderten Interfaces oder einer
+ Erweiterung eines solchen Interfaces vorliegen.
+ </td>
+</tr>
+<tr>
+<td>MapCustomUvDaten</td>
+<td>
+ Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatUvDaten erweitert
+ </td>
+</tr>
+<tr>
+<td>MapCustomFortschreibungsergebnis</td>
+<td>
+ Mapping des von der Kontoergbnis-Klasse implementierten Interfaces, das IHatFortschreibungsergebnis erweitert
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IAustrittsvalidierungAnspruchCustomizingprovider" class="content">
+  <h2>IAustrittsvalidierungAnspruchCustomizingprovider</h2>
+<p>
+ Customizing der Validierung im Geschäftsvorfall Austritt.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Validate</td>
+<td>
+ Validiert.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IAustrittsvalidierungGesamtCustomizingprovider" class="content">
+  <h2>IAustrittsvalidierungGesamtCustomizingprovider</h2>
+<p>
+ Customizing der Validierung im Geschäftsvorfall Austritt.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Validate</td>
+<td>
+ Validiert.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="AllgemeineEingabenAustritt" class="content">
+  <h2>AllgemeineEingabenAustritt</h2>
+<p>
+ AllgemeineEingaben, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="Austrittsberechner" class="content">
+  <h2>Austrittsberechner</h2>
+<p>
+ Stellt Funktionen für die Austrittsberechnung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneAustritt</td>
+<td>
+ Berechnet einen Austritt.
+ </td>
+</tr>
+<tr>
+<td>BerechneUvDaten</td>
+<td>
+ Ermittelt für ein Konto die UV-Daten zum Austrittsdatum gemäß dem übergebenen Kontostand.
+ </td>
+</tr>
+<tr>
+<td>BerechneUvaFaktor</td>
+<td>
+ Berechnet für ein Konto den UV-Faktor bei Austritt zum übergebenen Stichtag.
+ </td>
+</tr>
+<tr>
+<td>BerechneUnverfallbarkeitsinformationen</td>
+<td>
+ Berechnet, ab wann das Konto vertraglich bzw. gesetzlich unverfallbar ist.
+ </td>
+</tr>
+<tr>
+<td>BerechneVertraglicheUnverfallbarkeitsinformationen</td>
+<td>
+ Berechnet vertraglich geregelte Unverfallbarkeitsinformationen gemäß IAustrittsberechnungCustomizingprovider.BerechneVertraglicheUnverfallbarkeitsinformationen.
+ </td>
+</tr>
+<tr>
+<td>BerechneGesetzlicheUnverfallbarkeitsinformationen</td>
+<td>
+ Berechnet Unverfallbarkeitsinformationen gemäß der gesetzlichen Regelungen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="AllgemeineErgebnisseAustritt" class="content">
+  <h2>AllgemeineErgebnisseAustritt</h2>
+<p>
+ AllgemeineErgebnisse, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="GeVoAustrittDefinition" class="content">
+  <h2>GeVoAustrittDefinition</h2>
+<p>
+ Definition des GeVos Austritt. 
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Dokumenterzeugungsinfo</td>
+<td>
+ Dokumenterzeugungsinfo, die beschreibt wie die Dokumente in diesem GeVo erstellt werden sollen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="KontoEingabenAustritt" class="content">
+  <h2>KontoEingabenAustritt</h2>
+<p>
+ KontoEingaben, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="KontoErgebnisseAustritt" class="content">
+  <h2>KontoErgebnisseAustritt</h2>
+<p>
+ KontoErgebnisse, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Relevant</td>
+<td>
+ Gibt an, ob das Konto für den GeVo relevant ist.
+ </td>
+</tr>
+<tr>
+<td>Fortschreibungsergebnis</td>
+<td>
+ Ergebnis der Schlussfortschreibung, falls eine stattfindet.
+ </td>
+</tr>
+<tr>
+<td>GesetzlichUnverfallbar</td>
+<td>
+ Gibt an, ob das Konto die gesetzlichen UV-Bestimmungen erfüllt.
+ </td>
+</tr>
+<tr>
+<td>Kontostand</td>
+<td>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </td>
+</tr>
+<tr>
+<td>KontostandVorher</td>
+<td>
+ Kontostand ohne Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </td>
+</tr>
+<tr>
+<td>KontostandLetzterFortschreibungsstichtag</td>
+<td>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum letzten Fortschreibungsstichtag vor dem GeVo-Stichtag.
+ </td>
+</tr>
+<tr>
+<td>UvaDatumGesetzlich</td>
+<td>
+ Datum, ab dem die gesetzlichen UV-Bestimmungen erfüllt sind.
+ </td>
+</tr>
+<tr>
+<td>UvaDatumVertraglich</td>
+<td>
+ Datum, ab dem die vertraglichen  UV-Bestimmungen erfüllt sind.
+ </td>
+</tr>
+<tr>
+<td>VertraglichUnverfallbar</td>
+<td>
+ Gibt an, ob das Konto die vertraglichen UV-Bestimmungen erfüllt.
+ </td>
+</tr>
+<tr>
+<td>UvDaten</td>
+<td>
+ UvDaten, die sich aus dem Austritt ergeben.
+ </td>
+</tr>
+<tr>
+<td>KontostandOhneVaAbzug</td>
+<td>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag ohne VA-Abzug.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Austritt" class="content">
+  
+</div>
+<div id="AuszahlungsartWennEinheitlich" class="content">
+  <h2>AuszahlungsartWennEinheitlich</h2>
+<p>
+ Falls alle beteiligten Konten die gleiche Auszahlungsart gewählt haben wird diese zurückgegeben.
+ Ansonsten Unbekannt.
+ </p>
+</div>
+<div id="Kontengruppe" class="content">
+  
+</div>
+<div id="AuszahlungsartWennEinheitlich" class="content">
+  <h2>AuszahlungsartWennEinheitlich</h2>
+<p>
+ Falls alle beteiligten Konten die gleiche Auszahlungsart gewählt haben wird diese zurückgegeben.
+ Ansonsten Unbekannt.
+ </p>
+</div>
+<div id="KontengruppeEigenleistung`1" class="content">
+  
+</div>
+<div id="AuszahlungsartWennEinheitlich" class="content">
+  <h2>AuszahlungsartWennEinheitlich</h2>
+<p>
+ Falls alle beteiligten Konten die gleiche Auszahlungsart gewählt haben wird diese zurückgegeben.
+ Ansonsten Unbekannt.
+ </p>
+</div>
+<div id="KontengruppeTodesfall`1" class="content">
+  
+</div>
+<div id="Dokumenterzeugung" class="content">
+  
+</div>
+<div id="OptionalEigenleistungsdokumenterzeugungCustomizing" class="content">
+  <h2>OptionalEigenleistungsdokumenterzeugungCustomizing</h2>
+<p>
+ Optionales Customizing der Dokumenterzeugung in einem Eigenleistungsgevo.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnBeforeCreateBerechnungsblätterMethod</td>
+<td>
+ Wird aufgerufen nachdem das Anschreiben erstellt wurde und bevor die Berechnungsblätter erstellt werden.
+ </td>
+</tr>
+<tr>
+<td>OnAfterCreateBerechnungsblätterMethod</td>
+<td>
+ Wird aufgerufen nachdem die Berechnungsblätter erstellt wurden und bevor der Abschluss erstellt wurde.
+ </td>
+</tr>
+<tr>
+<td>AddAdditionalDatasourcesBerechnungsblattMethod</td>
+<td>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung der Berechnungsblätter hinzufügen.
+ </td>
+</tr>
+<tr>
+<td>AddAdditionalDatasourcesDokumentMethod</td>
+<td>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung des Anschreibens hinzufügen.
+ </td>
+</tr>
+<tr>
+<td>MustCreateDocumentMethod</td>
+<td>
+ Kann verhindern, dass ein Dokument erzeugt wird.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalEigenleistungsmappingAnspruchCustomizing" class="content">
+  <h2>OptionalEigenleistungsmappingAnspruchCustomizing</h2>
+<p>
+ Optionales Customizing des Mappings in einem Eigenleistungsgevo.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>MapCustomKontoergebnisseMethod</td>
+<td>
+ 	Ergänzendes Mapping der Kontoergebnisse, die nicht als Implementierung eines von IKontoErgebnisseEigenleistung geforderten Interfaces oder einer Erweiterung eines solchen Interfaces vorliegen.
+ </td>
+</tr>
+<tr>
+<td>MapCustomFortschreibungsergebnisMethod</td>
+<td>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatFortschreibungsergebnis erweitert
+ </td>
+</tr>
+<tr>
+<td>MapCustomLeistungenMethod</td>
+<td>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatLeistungen erweitert
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalEigenleistungsberechnungCustomizingprovider" class="content">
+  <h2>OptionalEigenleistungsberechnungCustomizingprovider</h2>
+<p>
+ Optionales Customzing der Berechnungen in einem Eigenleistungsgevo.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnAfterBerechneEigenleistungMethod</td>
+<td>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneKontoabschlussMethod</td>
+<td>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneKontoständeMethod</td>
+<td>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IEigenleistungImplementierungCustomizingprovider" class="content">
+  <h2>IEigenleistungImplementierungCustomizingprovider</h2>
+<p>
+ Customizing der Implementierung eines Eigenleistungsgeschäftsvorfalls.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>CreateAuftragsverwaltungkonfiguration</td>
+<td>
+ Erzeugt eine IAuftragskonfiguration.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IEigenleistungsberechnungCustomizingprovider" class="content">
+  <h2>IEigenleistungsberechnungCustomizingprovider</h2>
+<p>
+ Customizing der Berechnung eines Eigenleistungsgeschäftsvorfalls.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetZuBerechnendeZusagenkomponenten</td>
+<td>
+ Liefert die im GeVo über die Kontofortschreibung zu berechnenden Zusagenkomponenten.
+ Die Zusagenkomponenten werden in der übergebenen Reihenfolge von der Kontofortschreibung berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IEigenleistungsdokumenterzeugungCustomizingprovider" class="content">
+  <h2>IEigenleistungsdokumenterzeugungCustomizingprovider</h2>
+<p>
+ Customizing der Dokumenterzeugung eines Eigenleistungsgeschäftsvorfalls.
+ </p>
+</div>
+<div id="IEigenleistungsmappingGesamtCustomizingprovider" class="content">
+  <h2>IEigenleistungsmappingGesamtCustomizingprovider</h2>
+<p>
+ Customizing des Mappings eines Eigenleistungsgeschäftsvorfalls.
+ </p>
+</div>
+<div id="IEigenleistungsvalidierungAnspruchCustomizingprovider" class="content">
+  <h2>IEigenleistungsvalidierungAnspruchCustomizingprovider</h2>
+<p>
+ Customizing der Validierung eines Eigenleistungsgeschäftsvorfalls.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Validate</td>
+<td>
+ Validiert.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Validate" class="content">
+  <h2>Validate</h2>
+<p>
+ Validiert.
+ </p>
+</div>
+<div id="IEigenleistungsvalidierungGesamtCustomizingprovider" class="content">
+  
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="AllgemeineEingabenEigenleistung" class="content">
+  <h2>AllgemeineEingabenEigenleistung</h2>
+<p>
+ AllgemeineEingaben, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Leistungsbeginn</td>
+<td>
+ Beginn der Leistungsphase
+ </td>
+</tr>
+<tr>
+<td>Antragsdatum</td>
+<td>
+ Datum des Eingangs des Leistungsantrags
+ </td>
+</tr>
+<tr>
+<td>Versorgungsfalldatum</td>
+<td>
+ Die Property ist ReadOnly. 
+ Sie berechnet sich als Maximum aus Vortag des Leistungsbeginns und Vortag des Antragsdatums.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="AllgemeineErgebnisseEigenleistung" class="content">
+  <h2>AllgemeineErgebnisseEigenleistung</h2>
+<p>
+ AllgemeineErgebnisse, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p>
+</div>
+<div id="KontoEingabenEigenleistung" class="content">
+  <h2>KontoEingabenEigenleistung</h2>
+<p>
+ KontoEingaben, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Auszahlungsbeginn</td>
+<td>
+ Datum, zu dem die Auszahlung beginnen soll.
+ </td>
+</tr>
+<tr>
+<td>Auszahlungswahl</td>
+<td>
+ Die gewählte Auszahlung in der Stufe *Leistung*.
+ Die möglichen Optionen richten sich nach dem Altersleistungspaket in der Zusagenbeschreibung.
+ </td>
+</tr>
+<tr>
+<td>Stufe</td>
+<td>
+ Leistungsgeschäftsvorfallstufe: Meldebogen, Variantenbescheid oder Leistung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="KontoErgebnisseEigenleistung" class="content">
+  <h2>KontoErgebnisseEigenleistung</h2>
+<p>
+ KontoErgebnisse, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Relevant</td>
+<td>
+ Gibt an, ob das Konto für den GeVo relevant ist.
+ </td>
+</tr>
+<tr>
+<td>Fortschreibungsergebnis</td>
+<td>
+ Ergebnis der Schlussfortschreibung, falls eine stattfindet.
+ </td>
+</tr>
+<tr>
+<td>Kontostand</td>
+<td>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </td>
+</tr>
+<tr>
+<td>KontostandVorher</td>
+<td>
+ Kontostand ohne Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </td>
+</tr>
+<tr>
+<td>KontostandLetzterFortschreibungsstichtag</td>
+<td>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum letzten Fortschreibungsstichtag vor dem GeVo-Stichtag.
+ </td>
+</tr>
+<tr>
+<td>KontostandOhneVaAbzug</td>
+<td>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag ohne VA-Abzug.
+ </td>
+</tr>
+<tr>
+<td>Leistungsberechnungsergebnis</td>
+<td>
+ Die finale Leistungsberechnungsergebnis zu der gewählten Auszahlungswahl in der Stufe Leistung.
+ </td>
+</tr>
+<tr>
+<td>Versorgungsguthaben</td>
+<td>
+ Kontostand, der als Grundlage für die Leistungsberechnung verwendet wird. 
+ Weicht gegebenefalls vom Kontostand ab, weil z.B. Besitzstände berücksichtigt sind.
+ </td>
+</tr>
+<tr>
+<td>Leistungsberechnungsergebnisse</td>
+<td>
+ Die Leistungsberechnungsergebnisse zu jeder möglichen Auszahlungswahl in der Stufe Variantenbescheid.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Eigenleistung" class="content">
+  
+</div>
+<div id="GeVoInvalidenleistungDefinition" class="content">
+  <h2>GeVoInvalidenleistungDefinition</h2>
+<p>
+ Definition des GeVos Invalidenleistung. 
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>DokumentgruppierungMeldebogen</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Meldebogen.
+ </td>
+</tr>
+<tr>
+<td>DokumentgruppierungVariantenbescheid</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Variantenbescheid.
+ </td>
+</tr>
+<tr>
+<td>DokumentgruppierungLeistungsbescheid</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Leistungsbescheid.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Invalidenleistung" class="content">
+  
+</div>
+<div id="GeVoTodesfallDefinition" class="content">
+  <h2>GeVoTodesfallDefinition</h2>
+<p>
+ Definition des GeVos Todesfall. 
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>DokumentgruppierungMeldebogen</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Meldebogen.
+ </td>
+</tr>
+<tr>
+<td>DokumentgruppierungVariantenbescheid</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Variantenbescheid.
+ </td>
+</tr>
+<tr>
+<td>DokumentgruppierungLeistungsbescheid</td>
+<td>
+ Dokumenterzeugungsinfo für die Stufe Leistungsbescheid.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="OptionalTodesfallberechnungCustomizing" class="content">
+  <h2>OptionalTodesfallberechnungCustomizing</h2>
+<p>
+ Optionales Customizing der Berechnung im GeVo Todesfall.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnAfterBerechneKontoabschlussMethod</td>
+<td>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </td>
+</tr>
+<tr>
+<td>OnAfterBerechneKontoständeMethod</td>
+<td>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="GetZuBerechnendeZusagenkomponenten" class="content">
+  <h2>GetZuBerechnendeZusagenkomponenten</h2>
+<p>
+ Liefert die im GeVo über die Kontofortschreibung zu berechnenden Zusagenkomponenten.
+ Die Zusagenkomponenten werden in der übergebenen Reihenfolge von der Kontofortschreibung berechnet.
+ </p>
+</div>
+<div id="ITodesfallberechnungCustomizingprovider" class="content">
+  
+</div>
+<div id="MapCustomKontoergebnisseMethod" class="content">
+  <h2>MapCustomKontoergebnisseMethod</h2>
+<p>
+ 	Ergänzendes Mapping der Kontoergebnisse, die nicht als Implementierung eines von IKontoErgebnisseEigenleistung geforderten Interfaces oder einer Erweiterung eines solchen Interfaces vorliegen.
+ </p>
+</div>
+<div id="MapCustomFortschreibungsergebnisMethod" class="content">
+  <h2>MapCustomFortschreibungsergebnisMethod</h2>
+<p>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatFortschreibungsergebnis erweitert
+ </p>
+</div>
+<div id="MapCustomLeistungenMethod" class="content">
+  <h2>MapCustomLeistungenMethod</h2>
+<p>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatLeistungen erweitert
+ </p>
+</div>
+<div id="OptionalTodesfallmappingAnspruchCustomizing" class="content">
+  
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="PushArchivingData" class="content">
+  <h2>PushArchivingData</h2>
+<p>
+   Setzt im übergebenen Archivierungsdatenobjekt Attribute anhand der anderen übergebenen Objekte.
+ </p>
+</div>
+<div id="TodesfallDocumentGenerator" class="content">
+  
+</div>
+<div id="PersonExistiertFallsBavIdBelegt" class="content">
+  <h2>PersonExistiertFallsBavIdBelegt</h2>
+<p>
+ Gibt an, ob eine Person zu BavId exisitert, falls die BavId belegt ist
+ </p>
+</div>
+<div id="HibliartBelegt" class="content">
+  <h2>HibliartBelegt</h2>
+<p>
+ Gibt an, ob die Hibliart belegt ist
+ </p>
+</div>
+<div id="SterbedatumInEingabenNachGeburtsdatum" class="content">
+  <h2>SterbedatumInEingabenNachGeburtsdatum</h2>
+<p>
+ Gibt an, ob as das Sterbedatum in den Eingaben nach dem Geburtsdatum der Person liegt
+ </p>
+</div>
+<div id="SummeErbquotenGleichHundertProzent" class="content">
+  <h2>SummeErbquotenGleichHundertProzent</h2>
+<p>
+ Gibt an, ob die Summe der Erbquoten aller Hiblis gleich Hundert Prozent ist
+ </p>
+</div>
+<div id="PersonenIdKundeDerHiblisEnthältDuplikate" class="content">
+  <h2>PersonenIdKundeDerHiblisEnthältDuplikate</h2>
+<p>
+ Gibt an, ob die Belegungen der PersonenIdKunde in den Hiblieingaben Duplikate enthalten
+ </p>
+</div>
+<div id="EingangTodesmeldungBelegtWennErbquoten" class="content">
+  <h2>EingangTodesmeldungBelegtWennErbquoten</h2>
+<p>
+ Gibt an, ob as das Datum des Eingangs der Todesmeldung belegt ist, falls Erbquoten angegeben sind.
+ </p>
+</div>
+<div id="EingangTodesmeldungNachSterbedatum" class="content">
+  <h2>EingangTodesmeldungNachSterbedatum</h2>
+<p>
+ Gibt an, ob as das Datum des Eingangs der Todesmeldung nach dem Sterbedatum liegt
+ </p>
+</div>
+<div id="SterbedatumBelegt" class="content">
+  <h2>SterbedatumBelegt</h2>
+<p>
+ Gibt an, ob das Sterbedatum in den allgemeinen Eingaben belegt ist
+ </p>
+</div>
+<div id="EingangTodesmeldungLiegtInZukunft" class="content">
+  <h2>EingangTodesmeldungLiegtInZukunft</h2>
+<p>
+ Gibt an, ob as das Datum des Eingangs der Todesmeldung in der Zukunft liegt
+ </p>
+</div>
+<div id="SterbedatumLiegtInZukunft" class="content">
+  <h2>SterbedatumLiegtInZukunft</h2>
+<p>
+ Gibt an, ob as Sterbedatum in der Zukunft liegt
+ </p>
+</div>
+<div id="Validierung" class="content">
+  
+</div>
+<div id="Tod" class="content">
+  
+</div>
+<div id="Geschäftsvorfalldefinition" class="content">
+  <h2>Geschäftsvorfalldefinition</h2>
+<p>
+ 	Beschreibt die Existenz eines GeVos innerhalb einer Zusage. 
+ Wenn einem Zusagendetail eine GeVoDefinition zugeordnet ist, so steht der GeVo dem Projekt zur Verfügung. 
+ Es ist keine weitere Einrichtung notwendig bis auf das Implementieren der zum GeVo gehörenden CustomizingProvider.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GeVoArt</td>
+<td>
+ Identifiziert die GeVoDefinition.
+ </td>
+</tr>
+<tr>
+<td>Name</td>
+<td>
+ Name, der auf der Oberfläche verwendet wird.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Austritt</td>
+<td>
+ Erzeugt eine GeVoAustrittDefinition.
+ </td>
+</tr>
+<tr>
+<td>Altersleistung</td>
+<td>
+ Erzeugt eine GeVoAltersleistungDefinition.
+ </td>
+</tr>
+<tr>
+<td>Invalidenleistung</td>
+<td>
+ Erzeugt eine GeVoInvalidenleistungDefinition.
+ </td>
+</tr>
+<tr>
+<td>Todesfall</td>
+<td>
+ Erzeugt eine GeVoTodesfallDefinition.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Geschäftsvorfälle" class="content">
+  
+</div>
+<div id="OptionalTodesfalldokumenterzeugungCustomizing" class="content">
+  <h2>OptionalTodesfalldokumenterzeugungCustomizing</h2>
+<p>
+ Optionales Customizing der Dokumenterzeugung im GeVo Todesfall.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnBeforeCreateBerechnungsblätterMethod</td>
+<td>
+ Wird aufgerufen nachdem das Anschreiben erstellt wurde und bevor die Berechnungsblätter erstellt werden.
+ </td>
+</tr>
+<tr>
+<td>OnAfterCreateBerechnungsblätterMethod</td>
+<td>
+ Wird aufgerufen nachdem die Berechnungsblätter erstellt wurden und bevor der Abschluss erstellt wurde.
+ </td>
+</tr>
+<tr>
+<td>AddAdditionalDatasourcesBerechnungsblattMethod</td>
+<td>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung der Berechnungsblätter hinzufügen.
+ </td>
+</tr>
+<tr>
+<td>AddAdditionalDatasourcesDokumentMethod</td>
+<td>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung des Anschreibens hinzufügen.
+ </td>
+</tr>
+<tr>
+<td>MustCreateDocumentMethod</td>
+<td>
+ Kann verhindern, dass ein Dokument erzeugt wird.
+ </td>
+</tr>
+<tr>
+<td>OnBeforeGenerateDocumentsGesamtMethod</td>
+<td>
+ Hier können vom Standard abweichende Dokumenterzeugungsschritte implementiert werden.
+ Falls True zurückgegeben wird, findet keine Dokumenterzeugung vom Framework statt.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Kontoauszugserstellungsinfo" class="content">
+  <h2>Kontoauszugserstellungsinfo</h2>
+<p>
+ Beschreibt, wie Kontoauszüge im Zusagenprojekt erstellt werden sollen.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Dokumenterzeugungsinfo</td>
+<td>
+ See <a href="Api.html?elementId=Dokumenterzeugungsinfo">Dokumenterzeugungsinfo</a></td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Kontoauszugserstellung" class="content">
+  
+</div>
+<div id="Altersbedingung" class="content">
+  <h2>Altersbedingung</h2>
+<p>
+ Bedingung für die Kontofortschreibung gemäß Startalter und Endalter.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Startalter</td>
+<td>
+ Berechtigungsbeginn ist das Erreichen des Startalters.
+ </td>
+</tr>
+<tr>
+<td>Endalter</td>
+<td>
+ Berechtigungsbeginn ist das Erreichen des Endalters.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Custombedingung" class="content">
+  <h2>Custombedingung</h2>
+<p>
+ Führt zum Aufruf von <a href="Api.html?elementId=IKontofortschreibungCustomizingProvider">IKontofortschreibungCustomizingProvider</a>.IstKontoRelevantCustom
+ </p>
+</div>
+<div id="Kontostatusbedingung" class="content">
+  <h2>Kontostatusbedingung</h2>
+<p>
+ Bedingung für die Kontofortschreibung gemäß relevanten Kontostatus.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>RelevanteKontostatus</td>
+<td>
+ Ein Konto erfüllt die Bedingung, wen es in einem dieser Kontostatus ist.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="KontofortschreibungsZusagenkomponente" class="content">
+  <h2>KontofortschreibungsZusagenkomponente</h2>
+<p>
+ Zur Angabe und Gruppierung der beteiligten Zusagenkomponenten im Kontofortschreibungsprozess.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ZusagenkomponentenKennzeichen</td>
+<td>
+ CustomEnum mit Name CustomEnumNames.BerechnungskennzeichenName
+ </td>
+</tr>
+<tr>
+<td>Gruppe</td>
+<td>
+ Zur Sortierung der beteiligten Zusagenkomponenten im Kontofortschreibungsprozess. 
+ Zusagenkomponenten mit niedrigerer Nummer werden vor denen mit höherer Nummer berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Bedingung" class="content">
+  <h2>Bedingung</h2>
+<p>
+ 	Beschreibt eine Bedingung unter der ein Konto in einer zu einem gegebenen Berechnungskennzeichen gehörenden Kontofortschreibung relevant ist.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Altersbedingt</td>
+<td>
+ Altersbedingung von Startalter bis Endalter.
+ </td>
+</tr>
+<tr>
+<td>Kontostatusbedingt</td>
+<td>
+ Kontostatusbedingung, die nur die übergebenen Kontostatus zulässt.
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erzeugt eine Custombedingung und führt zum Aufruf von IKontofortschreibungCustomizingProvider.IstKontoRelevantCustom.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Kontofortschreibungsprozessdefinition" class="content">
+  <h2>Kontofortschreibungsprozessdefinition</h2>
+<p>
+ Definition des Standard Kontofortschreibungsprozesses.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ZusagenKomponenten</td>
+<td>
+ Gibt an welche Zusagenkomponenten im Prozess beteiligt sind und in welcher Reihenfolge sie berechnet werden.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="Kontofortschreiber" class="content">
+  <h2>Kontofortschreiber</h2>
+<p>
+ Stellt Funktionen zur Kontofortschreibung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>KontofortschreibungDurchführen</td>
+<td>
+ Führt die Kontofortschreibung aller Zusagenkomponenten in ProzessParameter.Zusagenkomponenten zum ProzessParameter.Stichtag aus. 
+ Es werden alle Konten berücksichtigt, deren Zusagendetail mindestens eine der relevanten Zusagenkomponenten beinhaltet.
+ </td>
+</tr>
+<tr>
+<td>KontoFortschreiben</td>
+<td>
+ Schreibt das die relevanten Zusagenkomponenten des Kontos fort.
+ </td>
+</tr>
+<tr>
+<td>KontoergebnisVerarbeiten</td>
+<td>
+ Validiert das Kontoergebnis und persistiert die Ergebnisse im Konto falls die Validierung erfolgreich ist.
+ </td>
+</tr>
+<tr>
+<td>KontofortschreibungValidieren</td>
+<td>
+ Validiert Konto, Vv, Person einzeln und jeweils mit Stichtag sowie alle von der Zusagenkomponente festgelegten Entitäten 
+ gegen den zum Berechnungskennzeichen gehörenden Zusagenkomponentenvertrag.
+ </td>
+</tr>
+<tr>
+<td>KontofortschreibungBerechnen</td>
+<td>
+ Berechnet die Kontofortschreibung der relevanten Zusagenkomponenten des Kontos.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="IKontofortschreibungCustomizingProvider" class="content">
+  <h2>IKontofortschreibungCustomizingProvider</h2>
+<p>
+ Customizing der Kontofortschreibung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>IstKontoRelevantCustom</td>
+<td>
+ Wird aufgerufen, wenn die Custombedingung <a href="Api.html?elementId=Custombedingung">Custombedingung</a> greift
+ </td>
+</tr>
+<tr>
+<td>ValidiereProzessparameter</td>
+<td>
+ Wird aufgerufen, wenn die Custombedingung (Kontofortschreibung.Beschreibung.Bedingung.Custom) greift
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="KontoExtensions" class="content">
+  <h2>KontoExtensions</h2>
+<p>
+ Allgemeine Konto-Extensions.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneKontostand</td>
+<td>
+ Berechnet den Kontostand des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneLetztenKontostand</td>
+<td>
+ Berechnet den Kontostand des Kontos zum letzten Fortscrheibungsstichtag vor dem Stichtag gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandUva</td>
+<td>
+ Berechnet den Kontostand beim Austritt des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandImLeistungsfall</td>
+<td>
+ Berechnet den Kontostand im Leistungsfall gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostand1</td>
+<td>
+ Berechnet den Kontostand des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandUva1</td>
+<td>
+ Berechnet den Kontostand des Kontos beim Austritt gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </td>
+</tr>
+<tr>
+<td>BerechneKontostandImLeistungsfall1</td>
+<td>
+ Berechnet den Kontostand des Kontos im Leistungsfall gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </td>
+</tr>
+<tr>
+<td>GetKontostandsinformation</td>
+<td>
+ Liefert die Kontostandsinformation der kontostansbestimmenden Zusagenkomponente des zum Konto gehörenden Zusagendetails
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="ZusagenKomponenten" class="content">
+  <h2>ZusagenKomponenten</h2>
+<p>
+ Für das Filtern beim Ausführen des Prozesses
+ </p>
+</div>
+<div id="ProzessParameter" class="content">
+  
+</div>
+<div id="Kontofortschreibung" class="content">
+  
+</div>
+<div id="CustomRatenberechnung" class="content">
+  <h2>CustomRatenberechnung</h2>
+<p>
+ Ratenberechnungskern.
+ Führt zum Aufruf von BerechneRatenCustom im OptionalLeistungsberechnungCustomizing.
+ </p>
+</div>
+<div id="StandardRatenberechnung" class="content">
+  <h2>StandardRatenberechnung</h2>
+<p>
+ Ratenberechnungskern.
+ Kontostand wird gemäß Verzinsungsinformationen verzinst bis zum ersten Auszahlungszeitpunkt. 
+ Die ersta Rate ist der verzinste Kontostand geteilt durch die Anzahl der Raten.
+ Jede weitere Rate wird durch Verzinsung gemäß Parameter berechnet.
+ </p>
+</div>
+<div id="Hibliberechnungsart" class="content">
+  <h2>Hibliberechnungsart</h2>
+<p>
+ Art der Hibliberechnung.
+ HibliLeistungAusVerstorbenenleistungBerechnen bedeutet, dass zuerst Leistungen des Verstorbenen ermittelt werden, aus denen dann die Hiblileistungen berechnet werden.
+ HibliLeistungDirektBerechnen bedeutet, dass ohne Zuhilfenahme von Leistungen des Verstorbenen die Hiblileistungen direkt aus dem Kontostand berechnet werden.
+ </p>
+</div>
+<div id="LeistungspaketInvalidität" class="content">
+  <h2>LeistungspaketInvalidität</h2>
+<p>
+ Beschreibt eine Invalidenleistung.
+ </p>
+</div>
+<div id="LeistungspaketTod" class="content">
+  <h2>LeistungspaketTod</h2>
+<p>
+ Beschreibt eine Todesfallleistung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechnungsartAusAnwärterphase</td>
+<td>
+ Wenn der Verstorbene Anwärter war, so wird gemäß dieser Hibliberechnungsart die Hiblileistung berechnet.
+ </td>
+</tr>
+<tr>
+<td>BerechnungsartAusLeistungsphase</td>
+<td>
+ Wenn der Verstorbene Leistungsempfänger war, so wird gemäß dieser Hibliberechnungsart die Hiblileistung berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Ratenberechnungskern" class="content">
+  <h2>Ratenberechnungskern</h2>
+<p>
+ Beschreibt eine Methode zur Berechnung von Ratenauszahlungen
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Standard</td>
+<td>
+ Erzeugt eine StandardRatenberechnung.
+ Kontostand wird gemäß Verzinsungsinformationen verzinst bis zum ersten Auszahlungszeitpunkt. 
+ Die ersta Rate ist der verzinste Kontostand geteilt durch die Anzahl der Raten.
+ Jede weitere Rate wird durch Verzinsung gemäß Parameter berechnet.
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erzeugt eine CustomRatenberechnung.
+ Führt zum Aufruf von BerechneRatenCustom im OptionalLeistungsberechnungCustomizing.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Verzinsungsinformation" class="content">
+  <h2>Verzinsungsinformation</h2>
+<p>
+ Beschreibt die Parameter einer Verzinsung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Kontostandsverzinsungsart</td>
+<td>
+ Jährlich, Unterjährig, Stetig oder Gemischt.
+ </td>
+</tr>
+<tr>
+<td>VerzinsungsProzent</td>
+<td>
+ Prozentsatz mit dem verzinst wird.
+ </td>
+</tr>
+<tr>
+<td>Zinsrechnung</td>
+<td>    ''' 
+ OhneZinseszins oder MitZinseszins.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>StetigMitZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Stetig und Zinsrechnung MitZinseszins
+ </td>
+</tr>
+<tr>
+<td>JährlichMitZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Jährlich und Zinsrechnung MitZinseszins
+ </td>
+</tr>
+<tr>
+<td>UnterjährigMitZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Unterjährig und Zinsrechnung MitZinseszins
+ </td>
+</tr>
+<tr>
+<td>GemischtMitZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Gemischt und Zinsrechnung MitZinseszins
+ </td>
+</tr>
+<tr>
+<td>StetigOhneZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Stetig und Zinsrechnung OhneZinseszins
+ </td>
+</tr>
+<tr>
+<td>JährlichOhneZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Jährlich und Zinsrechnung OhneZinseszins
+ </td>
+</tr>
+<tr>
+<td>UnterjährigOhneZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Unterjährig und Unterjährig OhneZinseszins
+ </td>
+</tr>
+<tr>
+<td>GemischtOhneZinseszins</td>
+<td>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Gemischt und Zinsrechnung OhneZinseszins
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="VorgabeHibliAufteilung" class="content">
+  <h2>VorgabeHibliAufteilung</h2>
+<p>
+ Beschreibt, wie eine Hiblileistung prozentual auf Hiblis aufgeteilt werden sollen.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Gleichmäßig</td>
+<td>
+ Erzeugt eine VorgabeHibliAufteilungGleichmäßig.
+ </td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Erzeugt eine VorgabeHibliAufteilungCustom.
+ Führt zum Aufruf des optionalen Hooks BerechneHibliAufteilungCustom in OptionalLeistungsberechnungCustomizing führt.
+ </td>
+</tr>
+<tr>
+<td>FesteProzente</td>
+<td>
+ Erzeugt eine VorgabeHibliAufteilungFesteProzente.
+ Hiblis einer HibliArt mit Vorgabe von mehr als 0 Prozent erhalten gleichmäßig den vorgegebenen Prozentsatz der Verstorbenenleistung.
+ Auf Hiblis einer HibliArt mit Vorgabe von 0 Prozent wird die übrige Leistung gleichmäßig verteilt.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="VorgabeHibliAufteilungFesteProzente" class="content">
+  <h2>VorgabeHibliAufteilungFesteProzente</h2>
+<p>
+ VorgabeHibliAufteilung mit festen Prozentvorgaben pro Hibliart.
+ Hiblis einer HibliArt mit Vorgabe von mehr als 0 Prozent erhalten gleichmäßig den vorgegebenen Prozentsatz der Verstorbenenleistung.
+ Auf Hiblis einer HibliArt mit Vorgabe von 0 Prozent wird die übrige Leistung gleichmäßig verteilt.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>VorgabeWitweInProzent</td>
+<td>
+ Ein Hibli der HibliArt Witwe erhält diesn Prozentsatz der Hiblileistung.
+ </td>
+</tr>
+<tr>
+<td>VorgabeWaisenInProzent</td>
+<td>
+ Ein Hibli der HibliArt Vollwaise (bzw. Halbwaise) erhält diesn Prozentsatz der Hiblileistung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="VorgabeHibliAufteilungCustom" class="content">
+  <h2>VorgabeHibliAufteilungCustom</h2>
+<p>
+ VorgabeHibliAufteilung, die zum Aufruf des optionalen Hooks BerechneHibliAufteilungCustom in OptionalLeistungsberechnungCustomizing führt.
+ </p>
+</div>
+<div id="VorgabeHibliAufteilungGleichmäßig" class="content">
+  <h2>VorgabeHibliAufteilungGleichmäßig</h2>
+<p>
+ VorgabeHibliAufteilung, die eine Hiblileistung gleichmäßig auf alle Hiblis aufteilt.
+ </p>
+</div>
+<div id="CustomLeistungsberechnung" class="content">
+  <h2>CustomLeistungsberechnung</h2>
+<p>
+ Führt bei der Leistungsberechnung zum Aufruf der Methode BerechneCustomLeistung im <a href="Api.html?elementId=ILeistungsberechnungCustomizingprovider">ILeistungsberechnungCustomizingprovider</a>.
+ </p>
+</div>
+<div id="Auszahlungsoption" class="content">
+  <h2>Auszahlungsoption</h2>
+<p>
+ Beschreibt eine Variante in der eine Leistung ausgezahlt werden kann.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Rente</td>
+<td>
+ Auszahlung als Rente mittels Rentenauszahlungsoption.
+ </td>
+</tr>
+<tr>
+<td>Kapital</td>
+<td>
+ Auszahlung als Kapital mittels Kapitalauszahlungsoption.
+ </td>
+</tr>
+<tr>
+<td>Raten</td>
+<td>
+ Auszahlung als Raten mittels Ratenauszahlungsoption.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Rentenauszahlungsoption" class="content">
+  <h2>Rentenauszahlungsoption</h2>
+<p>
+ Auszahlung als Rente.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>MöglicheHiblisabsicherungen</td>
+<td>
+ Art der Hibliabsicherung, die in der Auszahlung berücksichtigt wird.
+ Prozent vom Restbarwert, Prozent von Rente oder Keine.
+ </td>
+</tr>
+<tr>
+<td>Hibliprozentsatz</td>
+<td>
+ Der Hibliprozentsatz, falls eine Hibliabsicherung berücksichtigt wird.
+ </td>
+</tr>
+<tr>
+<td>ErlaubteTurnusse</td>
+<td>
+ Mögliche Turnusse für die Auszahlung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Kapitalauszahlungsoption" class="content">
+  <h2>Kapitalauszahlungsoption</h2>
+<p>
+ Auszahlung als Kapital.
+ </p>
+</div>
+<div id="Ratenauszahlungsoption" class="content">
+  <h2>Ratenauszahlungsoption</h2>
+<p>
+ Auszahlung als Raten.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ErlaubteTurnusse</td>
+<td>
+ Mögliche Turnusse für die Auszahlung.
+ </td>
+</tr>
+<tr>
+<td>MinimaleAnzahl</td>
+<td>
+ Minimal Anzahl an Raten.
+ </td>
+</tr>
+<tr>
+<td>MaximaleAnzahl</td>
+<td>
+ Maxmiale Anzahl an Raten.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="KombinierteAuszahlungsoption" class="content">
+  <h2>KombinierteAuszahlungsoption</h2>
+<p>
+ Kombinierte Auszahlung. Wird noch nicht voll untertützt.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>ErlaubteKombinationen</td>
+<td>
+ Mägliche Auszahlungskombinationen.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Auszahlungskombination" class="content">
+  <h2>Auszahlungskombination</h2>
+<p>
+ Sammlung von Auszahlungsoptionen.
+ </p>
+</div>
+<div id="Leistungsbedingung" class="content">
+  <h2>Leistungsbedingung</h2>
+<p>
+ Beschreibt eine Bedingung unter der ein Konto berechtigt ist, die gegebene Leistung in Anspruch zu nehmen.
+ </p>
+</div>
+<div id="Leistungsberechnungskern" class="content">
+  <h2>Leistungsberechnungskern</h2>
+<p>
+ Beschreibt die Methode zur Berechnung einer Leistung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Custom</td>
+<td>
+ Führt mittels CustomLeistungsberechnung bei der Leistungsberechnung zum Aufruf der Methode BerechneCustomLeistung im ILeistungsberechnungCustomizingprovider.
+ </td>
+</tr>
+<tr>
+<td>Standard</td>
+<td>
+ Die Leistungen werden mittels StandardLeistungsberechnung allein anhand der Zusagenbeschreibung berechnet.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="LeistungspaketAlter" class="content">
+  <h2>LeistungspaketAlter</h2>
+<p>
+ Beschreibt eine Altersleistung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BedingungenFürVorzeitigeInanspruchnahme</td>
+<td>
+ Wenn alle Bedingungen erfüllt sind ist die Altersleistung vorzeitig.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Leistungspaket" class="content">
+  <h2>Leistungspaket</h2>
+<p>
+ 	Definiert und beschreibt eine zugesagte Leistung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Auszahlungsoptionen</td>
+<td>
+ Die möglichen Auszahlungsoptionen für diese Leistung.
+ </td>
+</tr>
+<tr>
+<td>Bedingungen</td>
+<td>
+ Die Leistungsbedingungen, die alle erfüllt sein müssen, damit die Leistung bezogen werden kann.
+ </td>
+</tr>
+<tr>
+<td>Berechnungskern</td>
+<td>
+ Der Leistungsberechnungskern zur Berechnung der Leistung.
+ </td>
+</tr>
+<tr>
+<td>Verzinsungsinformation</td>
+<td>
+ Die Verzinsungsinformation, die bei der Leistungsberechnung mittles StandardLeistungsberechnungskern verwendet werden.
+ </td>
+</tr>
+<tr>
+<td>Ratenberechnungskern</td>
+<td>
+ Ratenberechnungskern der zur Berechnung von Ratenauszahlungen im Leistungsberechner verwendet wird.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Altersleistung1</td>
+<td>
+ LeistungspaketAlter 
+ </td>
+</tr>
+<tr>
+<td>Altersleistung</td>
+<td>
+ LeistungspaketAlter
+ </td>
+</tr>
+<tr>
+<td>Invalidenleistung</td>
+<td>
+ LeistungspaketInvalidität
+ </td>
+</tr>
+<tr>
+<td>Todesfallleistung</td>
+<td>
+ LeistungspaketTod
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="StandardLeistungsberechnung" class="content">
+  <h2>StandardLeistungsberechnung</h2>
+<p>
+ Die Leistungen werden allein anhand der Zusagenbeschreibung berechnet. Siehe <a href="Einrichterhandbuch.html?elementId=Leistungsberechnung">Leistungsberechnung</a>
+ </p>
+</div>
+<div id="Beschreibung" class="content">
+  
+</div>
+<div id="OptionalLeistungsberechnungCustomizing" class="content">
+  <h2>OptionalLeistungsberechnungCustomizing</h2>
+<p>
+ Optional Customizing-Hooks für die Leistungsberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetLeistungenDesVerstorbenenMethod</td>
+<td>
+ GetLeistungenDesVerstorbenenMethod - wieso optional?
+ </td>
+</tr>
+<tr>
+<td>OnBeforeVersorgungsguthabenMethod</td>
+<td>
+ Falls True zurückgegeben wird, so wird die Standardvariante zur Berechnung des leistungsbegründenden Kontostands übersprungen
+ </td>
+</tr>
+<tr>
+<td>BerechneBerechneHibliAufteilungCustomMethod</td>
+<td>
+ Berechnet eine prozentuale Aufteilung einer Hiblileistung. Im Default wird die Hiblileistung gleichmäßig aufgeteilt.
+ </td>
+</tr>
+<tr>
+<td>BerechneRatenCustomMethod</td>
+<td>
+ Berechnet eine Ratenauszahlung.
+ Im Default wird die Standardratenberechnung aus dem Leistungsberechner aufgerufen.
+ </td>
+</tr>
+<tr>
+<td>BerechneCustomAuszahlungMethod</td>
+<td>
+ Berechnet eine Ratenauszahlung.
+ Im Default wird die Standardratenberechnung aus dem Leistungsberechner aufgerufen.
+ </td>
+</tr>
+<tr>
+<td>CreateAuszahlungsvariantenMethod</td>
+<td>
+ Berechnet eine Ratenauszahlung.
+ Im Default wird die Standardratenberechnung aus dem Leistungsberechner aufgerufen.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>OnBeforeBerechneVersorgungsguthaben</td>
+<td>
+ Falls True zurückgegeben wird, so wird die Standardvariante zur Berechnung des leistungsbegründenden Kontostands übersprungen
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="OptionalLeistungsberechnungAllgemeinCustomizing" class="content">
+  <h2>OptionalLeistungsberechnungAllgemeinCustomizing</h2>
+<p>
+ Optional Customizing-Hooks für die Leistungsberechnung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>KonsolidiereKontoergebnisseMethod</td>
+<td>
+ In diesem Hook können die Kontoergebnisse konsolidiert werden.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="ILeistungsberechnungCustomizingprovider" class="content">
+  <h2>ILeistungsberechnungCustomizingprovider</h2>
+<p>
+ Customizing im Rahmen der Leistungsberechnung.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneCustomLeistung</td>
+<td>
+ Wird aufgerufen, wenn der CustomLeistungsberechnungkern (Leistungsberechnung.Beschreibung.Leistungsberechnungskern.Custom) greift
+ </td>
+</tr>
+<tr>
+<td>BerechneCustomHiblileistung</td>
+<td>
+ Wird aufgerufen, wenn die Hibliberechnungsart.Custom greift.
+ </td>
+</tr>
+<tr>
+<td>BerechneFiktiveLeistungenFürVerstorbenenAnwärter</td>
+<td>
+ Wird aufgerufen, wenn gemäß Hibliberechnungsart im LeistungspaketTod fiktive Leistungen für einen verstorbenen Anwärter zu berechnen sind.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Customizing" class="content">
+  
+</div>
+<div id="Leistungsberechner" class="content">
+  <h2>Leistungsberechner</h2>
+<p>
+ Stellt Funktionen zur Leistungsberechnung bereit.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>BerechneEigenleistung</td>
+<td>
+ Berechnet alle Ergebnisse für das Konto im durch die Leistungsart identifizierten Eigenleistungs-GeVo
+ </td>
+</tr>
+<tr>
+<td>BerechneTodesfall</td>
+<td>
+ Berechnet alle Ergebnisse für das Konto im Todesfall-GeVo
+ </td>
+</tr>
+<tr>
+<td>BerechneVersorgungsguthaben</td>
+<td>
+ Berechnet das Versorgungsguthaben aus dem Kontostand, wobei die optionale Überschreibung OnBeforeBerechneVersorgungsguthaben berücksichtigt wird.
+ </td>
+</tr>
+<tr>
+<td>BerechneLeistung</td>
+<td>
+ Berechnet Leistungen für das Konto aus dem Kontostand gemäß der Auszahlungswahl.
+ </td>
+</tr>
+<tr>
+<td>BerechneLeistungsauszahlungsvarianten</td>
+<td>
+ Berechnet Leistungen für das Konto aus dem Kontostand für alle übergebenen Auszahlungswahlen.
+ </td>
+</tr>
+<tr>
+<td>BerechneHiblileistungen</td>
+<td>
+ Berechnet Leistungen aus dem Konto für den Hibli gemäß der übergebenen Auszahlungswahl
+ </td>
+</tr>
+<tr>
+<td>BerechneHibliauszahlungsvarianten</td>
+<td>
+ Berechnet Leistungen aus dem Konto für den Hibli für alle Auszahlgunswahlen in den HibliKontoEingaben
+ </td>
+</tr>
+<tr>
+<td>BerechneRentenauszahlung</td>
+<td>
+ Berechnet die Rentenleistung aus dem Konto gemäß der übergebenen Rentenauszahlungswahl.
+ Wenn hibli belegt ist, so wird die Rentenleistung für den hibli berechnet, ansonsten für die Person, der das Konto gehört.
+ </td>
+</tr>
+<tr>
+<td>BerechneRatenauszahlung</td>
+<td>
+ Berechnet die Ratenleistungen aus dem Kontostand gemäß der übergebenen Parameter.
+ Kontostand wird gemäß Verzinsungsinformationen verzinst bis zum ersten Auszahlungszeitpunkt. 
+ Die ersta Rate ist der verzinste Kontostand geteilt durch die Anzahl der Raten.
+ Jede weitere Rate wird durch Verzinsung gemäß Parameter berechnet.
+ </td>
+</tr>
+<tr>
+<td>BerechneKapitalauszahlung</td>
+<td>
+ Berechnet die Kapitalleistung aus dem Konto.
+ Wenn hibli belegt ist, so wird die Ratenleistungen für den hibli berechnet, ansonsten für die Person, der das Konto gehört.
+ </td>
+</tr>
+<tr>
+<td>BerechneBarwertfaktorMonatsrente</td>
+<td>
+ Berechnet den Barwert eine Monatsrente der Höhe 1.
+ </td>
+</tr>
+<tr>
+<td>VerzinseKontostand</td>
+<td>
+ Verzinst den Kontostand.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Leistungsberechnung" class="content">
+  
+</div>
+<div id="Berechtigungszeitraum" class="content">
+  <h2>Berechtigungszeitraum</h2>
+<p>
+   Als Parameter in verschiedenen Berechnungskernen  verwendet. 
+   Zum Beispiel um anzugeben, dass gewisse Beiträge nur von AlterVon bis AlterBis bezogen werden.
+ </p>
+</div>
+<div id="Berücksichtigungszeitraum" class="content">
+  <h2>Berücksichtigungszeitraum</h2>
+<p>
+ Beschreibt einen Berücksichtigungszeitraum in Abhängigkeit von einem gegebenen Berechnungsstichtag.  ''' 
+ </p>
+</div>
+<div id="IZusagenProjektProvider" class="content">
+  <h2>IZusagenProjektProvider</h2>
+<p>
+ Obligatorische Klasse, die einmal in jeder Kundensolution existieren muss. Sie dient dazu, dem Framework
+ eine Zusagenbeschreibung in Form eines <a href="Api.html?elementId=ZusagenProjekt">ZusagenProjekt</a>s zur Verfügung zu stellen. 
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>GetZusagenProjekt</td>
+<td>
+ Erzeugt das Zusagenprojekt.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Jahrestag" class="content">
+  <h2>Jahrestag</h2>
+<p>
+ Beschreibt einen Jahrestag unabhängig von der Jahreszahl.
+ </p>
+</div>
+<div id="Turnusinformation" class="content">
+  <h2>Turnusinformation</h2>
+<p>
+ Beschreibt in welchem Turnus ein Prozess stattfindet.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Monatlich</td>
+<td>
+ Kontofortschreibung monatlich.
+ </td>
+</tr>
+<tr>
+<td>Jährlich</td>
+<td>
+ Kontofortschreibung jährlich zum übergebenen Jahrestag.
+ </td>
+</tr>
+<tr>
+<td>Keine</td>
+<td>
+ Keine Kontofortschreibung.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Kontostandsinformation" class="content">
+  <h2>Kontostandsinformation</h2>
+<p>
+ Beschreibt, wie ein Kontostand zu interpretieren ist.
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Kapital</td>
+<td>
+ Erzeugt eine Kapitalkontostandsinformation.
+ </td>
+</tr>
+<tr>
+<td>Jahresrente</td>
+<td>
+ Erzeugt eine Jahresrentenkontostandsinformation.
+ </td>
+</tr>
+<tr>
+<td>Monatsrente</td>
+<td>
+ Erzeugt eine Monatsrentenkontostandsinformation.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Monatsrentenkontostandsinformation" class="content">
+  <h2>Monatsrentenkontostandsinformation</h2>
+<p>
+ Kontostand als Monatsrente.
+ </p>
+</div>
+<div id="Jahresrentenkontostandsinformation" class="content">
+  <h2>Jahresrentenkontostandsinformation</h2>
+<p>
+ Kontostand als Jahresrente.
+ </p>
+</div>
+<div id="Kapitalkontostandsinformation" class="content">
+  <h2>Kapitalkontostandsinformation</h2>
+<p>
+ Kontostand als Kapital.
+ </p>
+</div>
+<div id="Unverfallbarkeitsart" class="content">
+  <h2>Unverfallbarkeitsart</h2>
+<p>
+ Enum der Möglichen Arten wie eine Unverfallbarkeit bestimmt werden soll.
+ </p>
+</div>
+<div id="ZusagenProjekt" class="content">
+  <h2>ZusagenProjekt</h2>
+<p>
+ Wurzelobjekt der Zusagenbeschreibung
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Zusagendetails</td>
+<td>
+ Zusagendetails
+ </td>
+</tr>
+<tr>
+<td>Prozesse</td>
+<td>
+ Diese Prozessdefinitionen werden per Dsc ausgeliefert.
+ </td>
+</tr>
+<tr>
+<td>Kontoauszugsinfo</td>
+<td>
+ Beschreibung der Kontoauszugserstellung. Siehe <a href="Api.html?elementId=Kontoauszugserstellungsinfo">Kontoauszugserstellungsinfo</a></td>
+</tr>
+</table>
+
+</div>
+<div id="Prozessdefinition" class="content">
+  <h2>Prozessdefinition</h2>
+<p>
+ 	Beschreibt die Existenz eines Massenprozesses. Wenn einem Zusagenprojekt eine Prozessdefinition zugeordnet ist, so steht der Prozess dem Projekt zur Verfügung. Es ist keine weitere Einrichtung notwendig bis auf das Implementieren der zum Prozess gehörenden CustomizingProvider.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Name</td>
+<td>
+ Der Name des Prozesses auf der Oberfläche.
+ </td>
+</tr>
+<tr>
+<td>Verantwortlicher</td>
+<td>
+ Prozess-Verantwortlicher.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Kontofortschreibung</td>
+<td>
+ Erzeugt eine Kontofortschreibungsprozessdefinition.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Zusagendetail" class="content">
+  <h2>Zusagendetail</h2>
+<p>
+ Beschreibung einer konkreten Zusage.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>KontoKennzeichen</td>
+<td>
+ CustomEnum mit Namen CustomEnumNames.KontokennzeichenName.
+ Identifiziert das <a href="Api.html?elementId=Zusagendetail">Zusagendetail</a></td>
+</tr>
+<tr>
+<td>Zusagenkennzeichen</td>
+<td>
+ CustomEnum mit Namen CustomEnumNames.ZusagenkennzeichenName.
+ Identifiziert die <a href="Api.html?elementId=Zusage">Zusage</a></td>
+</tr>
+<tr>
+<td>ZusagenKomponenten</td>
+<td>
+ ZusagenKomponenten
+ </td>
+</tr>
+<tr>
+<td>Finanzierungsart</td>
+<td>
+ Arbeitgeber oder Arbeitnehmer
+ </td>
+</tr>
+<tr>
+<td>Unverfallbarkeitsart</td>
+<td>
+ Unverfallbarkeitsart der Zusage.
+ "Vertraglich" führt bei der UV-Berechnung zum Aufruf des Customizing-Hooks 
+ IAustrittsberechnungCustomizingprovider.BerechneVertraglicheUnverfallbarkeitsinformationen im Austrittsberechner.
+ "GemäßKontokennzeichen" bedeutet, dass das Konto vertraglich unverfallbar ist, wenn das entsprechende Kennzeichen im Konto gesetzt ist.
+ Falls das Kennzeichen nicht gesetzt ist zieht die gesetzliche Unverfallbarkeitsbestimmung.
+ </td>
+</tr>
+<tr>
+<td>GeVoDefinitionen</td>
+<td>
+ Liste der Geschäftsvorfalldefinitionen, an denen Konten dieses Zusagendetails teilnehmen sollen.
+ </td>
+</tr>
+<tr>
+<td>Altersleistungspaket</td>
+<td>
+ Kann über Leistungspaket.Alter erzeugt werden.
+ </td>
+</tr>
+<tr>
+<td>Invalidenleistungspaket</td>
+<td>
+ Kann über Leistungspaket.Invalidität erzeugt werden.
+ </td>
+</tr>
+<tr>
+<td>Todesfallleistungspaket</td>
+<td>
+ Kann über Leistungspaket.Tod erzeugt werden.
+ </td>
+</tr>
+<tr>
+<td>KontostandbestimmendeZusagenkomponenteKennzeichen</td>
+<td>
+ Das Kennzeichen der ZusagenKomponente, die zuständig für die Berechnung des "Kontostandes" ist.
+ </td>
+</tr>
+<tr>
+<td>RentenanpassungsProzent</td>
+<td>
+ Der Rentenanpassungsprozent, der bei der Barwertberechnung der Leistungsberechnung verwendet wird
+ </td>
+</tr>
+<tr>
+<td>RechnungszinsProzent</td>
+<td>
+ Der Rechnungszins, der bei der Barwertberechnung der Leistungsberechnung verwendet wird
+ </td>
+</tr>
+<tr>
+<td>Kontoauszugsinformation</td>
+<td>
+ Gibt an, in welchem Turnus Kontoauszüge erstellt werden. Siehe <a href="Api.html?elementId=Turnusinformation">Turnusinformation</a>.
+ Keine, Monatlich, Jährlich.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Zusagenkomponente" class="content">
+  <h2>Zusagenkomponente</h2>
+<p>
+   Definiert die Art wie eine (Teil-)Anwartschaft berechnet wird. 
+   Bestimmt wie ein (Teil-)Kontostand definiert ist und berechnet wird. 
+   Zuständig für "Kontofortschreibung.
+ </p><h4>Properties</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Kennzeichen</td>
+<td>
+ CustomEnum mit Name CustomEnumNames.BerechnungskennzeichenName
+ </td>
+</tr>
+<tr>
+<td>Kontostandsinformation</td>
+<td>
+ Jahresrente, Monatsrente, Kapital, Raten. Siehe Kontostandsinformation.
+ </td>
+</tr>
+<tr>
+<td>Fortschreibungsinformation</td>
+<td>
+ Gibt an, in welchem Turnus die Kontofortschreibung für diese Komponente stattfindet. Siehe Kontofortschreibungsinformation.
+ Keine, Monatlich, Jährlich.
+ </td>
+</tr>
+</table>
+<h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>Beitragsberechnung</td>
+<td>
+ Erzeugt eine Beitragsberechnungskomponente.
+ </td>
+</tr>
+<tr>
+<td>Bausteinberechnung</td>
+<td>
+ Erzeugt eine Bausteinberechnungskomponente.
+ </td>
+</tr>
+<tr>
+<td>Beitragsverzinsung</td>
+<td>
+ Erzeugt eine Beitragsverzinsungskomponente.
+ </td>
+</tr>
+<tr>
+<td>Dienstzeitabhängig</td>
+<td>
+ Erzeugt eine Dienstzeitberechnungskomponente.
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Zusagenbeschreibung" class="content">
+  
+</div>
+<div id="Int32)" class="content">
+  <h2>Int32)</h2>
+<p> Accesspoint for customizing code that is implemented as interface member. </p>
+</div>
+<div id="OptionalMembers(System" class="content">
+  
+</div>
+<div id="ZusagencustomizingLocatorBase`4" class="content">
+  
+</div>
+<div id="OptionalMembers" class="content">
+  <h2>OptionalMembers</h2>
+<p> Accesspoint for customizing code that is implemented as interface member. </p>
+</div>
+<div id="LocatorBase`3" class="content">
+  
+</div>
+<div id="ValidierungsUtilities" class="content">
+  <h2>ValidierungsUtilities</h2>
+<p>
+ ValidierungsUtilities
+ </p><h4>Methods</h4>
+<table style="width: 70vw; ">
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+<tr>
+<td>TryGetMatchingItemInCollection``1</td>
+<td>
+  Looks for a item in the collection that mathces the newItem regarding the Keyset
+ </td>
+</tr>
+</table>
+
+</div>
+<div id="Validierung" class="content">
+  
+</div>
+<div id="Pension" class="content">
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/tree.min.js"></script>
+  <script src="js/navtree.js"></script>
+  <script>
+    var root = new TreeNode("root");
+var Pension = new TreeNode("Pension");
+Pension.on('select', function (e, node) {
+    onNodeClick(Pension)
+});
+
+var My = new TreeNode("My");
+My.on('select', function (e, node) {
+    onNodeClick(My)
+});
+
+var Resources = new TreeNode("Resources");
+Resources.on('select', function (e, node) {
+    onNodeClick(Resources)
+});
+
+var Resources = new TreeNode("Resources");
+Resources.on('select', function (e, node) {
+    onNodeClick(Resources)
+});
+
+Resources.addChild(Resources);My.addChild(Resources);Pension.addChild(My);var Bausteinberechnung = new TreeNode("Bausteinberechnung");
+Bausteinberechnung.on('select', function (e, node) {
+    onNodeClick(Bausteinberechnung)
+});
+
+var Bausteinberechner = new TreeNode("Bausteinberechner");
+Bausteinberechner.on('select', function (e, node) {
+    onNodeClick(Bausteinberechner)
+});
+
+Bausteinberechnung.addChild(Bausteinberechner);var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var BausteinberechnungAltersfaktoren = new TreeNode("BausteinberechnungAltersfaktoren");
+BausteinberechnungAltersfaktoren.on('select', function (e, node) {
+    onNodeClick(BausteinberechnungAltersfaktoren)
+});
+
+Beschreibung.addChild(BausteinberechnungAltersfaktoren);var BausteinberechnungVerzinsung = new TreeNode("BausteinberechnungVerzinsung");
+BausteinberechnungVerzinsung.on('select', function (e, node) {
+    onNodeClick(BausteinberechnungVerzinsung)
+});
+
+Beschreibung.addChild(BausteinberechnungVerzinsung);var CustomBausteinberechnung = new TreeNode("CustomBausteinberechnung");
+CustomBausteinberechnung.on('select', function (e, node) {
+    onNodeClick(CustomBausteinberechnung)
+});
+
+Beschreibung.addChild(CustomBausteinberechnung);var Bausteinberechnungskern = new TreeNode("Bausteinberechnungskern");
+Bausteinberechnungskern.on('select', function (e, node) {
+    onNodeClick(Bausteinberechnungskern)
+});
+
+Beschreibung.addChild(Bausteinberechnungskern);var Bausteinberechnungskomponente = new TreeNode("Bausteinberechnungskomponente");
+Bausteinberechnungskomponente.on('select', function (e, node) {
+    onNodeClick(Bausteinberechnungskomponente)
+});
+
+Beschreibung.addChild(Bausteinberechnungskomponente);var Bausteindefinition = new TreeNode("Bausteindefinition");
+Bausteindefinition.on('select', function (e, node) {
+    onNodeClick(Bausteindefinition)
+});
+
+Beschreibung.addChild(Bausteindefinition);var Bausteinberechnungsgrenze = new TreeNode("Bausteinberechnungsgrenze");
+Bausteinberechnungsgrenze.on('select', function (e, node) {
+    onNodeClick(Bausteinberechnungsgrenze)
+});
+
+Beschreibung.addChild(Bausteinberechnungsgrenze);Bausteinberechnung.addChild(Beschreibung);var Bausteinberechnungsfunktionen = new TreeNode("Bausteinberechnungsfunktionen");
+Bausteinberechnungsfunktionen.on('select', function (e, node) {
+    onNodeClick(Bausteinberechnungsfunktionen)
+});
+
+Bausteinberechnung.addChild(Bausteinberechnungsfunktionen);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var OptionalBausteinberechnungCustomizing = new TreeNode("OptionalBausteinberechnungCustomizing");
+OptionalBausteinberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalBausteinberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalBausteinberechnungCustomizing);var IBausteinberechnungCustomizingProvider = new TreeNode("IBausteinberechnungCustomizingProvider");
+IBausteinberechnungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IBausteinberechnungCustomizingProvider)
+});
+
+Customizing.addChild(IBausteinberechnungCustomizingProvider);Bausteinberechnung.addChild(Customizing);var Validierung = new TreeNode("Validierung");
+Validierung.on('select', function (e, node) {
+    onNodeClick(Validierung)
+});
+
+var BausteinWirdGeändert = new TreeNode("BausteinWirdGeändert");
+BausteinWirdGeändert.on('select', function (e, node) {
+    onNodeClick(BausteinWirdGeändert)
+});
+
+Validierung.addChild(BausteinWirdGeändert);var BeiträgeExistierenZumBaustein = new TreeNode("BeiträgeExistierenZumBaustein");
+BeiträgeExistierenZumBaustein.on('select', function (e, node) {
+    onNodeClick(BeiträgeExistierenZumBaustein)
+});
+
+Validierung.addChild(BeiträgeExistierenZumBaustein);Bausteinberechnung.addChild(Validierung);Pension.addChild(Bausteinberechnung);var Beitragsberechnung = new TreeNode("Beitragsberechnung");
+Beitragsberechnung.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var BeitragsberechnungMitEinkommensprozente = new TreeNode("BeitragsberechnungMitEinkommensprozente");
+BeitragsberechnungMitEinkommensprozente.on('select', function (e, node) {
+    onNodeClick(BeitragsberechnungMitEinkommensprozente)
+});
+
+Beschreibung.addChild(BeitragsberechnungMitEinkommensprozente);var CustomBeitragsberechnung = new TreeNode("CustomBeitragsberechnung");
+CustomBeitragsberechnung.on('select', function (e, node) {
+    onNodeClick(CustomBeitragsberechnung)
+});
+
+Beschreibung.addChild(CustomBeitragsberechnung);var Beitragsberechnungsgrenze = new TreeNode("Beitragsberechnungsgrenze");
+Beitragsberechnungsgrenze.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnungsgrenze)
+});
+
+Beschreibung.addChild(Beitragsberechnungsgrenze);var Beitragsberechnungskern = new TreeNode("Beitragsberechnungskern");
+Beitragsberechnungskern.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnungskern)
+});
+
+Beschreibung.addChild(Beitragsberechnungskern);var Beitragsberechnungskomponente = new TreeNode("Beitragsberechnungskomponente");
+Beitragsberechnungskomponente.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnungskomponente)
+});
+
+Beschreibung.addChild(Beitragsberechnungskomponente);var Beitragsdefinition = new TreeNode("Beitragsdefinition");
+Beitragsdefinition.on('select', function (e, node) {
+    onNodeClick(Beitragsdefinition)
+});
+
+Beschreibung.addChild(Beitragsdefinition);var Beitragssatz = new TreeNode("Beitragssatz");
+Beitragssatz.on('select', function (e, node) {
+    onNodeClick(Beitragssatz)
+});
+
+Beschreibung.addChild(Beitragssatz);Beitragsberechnung.addChild(Beschreibung);var Beitragsberechner = new TreeNode("Beitragsberechner");
+Beitragsberechner.on('select', function (e, node) {
+    onNodeClick(Beitragsberechner)
+});
+
+Beitragsberechnung.addChild(Beitragsberechner);var Beitragsberechnungsfunktionen = new TreeNode("Beitragsberechnungsfunktionen");
+Beitragsberechnungsfunktionen.on('select', function (e, node) {
+    onNodeClick(Beitragsberechnungsfunktionen)
+});
+
+Beitragsberechnung.addChild(Beitragsberechnungsfunktionen);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var OptionalBeitragsberechnungCustomizing = new TreeNode("OptionalBeitragsberechnungCustomizing");
+OptionalBeitragsberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalBeitragsberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalBeitragsberechnungCustomizing);var IBeitragsberechnungCustomizingProvider = new TreeNode("IBeitragsberechnungCustomizingProvider");
+IBeitragsberechnungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IBeitragsberechnungCustomizingProvider)
+});
+
+Customizing.addChild(IBeitragsberechnungCustomizingProvider);Beitragsberechnung.addChild(Customizing);var Validierung = new TreeNode("Validierung");
+Validierung.on('select', function (e, node) {
+    onNodeClick(Validierung)
+});
+
+var BeitragWirdGeändert = new TreeNode("BeitragWirdGeändert");
+BeitragWirdGeändert.on('select', function (e, node) {
+    onNodeClick(BeitragWirdGeändert)
+});
+
+Validierung.addChild(BeitragWirdGeändert);Beitragsberechnung.addChild(Validierung);Pension.addChild(Beitragsberechnung);var Beitragsverzinsung = new TreeNode("Beitragsverzinsung");
+Beitragsverzinsung.on('select', function (e, node) {
+    onNodeClick(Beitragsverzinsung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var DelegateBeitragsverzinsungskern = new TreeNode("DelegateBeitragsverzinsungskern");
+DelegateBeitragsverzinsungskern.on('select', function (e, node) {
+    onNodeClick(DelegateBeitragsverzinsungskern)
+});
+
+Beschreibung.addChild(DelegateBeitragsverzinsungskern);var Beitragsverzinsungskern = new TreeNode("Beitragsverzinsungskern");
+Beitragsverzinsungskern.on('select', function (e, node) {
+    onNodeClick(Beitragsverzinsungskern)
+});
+
+Beschreibung.addChild(Beitragsverzinsungskern);var BeitragsgenaueBeitragsverzinsung = new TreeNode("BeitragsgenaueBeitragsverzinsung");
+BeitragsgenaueBeitragsverzinsung.on('select', function (e, node) {
+    onNodeClick(BeitragsgenaueBeitragsverzinsung)
+});
+
+Beschreibung.addChild(BeitragsgenaueBeitragsverzinsung);var Beitragsverzinsungskomponente = new TreeNode("Beitragsverzinsungskomponente");
+Beitragsverzinsungskomponente.on('select', function (e, node) {
+    onNodeClick(Beitragsverzinsungskomponente)
+});
+
+Beschreibung.addChild(Beitragsverzinsungskomponente);var Beitragsverzinsungsdefinition = new TreeNode("Beitragsverzinsungsdefinition");
+Beitragsverzinsungsdefinition.on('select', function (e, node) {
+    onNodeClick(Beitragsverzinsungsdefinition)
+});
+
+Beschreibung.addChild(Beitragsverzinsungsdefinition);var CustomBeitragsverzinsung = new TreeNode("CustomBeitragsverzinsung");
+CustomBeitragsverzinsung.on('select', function (e, node) {
+    onNodeClick(CustomBeitragsverzinsung)
+});
+
+Beschreibung.addChild(CustomBeitragsverzinsung);var Verzinsungsturnus = new TreeNode("Verzinsungsturnus");
+Verzinsungsturnus.on('select', function (e, node) {
+    onNodeClick(Verzinsungsturnus)
+});
+
+Beschreibung.addChild(Verzinsungsturnus);Beitragsverzinsung.addChild(Beschreibung);var Beitragsverzinsungsberechner = new TreeNode("Beitragsverzinsungsberechner");
+Beitragsverzinsungsberechner.on('select', function (e, node) {
+    onNodeClick(Beitragsverzinsungsberechner)
+});
+
+Beitragsverzinsung.addChild(Beitragsverzinsungsberechner);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var IBeitragsverzinsungCustomizingProvider = new TreeNode("IBeitragsverzinsungCustomizingProvider");
+IBeitragsverzinsungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IBeitragsverzinsungCustomizingProvider)
+});
+
+Customizing.addChild(IBeitragsverzinsungCustomizingProvider);var OptionalBeitragsverzinsungCustomizing = new TreeNode("OptionalBeitragsverzinsungCustomizing");
+OptionalBeitragsverzinsungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalBeitragsverzinsungCustomizing)
+});
+
+Customizing.addChild(OptionalBeitragsverzinsungCustomizing);Beitragsverzinsung.addChild(Customizing);Pension.addChild(Beitragsverzinsung);var Dienstzeitberechnung = new TreeNode("Dienstzeitberechnung");
+Dienstzeitberechnung.on('select', function (e, node) {
+    onNodeClick(Dienstzeitberechnung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var DienstzeitberechnungImmerVoll = new TreeNode("DienstzeitberechnungImmerVoll");
+DienstzeitberechnungImmerVoll.on('select', function (e, node) {
+    onNodeClick(DienstzeitberechnungImmerVoll)
+});
+
+Beschreibung.addChild(DienstzeitberechnungImmerVoll);var DienstzeitberechnungStandard = new TreeNode("DienstzeitberechnungStandard");
+DienstzeitberechnungStandard.on('select', function (e, node) {
+    onNodeClick(DienstzeitberechnungStandard)
+});
+
+Beschreibung.addChild(DienstzeitberechnungStandard);var CustomLeistungsformel = new TreeNode("CustomLeistungsformel");
+CustomLeistungsformel.on('select', function (e, node) {
+    onNodeClick(CustomLeistungsformel)
+});
+
+Beschreibung.addChild(CustomLeistungsformel);var LeistungsformelEinkommensprozente = new TreeNode("LeistungsformelEinkommensprozente");
+LeistungsformelEinkommensprozente.on('select', function (e, node) {
+    onNodeClick(LeistungsformelEinkommensprozente)
+});
+
+Beschreibung.addChild(LeistungsformelEinkommensprozente);var Einkommensstaffel = new TreeNode("Einkommensstaffel");
+Einkommensstaffel.on('select', function (e, node) {
+    onNodeClick(Einkommensstaffel)
+});
+
+Beschreibung.addChild(Einkommensstaffel);var Dienstzeitberechnungskern = new TreeNode("Dienstzeitberechnungskern");
+Dienstzeitberechnungskern.on('select', function (e, node) {
+    onNodeClick(Dienstzeitberechnungskern)
+});
+
+Beschreibung.addChild(Dienstzeitberechnungskern);var Dienstzeitberechnungskomponente = new TreeNode("Dienstzeitberechnungskomponente");
+Dienstzeitberechnungskomponente.on('select', function (e, node) {
+    onNodeClick(Dienstzeitberechnungskomponente)
+});
+
+Beschreibung.addChild(Dienstzeitberechnungskomponente);var Leistungsformel = new TreeNode("Leistungsformel");
+Leistungsformel.on('select', function (e, node) {
+    onNodeClick(Leistungsformel)
+});
+
+Beschreibung.addChild(Leistungsformel);Dienstzeitberechnung.addChild(Beschreibung);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var IDienstzeitberechnungCustomizingProvider = new TreeNode("IDienstzeitberechnungCustomizingProvider");
+IDienstzeitberechnungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IDienstzeitberechnungCustomizingProvider)
+});
+
+Customizing.addChild(IDienstzeitberechnungCustomizingProvider);var OptionalDienstzeitberechnungCustomizing = new TreeNode("OptionalDienstzeitberechnungCustomizing");
+OptionalDienstzeitberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalDienstzeitberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalDienstzeitberechnungCustomizing);Dienstzeitberechnung.addChild(Customizing);var Dienstzeitberechner = new TreeNode("Dienstzeitberechner");
+Dienstzeitberechner.on('select', function (e, node) {
+    onNodeClick(Dienstzeitberechner)
+});
+
+Dienstzeitberechnung.addChild(Dienstzeitberechner);Pension.addChild(Dienstzeitberechnung);var Dokumenterzeugung = new TreeNode("Dokumenterzeugung");
+Dokumenterzeugung.on('select', function (e, node) {
+    onNodeClick(Dokumenterzeugung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var Berechnungsblattgruppe = new TreeNode("Berechnungsblattgruppe");
+Berechnungsblattgruppe.on('select', function (e, node) {
+    onNodeClick(Berechnungsblattgruppe)
+});
+
+Beschreibung.addChild(Berechnungsblattgruppe);var Dokumentgruppe = new TreeNode("Dokumentgruppe");
+Dokumentgruppe.on('select', function (e, node) {
+    onNodeClick(Dokumentgruppe)
+});
+
+Beschreibung.addChild(Dokumentgruppe);var Dokumenterzeugungsinfo = new TreeNode("Dokumenterzeugungsinfo");
+Dokumenterzeugungsinfo.on('select', function (e, node) {
+    onNodeClick(Dokumenterzeugungsinfo)
+});
+
+Beschreibung.addChild(Dokumenterzeugungsinfo);var Dokumentgruppierungsinfo = new TreeNode("Dokumentgruppierungsinfo");
+Dokumentgruppierungsinfo.on('select', function (e, node) {
+    onNodeClick(Dokumentgruppierungsinfo)
+});
+
+Beschreibung.addChild(Dokumentgruppierungsinfo);Dokumenterzeugung.addChild(Beschreibung);Pension.addChild(Dokumenterzeugung);var Einkommensberechnung = new TreeNode("Einkommensberechnung");
+Einkommensberechnung.on('select', function (e, node) {
+    onNodeClick(Einkommensberechnung)
+});
+
+var BbgErmittlungsart = new TreeNode("BbgErmittlungsart");
+BbgErmittlungsart.on('select', function (e, node) {
+    onNodeClick(BbgErmittlungsart)
+});
+
+Einkommensberechnung.addChild(BbgErmittlungsart);var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var EinkommenParameter = new TreeNode("EinkommenParameter");
+EinkommenParameter.on('select', function (e, node) {
+    onNodeClick(EinkommenParameter)
+});
+
+Beschreibung.addChild(EinkommenParameter);var BemessungsgrundlageEinkommen = new TreeNode("BemessungsgrundlageEinkommen");
+BemessungsgrundlageEinkommen.on('select', function (e, node) {
+    onNodeClick(BemessungsgrundlageEinkommen)
+});
+
+Beschreibung.addChild(BemessungsgrundlageEinkommen);var Dienstzeitenparameter = new TreeNode("Dienstzeitenparameter");
+Dienstzeitenparameter.on('select', function (e, node) {
+    onNodeClick(Dienstzeitenparameter)
+});
+
+Beschreibung.addChild(Dienstzeitenparameter);var GehaltsArt = new TreeNode("GehaltsArt");
+GehaltsArt.on('select', function (e, node) {
+    onNodeClick(GehaltsArt)
+});
+
+Beschreibung.addChild(GehaltsArt);var EinkommensberechnungskernMitGünstigervergleich = new TreeNode("EinkommensberechnungskernMitGünstigervergleich");
+EinkommensberechnungskernMitGünstigervergleich.on('select', function (e, node) {
+    onNodeClick(EinkommensberechnungskernMitGünstigervergleich)
+});
+
+Beschreibung.addChild(EinkommensberechnungskernMitGünstigervergleich);var EinkommensberechnungskernStandard = new TreeNode("EinkommensberechnungskernStandard");
+EinkommensberechnungskernStandard.on('select', function (e, node) {
+    onNodeClick(EinkommensberechnungskernStandard)
+});
+
+Beschreibung.addChild(EinkommensberechnungskernStandard);var Einkommensberechnungskern = new TreeNode("Einkommensberechnungskern");
+Einkommensberechnungskern.on('select', function (e, node) {
+    onNodeClick(Einkommensberechnungskern)
+});
+
+Beschreibung.addChild(Einkommensberechnungskern);Einkommensberechnung.addChild(Beschreibung);var Einkommensberechnungsfunktionen = new TreeNode("Einkommensberechnungsfunktionen");
+Einkommensberechnungsfunktionen.on('select', function (e, node) {
+    onNodeClick(Einkommensberechnungsfunktionen)
+});
+
+Einkommensberechnung.addChild(Einkommensberechnungsfunktionen);var Entgeltinformation = new TreeNode("Entgeltinformation");
+Entgeltinformation.on('select', function (e, node) {
+    onNodeClick(Entgeltinformation)
+});
+
+Einkommensberechnung.addChild(Entgeltinformation);var Validierung = new TreeNode("Validierung");
+Validierung.on('select', function (e, node) {
+    onNodeClick(Validierung)
+});
+
+var BbgExistiertZumStichtag = new TreeNode("BbgExistiertZumStichtag");
+BbgExistiertZumStichtag.on('select', function (e, node) {
+    onNodeClick(BbgExistiertZumStichtag)
+});
+
+Validierung.addChild(BbgExistiertZumStichtag);var EinkommenExistiertImStichtagsmonat = new TreeNode("EinkommenExistiertImStichtagsmonat");
+EinkommenExistiertImStichtagsmonat.on('select', function (e, node) {
+    onNodeClick(EinkommenExistiertImStichtagsmonat)
+});
+
+Validierung.addChild(EinkommenExistiertImStichtagsmonat);var EinkommenVorSonderdienstzeitExistiert = new TreeNode("EinkommenVorSonderdienstzeitExistiert");
+EinkommenVorSonderdienstzeitExistiert.on('select', function (e, node) {
+    onNodeClick(EinkommenVorSonderdienstzeitExistiert)
+});
+
+Validierung.addChild(EinkommenVorSonderdienstzeitExistiert);var ErforderlicheEinkommenExistieren = new TreeNode("ErforderlicheEinkommenExistieren");
+ErforderlicheEinkommenExistieren.on('select', function (e, node) {
+    onNodeClick(ErforderlicheEinkommenExistieren)
+});
+
+Validierung.addChild(ErforderlicheEinkommenExistieren);Einkommensberechnung.addChild(Validierung);Pension.addChild(Einkommensberechnung);var Geschäftsvorfälle = new TreeNode("Geschäftsvorfälle");
+Geschäftsvorfälle.on('select', function (e, node) {
+    onNodeClick(Geschäftsvorfälle)
+});
+
+var Altersleistung = new TreeNode("Altersleistung");
+Altersleistung.on('select', function (e, node) {
+    onNodeClick(Altersleistung)
+});
+
+var AllgemeineEingabenAltersleistung = new TreeNode("AllgemeineEingabenAltersleistung");
+AllgemeineEingabenAltersleistung.on('select', function (e, node) {
+    onNodeClick(AllgemeineEingabenAltersleistung)
+});
+
+Altersleistung.addChild(AllgemeineEingabenAltersleistung);var AllgemeineErgebnisseAltersleistung = new TreeNode("AllgemeineErgebnisseAltersleistung");
+AllgemeineErgebnisseAltersleistung.on('select', function (e, node) {
+    onNodeClick(AllgemeineErgebnisseAltersleistung)
+});
+
+Altersleistung.addChild(AllgemeineErgebnisseAltersleistung);var KontoEingabenAltersleistung = new TreeNode("KontoEingabenAltersleistung");
+KontoEingabenAltersleistung.on('select', function (e, node) {
+    onNodeClick(KontoEingabenAltersleistung)
+});
+
+Altersleistung.addChild(KontoEingabenAltersleistung);var KontoErgebnisseAltersleistung = new TreeNode("KontoErgebnisseAltersleistung");
+KontoErgebnisseAltersleistung.on('select', function (e, node) {
+    onNodeClick(KontoErgebnisseAltersleistung)
+});
+
+Altersleistung.addChild(KontoErgebnisseAltersleistung);var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var GeVoAltersleistungDefinition = new TreeNode("GeVoAltersleistungDefinition");
+GeVoAltersleistungDefinition.on('select', function (e, node) {
+    onNodeClick(GeVoAltersleistungDefinition)
+});
+
+Beschreibung.addChild(GeVoAltersleistungDefinition);Altersleistung.addChild(Beschreibung);Geschäftsvorfälle.addChild(Altersleistung);var Austritt = new TreeNode("Austritt");
+Austritt.on('select', function (e, node) {
+    onNodeClick(Austritt)
+});
+
+var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var IAustrittCustomizingprovider = new TreeNode("IAustrittCustomizingprovider");
+IAustrittCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IAustrittCustomizingprovider)
+});
+
+Customizing.addChild(IAustrittCustomizingprovider);var OptionalAustrittsdokumenterzeugungCustomizing = new TreeNode("OptionalAustrittsdokumenterzeugungCustomizing");
+OptionalAustrittsdokumenterzeugungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalAustrittsdokumenterzeugungCustomizing)
+});
+
+Customizing.addChild(OptionalAustrittsdokumenterzeugungCustomizing);var OptionalAustrittsberechnungCustomizing = new TreeNode("OptionalAustrittsberechnungCustomizing");
+OptionalAustrittsberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalAustrittsberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalAustrittsberechnungCustomizing);var IAustrittImplementierungCustomizingprovider = new TreeNode("IAustrittImplementierungCustomizingprovider");
+IAustrittImplementierungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IAustrittImplementierungCustomizingprovider)
+});
+
+Customizing.addChild(IAustrittImplementierungCustomizingprovider);var IAustrittsberechnungCustomizingprovider = new TreeNode("IAustrittsberechnungCustomizingprovider");
+IAustrittsberechnungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IAustrittsberechnungCustomizingprovider)
+});
+
+Customizing.addChild(IAustrittsberechnungCustomizingprovider);var IAustrittsdokumenterzeugungCustomizingProvider = new TreeNode("IAustrittsdokumenterzeugungCustomizingProvider");
+IAustrittsdokumenterzeugungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IAustrittsdokumenterzeugungCustomizingProvider)
+});
+
+Customizing.addChild(IAustrittsdokumenterzeugungCustomizingProvider);var IAustrittsmappingAnspruchCustomizingprovider = new TreeNode("IAustrittsmappingAnspruchCustomizingprovider");
+IAustrittsmappingAnspruchCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IAustrittsmappingAnspruchCustomizingprovider)
+});
+
+Customizing.addChild(IAustrittsmappingAnspruchCustomizingprovider);var IAustrittsvalidierungAnspruchCustomizingprovider = new TreeNode("IAustrittsvalidierungAnspruchCustomizingprovider");
+IAustrittsvalidierungAnspruchCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IAustrittsvalidierungAnspruchCustomizingprovider)
+});
+
+Customizing.addChild(IAustrittsvalidierungAnspruchCustomizingprovider);var IAustrittsvalidierungGesamtCustomizingprovider = new TreeNode("IAustrittsvalidierungGesamtCustomizingprovider");
+IAustrittsvalidierungGesamtCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IAustrittsvalidierungGesamtCustomizingprovider)
+});
+
+Customizing.addChild(IAustrittsvalidierungGesamtCustomizingprovider);Austritt.addChild(Customizing);var AllgemeineEingabenAustritt = new TreeNode("AllgemeineEingabenAustritt");
+AllgemeineEingabenAustritt.on('select', function (e, node) {
+    onNodeClick(AllgemeineEingabenAustritt)
+});
+
+Austritt.addChild(AllgemeineEingabenAustritt);var Austrittsberechner = new TreeNode("Austrittsberechner");
+Austrittsberechner.on('select', function (e, node) {
+    onNodeClick(Austrittsberechner)
+});
+
+Austritt.addChild(Austrittsberechner);var AllgemeineErgebnisseAustritt = new TreeNode("AllgemeineErgebnisseAustritt");
+AllgemeineErgebnisseAustritt.on('select', function (e, node) {
+    onNodeClick(AllgemeineErgebnisseAustritt)
+});
+
+Austritt.addChild(AllgemeineErgebnisseAustritt);var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var GeVoAustrittDefinition = new TreeNode("GeVoAustrittDefinition");
+GeVoAustrittDefinition.on('select', function (e, node) {
+    onNodeClick(GeVoAustrittDefinition)
+});
+
+Beschreibung.addChild(GeVoAustrittDefinition);Austritt.addChild(Beschreibung);var KontoEingabenAustritt = new TreeNode("KontoEingabenAustritt");
+KontoEingabenAustritt.on('select', function (e, node) {
+    onNodeClick(KontoEingabenAustritt)
+});
+
+Austritt.addChild(KontoEingabenAustritt);var KontoErgebnisseAustritt = new TreeNode("KontoErgebnisseAustritt");
+KontoErgebnisseAustritt.on('select', function (e, node) {
+    onNodeClick(KontoErgebnisseAustritt)
+});
+
+Austritt.addChild(KontoErgebnisseAustritt);Geschäftsvorfälle.addChild(Austritt);var Dokumenterzeugung = new TreeNode("Dokumenterzeugung");
+Dokumenterzeugung.on('select', function (e, node) {
+    onNodeClick(Dokumenterzeugung)
+});
+
+var Kontengruppe = new TreeNode("Kontengruppe");
+Kontengruppe.on('select', function (e, node) {
+    onNodeClick(Kontengruppe)
+});
+
+var AuszahlungsartWennEinheitlich = new TreeNode("AuszahlungsartWennEinheitlich");
+AuszahlungsartWennEinheitlich.on('select', function (e, node) {
+    onNodeClick(AuszahlungsartWennEinheitlich)
+});
+
+Kontengruppe.addChild(AuszahlungsartWennEinheitlich);Dokumenterzeugung.addChild(Kontengruppe);var KontengruppeEigenleistung`1 = new TreeNode("KontengruppeEigenleistung`1");
+KontengruppeEigenleistung`1.on('select', function (e, node) {
+    onNodeClick(KontengruppeEigenleistung`1)
+});
+
+var AuszahlungsartWennEinheitlich = new TreeNode("AuszahlungsartWennEinheitlich");
+AuszahlungsartWennEinheitlich.on('select', function (e, node) {
+    onNodeClick(AuszahlungsartWennEinheitlich)
+});
+
+KontengruppeEigenleistung`1.addChild(AuszahlungsartWennEinheitlich);Dokumenterzeugung.addChild(KontengruppeEigenleistung`1);var KontengruppeTodesfall`1 = new TreeNode("KontengruppeTodesfall`1");
+KontengruppeTodesfall`1.on('select', function (e, node) {
+    onNodeClick(KontengruppeTodesfall`1)
+});
+
+var AuszahlungsartWennEinheitlich = new TreeNode("AuszahlungsartWennEinheitlich");
+AuszahlungsartWennEinheitlich.on('select', function (e, node) {
+    onNodeClick(AuszahlungsartWennEinheitlich)
+});
+
+KontengruppeTodesfall`1.addChild(AuszahlungsartWennEinheitlich);Dokumenterzeugung.addChild(KontengruppeTodesfall`1);Geschäftsvorfälle.addChild(Dokumenterzeugung);var Eigenleistung = new TreeNode("Eigenleistung");
+Eigenleistung.on('select', function (e, node) {
+    onNodeClick(Eigenleistung)
+});
+
+var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var OptionalEigenleistungsdokumenterzeugungCustomizing = new TreeNode("OptionalEigenleistungsdokumenterzeugungCustomizing");
+OptionalEigenleistungsdokumenterzeugungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalEigenleistungsdokumenterzeugungCustomizing)
+});
+
+Customizing.addChild(OptionalEigenleistungsdokumenterzeugungCustomizing);var OptionalEigenleistungsmappingAnspruchCustomizing = new TreeNode("OptionalEigenleistungsmappingAnspruchCustomizing");
+OptionalEigenleistungsmappingAnspruchCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalEigenleistungsmappingAnspruchCustomizing)
+});
+
+Customizing.addChild(OptionalEigenleistungsmappingAnspruchCustomizing);var OptionalEigenleistungsberechnungCustomizingprovider = new TreeNode("OptionalEigenleistungsberechnungCustomizingprovider");
+OptionalEigenleistungsberechnungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(OptionalEigenleistungsberechnungCustomizingprovider)
+});
+
+Customizing.addChild(OptionalEigenleistungsberechnungCustomizingprovider);var IEigenleistungImplementierungCustomizingprovider = new TreeNode("IEigenleistungImplementierungCustomizingprovider");
+IEigenleistungImplementierungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IEigenleistungImplementierungCustomizingprovider)
+});
+
+Customizing.addChild(IEigenleistungImplementierungCustomizingprovider);var IEigenleistungsberechnungCustomizingprovider = new TreeNode("IEigenleistungsberechnungCustomizingprovider");
+IEigenleistungsberechnungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IEigenleistungsberechnungCustomizingprovider)
+});
+
+Customizing.addChild(IEigenleistungsberechnungCustomizingprovider);var IEigenleistungsdokumenterzeugungCustomizingprovider = new TreeNode("IEigenleistungsdokumenterzeugungCustomizingprovider");
+IEigenleistungsdokumenterzeugungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IEigenleistungsdokumenterzeugungCustomizingprovider)
+});
+
+Customizing.addChild(IEigenleistungsdokumenterzeugungCustomizingprovider);var IEigenleistungsmappingGesamtCustomizingprovider = new TreeNode("IEigenleistungsmappingGesamtCustomizingprovider");
+IEigenleistungsmappingGesamtCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IEigenleistungsmappingGesamtCustomizingprovider)
+});
+
+Customizing.addChild(IEigenleistungsmappingGesamtCustomizingprovider);var IEigenleistungsvalidierungAnspruchCustomizingprovider = new TreeNode("IEigenleistungsvalidierungAnspruchCustomizingprovider");
+IEigenleistungsvalidierungAnspruchCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IEigenleistungsvalidierungAnspruchCustomizingprovider)
+});
+
+Customizing.addChild(IEigenleistungsvalidierungAnspruchCustomizingprovider);var IEigenleistungsvalidierungGesamtCustomizingprovider = new TreeNode("IEigenleistungsvalidierungGesamtCustomizingprovider");
+IEigenleistungsvalidierungGesamtCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(IEigenleistungsvalidierungGesamtCustomizingprovider)
+});
+
+var Validate = new TreeNode("Validate");
+Validate.on('select', function (e, node) {
+    onNodeClick(Validate)
+});
+
+IEigenleistungsvalidierungGesamtCustomizingprovider.addChild(Validate);Customizing.addChild(IEigenleistungsvalidierungGesamtCustomizingprovider);Eigenleistung.addChild(Customizing);var AllgemeineEingabenEigenleistung = new TreeNode("AllgemeineEingabenEigenleistung");
+AllgemeineEingabenEigenleistung.on('select', function (e, node) {
+    onNodeClick(AllgemeineEingabenEigenleistung)
+});
+
+Eigenleistung.addChild(AllgemeineEingabenEigenleistung);var AllgemeineErgebnisseEigenleistung = new TreeNode("AllgemeineErgebnisseEigenleistung");
+AllgemeineErgebnisseEigenleistung.on('select', function (e, node) {
+    onNodeClick(AllgemeineErgebnisseEigenleistung)
+});
+
+Eigenleistung.addChild(AllgemeineErgebnisseEigenleistung);var KontoEingabenEigenleistung = new TreeNode("KontoEingabenEigenleistung");
+KontoEingabenEigenleistung.on('select', function (e, node) {
+    onNodeClick(KontoEingabenEigenleistung)
+});
+
+Eigenleistung.addChild(KontoEingabenEigenleistung);var KontoErgebnisseEigenleistung = new TreeNode("KontoErgebnisseEigenleistung");
+KontoErgebnisseEigenleistung.on('select', function (e, node) {
+    onNodeClick(KontoErgebnisseEigenleistung)
+});
+
+Eigenleistung.addChild(KontoErgebnisseEigenleistung);Geschäftsvorfälle.addChild(Eigenleistung);var Invalidenleistung = new TreeNode("Invalidenleistung");
+Invalidenleistung.on('select', function (e, node) {
+    onNodeClick(Invalidenleistung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var GeVoInvalidenleistungDefinition = new TreeNode("GeVoInvalidenleistungDefinition");
+GeVoInvalidenleistungDefinition.on('select', function (e, node) {
+    onNodeClick(GeVoInvalidenleistungDefinition)
+});
+
+Beschreibung.addChild(GeVoInvalidenleistungDefinition);Invalidenleistung.addChild(Beschreibung);Geschäftsvorfälle.addChild(Invalidenleistung);var Tod = new TreeNode("Tod");
+Tod.on('select', function (e, node) {
+    onNodeClick(Tod)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var GeVoTodesfallDefinition = new TreeNode("GeVoTodesfallDefinition");
+GeVoTodesfallDefinition.on('select', function (e, node) {
+    onNodeClick(GeVoTodesfallDefinition)
+});
+
+Beschreibung.addChild(GeVoTodesfallDefinition);Tod.addChild(Beschreibung);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var OptionalTodesfallberechnungCustomizing = new TreeNode("OptionalTodesfallberechnungCustomizing");
+OptionalTodesfallberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalTodesfallberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalTodesfallberechnungCustomizing);var ITodesfallberechnungCustomizingprovider = new TreeNode("ITodesfallberechnungCustomizingprovider");
+ITodesfallberechnungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(ITodesfallberechnungCustomizingprovider)
+});
+
+var GetZuBerechnendeZusagenkomponenten = new TreeNode("GetZuBerechnendeZusagenkomponenten");
+GetZuBerechnendeZusagenkomponenten.on('select', function (e, node) {
+    onNodeClick(GetZuBerechnendeZusagenkomponenten)
+});
+
+ITodesfallberechnungCustomizingprovider.addChild(GetZuBerechnendeZusagenkomponenten);Customizing.addChild(ITodesfallberechnungCustomizingprovider);var OptionalTodesfallmappingAnspruchCustomizing = new TreeNode("OptionalTodesfallmappingAnspruchCustomizing");
+OptionalTodesfallmappingAnspruchCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalTodesfallmappingAnspruchCustomizing)
+});
+
+var MapCustomKontoergebnisseMethod = new TreeNode("MapCustomKontoergebnisseMethod");
+MapCustomKontoergebnisseMethod.on('select', function (e, node) {
+    onNodeClick(MapCustomKontoergebnisseMethod)
+});
+
+OptionalTodesfallmappingAnspruchCustomizing.addChild(MapCustomKontoergebnisseMethod);var MapCustomFortschreibungsergebnisMethod = new TreeNode("MapCustomFortschreibungsergebnisMethod");
+MapCustomFortschreibungsergebnisMethod.on('select', function (e, node) {
+    onNodeClick(MapCustomFortschreibungsergebnisMethod)
+});
+
+OptionalTodesfallmappingAnspruchCustomizing.addChild(MapCustomFortschreibungsergebnisMethod);var MapCustomLeistungenMethod = new TreeNode("MapCustomLeistungenMethod");
+MapCustomLeistungenMethod.on('select', function (e, node) {
+    onNodeClick(MapCustomLeistungenMethod)
+});
+
+OptionalTodesfallmappingAnspruchCustomizing.addChild(MapCustomLeistungenMethod);Customizing.addChild(OptionalTodesfallmappingAnspruchCustomizing);Tod.addChild(Customizing);var TodesfallDocumentGenerator = new TreeNode("TodesfallDocumentGenerator");
+TodesfallDocumentGenerator.on('select', function (e, node) {
+    onNodeClick(TodesfallDocumentGenerator)
+});
+
+var PushArchivingData = new TreeNode("PushArchivingData");
+PushArchivingData.on('select', function (e, node) {
+    onNodeClick(PushArchivingData)
+});
+
+TodesfallDocumentGenerator.addChild(PushArchivingData);Tod.addChild(TodesfallDocumentGenerator);var Validierung = new TreeNode("Validierung");
+Validierung.on('select', function (e, node) {
+    onNodeClick(Validierung)
+});
+
+var PersonExistiertFallsBavIdBelegt = new TreeNode("PersonExistiertFallsBavIdBelegt");
+PersonExistiertFallsBavIdBelegt.on('select', function (e, node) {
+    onNodeClick(PersonExistiertFallsBavIdBelegt)
+});
+
+Validierung.addChild(PersonExistiertFallsBavIdBelegt);var HibliartBelegt = new TreeNode("HibliartBelegt");
+HibliartBelegt.on('select', function (e, node) {
+    onNodeClick(HibliartBelegt)
+});
+
+Validierung.addChild(HibliartBelegt);var SterbedatumInEingabenNachGeburtsdatum = new TreeNode("SterbedatumInEingabenNachGeburtsdatum");
+SterbedatumInEingabenNachGeburtsdatum.on('select', function (e, node) {
+    onNodeClick(SterbedatumInEingabenNachGeburtsdatum)
+});
+
+Validierung.addChild(SterbedatumInEingabenNachGeburtsdatum);var SummeErbquotenGleichHundertProzent = new TreeNode("SummeErbquotenGleichHundertProzent");
+SummeErbquotenGleichHundertProzent.on('select', function (e, node) {
+    onNodeClick(SummeErbquotenGleichHundertProzent)
+});
+
+Validierung.addChild(SummeErbquotenGleichHundertProzent);var PersonenIdKundeDerHiblisEnthältDuplikate = new TreeNode("PersonenIdKundeDerHiblisEnthältDuplikate");
+PersonenIdKundeDerHiblisEnthältDuplikate.on('select', function (e, node) {
+    onNodeClick(PersonenIdKundeDerHiblisEnthältDuplikate)
+});
+
+Validierung.addChild(PersonenIdKundeDerHiblisEnthältDuplikate);var EingangTodesmeldungBelegtWennErbquoten = new TreeNode("EingangTodesmeldungBelegtWennErbquoten");
+EingangTodesmeldungBelegtWennErbquoten.on('select', function (e, node) {
+    onNodeClick(EingangTodesmeldungBelegtWennErbquoten)
+});
+
+Validierung.addChild(EingangTodesmeldungBelegtWennErbquoten);var EingangTodesmeldungNachSterbedatum = new TreeNode("EingangTodesmeldungNachSterbedatum");
+EingangTodesmeldungNachSterbedatum.on('select', function (e, node) {
+    onNodeClick(EingangTodesmeldungNachSterbedatum)
+});
+
+Validierung.addChild(EingangTodesmeldungNachSterbedatum);var SterbedatumBelegt = new TreeNode("SterbedatumBelegt");
+SterbedatumBelegt.on('select', function (e, node) {
+    onNodeClick(SterbedatumBelegt)
+});
+
+Validierung.addChild(SterbedatumBelegt);var EingangTodesmeldungLiegtInZukunft = new TreeNode("EingangTodesmeldungLiegtInZukunft");
+EingangTodesmeldungLiegtInZukunft.on('select', function (e, node) {
+    onNodeClick(EingangTodesmeldungLiegtInZukunft)
+});
+
+Validierung.addChild(EingangTodesmeldungLiegtInZukunft);var SterbedatumLiegtInZukunft = new TreeNode("SterbedatumLiegtInZukunft");
+SterbedatumLiegtInZukunft.on('select', function (e, node) {
+    onNodeClick(SterbedatumLiegtInZukunft)
+});
+
+Validierung.addChild(SterbedatumLiegtInZukunft);Tod.addChild(Validierung);Geschäftsvorfälle.addChild(Tod);var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var Geschäftsvorfalldefinition = new TreeNode("Geschäftsvorfalldefinition");
+Geschäftsvorfalldefinition.on('select', function (e, node) {
+    onNodeClick(Geschäftsvorfalldefinition)
+});
+
+Beschreibung.addChild(Geschäftsvorfalldefinition);Geschäftsvorfälle.addChild(Beschreibung);Pension.addChild(Geschäftsvorfälle);var OptionalTodesfalldokumenterzeugungCustomizing = new TreeNode("OptionalTodesfalldokumenterzeugungCustomizing");
+OptionalTodesfalldokumenterzeugungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalTodesfalldokumenterzeugungCustomizing)
+});
+
+Pension.addChild(OptionalTodesfalldokumenterzeugungCustomizing);var Kontoauszugserstellung = new TreeNode("Kontoauszugserstellung");
+Kontoauszugserstellung.on('select', function (e, node) {
+    onNodeClick(Kontoauszugserstellung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var Kontoauszugserstellungsinfo = new TreeNode("Kontoauszugserstellungsinfo");
+Kontoauszugserstellungsinfo.on('select', function (e, node) {
+    onNodeClick(Kontoauszugserstellungsinfo)
+});
+
+Beschreibung.addChild(Kontoauszugserstellungsinfo);Kontoauszugserstellung.addChild(Beschreibung);Pension.addChild(Kontoauszugserstellung);var Kontofortschreibung = new TreeNode("Kontofortschreibung");
+Kontofortschreibung.on('select', function (e, node) {
+    onNodeClick(Kontofortschreibung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var Altersbedingung = new TreeNode("Altersbedingung");
+Altersbedingung.on('select', function (e, node) {
+    onNodeClick(Altersbedingung)
+});
+
+Beschreibung.addChild(Altersbedingung);var Custombedingung = new TreeNode("Custombedingung");
+Custombedingung.on('select', function (e, node) {
+    onNodeClick(Custombedingung)
+});
+
+Beschreibung.addChild(Custombedingung);var Kontostatusbedingung = new TreeNode("Kontostatusbedingung");
+Kontostatusbedingung.on('select', function (e, node) {
+    onNodeClick(Kontostatusbedingung)
+});
+
+Beschreibung.addChild(Kontostatusbedingung);var KontofortschreibungsZusagenkomponente = new TreeNode("KontofortschreibungsZusagenkomponente");
+KontofortschreibungsZusagenkomponente.on('select', function (e, node) {
+    onNodeClick(KontofortschreibungsZusagenkomponente)
+});
+
+Beschreibung.addChild(KontofortschreibungsZusagenkomponente);var Bedingung = new TreeNode("Bedingung");
+Bedingung.on('select', function (e, node) {
+    onNodeClick(Bedingung)
+});
+
+Beschreibung.addChild(Bedingung);var Kontofortschreibungsprozessdefinition = new TreeNode("Kontofortschreibungsprozessdefinition");
+Kontofortschreibungsprozessdefinition.on('select', function (e, node) {
+    onNodeClick(Kontofortschreibungsprozessdefinition)
+});
+
+Beschreibung.addChild(Kontofortschreibungsprozessdefinition);Kontofortschreibung.addChild(Beschreibung);var Kontofortschreiber = new TreeNode("Kontofortschreiber");
+Kontofortschreiber.on('select', function (e, node) {
+    onNodeClick(Kontofortschreiber)
+});
+
+Kontofortschreibung.addChild(Kontofortschreiber);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var IKontofortschreibungCustomizingProvider = new TreeNode("IKontofortschreibungCustomizingProvider");
+IKontofortschreibungCustomizingProvider.on('select', function (e, node) {
+    onNodeClick(IKontofortschreibungCustomizingProvider)
+});
+
+Customizing.addChild(IKontofortschreibungCustomizingProvider);Kontofortschreibung.addChild(Customizing);var KontoExtensions = new TreeNode("KontoExtensions");
+KontoExtensions.on('select', function (e, node) {
+    onNodeClick(KontoExtensions)
+});
+
+Kontofortschreibung.addChild(KontoExtensions);var ProzessParameter = new TreeNode("ProzessParameter");
+ProzessParameter.on('select', function (e, node) {
+    onNodeClick(ProzessParameter)
+});
+
+var ZusagenKomponenten = new TreeNode("ZusagenKomponenten");
+ZusagenKomponenten.on('select', function (e, node) {
+    onNodeClick(ZusagenKomponenten)
+});
+
+ProzessParameter.addChild(ZusagenKomponenten);Kontofortschreibung.addChild(ProzessParameter);Pension.addChild(Kontofortschreibung);var Leistungsberechnung = new TreeNode("Leistungsberechnung");
+Leistungsberechnung.on('select', function (e, node) {
+    onNodeClick(Leistungsberechnung)
+});
+
+var Beschreibung = new TreeNode("Beschreibung");
+Beschreibung.on('select', function (e, node) {
+    onNodeClick(Beschreibung)
+});
+
+var CustomRatenberechnung = new TreeNode("CustomRatenberechnung");
+CustomRatenberechnung.on('select', function (e, node) {
+    onNodeClick(CustomRatenberechnung)
+});
+
+Beschreibung.addChild(CustomRatenberechnung);var StandardRatenberechnung = new TreeNode("StandardRatenberechnung");
+StandardRatenberechnung.on('select', function (e, node) {
+    onNodeClick(StandardRatenberechnung)
+});
+
+Beschreibung.addChild(StandardRatenberechnung);var Hibliberechnungsart = new TreeNode("Hibliberechnungsart");
+Hibliberechnungsart.on('select', function (e, node) {
+    onNodeClick(Hibliberechnungsart)
+});
+
+Beschreibung.addChild(Hibliberechnungsart);var LeistungspaketInvalidität = new TreeNode("LeistungspaketInvalidität");
+LeistungspaketInvalidität.on('select', function (e, node) {
+    onNodeClick(LeistungspaketInvalidität)
+});
+
+Beschreibung.addChild(LeistungspaketInvalidität);var LeistungspaketTod = new TreeNode("LeistungspaketTod");
+LeistungspaketTod.on('select', function (e, node) {
+    onNodeClick(LeistungspaketTod)
+});
+
+Beschreibung.addChild(LeistungspaketTod);var Ratenberechnungskern = new TreeNode("Ratenberechnungskern");
+Ratenberechnungskern.on('select', function (e, node) {
+    onNodeClick(Ratenberechnungskern)
+});
+
+Beschreibung.addChild(Ratenberechnungskern);var Verzinsungsinformation = new TreeNode("Verzinsungsinformation");
+Verzinsungsinformation.on('select', function (e, node) {
+    onNodeClick(Verzinsungsinformation)
+});
+
+Beschreibung.addChild(Verzinsungsinformation);var VorgabeHibliAufteilung = new TreeNode("VorgabeHibliAufteilung");
+VorgabeHibliAufteilung.on('select', function (e, node) {
+    onNodeClick(VorgabeHibliAufteilung)
+});
+
+Beschreibung.addChild(VorgabeHibliAufteilung);var VorgabeHibliAufteilungFesteProzente = new TreeNode("VorgabeHibliAufteilungFesteProzente");
+VorgabeHibliAufteilungFesteProzente.on('select', function (e, node) {
+    onNodeClick(VorgabeHibliAufteilungFesteProzente)
+});
+
+Beschreibung.addChild(VorgabeHibliAufteilungFesteProzente);var VorgabeHibliAufteilungCustom = new TreeNode("VorgabeHibliAufteilungCustom");
+VorgabeHibliAufteilungCustom.on('select', function (e, node) {
+    onNodeClick(VorgabeHibliAufteilungCustom)
+});
+
+Beschreibung.addChild(VorgabeHibliAufteilungCustom);var VorgabeHibliAufteilungGleichmäßig = new TreeNode("VorgabeHibliAufteilungGleichmäßig");
+VorgabeHibliAufteilungGleichmäßig.on('select', function (e, node) {
+    onNodeClick(VorgabeHibliAufteilungGleichmäßig)
+});
+
+Beschreibung.addChild(VorgabeHibliAufteilungGleichmäßig);var CustomLeistungsberechnung = new TreeNode("CustomLeistungsberechnung");
+CustomLeistungsberechnung.on('select', function (e, node) {
+    onNodeClick(CustomLeistungsberechnung)
+});
+
+Beschreibung.addChild(CustomLeistungsberechnung);var Auszahlungsoption = new TreeNode("Auszahlungsoption");
+Auszahlungsoption.on('select', function (e, node) {
+    onNodeClick(Auszahlungsoption)
+});
+
+Beschreibung.addChild(Auszahlungsoption);var Rentenauszahlungsoption = new TreeNode("Rentenauszahlungsoption");
+Rentenauszahlungsoption.on('select', function (e, node) {
+    onNodeClick(Rentenauszahlungsoption)
+});
+
+Beschreibung.addChild(Rentenauszahlungsoption);var Kapitalauszahlungsoption = new TreeNode("Kapitalauszahlungsoption");
+Kapitalauszahlungsoption.on('select', function (e, node) {
+    onNodeClick(Kapitalauszahlungsoption)
+});
+
+Beschreibung.addChild(Kapitalauszahlungsoption);var Ratenauszahlungsoption = new TreeNode("Ratenauszahlungsoption");
+Ratenauszahlungsoption.on('select', function (e, node) {
+    onNodeClick(Ratenauszahlungsoption)
+});
+
+Beschreibung.addChild(Ratenauszahlungsoption);var KombinierteAuszahlungsoption = new TreeNode("KombinierteAuszahlungsoption");
+KombinierteAuszahlungsoption.on('select', function (e, node) {
+    onNodeClick(KombinierteAuszahlungsoption)
+});
+
+Beschreibung.addChild(KombinierteAuszahlungsoption);var Auszahlungskombination = new TreeNode("Auszahlungskombination");
+Auszahlungskombination.on('select', function (e, node) {
+    onNodeClick(Auszahlungskombination)
+});
+
+Beschreibung.addChild(Auszahlungskombination);var Leistungsbedingung = new TreeNode("Leistungsbedingung");
+Leistungsbedingung.on('select', function (e, node) {
+    onNodeClick(Leistungsbedingung)
+});
+
+Beschreibung.addChild(Leistungsbedingung);var Leistungsberechnungskern = new TreeNode("Leistungsberechnungskern");
+Leistungsberechnungskern.on('select', function (e, node) {
+    onNodeClick(Leistungsberechnungskern)
+});
+
+Beschreibung.addChild(Leistungsberechnungskern);var LeistungspaketAlter = new TreeNode("LeistungspaketAlter");
+LeistungspaketAlter.on('select', function (e, node) {
+    onNodeClick(LeistungspaketAlter)
+});
+
+Beschreibung.addChild(LeistungspaketAlter);var Leistungspaket = new TreeNode("Leistungspaket");
+Leistungspaket.on('select', function (e, node) {
+    onNodeClick(Leistungspaket)
+});
+
+Beschreibung.addChild(Leistungspaket);var StandardLeistungsberechnung = new TreeNode("StandardLeistungsberechnung");
+StandardLeistungsberechnung.on('select', function (e, node) {
+    onNodeClick(StandardLeistungsberechnung)
+});
+
+Beschreibung.addChild(StandardLeistungsberechnung);Leistungsberechnung.addChild(Beschreibung);var Customizing = new TreeNode("Customizing");
+Customizing.on('select', function (e, node) {
+    onNodeClick(Customizing)
+});
+
+var OptionalLeistungsberechnungCustomizing = new TreeNode("OptionalLeistungsberechnungCustomizing");
+OptionalLeistungsberechnungCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalLeistungsberechnungCustomizing)
+});
+
+Customizing.addChild(OptionalLeistungsberechnungCustomizing);var OptionalLeistungsberechnungAllgemeinCustomizing = new TreeNode("OptionalLeistungsberechnungAllgemeinCustomizing");
+OptionalLeistungsberechnungAllgemeinCustomizing.on('select', function (e, node) {
+    onNodeClick(OptionalLeistungsberechnungAllgemeinCustomizing)
+});
+
+Customizing.addChild(OptionalLeistungsberechnungAllgemeinCustomizing);var ILeistungsberechnungCustomizingprovider = new TreeNode("ILeistungsberechnungCustomizingprovider");
+ILeistungsberechnungCustomizingprovider.on('select', function (e, node) {
+    onNodeClick(ILeistungsberechnungCustomizingprovider)
+});
+
+Customizing.addChild(ILeistungsberechnungCustomizingprovider);Leistungsberechnung.addChild(Customizing);var Leistungsberechner = new TreeNode("Leistungsberechner");
+Leistungsberechner.on('select', function (e, node) {
+    onNodeClick(Leistungsberechner)
+});
+
+Leistungsberechnung.addChild(Leistungsberechner);Pension.addChild(Leistungsberechnung);var Zusagenbeschreibung = new TreeNode("Zusagenbeschreibung");
+Zusagenbeschreibung.on('select', function (e, node) {
+    onNodeClick(Zusagenbeschreibung)
+});
+
+var Berechtigungszeitraum = new TreeNode("Berechtigungszeitraum");
+Berechtigungszeitraum.on('select', function (e, node) {
+    onNodeClick(Berechtigungszeitraum)
+});
+
+Zusagenbeschreibung.addChild(Berechtigungszeitraum);var Berücksichtigungszeitraum = new TreeNode("Berücksichtigungszeitraum");
+Berücksichtigungszeitraum.on('select', function (e, node) {
+    onNodeClick(Berücksichtigungszeitraum)
+});
+
+Zusagenbeschreibung.addChild(Berücksichtigungszeitraum);var IZusagenProjektProvider = new TreeNode("IZusagenProjektProvider");
+IZusagenProjektProvider.on('select', function (e, node) {
+    onNodeClick(IZusagenProjektProvider)
+});
+
+Zusagenbeschreibung.addChild(IZusagenProjektProvider);var Jahrestag = new TreeNode("Jahrestag");
+Jahrestag.on('select', function (e, node) {
+    onNodeClick(Jahrestag)
+});
+
+Zusagenbeschreibung.addChild(Jahrestag);var Turnusinformation = new TreeNode("Turnusinformation");
+Turnusinformation.on('select', function (e, node) {
+    onNodeClick(Turnusinformation)
+});
+
+Zusagenbeschreibung.addChild(Turnusinformation);var Kontostandsinformation = new TreeNode("Kontostandsinformation");
+Kontostandsinformation.on('select', function (e, node) {
+    onNodeClick(Kontostandsinformation)
+});
+
+Zusagenbeschreibung.addChild(Kontostandsinformation);var Monatsrentenkontostandsinformation = new TreeNode("Monatsrentenkontostandsinformation");
+Monatsrentenkontostandsinformation.on('select', function (e, node) {
+    onNodeClick(Monatsrentenkontostandsinformation)
+});
+
+Zusagenbeschreibung.addChild(Monatsrentenkontostandsinformation);var Jahresrentenkontostandsinformation = new TreeNode("Jahresrentenkontostandsinformation");
+Jahresrentenkontostandsinformation.on('select', function (e, node) {
+    onNodeClick(Jahresrentenkontostandsinformation)
+});
+
+Zusagenbeschreibung.addChild(Jahresrentenkontostandsinformation);var Kapitalkontostandsinformation = new TreeNode("Kapitalkontostandsinformation");
+Kapitalkontostandsinformation.on('select', function (e, node) {
+    onNodeClick(Kapitalkontostandsinformation)
+});
+
+Zusagenbeschreibung.addChild(Kapitalkontostandsinformation);var Unverfallbarkeitsart = new TreeNode("Unverfallbarkeitsart");
+Unverfallbarkeitsart.on('select', function (e, node) {
+    onNodeClick(Unverfallbarkeitsart)
+});
+
+Zusagenbeschreibung.addChild(Unverfallbarkeitsart);var ZusagenProjekt = new TreeNode("ZusagenProjekt");
+ZusagenProjekt.on('select', function (e, node) {
+    onNodeClick(ZusagenProjekt)
+});
+
+Zusagenbeschreibung.addChild(ZusagenProjekt);var Prozessdefinition = new TreeNode("Prozessdefinition");
+Prozessdefinition.on('select', function (e, node) {
+    onNodeClick(Prozessdefinition)
+});
+
+Zusagenbeschreibung.addChild(Prozessdefinition);var Zusagendetail = new TreeNode("Zusagendetail");
+Zusagendetail.on('select', function (e, node) {
+    onNodeClick(Zusagendetail)
+});
+
+Zusagenbeschreibung.addChild(Zusagendetail);var Zusagenkomponente = new TreeNode("Zusagenkomponente");
+Zusagenkomponente.on('select', function (e, node) {
+    onNodeClick(Zusagenkomponente)
+});
+
+Zusagenbeschreibung.addChild(Zusagenkomponente);Pension.addChild(Zusagenbeschreibung);var ZusagencustomizingLocatorBase`4 = new TreeNode("ZusagencustomizingLocatorBase`4");
+ZusagencustomizingLocatorBase`4.on('select', function (e, node) {
+    onNodeClick(ZusagencustomizingLocatorBase`4)
+});
+
+var OptionalMembers(System = new TreeNode("OptionalMembers(System");
+OptionalMembers(System.on('select', function (e, node) {
+    onNodeClick(OptionalMembers(System)
+});
+
+var Int32) = new TreeNode("Int32)");
+Int32).on('select', function (e, node) {
+    onNodeClick(Int32))
+});
+
+OptionalMembers(System.addChild(Int32));ZusagencustomizingLocatorBase`4.addChild(OptionalMembers(System);Pension.addChild(ZusagencustomizingLocatorBase`4);var LocatorBase`3 = new TreeNode("LocatorBase`3");
+LocatorBase`3.on('select', function (e, node) {
+    onNodeClick(LocatorBase`3)
+});
+
+var OptionalMembers = new TreeNode("OptionalMembers");
+OptionalMembers.on('select', function (e, node) {
+    onNodeClick(OptionalMembers)
+});
+
+LocatorBase`3.addChild(OptionalMembers);Pension.addChild(LocatorBase`3);var Validierung = new TreeNode("Validierung");
+Validierung.on('select', function (e, node) {
+    onNodeClick(Validierung)
+});
+
+var ValidierungsUtilities = new TreeNode("ValidierungsUtilities");
+ValidierungsUtilities.on('select', function (e, node) {
+    onNodeClick(ValidierungsUtilities)
+});
+
+Validierung.addChild(ValidierungsUtilities);Pension.addChild(Validierung);root.addChild(Pension);
+treeView = new TreeView(root, "#container");
+setupTree();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- <script src="js/ajax.js"></script> -->
+  <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script> -->
+  <!-- <script src="js/trumbowyg/trumbowyg.min.js"></script>
+  <script>
+    $('#trumbowyg-demo').trumbowyg({
+      svgPath: false // or a path like '/assets/my-custom-path/icons.svg'
+    });
+    $.trumbowyg.svgPath = false;
+  </script> -->
+</body>
+
+</html>

@@ -66,30 +66,24 @@ namespace EzDoc.HtmlDoucBuilding {
       string searchPattern = "[EzLink \"";
       int currentStartIndex = text.IndexOf(searchPattern);
       while (currentStartIndex >= 0) {
-        int currentEndIndex = text.IndexOf('"', currentStartIndex + searchPattern.Length);
-        int linkLength = currentEndIndex - (currentStartIndex + searchPattern.Length);
-        string linkNameFull = text.Substring(currentStartIndex + searchPattern.Length, linkLength);
-        string linkContent = linkNameFull;
-        int lastIndexOfDot = linkNameFull.LastIndexOf(".");
+        int indexOfLinkStart = currentStartIndex + searchPattern.Length;
+        int indexOfLinkEnd = text.IndexOf('"', indexOfLinkStart);
+        int linkLength = indexOfLinkEnd - indexOfLinkStart;
+        string patternFull = text.Substring(currentStartIndex, indexOfLinkEnd - currentStartIndex + 2);
+        string linkFullOriginal = text.Substring(indexOfLinkStart, linkLength);
+        int lastIndexOfDot = linkFullOriginal.LastIndexOf(".");
         if (lastIndexOfDot >= 0) {
-          linkContent = linkNameFull.Substring(lastIndexOfDot + 1);
-        }
-        int offset = 2;
-        if (currentStartIndex + currentEndIndex - currentStartIndex + 4 > text.Length) {
-          offset = 1;
-        }
+          string site = linkFullOriginal.Substring(0, lastIndexOfDot);
+          string elemendId = linkFullOriginal.Substring(
+            lastIndexOfDot + 1, linkLength - lastIndexOfDot - 1
+          );
 
-        int indexOfColumn = linkContent.IndexOf(":");
-        if (indexOfColumn >= 0) {
-          string site = linkContent.Substring(0, indexOfColumn);
-          string elemendId = linkContent.Substring(indexOfColumn + 1, linkContent.Length - indexOfColumn - 1);
-
-          string linkFull = text.Substring(currentStartIndex, currentEndIndex - currentStartIndex + offset);
           string innerLink = $"{site}.html?elementId={elemendId}";
           string newLink = $"<a href=\"" + innerLink + "\">" + elemendId + "</a>";
-          result = text.Replace(linkFull, newLink);
+          result = result.Replace(patternFull, newLink);
+          currentStartIndex = text.IndexOf(searchPattern, currentStartIndex + 1);
         }
-        currentStartIndex = text.IndexOf(searchPattern, currentStartIndex + 1);
+
       }
 
       return result;
@@ -419,7 +413,7 @@ namespace EzDoc.HtmlDoucBuilding {
       }
       contentResult.AppendLine("<h4>Properties</h4>");
       contentResult.AppendLine("<table style=\"width: 70vw; \">");
-     
+
       contentResult.AppendLine("<tr>");
       contentResult.AppendLine($"<th>Name</th>");
       contentResult.AppendLine($"<th>Beschreibung</th>");

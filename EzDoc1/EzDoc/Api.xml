@@ -1,0 +1,3553 @@
+<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+TW.BCGer.Extensions.ZusagenFramework
+</name>
+</assembly>
+<members>
+<member name="T:Pension.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Pension.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Pension.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Pension.Bausteinberechnung.Bausteinberechner">
+ <summary>
+ Stellt Funktionen zur unspezifischen Bausteinberechnung gemäß Zusagenbeschreibung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Bausteinberechnung.Bausteinberechner.KontoErgebnisVerarbeiten(Pension.Bausteinberechnung.BausteinberechnungsErgebnis,TW.BCGer.PensionLib.Domain.Konto)">
+ <summary>
+ Persistiert das Bausteinberechnungsergebnis in das Konto.
+ </summary>
+ <param name="kontoErgebnis"></param>
+ <param name="konto"></param>
+</member>
+<member name="M:Pension.Bausteinberechnung.Bausteinberechner.BerechneBausteine(Pension.KontoKontext,System.Int32)">
+ <summary>
+ 	Ermittelt die Bausteindefinitionen des zum Berechnungskennzeichen gehörenden Bausteinberechnungskomponente, 
+ 	die gemäß ihrer Bedingungen relevant sind und berechnet die Bausteine gemäß der zu diesen Bausteindefinitionen gehörenden Berechnungskernen.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Bausteinberechner.BerechneBausteine(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ 	Ermittelt die Bausteindefinitionen des zum Berechnungskennzeichen gehörenden Bausteinberechnungskomponente, 
+ 	die gemäß ihrer Bedingungen relevant sind und berechnet die Bausteine gemäß der zu diesen Bausteindefinitionen gehörenden Berechnungskernen.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <param name="zwischenErgebnis">Vorher im aktuellen Kontokontext berechnete Fortschreibungsergebnisse</param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Bausteinberechner.BerechneBausteineDerArt(Pension.KontoKontext,Pension.Bausteinberechnung.Beschreibung.Bausteindefinition,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ 	Berechnet die Bausteine gemäß des Berechnungskerns der übergebenen Bausteindefinition.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="bausteindefinition"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungAltersfaktoren">
+ <summary>
+ Bausteinberechnungskern für die Berechnung von Bausteinen mit Altersfaktoren.
+ </summary>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungAltersfaktoren.BeitragsartenParameter">
+ <summary>
+ Beiträge dieser Arten werden summiert und mit dem Altersfaktor multipliziert.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungAltersfaktoren.Berechtigungszeitraum">
+ <summary>
+ Beschreibt Beginn und Ende der Bausteinberechtigung. Gegen diese Grenzen wird anteilig gerechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungVerzinsung">
+ <summary>
+ Bausteinberechnungskern für die Berechnung von Bausteinen durch Verzinsung des Kontostandes.
+ </summary>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungVerzinsung.ZuVerzinsendeBausteinarten">
+ <summary>
+ Über Bausteine dieser Art wird der zu verzinsende Kontostand berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungVerzinsung.Berechtigungszeitraum">
+ <summary>
+ Beschreibt Beginn und Ende der Bausteinberechtigung. Gegen diese Grenzen wird anteilig gerechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.BausteinberechnungVerzinsung.StichtagKontostand">
+ <summary>
+ Der zu verzinsende Kontostand wird zum letzten Jahrestag vor dem Berechnungsstichtag berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.CustomBausteinberechnung">
+ <summary>
+ Dieser Bausteinberechnungskern führt zum Aufrufen des Hooks <see cref="T:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider"/>.BerechneCustomBausteine() während Bausteinberechner.BerechneBausteine
+ </summary>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskern">
+ <summary>
+ Beschreibt die Methode zur Berechnung von Bausteinen.
+ </summary>
+</member>
+<member name="M:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskern.Custom">
+ <summary>
+   Erzeugt eine CustomBausteinberechnung und führt zum Aufrufen des Hooks <see cref="T:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider"/>.BerechneCustomBausteine während Bausteinberechner.BerechneBausteine.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskern.MitAltersfaktoren(Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze,System.Int32[])">
+ <summary>
+ Erzeugt eine BausteinberechnungAltersfaktoren.
+ Ermittelt zunächst passende Beiträge zum Berechnungsstichtag gemäß Parameter Beitragsarten. 
+ Berechnet dann einen Baustein durch Multiplikation der Summe der gefundenen Beiträge und dem Altersfaktor aus den Systemparametern.
+ </summary>
+ <param name="berechtigungszeitraum"></param>
+ <param name="beitragsarten"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskern.MitAltersfaktoren(Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze,Pension.Zusagenbeschreibung.Berücksichtigungszeitraum,System.Int32[])">
+ <summary>
+ Erzeugt eine BausteinberechnungAltersfaktoren.
+ Ermittelt zunächst passende Beiträge zum Berechnungsstichtag gemäß Parameter Beitragsarten. 
+ Berechnet dann einen Baustein durch Multiplikation der Summe der gefundenen Beiträge und dem Altersfaktor aus den Systemparametern.
+ </summary>
+ <param name="berechtigungszeitraum"></param>
+ <param name="beitragsarten"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskern.MitVerzinsung(System.Decimal,Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze,Pension.Zusagenbeschreibung.Jahrestag,System.Int32[])">
+ <summary>
+   Erzeugt eine BausteinberechnungVerzinsung.
+   Ermittelt zum letzten Jahrestag gemäß JahrestagKontostand vor Berechnungsstichtag den Kontostand. 
+   Berechnet dann einen Baustein in Höhe der Zinsen des Kontstandes gemäß des (berechtigten) Zeitraums bis zum Berechnungsstichtag gemäß Parameter Zinssatz.
+ </summary>
+ <param name="zinssatz"></param>
+ <param name="berechtigungszeitraum"></param>
+ <param name="stichtagKontostand"></param>
+ <param name="zuVerzinsendeBausteinarten"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskomponente">
+ <summary>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Bausteine für Bausteinkonten.
+ </summary>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungskomponente.Bausteindefinitionen">
+ <summary>
+ Bausteindefinitionen
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.Bausteindefinition">
+ <summary>
+ Beschreibt eine Art von Baustein und wie Bausteine dieser Art zu berechnen sind.
+ </summary>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.Bausteindefinition.Berechnungskern">
+ <summary>
+ Berechnungskern zur Berechnung der hier definierten Bausteine.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.Bausteindefinition.Bedingungen">
+ <summary>
+ Bausteine werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Bausteinberechnung.Beschreibung.Bausteindefinition.Bausteinart">
+ <summary>
+ CustomEnum mit dem Namen CustomEnumNames.Bausteinart.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze">
+ <summary>
+ Beschreibt Beginn und Ende einer Bausteinberechtigung.
+ </summary>
+</member>
+<member name="M:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze.EintrittBisAustritt(System.Int32,System.Int32)">
+ <summary>
+ Beginn = GültigAb des jüngsten Aktivstatus.
+ Ende = Austrittsdatum im Versorgungsverhältnis.
+ </summary>
+ <param name="alterVon"></param>
+ <param name="alterBis"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze.Custom">
+ <summary>
+ Beginn = <see cref="T:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider"/>.BeginnBausteinberechnung
+ Ende = <see cref="T:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider"/>.EndeBausteinberechnung
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Bausteinberechnungsfunktionen">
+ <summary>
+ Konkrete Funktionen zur Bausteinberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Bausteinberechnung.Bausteinberechnungsfunktionen.BerechneBausteineViaAltersfaktoren(Pension.KontoKontext,System.Int32,Pension.Bausteinberechnung.Beschreibung.BeitragsartenParameter,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Ermittelt zunächst passende Beiträge zum Berechnungsstichtag gemäß Parameter Beitragsarten. 
+ Berechnet dann einen Baustein durch Multiplikation der Summe der gefundenen Beiträge und dem Altersfaktor aus den Systemparametern.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="bausteinart"></param>
+ <param name="beitragsartenParameter"></param>
+ <param name="zwischenErgebnis"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Bausteinberechnungsfunktionen.BerechneBonusbausteine(Pension.KontoKontext,System.Int32,System.Collections.Generic.List{System.Int32},System.Decimal,Pension.Zusagenbeschreibung.Jahrestag,Pension.Bausteinberechnung.Beschreibung.Bausteinberechnungsgrenze,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+   Ermittelt zum letzten Jahrestag gemäß JahrestagKontostand vor Berechnungsstichtag den Kontostand. 
+   Berechnet dann einen Baustein in Höhe der Zinsen des Kontstandes gemäß des (berechtigten) Zeitraums bis zum Berechnungsstichtag gemäß Parameter Zinssatz.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="bausteinart"></param>
+ <param name="zuVerzinsendeBausteinarten"></param>
+ <param name="zinssatz"></param>
+ <param name="jahrestagKontostand"></param>
+ <param name="bausteinberechnungsgrenze"></param>
+ <param name="zwischenErgebnis"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Customizing.OptionalBausteinberechnungCustomizing">
+ <summary>
+ Optionales Customizng der Bausteinberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Bausteinberechnung.Customizing.OptionalBausteinberechnungCustomizing.InstantiateBausteinMethod">
+ <summary>
+ Kann verwendet werden, um Bausteine zu instanziieren, die den Baustein aus der PensionLib erweitern.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Bausteinberechnung.Customizing.OptionalBausteinberechnungCustomizing.AddOrUpdateBausteinMethod">
+ <summary>
+ Falls nötig, kann hier die AddOrUpdate-Funktion auf dem konkreten Beitragstyp aufgerufen werden, falls der PensionLib.Domain.Beitrag
+ so erweitert wurde, dass sich auch die Eindeutigkeit verändert hat. 
+ Falls True zurückgegeben wird, findet kein Mapping vom Framework statt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider">
+ <summary>
+ Customizing der Bausteinberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider.ErmittleAltersfaktor(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Verrentungsfaktoren@)">
+ <summary>
+ Ermittelt den Altersfaktor für die Bausteinberechnung mit Altersfaktoren
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="af"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider.BerechneCustomBausteine(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Wird aufgerufen, wenn die CustomBausteinberechnung (Bausteinberechnung.Beschreibung.Bausteinberechnungskern.Custom) greift
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="bausteinart"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider.BeginnBausteinberechnung(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32)">
+ <summary>
+ Bestimmt den frühesten Zeitpunkt, ab dem Konten Bausteine der Bausteinart erhalten können.
+ </summary>
+ <param name="konto"></param>
+ <param name="bausteinart"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Bausteinberechnung.Customizing.IBausteinberechnungCustomizingProvider.EndeBausteinberechnung(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32)">
+ <summary>
+  Bestimmt den spätesten Zeitpunkt, bis zu dem Konten Bausteine der Bausteinart erhalten können.
+ </summary>
+ <param name="konto"></param>
+ <param name="bausteinart"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Bausteinberechnung.Validierung.BausteinWirdGeändert">
+ <summary>
+ IValidationPredicate, das angibt, ob neu berechnete Bausteine im Konto bereits existieren und von diesen abweichen.
+ </summary>
+</member>
+<member name="T:Pension.Bausteinberechnung.Validierung.BeiträgeExistierenZumBaustein">
+ <summary>
+ IValidationPredicate, das angibt, ob zum Stichtag relevante Beiträge existieren"
+ </summary>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente">
+ <summary>
+ Berechnet einen Jahresbeitrag. 
+ Es werden zunächst Entgeltinformation und Dienstzeitinformation im Zeitraum vom letzten Jahrestag vor Berechnungsstichtag gemäß EinkommenJahrestag bis zum Berechnungsstichtag berechnet. 
+ Aus diesen Informationen wird mit BerechneBeiträgeMitEinkommensprozenten ein Beitrag berechnet.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente.BbgErmittlungsArt">
+ <summary>
+ Zum Stichtag oder Jahresdurchschnitt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente.Berechtigungszeitraum">
+ <summary>
+ Beschreibt Beginn und Ende der Beitragsberechtigung. Gegen diese Grenzen wird anteilig gerechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente.Beitragssätze">
+ <summary>
+ Die Beitragssätze, gegen die das Einkommen aufgeteilt und mit den entsprechenden Prozentsätzen multipliziert wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente.Einkommensdefinition">
+ <summary>
+ Beschreibt, wie das Einkommen als Basis der Beitragsberechnung ermittelt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente.Dienstzeitberechnungskern">
+ <summary>
+ Beschreibt, wie die Dienstzeitwerte als Basis der Beitragsberechnung ermittelt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.CustomBeitragsberechnung">
+ <summary>
+ Dieser Beitragsberechnungskern führt zum Aufrufen 
+ des Hooks <see cref="T:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider"/>.BerechneCustomBeiträge während Beitragsberechner.BerechneBeiträge
+ </summary>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungsgrenze">
+ <summary>
+ Beschreibt Beginn und Ende einer Bausteinberechtigung.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungsgrenze.EintrittBisAustritt(System.Int32,System.Int32)">
+ <summary>
+ Beginn = GültigAb des jüngsten Aktivstatus.
+ Ende = Austrittsdatum im Versorgungsverhältnis.
+ </summary>
+ <param name="alterVon"></param>
+ <param name="alterBis"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungsgrenze.Custom">
+ <summary>
+ Beginn = <see cref="T:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider"/>.GetBeginnBeitragsberechtigung
+ Ende = <see cref="T:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider"/>.GetEndeBeitragsberechtigung
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungskern">
+ <summary>
+   Beschreibt die Methode zur Berechnung von Beiträgen.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungskern.Custom">
+ <summary>
+ Erzeugt eine CustomBeitragsberechnung und führt zum Aufrufen des Hooks BerechneCustomBeiträge während Beitragsberechner.BerechneBeiträge.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungskern.Einkommensprozente(Pension.Einkommensberechnung.Beschreibung.Einkommensdefinition,Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskern,System.Collections.Generic.List{Pension.Beitragsberechnung.Beschreibung.Beitragssatz},Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungsgrenze)">
+ <summary>
+ Erzeugt eine BeitragsberechnungMitEinkommensprozente.
+ Berechnet einen Jahresbeitrag. 
+ Es werden zunächst Entgeltinformation und Dienstzeitinformation im Zeitraum vom letzten Jahrestag vor Berechnungsstichtag gemäß EinkommenJahrestag bis zum Berechnungsstichtag berechnet. 
+ Aus diesen Informationen wird mit BerechneBeiträgeMitEinkommensprozenten ein Beitrag berechnet.
+ </summary>
+ <param name="einkommensdefinition"></param>
+ <param name="dienstzeitberechnungskern"></param>
+ <param name="beitragssätze"></param>
+ <param name="berechtigungszeitraum"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungskomponente">
+ <summary>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Beiträge für beitragsabhängige Konten.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragsberechnungskomponente.Beitragsdefinitionen">
+ <summary>
+ Beitragsdefinitionen
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition">
+ <summary>
+ Beschreibt eine Art von Beitrag und wie Beiträge dieser Art zu berechnen sind.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition.Berechnungskern">
+ <summary>
+ Berechnungskern zur Berechnung der hier definierten Beiträge.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition.Bedingungen">
+ <summary>
+ Beiträge werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition.Beitragsart">
+ <summary>
+ CustomEnum mit dem Namen CustomEnumNames.Beitragsart.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beschreibung.Beitragssatz">
+ <summary>
+ Wird von <see cref="T:Pension.Beitragsberechnung.Beschreibung.BeitragsberechnungMitEinkommensprozente"/> verwendet.
+ Beschreibt einen Gehaltsabschnitt. Die Prozentsätze beziehen sich auf die anteilige Bbg.
+ BbgBis = 0 bedeutet, dass das volle Gehalt verwendet wird.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragssatz.BbgAb">
+ <summary>
+ Untere Grenze des Gehaltsabschnitts = BbgAp Prozent vom Gehalt
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragssatz.BbgBis">
+ <summary>
+ Obere Grenze des Gehaltsabschnitts = BbgBis Prozent vom Gehalt.
+ Falls BbgBis = 0, ist die obere Grenze das volle Gehalt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Beschreibung.Beitragssatz.Beitragssatz">
+ <summary>
+ Prozentsatz, mit dem der Gehaltsabschnitt multipliziert wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beitragsberechner">
+ <summary>
+ Stellt Funktionen zur unspezifischen Beitragsberechnung gemäß Zusagenbeschreibung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beitragsberechner.BerechneBeiträge(Pension.KontoKontext,System.Int32)">
+ <summary>
+ Ermittelt die Beitragsdefinitionen des zum Berechnungskennzeichen gehörenden Beitragsberechnungskomponente, 
+ die gemäß ihrer Bedingungen relevant sind und berechnet die Beiträge gemäß der zu diesen Beitragsdefinitionen gehörenden Berechnungskernen.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beitragsberechner.BerechneBeiträge(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Ermittelt die Beitragsdefinitionen des zum Berechnungskennzeichen gehörenden Beitragsberechnungskomponente, 
+ die gemäß ihrer Bedingungen relevant sind und berechnet die Beiträge gemäß der zu diesen Beitragsdefinitionen gehörenden Berechnungskernen.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <param name="zwischenErgebnis">Vorher im aktuellen Kontokontext berechnete Fortschreibungsergebnisse</param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beitragsberechner.BerechneBeiträgeDerArt(Pension.KontoKontext,Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Berechnet die Beiträge gemäß des Berechnungskerns der übergebenen Beitragsdefinition.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="beitragsdefinition"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beitragsberechner.KontoErgebnisVerarbeiten(Pension.Beitragsberechnung.BeitragsberechnungsErgebnis,TW.BCGer.PensionLib.Domain.Konto)">
+ <summary>
+ Persistiert das Beitragsberechnungsergebnis in das Konto
+ </summary>
+ <param name="kontoErgebnis"></param>
+ <param name="konto"></param>
+</member>
+<member name="T:Pension.Beitragsberechnung.Beitragsberechnungsfunktionen">
+ <summary>
+ Konkrete Funktionen zur Beitragsberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beitragsberechnungsfunktionen.BerechneBeiträgeMitEinkommensprozenten(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32,Pension.Einkommensberechnung.Entgeltinformation,Pension.Dienstzeitberechnung.Dienstzeitinformation,System.Collections.Generic.List{Pension.Beitragsberechnung.Beschreibung.Beitragssatz})">
+ <summary>
+ Gemäß der Beitragssätze wird das Gehalt in Gehaltsabschnitte unterteilt.
+ Ein Gehaltsabschnitt ist die Differenz aus BbgBis Prozent von Bbg und BbgAb Prozent von Bbg, wobei die linke Seite mit dem Gehalt
+ minimiert wird.
+ Jeder Gehaltsabschnitt wird mit dem
+ entsprechenden Prozentsatz aus dem Beitragssatz multipliziert. Als Resultat wird ein Beitrag in Höhe der Summer all dieser Produkte
+ zurückgegeben.
+ </summary>
+ <param name="konto"></param>
+ <param name="beitragsart"></param>
+ <param name="entgeltinfo"></param>
+ <param name="dienstzeitinfo"></param>
+ <param name="beitragssätze"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Beitragsberechnungsfunktionen.BerechneBeitragByBeitragssätze(Pension.Einkommensberechnung.Entgeltinformation,System.Int32,System.Decimal,System.Collections.Generic.List{Pension.Beitragsberechnung.Beschreibung.Beitragssatz})">
+ <summary>
+ Gemäß der Beitragssätze wird das Gehalt in Gehaltsabschnitte unterteilt.
+ Ein Gehaltsabschnitt ist die Differenz aus BbgBis Prozent von Bbg und BbgAb Prozent von Bbg, wobei die linke Seite mit dem Gehalt
+ minimiert wird.
+ Jeder Gehaltsabschnitt wird mit dem
+ entsprechenden Prozentsatz aus dem Beitragssatz multipliziert. Als Resultat wird die Summer all dieser Produkte
+ zurückgegeben.
+ </summary>
+ <param name="entgeltinfo"></param>
+ <param name="anspruchsmonate"></param>
+ <param name="tzg"></param>
+ <param name="beitragssätze"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Customizing.OptionalBeitragsberechnungCustomizing">
+ <summary>
+ Optionales Customizing der Beitragsberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsberechnung.Customizing.OptionalBeitragsberechnungCustomizing.InstantieteBeitragMethod">
+ <summary>
+ Falls die berechneten Beiträge nicht vom Type PensionLib.Domain.Beitrag sein sollen, kann in dieser Funktion ein anderer Typ instanziiert werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsberechnung.Customizing.OptionalBeitragsberechnungCustomizing.AddOrUpdateBeitragMethod">
+ <summary>
+ Falls nötig, kann hier die AddOrUpdate-Funktion auf dem konkreten Beitragstyp aufgerufen werden, falls der PensionLib.Domain.Beitrag
+ so erweitert wurde, dass sich auch die Eindeutigkeit verändert hat. 
+ Falls True zurückgegeben wird, findet kein Mapping vom Framework statt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider">
+ <summary>
+ Customizing der Beitragsberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider.GetEndeBeitragsberechtigung(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32)">
+ <summary>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider.GetBeginnBeitragsberechtigung(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32)">
+ <summary>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsberechnung.Customizing.IBeitragsberechnungCustomizingProvider.BerechneCustomBeiträge(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Wird aufgerufen, wenn die CustomBeitragsberechnung (Beitragsberechnung.Beschreibung.Beitragsberechnungskern.Custom) greift
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="beitragart"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsberechnung.Validierung.BeitragWirdGeändert">
+ <summary>
+ IValidationPredicate, das angibt, ob neu berechnete Beiträge im Konto bereits existieren und von diesen abweichen.
+ </summary>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.DelegateBeitragsverzinsungskern">
+ <summary>
+ DelegateBeitragsverzinsungskern
+ </summary>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern">
+ <summary>
+ Beschreibt die Methode zur Berechnung einer Beitragsverzinsung.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Turnus">
+ <summary>
+ Verzinsungsturnus, in dem Verzinsungen berechnet werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Berechtigungszeitraum">
+ <summary>
+ Berechtigungszeitraum, in dem Verzinsungen gutgeschrieben werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Verzinsungsart">
+ <summary>
+ Jährlich, Unterjährig, Stetig oder Gemischt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Zinsrechnung">
+ <summary>
+ OhneZinseszins oder MitZinseszins
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Custom">
+ <summary>
+ Erzeugt eine CustomBeitragsverzinsung und führt zum Aufrufen des Hooks IBeitragsverzinsungCustomizingProvider.BerechneCustomVerzinsungen während Beitragsverzinsungsberechner.BerechneBeitragsverzinsungen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Beitragsgenau">
+ <summary>
+ Beitragsverzinsungsberechnung mittels BeitragsgenaueBeitragsverzinsung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.BeitragsgenaueBeitragsverzinsung">
+ <summary>
+ Beitragsverzinsungskern mittels Beitragsverzinsungsberechner.BerechneBeitragsgenaueVerzinsungen.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.BeitragsgenaueBeitragsverzinsung.Beitragsarten">
+ <summary>
+ Die Beitragsarten der zu verzinsenden Beiträge.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskomponente">
+ <summary>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft durch Beiträge mit Verzinsung für Konten mit Beitragsverzinsung.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungskomponente.Verzinsungsdefinitionen">
+ <summary>
+ Beitragsverzinsungsdefinitionen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungsdefinition">
+ <summary>
+ Beschreibt eine Art von Beitragsverzinsung und wie Beitragsverzinsungen dieser Art zu berechnen sind.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungsdefinition.Bedingungen">
+ <summary>
+ Beitragsverzinsungen werden genau dann berechnet, wenn alle Bedingungen erfüllt sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungsdefinition.Berechnungskern">
+ <summary>
+ Der Beitragsverzinsungskern zur Berechnung der Beitragsverzinsungen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungsdefinition.Bausteinart">
+ <summary>
+ Bausteinart der Beitragsverzinsungen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.CustomBeitragsverzinsung">
+ <summary>
+ Führt zum Aufruf von IBeitragsverzinsungCustomizingProvider.BerechneCustomVerzinsungen.
+ </summary>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beschreibung.Verzinsungsturnus">
+ <summary>
+ Beschreibt, in welchem Turnus eine Beitragverzinsung stattfinden soll.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Beschreibung.Verzinsungsturnus.Monatlich">
+ <summary>
+ Monatliche Beitragsverzinsung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Beschreibung.Verzinsungsturnus.Jährlich(Pension.Zusagenbeschreibung.Jahrestag)">
+ <summary>
+ Jährliche Beitragsverzinsung zum Jahrestag.
+ </summary>
+ <param name="jahrestag"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Beitragsverzinsungsberechner">
+ <summary>
+ Stellt Funktionen zur unspezifischen Beitragsverzinsungsberechnung gemäß Zusagenbeschreibung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Beitragsverzinsungsberechner.BerechneBeitragsgenaueVerzinsungen(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32,System.Collections.Generic.IList{System.Int32},Pension.Kontofortschreibung.KontoErgebnis,Pension.Beitragsverzinsung.Beschreibung.Verzinsungsturnus,System.Boolean,TW.BCGer.PensionLib.Verzinsungsart,Pension.Zusagenbeschreibung.Berechtigungszeitraum)">
+ <summary>
+ Berechnet Beitragsverzinsungen für jeden Beitrag.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="bausteinart"></param>
+ <param name="beitragsarten"></param>
+ <param name="zwischenErgebnis"></param>
+ <param name="turnus"></param>
+ <param name="mitZinseszins"></param>
+ <param name="verzinsungsart"></param>
+ <param name="berechtigungszeitraum"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Beitragsverzinsungsberechner.BerechneBeitragsverzinsungen(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Berechnet Beitragsverzinsungen gemäß Zusagenbeschreibung.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <param name="zwischenErgebnis"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Customizing.IBeitragsverzinsungCustomizingProvider">
+ <summary>
+ Customizing der Beitragsverzinsungsberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Customizing.IBeitragsverzinsungCustomizingProvider.GetEndeBeitragsverzinsungsberechtigung(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32)">
+ <summary>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Customizing.IBeitragsverzinsungCustomizingProvider.GetBeginnBeitragsverzinsungsberechtigung(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Int32)">
+ <summary>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Customizing.IBeitragsverzinsungCustomizingProvider.BerechneCustomVerzinsungen(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Wird aufgerufen, wenn die CustomBeitragsverzinsung (Beitragsverzinsung.Beschreibung.Beitragsverzinsungskern.Custom) greift
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="beitragart"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Beitragsverzinsung.Customizing.IBeitragsverzinsungCustomizingProvider.ErmittleZinssatz(TW.BCGer.PensionLib.Domain.Konto,System.Decimal@)">
+ <summary>
+ Ermittelt den Zinssatz für die Beitragsverzinsgungsberechnung.
+ </summary>
+ <param name="konto"></param>
+ <param name="zinssatz"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Beitragsverzinsung.Customizing.OptionalBeitragsverzinsungCustomizing">
+ <summary>
+ Optionales Customizing der Beitragsverzinsgungsberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Beitragsverzinsung.Customizing.OptionalBeitragsverzinsungCustomizing.InstantiateVerzinsungMethod">
+ <summary>
+ Falls die berechneten Beiträge nicht vom Type PensionLib.Domain.Beitrag sein sollen, kann in dieser Funktion ein anderer Typ instanziiert werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.DienstzeitberechnungImmerVoll">
+ <summary>
+ Dienstzeitberechnungskern, der Dienstzeiten anhand von Dienstzeitberechner.BerechneDienstjahre berechnet.
+ </summary>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.DienstzeitberechnungStandard">
+ <summary>
+ Dienstzeitberechnungskern, der die Jahre anhand von Dienstzeitberechner.BerechneDienstjahre
+ und den Teilzeitgrad anhand von Einkommensberechnung.Api.BerechnungsExtensions.GetDienstzeitenDurchschnittlicherTZFaktor berechnet.
+ </summary>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.CustomLeistungsformel">
+ <summary>
+ Führt bei der Kontostandsberechnung zum Aufruf des Customizing-Hooks IDienstzeitberechnungCustomizingProvider.GetKontostandCustom
+ </summary>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.CustomLeistungsformel.Einkommensstaffeln">
+ <summary>
+ Die Einkommensstaffeln zur Berechnung des Kontostandes.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.LeistungsformelEinkommensprozente">
+ <summary>
+ Leistungsformel zur Berechnung von Kontoständen mittels Einkommensstaffeln.
+ </summary>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.LeistungsformelEinkommensprozente.Einkommensstaffeln">
+ <summary>
+ Die Einkommensstaffeln zur Berechnung des Kontostandes.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.Einkommensstaffel">
+ <summary>
+ Beschreibt Einkommensstaffeln zur Ermittlung eines dienstzeitabhängigen Kontostandes.
+ </summary>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.Einkommensstaffel.Einkommensdefinition">
+ <summary>
+ Einkommensberechnungskern zur Berechnung der Entgeltinformation, welches mit den Prozentsätzen verechnet wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.Einkommensstaffel.Prozentsätze">
+ <summary>
+ Prozentsätze zur Verechnung mit den Entgeltinformationen mittels Beitragsberechnungsfunktionen.BerechneBeitragByBeitragssätze.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskern">
+ <summary>
+ Methode zur Berechnung von Dienstzeitinformationen.
+ </summary>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskern.ImmerVoll(Pension.Zusagenbeschreibung.Jahrestag)">
+ <summary>
+ Erzeugt eine DienstzeitberechnungImmerVoll.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskern.Standard(Pension.Zusagenbeschreibung.Jahrestag,Pension.Dienstzeitberechnung.Beschreibung.DienstjahreRundungsart)">
+ <summary>
+ Erzeugt eine DienstzeitberechnungStandard.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskomponente">
+ <summary>
+ Zusagenkomponente zur Bestimmung einer (Teil-)Anwartschaft, die sich direkt aus Dienstzeiten und Einkommen ergeben.
+ </summary>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskomponente.Leistungsformel">
+ <summary>
+ Die Leistungsformel zur Ermittlung der Kontostandes.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel">
+ <summary>
+ Beschreibt eine Methode zur Ermittlung dienstzeitabhängiger Kontostände.
+ </summary>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel.Dienstzeitberechnungskern">
+ <summary>
+ Der Dienstzeitberechnungskern, mit dem die Dienstzeit berechnet wird, die der Kontostandsberechnung zugrunde gelegt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel.Berechtigungszeitraum">
+ <summary>
+ Der Berechtigungszeitraum, in dem Dienstzeiten berücksichtigt werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel.Einkommensprozente(Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskern,Pension.Dienstzeitberechnung.Beschreibung.Einkommensstaffel[],Pension.Zusagenbeschreibung.Berechtigungszeitraum)">
+ <summary>
+ Erstellt eine LeistungsformelEinkommensprozente zur Berechnung von dienstzeitabhängigen Kontoständen anhand von Einkommensstaffeln.  
+ </summary>
+ <param name="dienstzeitberechnungskern"></param>
+ <param name="einkommensstaffeln"></param>
+ <param name="berechtigungszeitraum"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel.Custom">
+ <summary>
+ Erstellt eine CustomLeistungsformel zur Leistungsberechnung mit den Customizing-Hooks IDienstzeitberechnungCustomizingProvider.GetKontostandCustom
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider">
+ <summary>
+ Customizing für dienstzeitabhängige Zusagenberechnungen.
+ </summary>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider.GetEndeDienstzeitberechnung(TW.BCGer.PensionLib.Domain.Konto,System.Int32)">
+ <summary>
+ Liefert das Datum bis zu dem ein Konto beitragsberechtigt ist.
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider.GetBeginnDienstzeitberechnung(TW.BCGer.PensionLib.Domain.Konto,System.Int32)">
+ <summary>
+ Liefert das Datum ab dem ein Konto beitragsberechtigt ist.
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider.GetDienstjahreprozent(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.DateTime)">
+ <summary>
+ GetDienstjahreprozent
+ </summary>
+ <param name="konto"></param>
+ <param name="beginn"></param>
+ <param name="ende"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider.GetKontostandCustom(TW.BCGer.PensionLib.Domain.Konto,System.DateTime)">
+ <summary>
+ Wird von der CustomLeistungsformel aufgerufen.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider.GetKontostandUvaCustom(TW.BCGer.PensionLib.Domain.Konto,System.DateTime)">
+ <summary>
+ Wird von der CustomLeistungsformel aufgerufen.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Customizing.IDienstzeitberechnungCustomizingProvider.GetKontostandImLeistungsfallCustom(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,TW.BCGer.PensionLib.Domain.Leistungsart)">
+ <summary>
+ Wird von der CustomLeistungsformel aufgerufen.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="leistungsart"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Customizing.OptionalDienstzeitberechnungCustomizing">
+ <summary>
+ Optionales Customizing für dienstzeitabhängige Zusagenberechnungen.
+ </summary>
+</member>
+<member name="T:Pension.Dienstzeitberechnung.Dienstzeitberechner">
+ <summary>
+ Stellt Funktionen zur dienstzeitabhängigen Zusagenberechnung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Dienstzeitberechner.BerechneKontostandMitEinkommensstaffeln(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Collections.Generic.List{Pension.Dienstzeitberechnung.Beschreibung.Einkommensstaffel},Pension.Dienstzeitberechnung.Beschreibung.Dienstzeitberechnungskern,Pension.Zusagenbeschreibung.Berechtigungszeitraum)">
+ <summary>
+ Berechnet einen Kontostand gemäß übergebenen Einkommenststaffeln und Beitragsberechnungsfunktionen.BerechneBeitragByBeitragssätze.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="einkommensstaffeln"></param>
+ <param name="dienstzeitberechnungskern"></param>
+ <param name="berechtigungszeitraum"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dienstzeitberechnung.Dienstzeitberechner.BerechneDienstjahre(TW.BCGer.CorLib.CalculatePeriod,System.Int32,System.Int32)">
+ <summary>
+ Berechnet die Dienstjahre gemäß den Rundungsparametern.
+ </summary>
+ <param name="zeitraum"></param>
+ <param name="minMonateFürAufrunden"></param>
+ <param name="minTageFürAufrunden"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dokumenterzeugung.Beschreibung.Berechnungsblattgruppe">
+ <summary>
+ Beschreibt die Erzeugung eines Berechnungsblatts durch die Angabe eines oder mehrerer Templates für eine Zusagengruppe.
+ </summary>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Berechnungsblattgruppe.Kontokennzeichen">
+ <summary>
+ Die Kontokennzeichen der Zusagen, die in diesem Berechnungsblatt berücksichtigt werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Berechnungsblattgruppe.Templates">
+ <summary>
+ Die Templates, die nacheinander dem Dokument hinzugefügt werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Berechnungsblattgruppe.HeaderFooterInfo">
+ <summary>
+ Templates für Header und Footer, die auf den Seiten dieses Berechnungsblattes verwendet werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe">
+ <summary>
+ Beschreibt, wie die Erzeugung eines Dokumentes mit Anschreiben, Berechnungsblättern und Abschluss erfolgen soll.
+ </summary>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe.AnschreibenTemplates">
+ <summary>
+ Diese Templates werden am Anfang des Dokuments nacheinander eingefügt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe.AbschlussTemplates">
+ <summary>
+ Diese Templates werden am Ende des Dokuments nacheinander eingefügt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe.Berechnungsblattgruppen">
+ <summary>
+ Für jede Berechnungsblattgruppe wird in der angegebenen Reihenfolge ein Berechnungsblatt erstellt.
+ Die Berechnungsblätter werden nach dem Hook OnBeforeCreateBerechnungsblätter und vor dem Hook OnBeforeCreateBerechnungsblätter eingefügt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe.AnschreibenHeaderFooterInfo">
+ <summary>
+ Diese Header und Footer werden auf jeder Seite des Anschreibens verwendet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe.AbschlussHeaderFooterInfo">
+ <summary>
+ Diese Header und Footer werden auf jeder Seite des Abschlusses verwendet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo">
+ <summary>
+ Beschreibung eines Dokumenterzeugungsprozesses.
+ </summary>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo.Dokumentgruppierung">
+ <summary>
+ Dokumentgruppierungsinfo
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppierungsinfo">
+ <summary>
+ Beschreibt die Dokumentgruppen, für die jeweils ein Dokument erstellt werden soll.
+ </summary>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppierungsinfo.GruppierungsArt">
+ <summary>
+ Art der Gruppierung. 
+ Pro Person bedeutet, dass für eine Person genau ein Dokument mit Anschreiben, Mittelteil inklusive Berechnungsblättern und Abschluss ersetllt wird.
+ Zusagengruppen bedeutet, dass für jede angegebene Zusagengruppe jewils ein Dokument ersellt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppierungsinfo.Gruppierungen">
+ <summary>
+   { [KontokennzeichenListe1], [KontokennzeichenListe2] },{ [KontokennzeichenListe3], [KontokennzeichenListe4] }
+   --Berechnungsgruppe1----,---Berechnungsgruppe2------,---Berechnungsgruppe3-----,-----Berechnungsgruppe4---
+   ----------------Dokument 1--------------------------,-----------------Dokument 2-------------------------
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppierungsinfo.ProPerson(Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe,Pension.Dokumenterzeugung.Beschreibung.Bedingung[])">
+ <summary>
+ Es soll für eine Person genau ein Dokument mit Anschreiben, Mittelteil inklusive Berechnungsblättern und Abschluss ersetllt werden.
+ </summary>
+ <param name="gruppierung"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppierungsinfo.Zusagengruppen(Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe[])">
+ <summary>
+ Es soll für jede angegebene Zusagengruppe jewils ein Dokument ersellt werden.
+ </summary>
+ <param name="gruppierungen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppierungsinfo.Zusagengruppen(Pension.Dokumenterzeugung.Beschreibung.Bedingung[],Pension.Dokumenterzeugung.Beschreibung.Dokumentgruppe[])">
+ <summary>
+ Es soll für jede angegebene Zusagengruppe jewils ein Dokument ersellt werden.
+ </summary>
+ <param name="gruppierungen"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Einkommensberechnung.BbgErmittlungsart">
+ <summary>
+ Beschreibt wie die Bbg ermittelt werden soll.
+ </summary>
+</member>
+<member name="F:Pension.Einkommensberechnung.BbgErmittlungsart.ZumStichtag">
+ <summary>
+ ZumStichtag
+ </summary>
+</member>
+<member name="F:Pension.Einkommensberechnung.BbgErmittlungsart.Jahresdurchschnitt">
+ <summary>
+ Jahresdurchschnitt
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.EinkommenParameter">
+ <summary>
+ Beschreibt EinkommenParameter zur Einkommensberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.EinkommenParameter.Bemessungsgrundlage">
+ <summary>
+ JährlichesEinkommen oder MonatlichesEinkommen
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.EinkommenParameter.Gehaltsart">
+ <summary>
+ Vollzeit oder Teilzeit
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.EinkommenParameter.AnzahlGehälter">
+ <summary>
+ Kau 20.03.2020
+ Ist auch wichtig wenn das Gehalt monatlich gemeldet wird. Wenn es aber statt 12 Monatsgehälter 
+ 14 Monatsgehälter gibt dann muss das aus der EK Historie ermittelte EK noch einmal mit
+ 'AnzahlGehälter'/12 multipliziert werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.EinkommenParameter.Einkommensart">
+ <summary>
+ CustonEnum mit dem Namen Einkommensart.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.BemessungsgrundlageEinkommen">
+ <summary>
+ JährlichesEinkommen oder MonatlichesEinkommen
+ </summary>
+</member>
+<member name="F:Pension.Einkommensberechnung.Beschreibung.BemessungsgrundlageEinkommen.JährlichesEinkommen">
+ <summary>
+ Sind die monatlichen Einkommen die zwischen zwei Stichtagen gezahlt werden. Eine Hochrechnung auf ein  tatsächliches Jahreseinkommen muss erfolgen.
+ </summary>
+</member>
+<member name="F:Pension.Einkommensberechnung.Beschreibung.BemessungsgrundlageEinkommen.MonatlichesEinkommen">
+ <summary>
+ Monatliches Einkommen welches zum Stichtag grundlage für die Berechnung ist. Eine Hochrechnung auf ein tatsächliches Jahreseinkommen muss erfolgen. 
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.Dienstzeitenparameter">
+ <summary>
+ Dienstzeitparameter für Dienstzeitarten für einen GÜnstigervergleich
+ </summary>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.Dienstzeitenparameter.MaxmialeMonateFürGÜnstigervergleich">
+ <summary>
+ Maxmiale Monate für GÜnstigervergleich.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.Dienstzeitenparameter.Dienstzeitarten">
+ <summary>
+ CustomEnum mit dem Namen Dienstzeitart.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.GehaltsArt">
+ <summary>
+ Vollzeit oder Teilzeit.
+ </summary>
+</member>
+<member name="F:Pension.Einkommensberechnung.Beschreibung.GehaltsArt.Vollzeit">
+ <summary>
+ Vollzeit
+ </summary>
+</member>
+<member name="F:Pension.Einkommensberechnung.Beschreibung.GehaltsArt.Teilzeit">
+ <summary>
+ Teilzeit.
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.EinkommensberechnungskernMitGünstigervergleich">
+ <summary>
+ Einkommensberechnungskern zur Einkommensberechnung mittels Einkommensberechnungsfunktionen.GetEntgeltinformation1
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.EinkommensberechnungskernStandard">
+ <summary>
+ Einkommensberechnungskern zur Einkommensberechnung mittels Einkommensberechnungsfunktionen.GetEntgeltinformation
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Beschreibung.Einkommensberechnungskern">
+ <summary>
+  Beschreibt die Methode zur Berechnung einer Entgeltinformation.
+ </summary>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.Einkommensberechnungskern.Einkommenparameter">
+ <summary>
+ EinkommenParameter
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Einkommensberechnung.Beschreibung.Einkommensberechnungskern.BbgErmittlungsart">
+ <summary>
+ ZumStichtag oder Jahresdurchschnitt
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Einkommensberechnung.Beschreibung.Einkommensberechnungskern.Standard(Pension.Einkommensberechnung.Beschreibung.EinkommenParameter,Pension.Einkommensberechnung.BbgErmittlungsart,Pension.Zusagenbeschreibung.Jahrestag)">
+ <summary>
+ Erzeugt einen EinkommensberechnungskernStandard.
+ </summary>
+ <param name="einkommenparameter"></param>
+ <param name="bbgErmittlungsart"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Einkommensberechnung.Beschreibung.Einkommensberechnungskern.MitGünstigervergleich(Pension.Einkommensberechnung.Beschreibung.EinkommenParameter,Pension.Einkommensberechnung.BbgErmittlungsart,Pension.Einkommensberechnung.Beschreibung.Dienstzeitenparameter,Pension.Zusagenbeschreibung.Jahrestag)">
+ <summary>
+ Erzeugt einen EinkommensberechnungskernMitGünstigervergleich. 
+ </summary>
+ <param name="einkommenparameter"></param>
+ <param name="bbgErmittlungsart"></param>
+ <param name="dienstzeitenparameter"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Einkommensberechnung.Einkommensberechnungsfunktionen">
+ <summary>
+ Konkrete Funktionen zur Einkommensberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Einkommensberechnung.Einkommensberechnungsfunktionen.GetDienstzeitenDurchschnittlicherTZFaktor``1(System.Collections.Generic.IEnumerable{``0})">
+ <summary>
+ Liefert den durchschnittlichen Teilzeitgrad der übergebenen Dienstzeiten.
+ </summary>
+ <typeparam name="TDienstzeit"></typeparam>
+ <param name="dienstzeiten"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Einkommensberechnung.Einkommensberechnungsfunktionen.GetDienstzeitenByVonBis``1(System.Collections.Generic.ICollection{``0},System.DateTime,System.DateTime)">
+ <summary>
+ Liefert alle Dienstzeiten mit Beginn kleiner gleich von und Ende größer gleich bis.
+ </summary>
+ <typeparam name="TDienstzeit"></typeparam>
+ <param name="dienstzeiten"></param>
+ <param name="von"></param>
+ <param name="bis"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Einkommensberechnung.Einkommensberechnungsfunktionen.AddOrUpdateDienstzeit``1(System.Collections.Generic.ICollection{``0},System.DateTime,System.DateTime,System.Decimal,System.Int32,System.DateTime,System.DateTime)">
+ <summary>
+ Fügt Dienstzeiten hinzu, falls dadurch Änderungen entstehen - ?
+ </summary>
+ <typeparam name="TDienstzeit"></typeparam>
+ <param name="dienstzeiten"></param>
+ <param name="beginn"></param>
+ <param name="ende"></param>
+ <param name="tlzGrad"></param>
+ <param name="tlzArt"></param>
+ <param name="erfassungsdatum"></param>
+ <param name="meldedatum"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Einkommensberechnung.Einkommensberechnungsfunktionen.GetEntgeltinformation1(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Collections.Generic.List{Pension.Einkommensberechnung.Beschreibung.EinkommenParameter},Pension.Zusagenbeschreibung.Jahrestag,Pension.Einkommensberechnung.Beschreibung.Dienstzeitenparameter,System.DateTime,System.DateTime)">
+ <summary>
+ Berechnet die Entgeltinformation im Berechtigungszeitraum. Dabei werden die Einkommen gemäß den EinkommenParameter berücksichtigt.
+ Im Dienstzeitenparameter kann gesteuert werden, welche Dienstzeiten dabei dazu führen, dass ein Günstigervergleich mit dem letzten 
+ Gehalt vor Beginn einer solchen Dienstzeitphase stattfinden soll.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="einkommenParameterListe"></param>
+ <param name="einkommenJahrestag"></param>
+ <param name="dienstzeitenparameter"></param>
+ <param name="berechtigungsbeginn"></param>
+ <param name="berechtigungsende"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Einkommensberechnung.Einkommensberechnungsfunktionen.TryGetDienstzeitByStichtagTzgArt(System.Collections.Generic.IEnumerable{TW.BCGer.PensionLib.Domain.Dienstzeit},System.DateTime,System.Int32)">
+ <summary>
+ Sucht die aktuellste 'Dienstzeit' einer angegebenen 'TzgArt' bis zum angegebenen 'Stichtag' anhand der Eigenschaft: 'Beginn'.
+ Falls genau ein passendes Objekt gefunden wurde, wird dieses zurück gegeben.
+ Falls mehrere passende Objekte gefunden wurde, wird [nothing] zurück gegeben.
+ Falls kein passendes Objekt gefunden wurde, wird [nothing] zurück gegeben.
+ </summary>
+ <param name="dienstzeiten">Menge, welche durchsucht werden soll</param>
+ <param name="stichtag">'Stichtag', nach dem gesucht werden soll</param>
+ <param name="tzgArt">'TzgArt', nach dem gesucht werden soll</param>
+</member>
+<member name="T:Pension.Einkommensberechnung.Entgeltinformation">
+ <summary>
+ Gezahltes Gehalt und zugehörige Bemessungsgrenze.
+ </summary>
+</member>
+<member name="P:Pension.Einkommensberechnung.Entgeltinformation.GezahltesGehalt">
+ <summary>
+ Gezahltes Gehalt
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Einkommensberechnung.Entgeltinformation.Bemessungsgrenze">
+ <summary>
+ Zum gezahlten Gehalt passende Bemessungsgrenze.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Einkommensberechnung.Validierung.BbgExistiertZumStichtag">
+ <summary>
+ "Gibt an, ob BBG zum Stichtag existiert
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Validierung.EinkommenExistiertImStichtagsmonat">
+ <summary>
+ Gibt an, ob ein Einkommen in dem Monat des Stichtags existiert
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Validierung.EinkommenVorSonderdienstzeitExistiert">
+ <summary>
+ Einkommen vor Sonderdienstzeit existiert
+ </summary>
+</member>
+<member name="T:Pension.Einkommensberechnung.Validierung.ErforderlicheEinkommenExistieren">
+ <summary>
+ Gibt an, ob die durch die Einkommenparameter definierten Einkommen im Konto existieren
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Altersleistung.AllgemeineEingabenAltersleistung">
+ <summary>
+ AllgemeineEingaben, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Altersleistung.AllgemeineErgebnisseAltersleistung">
+ <summary>
+ AllgemeineErgebnisse, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Altersleistung.KontoEingabenAltersleistung">
+ <summary>
+ KontoEingaben, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Altersleistung.KontoErgebnisseAltersleistung">
+ <summary>
+ KontoErgebnisse, die vom Standard GeVo Altersleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Altersleistung.Beschreibung.GeVoAltersleistungDefinition">
+ <summary>
+ Definition des GeVos Altersleistung. 
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Altersleistung.Beschreibung.GeVoAltersleistungDefinition.DokumentgruppierungMeldebogen">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Meldebogen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Altersleistung.Beschreibung.GeVoAltersleistungDefinition.DokumentgruppierungVariantenbescheid">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Variantenbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Altersleistung.Beschreibung.GeVoAltersleistungDefinition.DokumentgruppierungLeistungsbescheid">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Leistungsbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittCustomizingprovider">
+ <summary>
+ Customizing für den Geschäftsvorfall Austritt.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsdokumenterzeugungCustomizing">
+ <summary>
+ Optionales Customizing der Dokumenterzeugung im GeVo Austritt.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsdokumenterzeugungCustomizing.OnBeforeCreateBerechnungsblätterMethod">
+ <summary>
+ Wird aufgerufen nachdem das Anschreiben erstellt wurde und bevor die Berechnungsblätter erstellt werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsdokumenterzeugungCustomizing.OnAfterCreateBerechnungsblätterMethod">
+ <summary>
+ Wird aufgerufen nachdem die Berechnungsblätter erstellt wurden und bevor der Abschluss erstellt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsdokumenterzeugungCustomizing.AddAdditionalDatasourcesBerechnungsblattMethod">
+ <summary>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung der Berechnungsblätter hinzufügen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsdokumenterzeugungCustomizing.AddAdditionalDatasourcesDokumentMethod">
+ <summary>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung des Anschreibens hinzufügen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsdokumenterzeugungCustomizing.MustCreateDocumentMethod">
+ <summary>
+ Kann verhindern, dass ein Dokument erzeugt wird.
+ Der Default verhindert das Erstellen genau dann, wenn alle Konten der Kontengruppe verfallen sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsberechnungCustomizing">
+ <summary>
+ Optionales Customizing der Austrittsberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsberechnungCustomizing.OnAfterBerechneAustrittMethod">
+ <summary>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos Austritt im Austrittsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsberechnungCustomizing.OnAfterBerechneKontoabschlussMethod">
+ <summary>
+ Wird aufgerufen nachdem die Standard-Kontoabschlussberechnung im Austrittsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsberechnungCustomizing.OnAfterBerechneKontoständeMethod">
+ <summary>
+ Wird aufgerufen nachdem die Stanrd-Kontostandsberechnung im Austrittsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsberechnungCustomizing.OnAfterBerechneUnverfallbarkeitsinformationenMethod">
+ <summary>
+ Wird aufgerufen nachdem die Stanrd-Unverfallbarkeitsbestimmung im Austrittsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Customizing.OptionalAustrittsberechnungCustomizing.OnAfterBerechneUvDatenMethod">
+ <summary>
+ Wird aufgerufen nachdem die Stanrd-UvDatenberechnung im Austrittsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittImplementierungCustomizingprovider">
+ <summary>
+ Customizing der Implementierung des Geschäftsvorfall Austritt.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittImplementierungCustomizingprovider.CreateAuftragsverwaltungkonfiguration">
+ <summary>
+ Erzeugt eine IAuftragskonfiguration.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsberechnungCustomizingprovider">
+ <summary>
+ Customizing der Austrittsberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsberechnungCustomizingprovider.BerechneVertraglicheUnverfallbarkeitsinformationen(Pension.KontoKontext,System.DateTime,Pension.Geschäftsvorfälle.IHatVertraglicheUnverfallbarkeitsinformationen)">
+ <summary>
+ 	Für die Berechnung der vertraglich Unverfallbarkeit im Falle der Unverfallbarkeitsart "Vertraglich"
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="austrittsdatum"></param>
+ <param name="result"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsberechnungCustomizingprovider.GetZuBerechnendeZusagenkomponenten(Pension.KontoKontext,Pension.Geschäftsvorfälle.Austritt.IAllgemeineEingabenAustritt,Pension.Geschäftsvorfälle.Austritt.IKontoEingabenAustritt)">
+ <summary>
+ Liefert die im GeVo über die Kontofortschreibung zu berechnenden Zusagenkomponenten.
+ Die Zusagenkomponenten werden in der übergebenen Reihenfolge von der Kontofortschreibung berechnet.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="eingaben"></param>
+ <param name="kontoEingaben"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsdokumenterzeugungCustomizingProvider">
+ <summary>
+ Customizing der Dokumenterzeugung im Geschäftsvorfall Austritt.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsmappingAnspruchCustomizingprovider">
+ <summary>
+ Customizing der Mappings im Geschäftsvorfall Austritt.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsmappingAnspruchCustomizingprovider.MapCustomKontoergebnisse(TW.BCGer.PensionLib.Business.Processes.AnspruchArguments{TW.BCGer.PensionLib.Domain.Person,TW.BCGer.PensionLib.Domain.Konto})">
+ <summary>
+ Ergänzendes Mapping der Kontoergebnisse, die nicht als Implementierung eines von IKontoErgebnisseAustritt geforderten Interfaces oder einer
+ Erweiterung eines solchen Interfaces vorliegen.
+ </summary>
+ <param name="arguments"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsmappingAnspruchCustomizingprovider.MapCustomUvDaten(TW.BCGer.PensionLib.Domain.Konto,Pension.Geschäftsvorfälle.Austritt.IKontoErgebnisseAustritt,System.DateTime,TW.BCGer.CorLib.Messaging.IMessageLogger)">
+ <summary>
+ Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatUvDaten erweitert
+ </summary>
+ <param name="konto"></param>
+ <param name="kontoergebnisse"></param>
+ <param name="austrittsdatum"></param>
+ <param name="logger"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsmappingAnspruchCustomizingprovider.MapCustomFortschreibungsergebnis(TW.BCGer.PensionLib.Domain.Konto,Pension.Geschäftsvorfälle.Austritt.IKontoErgebnisseAustritt,System.DateTime,TW.BCGer.CorLib.Messaging.IMessageLogger)">
+ <summary>
+ Mapping des von der Kontoergbnis-Klasse implementierten Interfaces, das IHatFortschreibungsergebnis erweitert
+ </summary>
+ <param name="konto"></param>
+ <param name="kontoergebnisse"></param>
+ <param name="austrittsdatum"></param>
+ <param name="logger"></param>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsvalidierungAnspruchCustomizingprovider">
+ <summary>
+ Customizing der Validierung im Geschäftsvorfall Austritt.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsvalidierungAnspruchCustomizingprovider.Validate(TW.BCGer.PensionLib.Business.Processes.ValidationArgumentsAnspruch{TW.BCGer.PensionLib.Domain.Person,TW.BCGer.PensionLib.Domain.Konto})">
+ <summary>
+ Validiert.
+ </summary>
+ <param name="arguments"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsvalidierungGesamtCustomizingprovider">
+ <summary>
+ Customizing der Validierung im Geschäftsvorfall Austritt.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Customizing.IAustrittsvalidierungGesamtCustomizingprovider.Validate(TW.BCGer.PensionLib.Business.Processes.ValidationArguments{TW.BCGer.PensionLib.Domain.Person,TW.BCGer.PensionLib.Domain.Konto})">
+ <summary>
+ Validiert.
+ </summary>
+ <param name="arguments"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.AllgemeineEingabenAustritt">
+ <summary>
+ AllgemeineEingaben, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner">
+ <summary>
+ Stellt Funktionen für die Austrittsberechnung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneAustritt(TW.BCGer.PensionLib.Business.Processes.IVerarbeitungsparameterAnspruch)">
+ <summary>
+ Berechnet einen Austritt.
+ </summary>
+ <param name="params"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneAustritt(Pension.KontoKontext,Pension.Geschäftsvorfälle.Austritt.AllgemeineEingabenAustritt,Pension.Geschäftsvorfälle.Austritt.KontoEingabenAustritt,Pension.Geschäftsvorfälle.Austritt.AllgemeineErgebnisseAustritt,Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt)">
+ <summary>
+ Berechnet einen Austritt.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="eingaben"></param>
+ <param name="kontoEingaben"></param>
+ <param name="ergebnisse"></param>
+ <param name="kontoErgebnisse"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneUvDaten(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,Pension.Geschäftsvorfälle.IHatKontostände,Pension.Geschäftsvorfälle.IHatUnverfallbarkeitsinformationen,Pension.Geschäftsvorfälle.IHatUvDaten)">
+ <summary>
+ Ermittelt für ein Konto die UV-Daten zum Austrittsdatum gemäß dem übergebenen Kontostand.
+ </summary>
+ <param name="konto"></param>
+ <param name="austrittsdatum"></param>
+ <param name="kontostände"></param>
+ <param name="uvInformationen"></param>
+ <param name="result"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneUvaFaktor(TW.BCGer.PensionLib.Domain.Konto,System.DateTime)">
+ <summary>
+ Berechnet für ein Konto den UV-Faktor bei Austritt zum übergebenen Stichtag.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneUnverfallbarkeitsinformationen(Pension.KontoKontext,System.DateTime,Pension.Geschäftsvorfälle.IHatUnverfallbarkeitsinformationen)">
+ <summary>
+ Berechnet, ab wann das Konto vertraglich bzw. gesetzlich unverfallbar ist.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="austrittsdatum"></param>
+ <param name="result"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneVertraglicheUnverfallbarkeitsinformationen(Pension.KontoKontext,System.DateTime,Pension.Geschäftsvorfälle.IHatVertraglicheUnverfallbarkeitsinformationen)">
+ <summary>
+ Berechnet vertraglich geregelte Unverfallbarkeitsinformationen gemäß IAustrittsberechnungCustomizingprovider.BerechneVertraglicheUnverfallbarkeitsinformationen.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="austrittsdatum"></param>
+ <param name="result"></param>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Austritt.Austrittsberechner.BerechneGesetzlicheUnverfallbarkeitsinformationen(Pension.KontoKontext,System.DateTime,Pension.Geschäftsvorfälle.IHatGesetzlicheUnverfallbarkeitsinformationen)">
+ <summary>
+ Berechnet Unverfallbarkeitsinformationen gemäß der gesetzlichen Regelungen.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="stichtag"></param>
+ <param name="result"></param>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.AllgemeineErgebnisseAustritt">
+ <summary>
+ AllgemeineErgebnisse, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.Beschreibung.GeVoAustrittDefinition">
+ <summary>
+ Definition des GeVos Austritt. 
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.Beschreibung.GeVoAustrittDefinition.Dokumenterzeugungsinfo">
+ <summary>
+ Dokumenterzeugungsinfo, die beschreibt wie die Dokumente in diesem GeVo erstellt werden sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.KontoEingabenAustritt">
+ <summary>
+ KontoEingaben, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt">
+ <summary>
+ KontoErgebnisse, die vom Standard GeVo Austritt verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.Relevant">
+ <summary>
+ Gibt an, ob das Konto für den GeVo relevant ist.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.Fortschreibungsergebnis">
+ <summary>
+ Ergebnis der Schlussfortschreibung, falls eine stattfindet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.GesetzlichUnverfallbar">
+ <summary>
+ Gibt an, ob das Konto die gesetzlichen UV-Bestimmungen erfüllt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.Kontostand">
+ <summary>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.KontostandVorher">
+ <summary>
+ Kontostand ohne Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.KontostandLetzterFortschreibungsstichtag">
+ <summary>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum letzten Fortschreibungsstichtag vor dem GeVo-Stichtag.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.UvaDatumGesetzlich">
+ <summary>
+ Datum, ab dem die gesetzlichen UV-Bestimmungen erfüllt sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.UvaDatumVertraglich">
+ <summary>
+ Datum, ab dem die vertraglichen  UV-Bestimmungen erfüllt sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.VertraglichUnverfallbar">
+ <summary>
+ Gibt an, ob das Konto die vertraglichen UV-Bestimmungen erfüllt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.UvDaten">
+ <summary>
+ UvDaten, die sich aus dem Austritt ergeben.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Austritt.KontoErgebnisseAustritt.KontostandOhneVaAbzug">
+ <summary>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag ohne VA-Abzug.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Dokumenterzeugung.Kontengruppe.AuszahlungsartWennEinheitlich">
+ <summary>
+ Falls alle beteiligten Konten die gleiche Auszahlungsart gewählt haben wird diese zurückgegeben.
+ Ansonsten Unbekannt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Dokumenterzeugung.KontengruppeEigenleistung`1.AuszahlungsartWennEinheitlich">
+ <summary>
+ Falls alle beteiligten Konten die gleiche Auszahlungsart gewählt haben wird diese zurückgegeben.
+ Ansonsten Unbekannt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Dokumenterzeugung.KontengruppeTodesfall`1.AuszahlungsartWennEinheitlich">
+ <summary>
+ Falls alle beteiligten Konten die gleiche Auszahlungsart gewählt haben wird diese zurückgegeben.
+ Ansonsten Unbekannt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsdokumenterzeugungCustomizing">
+ <summary>
+ Optionales Customizing der Dokumenterzeugung in einem Eigenleistungsgevo.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsdokumenterzeugungCustomizing.OnBeforeCreateBerechnungsblätterMethod">
+ <summary>
+ Wird aufgerufen nachdem das Anschreiben erstellt wurde und bevor die Berechnungsblätter erstellt werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsdokumenterzeugungCustomizing.OnAfterCreateBerechnungsblätterMethod">
+ <summary>
+ Wird aufgerufen nachdem die Berechnungsblätter erstellt wurden und bevor der Abschluss erstellt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsdokumenterzeugungCustomizing.AddAdditionalDatasourcesBerechnungsblattMethod">
+ <summary>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung der Berechnungsblätter hinzufügen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsdokumenterzeugungCustomizing.AddAdditionalDatasourcesDokumentMethod">
+ <summary>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung des Anschreibens hinzufügen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsdokumenterzeugungCustomizing.MustCreateDocumentMethod">
+ <summary>
+ Kann verhindern, dass ein Dokument erzeugt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsmappingAnspruchCustomizing">
+ <summary>
+ Optionales Customizing des Mappings in einem Eigenleistungsgevo.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsmappingAnspruchCustomizing.MapCustomKontoergebnisseMethod">
+ <summary>
+ 	Ergänzendes Mapping der Kontoergebnisse, die nicht als Implementierung eines von IKontoErgebnisseEigenleistung geforderten Interfaces oder einer Erweiterung eines solchen Interfaces vorliegen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsmappingAnspruchCustomizing.MapCustomFortschreibungsergebnisMethod">
+ <summary>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatFortschreibungsergebnis erweitert
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsmappingAnspruchCustomizing.MapCustomLeistungenMethod">
+ <summary>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatLeistungen erweitert
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsberechnungCustomizingprovider">
+ <summary>
+ Optionales Customzing der Berechnungen in einem Eigenleistungsgevo.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsberechnungCustomizingprovider.OnAfterBerechneEigenleistungMethod">
+ <summary>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsberechnungCustomizingprovider.OnAfterBerechneKontoabschlussMethod">
+ <summary>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.OptionalEigenleistungsberechnungCustomizingprovider.OnAfterBerechneKontoständeMethod">
+ <summary>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungImplementierungCustomizingprovider">
+ <summary>
+ Customizing der Implementierung eines Eigenleistungsgeschäftsvorfalls.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungImplementierungCustomizingprovider.CreateAuftragsverwaltungkonfiguration(Pension.Geschäftsvorfälle.Eigenleistung.Eigenleistungsart)">
+ <summary>
+ Erzeugt eine IAuftragskonfiguration.
+ </summary>
+ <param name="leistungsart"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsberechnungCustomizingprovider">
+ <summary>
+ Customizing der Berechnung eines Eigenleistungsgeschäftsvorfalls.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsberechnungCustomizingprovider.GetZuBerechnendeZusagenkomponenten(Pension.Geschäftsvorfälle.Eigenleistung.Eigenleistungsart,Pension.KontoKontext,Pension.Geschäftsvorfälle.Eigenleistung.IAllgemeineEingabenEigenleistung,Pension.Geschäftsvorfälle.Eigenleistung.IKontoEingabenEigenleistung)">
+ <summary>
+ Liefert die im GeVo über die Kontofortschreibung zu berechnenden Zusagenkomponenten.
+ Die Zusagenkomponenten werden in der übergebenen Reihenfolge von der Kontofortschreibung berechnet.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="eingaben"></param>
+ <param name="kontoEingaben"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsdokumenterzeugungCustomizingprovider">
+ <summary>
+ Customizing der Dokumenterzeugung eines Eigenleistungsgeschäftsvorfalls.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsmappingGesamtCustomizingprovider">
+ <summary>
+ Customizing des Mappings eines Eigenleistungsgeschäftsvorfalls.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsvalidierungAnspruchCustomizingprovider">
+ <summary>
+ Customizing der Validierung eines Eigenleistungsgeschäftsvorfalls.
+ </summary>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsvalidierungAnspruchCustomizingprovider.Validate(TW.BCGer.PensionLib.Business.Processes.ValidationArgumentsAnspruch{TW.BCGer.PensionLib.Domain.Person,TW.BCGer.PensionLib.Domain.Konto})">
+ <summary>
+ Validiert.
+ </summary>
+ <param name="arguments"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Eigenleistung.Customizing.IEigenleistungsvalidierungGesamtCustomizingprovider.Validate(TW.BCGer.PensionLib.Business.Processes.ValidationArguments{TW.BCGer.PensionLib.Domain.Person,TW.BCGer.PensionLib.Domain.Konto})">
+ <summary>
+ Validiert.
+ </summary>
+ <param name="arguments"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineEingabenEigenleistung">
+ <summary>
+ AllgemeineEingaben, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineEingabenEigenleistung.Leistungsbeginn">
+ <summary>
+ Beginn der Leistungsphase
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineEingabenEigenleistung.Antragsdatum">
+ <summary>
+ Datum des Eingangs des Leistungsantrags
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineEingabenEigenleistung.Versorgungsfalldatum">
+ <summary>
+ Die Property ist ReadOnly. 
+ Sie berechnet sich als Maximum aus Vortag des Leistungsbeginns und Vortag des Antragsdatums.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineErgebnisseEigenleistung">
+ <summary>
+ AllgemeineErgebnisse, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.KontoEingabenEigenleistung">
+ <summary>
+ KontoEingaben, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoEingabenEigenleistung.Auszahlungsbeginn">
+ <summary>
+ Datum, zu dem die Auszahlung beginnen soll.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoEingabenEigenleistung.Auszahlungswahl">
+ <summary>
+ Die gewählte Auszahlung in der Stufe *Leistung*.
+ Die möglichen Optionen richten sich nach dem Altersleistungspaket in der Zusagenbeschreibung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoEingabenEigenleistung.Stufe">
+ <summary>
+ Leistungsgeschäftsvorfallstufe: Meldebogen, Variantenbescheid oder Leistung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung">
+ <summary>
+ KontoErgebnisse, die von den Standard GeVos Altersleistung und Invalidenleistung verwendet werden.
+ Falls im Kundenprojekt eine spezialisierte Klasse existiert, so wird stattdessen diese verwendet.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.Relevant">
+ <summary>
+ Gibt an, ob das Konto für den GeVo relevant ist.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.Fortschreibungsergebnis">
+ <summary>
+ Ergebnis der Schlussfortschreibung, falls eine stattfindet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.Kontostand">
+ <summary>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.KontostandVorher">
+ <summary>
+ Kontostand ohne Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.KontostandLetzterFortschreibungsstichtag">
+ <summary>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum letzten Fortschreibungsstichtag vor dem GeVo-Stichtag.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.KontostandOhneVaAbzug">
+ <summary>
+ Kontostand unter Berücksichtigung der GeVo-Ergebnisse zum GeVo-Stichtag ohne VA-Abzug.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.Leistungsberechnungsergebnis">
+ <summary>
+ Die finale Leistungsberechnungsergebnis zu der gewählten Auszahlungswahl in der Stufe Leistung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.Versorgungsguthaben">
+ <summary>
+ Kontostand, der als Grundlage für die Leistungsberechnung verwendet wird. 
+ Weicht gegebenefalls vom Kontostand ab, weil z.B. Besitzstände berücksichtigt sind.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung.Leistungsberechnungsergebnisse">
+ <summary>
+ Die Leistungsberechnungsergebnisse zu jeder möglichen Auszahlungswahl in der Stufe Variantenbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Invalidenleistung.Beschreibung.GeVoInvalidenleistungDefinition">
+ <summary>
+ Definition des GeVos Invalidenleistung. 
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Invalidenleistung.Beschreibung.GeVoInvalidenleistungDefinition.DokumentgruppierungMeldebogen">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Meldebogen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Invalidenleistung.Beschreibung.GeVoInvalidenleistungDefinition.DokumentgruppierungVariantenbescheid">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Variantenbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Invalidenleistung.Beschreibung.GeVoInvalidenleistungDefinition.DokumentgruppierungLeistungsbescheid">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Leistungsbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Beschreibung.GeVoTodesfallDefinition">
+ <summary>
+ Definition des GeVos Todesfall. 
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Beschreibung.GeVoTodesfallDefinition.DokumentgruppierungMeldebogen">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Meldebogen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Beschreibung.GeVoTodesfallDefinition.DokumentgruppierungVariantenbescheid">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Variantenbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Beschreibung.GeVoTodesfallDefinition.DokumentgruppierungLeistungsbescheid">
+ <summary>
+ Dokumenterzeugungsinfo für die Stufe Leistungsbescheid.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Customizing.OptionalTodesfallberechnungCustomizing">
+ <summary>
+ Optionales Customizing der Berechnung im GeVo Todesfall.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Customizing.OptionalTodesfallberechnungCustomizing.OnAfterBerechneKontoabschlussMethod">
+ <summary>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Customizing.OptionalTodesfallberechnungCustomizing.OnAfterBerechneKontoständeMethod">
+ <summary>
+ Wird aufgerufen nach dem die Standard-Berechnung des GeVos im Leistungsberechner durchgeführt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Tod.Customizing.ITodesfallberechnungCustomizingprovider.GetZuBerechnendeZusagenkomponenten(Pension.KontoKontext,Pension.Geschäftsvorfälle.Tod.IAllgemeineEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoEingabenTodesfall)">
+ <summary>
+ Liefert die im GeVo über die Kontofortschreibung zu berechnenden Zusagenkomponenten.
+ Die Zusagenkomponenten werden in der übergebenen Reihenfolge von der Kontofortschreibung berechnet.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="eingaben"></param>
+ <param name="kontoEingaben"></param>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Customizing.OptionalTodesfallmappingAnspruchCustomizing.MapCustomKontoergebnisseMethod">
+ <summary>
+ 	Ergänzendes Mapping der Kontoergebnisse, die nicht als Implementierung eines von IKontoErgebnisseEigenleistung geforderten Interfaces oder einer Erweiterung eines solchen Interfaces vorliegen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Customizing.OptionalTodesfallmappingAnspruchCustomizing.MapCustomFortschreibungsergebnisMethod">
+ <summary>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatFortschreibungsergebnis erweitert
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Tod.Customizing.OptionalTodesfallmappingAnspruchCustomizing.MapCustomLeistungenMethod">
+ <summary>
+ 	Mapping des von der Kontoergebnis-Klasse implementierten Interfaces, das IHatLeistungen erweitert
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Tod.TodesfallDocumentGenerator.PushArchivingData(TW.BCGer.PensionLib.DocGen.Dms.Archiving.PensionArchivingData,TW.BCGer.PensionLib.Business.Processes.Domain.Geschäftsvorfall,TW.BCGer.PensionLib.Business.Processes.IGeschäftsvorfallImplementierung,TW.BCGer.PensionLib.Business.Processes.IDataAdapter,System.Object[])">
+ <summary>
+   Setzt im übergebenen Archivierungsdatenobjekt Attribute anhand der anderen übergebenen Objekte.
+ </summary>
+ <param name="targetArchivingData"> Das zu belegende Archivierungsdatenobjekt. </param>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.PersonExistiertFallsBavIdBelegt">
+ <summary>
+ Gibt an, ob eine Person zu BavId exisitert, falls die BavId belegt ist
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.HibliartBelegt">
+ <summary>
+ Gibt an, ob die Hibliart belegt ist
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.SterbedatumInEingabenNachGeburtsdatum">
+ <summary>
+ Gibt an, ob as das Sterbedatum in den Eingaben nach dem Geburtsdatum der Person liegt
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.SummeErbquotenGleichHundertProzent">
+ <summary>
+ Gibt an, ob die Summe der Erbquoten aller Hiblis gleich Hundert Prozent ist
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.PersonenIdKundeDerHiblisEnthältDuplikate">
+ <summary>
+ Gibt an, ob die Belegungen der PersonenIdKunde in den Hiblieingaben Duplikate enthalten
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.EingangTodesmeldungBelegtWennErbquoten">
+ <summary>
+ Gibt an, ob as das Datum des Eingangs der Todesmeldung belegt ist, falls Erbquoten angegeben sind.
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.EingangTodesmeldungNachSterbedatum">
+ <summary>
+ Gibt an, ob as das Datum des Eingangs der Todesmeldung nach dem Sterbedatum liegt
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.SterbedatumBelegt">
+ <summary>
+ Gibt an, ob das Sterbedatum in den allgemeinen Eingaben belegt ist
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.EingangTodesmeldungLiegtInZukunft">
+ <summary>
+ Gibt an, ob as das Datum des Eingangs der Todesmeldung in der Zukunft liegt
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Tod.Validierung.SterbedatumLiegtInZukunft">
+ <summary>
+ Gibt an, ob as Sterbedatum in der Zukunft liegt
+ </summary>
+</member>
+<member name="T:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition">
+ <summary>
+ 	Beschreibt die Existenz eines GeVos innerhalb einer Zusage. 
+ Wenn einem Zusagendetail eine GeVoDefinition zugeordnet ist, so steht der GeVo dem Projekt zur Verfügung. 
+ Es ist keine weitere Einrichtung notwendig bis auf das Implementieren der zum GeVo gehörenden CustomizingProvider.
+ </summary>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.GeVoArt">
+ <summary>
+ Identifiziert die GeVoDefinition.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Name">
+ <summary>
+ Name, der auf der Oberfläche verwendet wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Austritt(System.Int32,System.String)">
+ <summary>
+ Erzeugt eine Definition des GeVos Austritt.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Austritt(System.Int32,System.String,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo)">
+ <summary>
+ Erzeugt eine GeVoAustrittDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <param name="dokumentInfo"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Altersleistung(System.Int32,System.String)">
+ <summary>
+ Erzeugt eine GeVoAltersleistungDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Altersleistung(System.Int32,System.String,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo)">
+ <summary>
+ Erzeugt eine GeVoAltersleistungDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <param name="dokumentInfoMeldebogen"></param>
+ <param name="dokumentInfoVariantenbescheid"></param>
+ <param name="dokumentInfoLeistungsbescheid"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Invalidenleistung(System.Int32,System.String)">
+ <summary>
+ Erzeugt eine GeVoInvalidenleistungDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Invalidenleistung(System.Int32,System.String,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo)">
+ <summary>
+ Erzeugt eine GeVoInvalidenleistungDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <param name="dokumentInfoMeldebogen"></param>
+ <param name="dokumentInfoVariantenbescheid"></param>
+ <param name="dokumentInfoLeistungsbescheid"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Todesfall(System.Int32,System.String)">
+ <summary>
+ Erzeugt eine GeVoTodesfallDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Geschäftsvorfälle.Beschreibung.Geschäftsvorfalldefinition.Todesfall(System.Int32,System.String,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo,Pension.Dokumenterzeugung.Beschreibung.Dokumenterzeugungsinfo)">
+ <summary>
+ Erzeugt eine GeVoTodesfallDefinition.
+ </summary>
+ <param name="gevoArt"></param>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.OptionalTodesfalldokumenterzeugungCustomizing">
+ <summary>
+ Optionales Customizing der Dokumenterzeugung im GeVo Todesfall.
+ </summary>
+</member>
+<member name="P:Pension.OptionalTodesfalldokumenterzeugungCustomizing.OnBeforeCreateBerechnungsblätterMethod">
+ <summary>
+ Wird aufgerufen nachdem das Anschreiben erstellt wurde und bevor die Berechnungsblätter erstellt werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.OptionalTodesfalldokumenterzeugungCustomizing.OnAfterCreateBerechnungsblätterMethod">
+ <summary>
+ Wird aufgerufen nachdem die Berechnungsblätter erstellt wurden und bevor der Abschluss erstellt wurde.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.OptionalTodesfalldokumenterzeugungCustomizing.AddAdditionalDatasourcesBerechnungsblattMethod">
+ <summary>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung der Berechnungsblätter hinzufügen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.OptionalTodesfalldokumenterzeugungCustomizing.AddAdditionalDatasourcesDokumentMethod">
+ <summary>
+ Kann zusätzliche Objekte in die Datasource zur Erstellung des Anschreibens hinzufügen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.OptionalTodesfalldokumenterzeugungCustomizing.MustCreateDocumentMethod">
+ <summary>
+ Kann verhindern, dass ein Dokument erzeugt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.OptionalTodesfalldokumenterzeugungCustomizing.OnBeforeGenerateDocumentsGesamtMethod">
+ <summary>
+ Hier können vom Standard abweichende Dokumenterzeugungsschritte implementiert werden.
+ Falls True zurückgegeben wird, findet keine Dokumenterzeugung vom Framework statt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontoauszugserstellung.Beschreibung.Kontoauszugserstellungsinfo">
+ <summary>
+ Beschreibt, wie Kontoauszüge im Zusagenprojekt erstellt werden sollen.
+ </summary>
+</member>
+<member name="P:Pension.Kontoauszugserstellung.Beschreibung.Kontoauszugserstellungsinfo.Dokumenterzeugungsinfo">
+ <summary>
+ See <see cref="P:Pension.Kontoauszugserstellung.Beschreibung.Kontoauszugserstellungsinfo.Dokumenterzeugungsinfo"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Beschreibung.Altersbedingung">
+ <summary>
+ Bedingung für die Kontofortschreibung gemäß Startalter und Endalter.
+ </summary>
+</member>
+<member name="P:Pension.Kontofortschreibung.Beschreibung.Altersbedingung.Startalter">
+ <summary>
+ Berechtigungsbeginn ist das Erreichen des Startalters.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Kontofortschreibung.Beschreibung.Altersbedingung.Endalter">
+ <summary>
+ Berechtigungsbeginn ist das Erreichen des Endalters.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Beschreibung.Custombedingung">
+ <summary>
+ Führt zum Aufruf von <see cref="T:Pension.Kontofortschreibung.Customizing.IKontofortschreibungCustomizingProvider"/>.IstKontoRelevantCustom
+ </summary>
+</member>
+<member name="T:Pension.Kontofortschreibung.Beschreibung.Kontostatusbedingung">
+ <summary>
+ Bedingung für die Kontofortschreibung gemäß relevanten Kontostatus.
+ </summary>
+</member>
+<member name="P:Pension.Kontofortschreibung.Beschreibung.Kontostatusbedingung.RelevanteKontostatus">
+ <summary>
+ Ein Konto erfüllt die Bedingung, wen es in einem dieser Kontostatus ist.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Beschreibung.KontofortschreibungsZusagenkomponente">
+ <summary>
+ Zur Angabe und Gruppierung der beteiligten Zusagenkomponenten im Kontofortschreibungsprozess.
+ </summary>
+</member>
+<member name="P:Pension.Kontofortschreibung.Beschreibung.KontofortschreibungsZusagenkomponente.ZusagenkomponentenKennzeichen">
+ <summary>
+ CustomEnum mit Name CustomEnumNames.BerechnungskennzeichenName
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Kontofortschreibung.Beschreibung.KontofortschreibungsZusagenkomponente.Gruppe">
+ <summary>
+ Zur Sortierung der beteiligten Zusagenkomponenten im Kontofortschreibungsprozess. 
+ Zusagenkomponenten mit niedrigerer Nummer werden vor denen mit höherer Nummer berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Beschreibung.Bedingung">
+ <summary>
+ 	Beschreibt eine Bedingung unter der ein Konto in einer zu einem gegebenen Berechnungskennzeichen gehörenden Kontofortschreibung relevant ist.
+ </summary>
+</member>
+<member name="M:Pension.Kontofortschreibung.Beschreibung.Bedingung.Altersbedingt(System.Int32,System.Int32)">
+ <summary>
+ Altersbedingung von Startalter bis Endalter.
+ </summary>
+ <param name="startalter"></param>
+ <param name="endalter"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.Beschreibung.Bedingung.Kontostatusbedingt(System.Int32[])">
+ <summary>
+ Kontostatusbedingung, die nur die übergebenen Kontostatus zulässt.
+ </summary>
+ <param name="kontostatus"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.Beschreibung.Bedingung.Custom">
+ <summary>
+ Erzeugt eine Custombedingung und führt zum Aufruf von IKontofortschreibungCustomizingProvider.IstKontoRelevantCustom.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Beschreibung.Kontofortschreibungsprozessdefinition">
+ <summary>
+ Definition des Standard Kontofortschreibungsprozesses.
+ </summary>
+</member>
+<member name="P:Pension.Kontofortschreibung.Beschreibung.Kontofortschreibungsprozessdefinition.ZusagenKomponenten">
+ <summary>
+ Gibt an welche Zusagenkomponenten im Prozess beteiligt sind und in welcher Reihenfolge sie berechnet werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Kontofortschreiber">
+ <summary>
+ Stellt Funktionen zur Kontofortschreibung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontofortschreibungDurchführen(Pension.Kontofortschreibung.ProzessParameter,TW.BCGer.CorLib.Messaging.IMessageLogger,Pension.Kontofortschreibung.ProzessInfo)">
+ <summary>
+ Führt die Kontofortschreibung aller Zusagenkomponenten in ProzessParameter.Zusagenkomponenten zum ProzessParameter.Stichtag aus. 
+ Es werden alle Konten berücksichtigt, deren Zusagendetail mindestens eine der relevanten Zusagenkomponenten beinhaltet.
+ </summary>
+ <param name="parameter"></param>
+ <param name="messageLogger"></param>
+ <param name="prozessInfo"></param>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontoFortschreiben(System.Int32[],TW.BCGer.PensionLib.Domain.Konto,System.DateTime,TW.BCGer.CorLib.Messaging.IMessageLogger)">
+ <summary>
+ Schreibt das Konto in allen übergebenen Zusagenkomponenten zum Stichtag fort.
+ </summary>
+ <param name="relevanteZusagenKomponentenKennzeichen"></param>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="messageLogger"></param>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontoFortschreiben(System.Int32[],Pension.KontoKontext,Pension.Kontofortschreibung.KontoErgebnis@)">
+ <summary>
+ Schreibt das die relevanten Zusagenkomponenten des Kontos fort.
+ </summary>
+ <param name="relevanteZusagenKomponentenKennzeichen"></param>
+ <param name="kontoKontext"></param>
+ <param name="kontoErgebnis"></param>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontoergebnisVerarbeiten(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,TW.BCGer.CorLib.Messaging.IMessageLogger,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Persistiert das Ergebnis der Kontofortschreibung.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="messageLogger"></param>
+ <param name="ergebnis"></param>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontoergebnisVerarbeiten(Pension.KontoKontext,Pension.Kontofortschreibung.KontoErgebnis,System.Boolean)">
+ <summary>
+ Validiert das Kontoergebnis und persistiert die Ergebnisse im Konto falls die Validierung erfolgreich ist.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="ergebnis"></param>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontofortschreibungValidieren(Pension.KontoKontext)">
+ <summary>
+ Validiert Konto, zugehöriges Vv und zugehörige Person gegen den Vertrag "Kontofortschreibung"
+ </summary>
+ <param name="kontokontext"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontofortschreibungValidieren(Pension.KontoKontext,System.Int32,Pension.Kontofortschreibung.KontoErgebnis)">
+ <summary>
+ Validiert Konto, Vv, Person einzeln und jeweils mit Stichtag sowie alle von der Zusagenkomponente festgelegten Entitäten 
+ gegen den zum Berechnungskennzeichen gehörenden Zusagenkomponentenvertrag.
+ </summary>
+ <param name="kontokontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontofortschreibungBerechnen(System.Int32[],TW.BCGer.PensionLib.Domain.Konto,System.DateTime,TW.BCGer.CorLib.Messaging.IMessageLogger)">
+ <summary>
+ Berechnet die Kontofortschreibung der übergebenen Zusagenkomponenten für das Konto zum Stichtag.
+ </summary>
+ <param name="relevanteZusagenKomponentenKennzeichen"></param>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="messageLogger"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.Kontofortschreiber.KontofortschreibungBerechnen(System.Int32[],Pension.KontoKontext@)">
+ <summary>
+ Berechnet die Kontofortschreibung der relevanten Zusagenkomponenten des Kontos.
+ </summary>
+ <param name="relevanteZusagenKomponentenKennzeichen"></param>
+ <param name="kontoKontext"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.Customizing.IKontofortschreibungCustomizingProvider">
+ <summary>
+ Customizing der Kontofortschreibung.
+ </summary>
+</member>
+<member name="M:Pension.Kontofortschreibung.Customizing.IKontofortschreibungCustomizingProvider.IstKontoRelevantCustom(Pension.KontoKontext,System.Int32)">
+ <summary>
+ Wird aufgerufen, wenn die Custombedingung <see cref="T:Pension.Kontofortschreibung.Beschreibung.Custombedingung"/> greift
+ </summary>
+ <param name="kontokontext"></param>
+ <param name="berechnungskennzeichen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.Customizing.IKontofortschreibungCustomizingProvider.ValidiereProzessparameter(Pension.Kontofortschreibung.ProzessParameter,TW.BCGer.CorLib.Messaging.IMessageLogger)">
+ <summary>
+ Wird aufgerufen, wenn die Custombedingung (Kontofortschreibung.Beschreibung.Bedingung.Custom) greift
+ </summary>
+ <param name="parameter"></param>
+ <param name="messageLogger"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Kontofortschreibung.KontoExtensions">
+ <summary>
+ Allgemeine Konto-Extensions.
+ </summary>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneKontostand(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneLetztenKontostand(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand des Kontos zum letzten Fortscrheibungsstichtag vor dem Stichtag gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneKontostandUva(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand beim Austritt des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneKontostandImLeistungsfall(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,TW.BCGer.PensionLib.Domain.Leistungsart,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand im Leistungsfall gemäß der im Zusagendetail angegebenen Zusagenkomponente.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="leistungsart"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneKontostand1(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,Pension.Kontofortschreibung.KontoErgebnis,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand des Kontos gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="fortschreibungsergebnis"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneKontostandUva1(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,Pension.Kontofortschreibung.KontoErgebnis,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand des Kontos beim Austritt gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="fortschreibungsergebnis"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.BerechneKontostandImLeistungsfall1(TW.BCGer.PensionLib.Domain.Konto,System.DateTime,TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Kontofortschreibung.KontoErgebnis,System.Boolean)">
+ <summary>
+ Berechnet den Kontostand des Kontos im Leistungsfall gemäß der im Zusagendetail angegebenen Zusagenkomponente unter Berücksichtigung des übergebenen Fortschreibungsergebnisses.
+ </summary>
+ <param name="konto"></param>
+ <param name="stichtag"></param>
+ <param name="leistungsart"></param>
+ <param name="fortschreibungsergebnis"></param>
+ <param name="ignoriereVaAbzüge"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Kontofortschreibung.KontoExtensions.GetKontostandsinformation(TW.BCGer.PensionLib.Domain.Konto)">
+ <summary>
+ Liefert die Kontostandsinformation der kontostansbestimmenden Zusagenkomponente des zum Konto gehörenden Zusagendetails
+ </summary>
+ <param name="konto"></param>
+ <returns></returns>
+</member>
+<member name="P:Pension.Kontofortschreibung.ProzessParameter.ZusagenKomponenten">
+ <summary>
+ Für das Filtern beim Ausführen des Prozesses
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.CustomRatenberechnung">
+ <summary>
+ Ratenberechnungskern.
+ Führt zum Aufruf von BerechneRatenCustom im OptionalLeistungsberechnungCustomizing.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.StandardRatenberechnung">
+ <summary>
+ Ratenberechnungskern.
+ Kontostand wird gemäß Verzinsungsinformationen verzinst bis zum ersten Auszahlungszeitpunkt. 
+ Die ersta Rate ist der verzinste Kontostand geteilt durch die Anzahl der Raten.
+ Jede weitere Rate wird durch Verzinsung gemäß Parameter berechnet.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Hibliberechnungsart">
+ <summary>
+ Art der Hibliberechnung.
+ HibliLeistungAusVerstorbenenleistungBerechnen bedeutet, dass zuerst Leistungen des Verstorbenen ermittelt werden, aus denen dann die Hiblileistungen berechnet werden.
+ HibliLeistungDirektBerechnen bedeutet, dass ohne Zuhilfenahme von Leistungen des Verstorbenen die Hiblileistungen direkt aus dem Kontostand berechnet werden.
+ </summary>
+</member>
+<member name="F:Pension.Leistungsberechnung.Beschreibung.Hibliberechnungsart.HibliLeistungAusVerstorbenenleistungBerechnen">
+ <summary>
+ Es werden zuerst Leistungen des Verstorbenen ermittelt, aus denen dann die Hiblileistungen berechnet werden.
+ </summary>
+</member>
+<member name="F:Pension.Leistungsberechnung.Beschreibung.Hibliberechnungsart.HibliLeistungDirektBerechnen">
+ <summary>
+ Es wrden ohne Zuhilfenahme von Leistungen des Verstorbenen die Hiblileistungen direkt aus dem Kontostand berechnet.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.LeistungspaketInvalidität">
+ <summary>
+ Beschreibt eine Invalidenleistung.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.LeistungspaketTod">
+ <summary>
+ Beschreibt eine Todesfallleistung.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.LeistungspaketTod.BerechnungsartAusAnwärterphase">
+ <summary>
+ Wenn der Verstorbene Anwärter war, so wird gemäß dieser Hibliberechnungsart die Hiblileistung berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.LeistungspaketTod.BerechnungsartAusLeistungsphase">
+ <summary>
+ Wenn der Verstorbene Leistungsempfänger war, so wird gemäß dieser Hibliberechnungsart die Hiblileistung berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Ratenberechnungskern">
+ <summary>
+ Beschreibt eine Methode zur Berechnung von Ratenauszahlungen
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Ratenberechnungskern.Standard">
+ <summary>
+ Erzeugt eine StandardRatenberechnung.
+ Kontostand wird gemäß Verzinsungsinformationen verzinst bis zum ersten Auszahlungszeitpunkt. 
+ Die ersta Rate ist der verzinste Kontostand geteilt durch die Anzahl der Raten.
+ Jede weitere Rate wird durch Verzinsung gemäß Parameter berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Ratenberechnungskern.Custom">
+ <summary>
+ Erzeugt eine CustomRatenberechnung.
+ Führt zum Aufruf von BerechneRatenCustom im OptionalLeistungsberechnungCustomizing.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation">
+ <summary>
+ Beschreibt die Parameter einer Verzinsung.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.Kontostandsverzinsungsart">
+ <summary>
+ Jährlich, Unterjährig, Stetig oder Gemischt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.VerzinsungsProzent">
+ <summary>
+ Prozentsatz mit dem verzinst wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.Zinsrechnung">
+ <summary>    ''' 
+ OhneZinseszins oder MitZinseszins.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.StetigMitZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Stetig und Zinsrechnung MitZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.JährlichMitZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Jährlich und Zinsrechnung MitZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.UnterjährigMitZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Unterjährig und Zinsrechnung MitZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.GemischtMitZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Gemischt und Zinsrechnung MitZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.StetigOhneZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Stetig und Zinsrechnung OhneZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.JährlichOhneZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Jährlich und Zinsrechnung OhneZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.UnterjährigOhneZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Unterjährig und Unterjährig OhneZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation.GemischtOhneZinseszins(System.Decimal)">
+ <summary>
+ Erstellt eine Verzinsungsinformation Verzinsungsart Gemischt und Zinsrechnung OhneZinseszins
+ </summary>
+ <param name="verzinsungsProzent"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilung">
+ <summary>
+ Beschreibt, wie eine Hiblileistung prozentual auf Hiblis aufgeteilt werden sollen.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilung.Gleichmäßig">
+ <summary>
+ Erzeugt eine VorgabeHibliAufteilungGleichmäßig.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilung.Custom">
+ <summary>
+ Erzeugt eine VorgabeHibliAufteilungCustom.
+ Führt zum Aufruf des optionalen Hooks BerechneHibliAufteilungCustom in OptionalLeistungsberechnungCustomizing führt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilung.FesteProzente(System.Decimal,System.Decimal)">
+ <summary>
+ Erzeugt eine VorgabeHibliAufteilungFesteProzente.
+ Hiblis einer HibliArt mit Vorgabe von mehr als 0 Prozent erhalten gleichmäßig den vorgegebenen Prozentsatz der Verstorbenenleistung.
+ Auf Hiblis einer HibliArt mit Vorgabe von 0 Prozent wird die übrige Leistung gleichmäßig verteilt.
+ </summary>
+ <param name="vorgabeWitweInProzent"></param>
+ <param name="vorgabeWaisenInProzent"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilungFesteProzente">
+ <summary>
+ VorgabeHibliAufteilung mit festen Prozentvorgaben pro Hibliart.
+ Hiblis einer HibliArt mit Vorgabe von mehr als 0 Prozent erhalten gleichmäßig den vorgegebenen Prozentsatz der Verstorbenenleistung.
+ Auf Hiblis einer HibliArt mit Vorgabe von 0 Prozent wird die übrige Leistung gleichmäßig verteilt.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilungFesteProzente.VorgabeWitweInProzent">
+ <summary>
+ Ein Hibli der HibliArt Witwe erhält diesn Prozentsatz der Hiblileistung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilungFesteProzente.VorgabeWaisenInProzent">
+ <summary>
+ Ein Hibli der HibliArt Vollwaise (bzw. Halbwaise) erhält diesn Prozentsatz der Hiblileistung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilungCustom">
+ <summary>
+ VorgabeHibliAufteilung, die zum Aufruf des optionalen Hooks BerechneHibliAufteilungCustom in OptionalLeistungsberechnungCustomizing führt.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.VorgabeHibliAufteilungGleichmäßig">
+ <summary>
+ VorgabeHibliAufteilung, die eine Hiblileistung gleichmäßig auf alle Hiblis aufteilt.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.CustomLeistungsberechnung">
+ <summary>
+ Führt bei der Leistungsberechnung zum Aufruf der Methode BerechneCustomLeistung im <see cref="T:Pension.Leistungsberechnung.Customizing.ILeistungsberechnungCustomizingprovider"/>.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption">
+ <summary>
+ Beschreibt eine Variante in der eine Leistung ausgezahlt werden kann.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption.Rente(Pension.Leistungsberechnung.Beschreibung.HibliAbsicherungsart[],System.Decimal,Pension.Leistungsberechnung.Beschreibung.Auszahlungsturnus[],System.Collections.Generic.List{Pension.Leistungsberechnung.Beschreibung.AuszahlungsBedingung})">
+ <summary>
+ Auszahlung als Rente mittels Rentenauszahlungsoption.
+ </summary>
+ <param name="möglicheHibliabsicherungen"></param>
+ <param name="hibliprozentsatz"></param>
+ <param name="erlaubteTurnusse"></param>
+ <param name="bedingungen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption.Kapital(System.Collections.Generic.List{Pension.Leistungsberechnung.Beschreibung.AuszahlungsBedingung})">
+ <summary>
+ Auszahlung als Kapital mittels Kapitalauszahlungsoption.
+ </summary>
+ <param name="bedingungen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption.Raten(System.Int32,System.Int32,Pension.Leistungsberechnung.Beschreibung.Auszahlungsturnus[],System.Collections.Generic.List{Pension.Leistungsberechnung.Beschreibung.AuszahlungsBedingung})">
+ <summary>
+ Auszahlung als Raten mittels Ratenauszahlungsoption.
+ </summary>
+ <param name="minimaleAnzahl"></param>
+ <param name="maximaleAnzahl"></param>
+ <param name="erlaubteTurnusse"></param>
+ <param name="bedingungen"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Rentenauszahlungsoption">
+ <summary>
+ Auszahlung als Rente.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Rentenauszahlungsoption.MöglicheHiblisabsicherungen">
+ <summary>
+ Art der Hibliabsicherung, die in der Auszahlung berücksichtigt wird.
+ Prozent vom Restbarwert, Prozent von Rente oder Keine.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Rentenauszahlungsoption.Hibliprozentsatz">
+ <summary>
+ Der Hibliprozentsatz, falls eine Hibliabsicherung berücksichtigt wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Rentenauszahlungsoption.ErlaubteTurnusse">
+ <summary>
+ Mögliche Turnusse für die Auszahlung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Kapitalauszahlungsoption">
+ <summary>
+ Auszahlung als Kapital.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Ratenauszahlungsoption">
+ <summary>
+ Auszahlung als Raten.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Ratenauszahlungsoption.ErlaubteTurnusse">
+ <summary>
+ Mögliche Turnusse für die Auszahlung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Ratenauszahlungsoption.MinimaleAnzahl">
+ <summary>
+ Minimal Anzahl an Raten.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Ratenauszahlungsoption.MaximaleAnzahl">
+ <summary>
+ Maxmiale Anzahl an Raten.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.KombinierteAuszahlungsoption">
+ <summary>
+ Kombinierte Auszahlung. Wird noch nicht voll untertützt.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.KombinierteAuszahlungsoption.ErlaubteKombinationen">
+ <summary>
+ Mägliche Auszahlungskombinationen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Auszahlungskombination">
+ <summary>
+ Sammlung von Auszahlungsoptionen.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Leistungsbedingung">
+ <summary>
+ Beschreibt eine Bedingung unter der ein Konto berechtigt ist, die gegebene Leistung in Anspruch zu nehmen.
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Leistungsberechnungskern">
+ <summary>
+ Beschreibt die Methode zur Berechnung einer Leistung.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Leistungsberechnungskern.Custom">
+ <summary>
+ Führt mittels CustomLeistungsberechnung bei der Leistungsberechnung zum Aufruf der Methode BerechneCustomLeistung im ILeistungsberechnungCustomizingprovider.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Leistungsberechnungskern.Standard">
+ <summary>
+ Die Leistungen werden mittels StandardLeistungsberechnung allein anhand der Zusagenbeschreibung berechnet.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.LeistungspaketAlter">
+ <summary>
+ Beschreibt eine Altersleistung.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.LeistungspaketAlter.BedingungenFürVorzeitigeInanspruchnahme">
+ <summary>
+ Wenn alle Bedingungen erfüllt sind ist die Altersleistung vorzeitig.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.Leistungspaket">
+ <summary>
+ 	Definiert und beschreibt eine zugesagte Leistung.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Auszahlungsoptionen">
+ <summary>
+ Die möglichen Auszahlungsoptionen für diese Leistung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Bedingungen">
+ <summary>
+ Die Leistungsbedingungen, die alle erfüllt sein müssen, damit die Leistung bezogen werden kann.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Berechnungskern">
+ <summary>
+ Der Leistungsberechnungskern zur Berechnung der Leistung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Verzinsungsinformation">
+ <summary>
+ Die Verzinsungsinformation, die bei der Leistungsberechnung mittles StandardLeistungsberechnungskern verwendet werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Ratenberechnungskern">
+ <summary>
+ Ratenberechnungskern der zur Berechnung von Ratenauszahlungen im Leistungsberechner verwendet wird.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Altersleistung1">
+ <summary>
+ LeistungspaketAlter 
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Altersleistung(System.Collections.Generic.IEnumerable{Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption},Pension.Leistungsberechnung.Beschreibung.Leistungsberechnungskern,Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation,Pension.Leistungsberechnung.Beschreibung.Leistungsbedingung[],Pension.Leistungsberechnung.Beschreibung.Leistungsbedingung[])">
+ <summary>
+ LeistungspaketAlter
+ </summary>
+ <param name="auszahlungsoptionen"></param>
+ <param name="berechnungskern"></param>
+ <param name="verzinsungsinfo"></param>
+ <param name="bedingungen"></param>
+ <param name="bedingungenFürVorzeitigieInanspruchnahme"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Invalidenleistung(System.Collections.Generic.IEnumerable{Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption},Pension.Leistungsberechnung.Beschreibung.Leistungsberechnungskern,Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation,Pension.Leistungsberechnung.Beschreibung.Leistungsbedingung[])">
+ <summary>
+ LeistungspaketInvalidität
+ </summary>
+ <param name="auszahlungsoptionen"></param>
+ <param name="berechnungskern"></param>
+ <param name="verzinsungsinfo"></param>
+ <param name="bedingungen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Beschreibung.Leistungspaket.Todesfallleistung(System.Collections.Generic.IEnumerable{Pension.Leistungsberechnung.Beschreibung.Auszahlungsoption},Pension.Leistungsberechnung.Beschreibung.Leistungsberechnungskern,Pension.Leistungsberechnung.Beschreibung.Verzinsungsinformation,Pension.Leistungsberechnung.Beschreibung.Hibliberechnungsart,Pension.Leistungsberechnung.Beschreibung.Hibliberechnungsart,Pension.Leistungsberechnung.Beschreibung.Leistungsbedingung[])">
+ <summary>
+ LeistungspaketTod
+ </summary>
+ <param name="auszahlungsoptionen"></param>
+ <param name="berechnungskern"></param>
+ <param name="verzinsungsinfo"></param>
+ <param name="berechnungsartAusAnwärterphase"></param>
+ <param name="berechnungsartAusLeistungsphase"></param>
+ <param name="bedingungen"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Beschreibung.StandardLeistungsberechnung">
+ <summary>
+ Die Leistungen werden allein anhand der Zusagenbeschreibung berechnet. Siehe [EzLink "Einrichterhandbuch:Leistungsberechnung"]
+ </summary>
+</member>
+<member name="T:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing">
+ <summary>
+ Optional Customizing-Hooks für die Leistungsberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.GetLeistungenDesVerstorbenenMethod">
+ <summary>
+ GetLeistungenDesVerstorbenenMethod - wieso optional?
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.OnBeforeVersorgungsguthabenMethod">
+ <summary>
+ Falls True zurückgegeben wird, so wird die Standardvariante zur Berechnung des leistungsbegründenden Kontostands übersprungen
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.OnBeforeBerechneVersorgungsguthaben(TW.BCGer.PensionLib.Domain.Leistungsart,Pension.KontoKontext,Pension.Kontofortschreibung.IKontostand,Pension.Kontofortschreibung.IKontostand@)">
+ <summary>
+ Falls True zurückgegeben wird, so wird die Standardvariante zur Berechnung des leistungsbegründenden Kontostands übersprungen
+ </summary>
+ <param name="leistungsart"></param>
+ <param name="kontoKontext"></param>
+ <param name="kontostand"></param>
+ <param name="leistungsbegründenderKontostand"></param>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.BerechneBerechneHibliAufteilungCustomMethod">
+ <summary>
+ Berechnet eine prozentuale Aufteilung einer Hiblileistung. Im Default wird die Hiblileistung gleichmäßig aufgeteilt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.BerechneRatenCustomMethod">
+ <summary>
+ Berechnet eine Ratenauszahlung.
+ Im Default wird die Standardratenberechnung aus dem Leistungsberechner aufgerufen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.BerechneCustomAuszahlungMethod">
+ <summary>
+ Berechnet eine Ratenauszahlung.
+ Im Default wird die Standardratenberechnung aus dem Leistungsberechner aufgerufen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungCustomizing.CreateAuszahlungsvariantenMethod">
+ <summary>
+ Berechnet eine Ratenauszahlung.
+ Im Default wird die Standardratenberechnung aus dem Leistungsberechner aufgerufen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungAllgemeinCustomizing">
+ <summary>
+ Optional Customizing-Hooks für die Leistungsberechnung.
+ </summary>
+</member>
+<member name="P:Pension.Leistungsberechnung.Customizing.OptionalLeistungsberechnungAllgemeinCustomizing.KonsolidiereKontoergebnisseMethod">
+ <summary>
+ In diesem Hook können die Kontoergebnisse konsolidiert werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Customizing.ILeistungsberechnungCustomizingprovider">
+ <summary>
+ Customizing im Rahmen der Leistungsberechnung.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Customizing.ILeistungsberechnungCustomizingprovider.BerechneCustomLeistung(TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Geschäftsvorfälle.Auszahlungswahl,Pension.Kontofortschreibung.IKontostand,Pension.KontoKontext)">
+ <summary>
+ Wird aufgerufen, wenn der CustomLeistungsberechnungkern (Leistungsberechnung.Beschreibung.Leistungsberechnungskern.Custom) greift
+ </summary>
+ <param name="leistungsart"></param>
+ <param name="auszahlungsoption"></param>
+ <param name="kontostand"></param>
+ <param name="kontext"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Customizing.ILeistungsberechnungCustomizingprovider.BerechneCustomHiblileistung(Pension.Geschäftsvorfälle.Auszahlungswahl,Pension.KontoKontext,Pension.Geschäftsvorfälle.Tod.IAllgemeineHinterbliebenenEingaben,Pension.Geschäftsvorfälle.Tod.IKontoHinterbliebenenEingaben,Pension.Geschäftsvorfälle.Tod.IAllgemeineEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoErgebnisseTodesfall)">
+ <summary>
+ Wird aufgerufen, wenn die Hibliberechnungsart.Custom greift.
+ </summary>
+ <param name="auszahlungswahl"></param>
+ <param name="kontoKontext"></param>
+ <param name="hibliEingaben"></param>
+ <param name="hibliKontoEingaben"></param>
+ <param name="eingaben"></param>
+ <param name="kontoEingaben"></param>
+ <param name="kontoErgebnisse"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Leistungsberechnung.Customizing.ILeistungsberechnungCustomizingprovider.BerechneFiktiveLeistungenFürVerstorbenenAnwärter(Pension.KontoKontext,Pension.Geschäftsvorfälle.Tod.IAllgemeineEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoErgebnisseTodesfall)">
+ <summary>
+ Wird aufgerufen, wenn gemäß Hibliberechnungsart im LeistungspaketTod fiktive Leistungen für einen verstorbenen Anwärter zu berechnen sind.
+ </summary>
+ <param name="kontoKontext"></param>
+ <param name="eingaben"></param>
+ <param name="kontoEingaben"></param>
+ <param name="kontoergebnisse"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Leistungsberechnung.Leistungsberechner">
+ <summary>
+ Stellt Funktionen zur Leistungsberechnung bereit.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneEigenleistung(TW.BCGer.PensionLib.Business.Processes.IVerarbeitungsparameterAnspruch,Pension.Geschäftsvorfälle.Eigenleistung.Eigenleistungsart)">
+ <summary>
+ Berechnet alle Ergebnisse für das Konto im durch die Leistungsart identifizierten Eigenleistungs-GeVo
+ </summary>
+ <param name="params"></param>
+ <param name="leistungsart"></param>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneEigenleistung(Pension.KontoKontext,Pension.Geschäftsvorfälle.Eigenleistung.Eigenleistungsart,Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineEingabenEigenleistung,Pension.Geschäftsvorfälle.Eigenleistung.KontoEingabenEigenleistung,Pension.Geschäftsvorfälle.Eigenleistung.AllgemeineErgebnisseEigenleistung,Pension.Geschäftsvorfälle.Eigenleistung.KontoErgebnisseEigenleistung)">
+ <summary>
+ Berechnet alle Ergebnisse für das Konto im durch die Leistungsart identifizierten Eigenleistungs-GeVo
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneTodesfall(TW.BCGer.PensionLib.Business.Processes.IVerarbeitungsparameterAnspruch)">
+ <summary>
+ Berechnet alle Ergebnisse für das Konto im Todesfall-GeVo
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneTodesfall(Pension.KontoKontext,Pension.Geschäftsvorfälle.Tod.IAllgemeineEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IAllgemeineErgebnisseTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoErgebnisseTodesfall)">
+ <summary>
+ Berechnet alle Ergebnisse für das Konto im Todesfall-GeVo
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneVersorgungsguthaben(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Kontofortschreibung.IKontostand)">
+ <summary>
+ Berechnet das Versorgungsguthaben aus dem Kontostand, wobei die optionale Überschreibung OnBeforeBerechneVersorgungsguthaben berücksichtigt wird.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneLeistung(Pension.KontoKontext,Pension.Geschäftsvorfälle.Eigenleistung.Eigenleistungsart,Pension.Geschäftsvorfälle.Auszahlungswahl,Pension.Kontofortschreibung.IKontostand)">
+ <summary>
+ Berechnet Leistungen für das Konto aus dem Kontostand gemäß der Auszahlungswahl.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneLeistungsauszahlungsvarianten(Pension.KontoKontext,Pension.Geschäftsvorfälle.Eigenleistung.Eigenleistungsart,System.Collections.Generic.IEnumerable{Pension.Geschäftsvorfälle.Auszahlungswahl},Pension.Kontofortschreibung.IKontostand)">
+ <summary>
+ Berechnet Leistungen für das Konto aus dem Kontostand für alle übergebenen Auszahlungswahlen.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneHiblileistungen(Pension.Geschäftsvorfälle.Auszahlungswahl,Pension.KontoKontext,Pension.Geschäftsvorfälle.Tod.IAllgemeineEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoErgebnisseTodesfall,Pension.Geschäftsvorfälle.Tod.IAllgemeineHinterbliebenenEingaben,Pension.Geschäftsvorfälle.Tod.IKontoHinterbliebenenEingaben)">
+ <summary>
+ Berechnet Leistungen aus dem Konto für den Hibli gemäß der übergebenen Auszahlungswahl
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneHibliauszahlungsvarianten(Pension.KontoKontext,Pension.Geschäftsvorfälle.Tod.IAllgemeineEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoEingabenTodesfall,Pension.Geschäftsvorfälle.Tod.IKontoErgebnisseTodesfall,Pension.Geschäftsvorfälle.Tod.IAllgemeineHinterbliebenenEingaben,Pension.Geschäftsvorfälle.Tod.IKontoHinterbliebenenEingaben)">
+ <summary>
+ Berechnet Leistungen aus dem Konto für den Hibli für alle Auszahlgunswahlen in den HibliKontoEingaben
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneRentenauszahlung(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Kontofortschreibung.IKontostand,System.DateTime,System.DateTime,Pension.Geschäftsvorfälle.Rentenauszahlungswahl,Pension.Geschäftsvorfälle.Tod.IHibliPersonendaten)">
+ <summary>
+ Berechnet die Rentenleistung aus dem Konto gemäß der übergebenen Rentenauszahlungswahl.
+ Wenn hibli belegt ist, so wird die Rentenleistung für den hibli berechnet, ansonsten für die Person, der das Konto gehört.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneRatenauszahlung(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Kontofortschreibung.IKontostand,System.DateTime,System.DateTime,Pension.Geschäftsvorfälle.Ratenauszahlungswahl,Pension.Geschäftsvorfälle.Tod.IHibliPersonendaten)">
+ <summary>
+ Berechnet die Ratenleistungen aus dem Konto gemäß der übergebenen Ratenauszahlungswahl.
+ Wenn hibli belegt ist, so wird die Ratenleistungen für den hibli berechnet, ansonsten für die Person, der das Konto gehört.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneRatenauszahlung(TW.BCGer.PensionLib.Domain.Leistungsart,TW.BCGer.PensionLib.Verzinsungsart,TW.BCGer.PensionLib.Zinsrechnung,System.Decimal,Pension.Kontofortschreibung.IKontostand,System.DateTime,System.DateTime,Pension.Geschäftsvorfälle.Ratenauszahlungswahl)">
+ <summary>
+ Berechnet die Ratenleistungen aus dem Kontostand gemäß der übergebenen Parameter.
+ Kontostand wird gemäß Verzinsungsinformationen verzinst bis zum ersten Auszahlungszeitpunkt. 
+ Die ersta Rate ist der verzinste Kontostand geteilt durch die Anzahl der Raten.
+ Jede weitere Rate wird durch Verzinsung gemäß Parameter berechnet.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneKapitalauszahlung(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Kontofortschreibung.IKontostand,System.DateTime,System.DateTime,Pension.Geschäftsvorfälle.Tod.IHibliPersonendaten)">
+ <summary>
+ Berechnet die Kapitalleistung aus dem Konto.
+ Wenn hibli belegt ist, so wird die Ratenleistungen für den hibli berechnet, ansonsten für die Person, der das Konto gehört.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneBarwertfaktorMonatsrente(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Leistungsart,Pension.Leistungsberechnung.Beschreibung.HibliAbsicherungsart,System.Decimal,Pension.Geschäftsvorfälle.Tod.IHibliPersonendaten)">
+ <summary>
+ Berechnet den Barwert eine Monatsrente der Höhe 1 gemäß der Zusage des Kontos.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.VerzinseKontostand(Pension.KontoKontext,TW.BCGer.PensionLib.Domain.Leistungsart,System.Decimal,System.DateTime,System.DateTime)">
+ <summary>
+ Verzinst den kontostand gemäß der Zusage des Kontos.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.VerzinseKontostand(TW.BCGer.PensionLib.Verzinsungsart,TW.BCGer.PensionLib.Zinsrechnung,System.Decimal,System.Decimal,System.DateTime,System.DateTime)">
+ <summary>
+ Verzinst den Kontostand.
+ </summary>
+</member>
+<member name="M:Pension.Leistungsberechnung.Leistungsberechner.BerechneBarwertfaktorMonatsrente(TW.BCGer.PensionLib.Domain.KontostatusKennzeichen,System.DateTime,System.DateTime,TW.BCGer.CorLib.Personalization.Gender,System.Decimal,System.Decimal,System.Int32,Pension.Leistungsberechnung.Beschreibung.HibliAbsicherungsart,System.Decimal,System.Boolean)">
+ <summary>
+ Berechnet den Barwert eine Monatsrente der Höhe 1.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Berechtigungszeitraum">
+ <summary>
+   Als Parameter in verschiedenen Berechnungskernen  verwendet. 
+   Zum Beispiel um anzugeben, dass gewisse Beiträge nur von AlterVon bis AlterBis bezogen werden.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Berücksichtigungszeitraum">
+ <summary>
+ Beschreibt einen Berücksichtigungszeitraum in Abhängigkeit von einem gegebenen Berechnungsstichtag.  ''' 
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.IZusagenProjektProvider">
+ <summary>
+ Obligatorische Klasse, die einmal in jeder Kundensolution existieren muss. Sie dient dazu, dem Framework
+ eine Zusagenbeschreibung in Form eines <see cref="T:Pension.Zusagenbeschreibung.ZusagenProjekt"/>s zur Verfügung zu stellen. 
+ </summary>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.IZusagenProjektProvider.GetZusagenProjekt">
+ <summary>
+ Erzeugt das Zusagenprojekt.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Jahrestag">
+ <summary>
+ Beschreibt einen Jahrestag unabhängig von der Jahreszahl.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Turnusinformation">
+ <summary>
+ Beschreibt in welchem Turnus ein Prozess stattfindet.
+ </summary>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Turnusinformation.Monatlich">
+ <summary>
+ Kontofortschreibung monatlich.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Turnusinformation.Jährlich(Pension.Zusagenbeschreibung.Jahrestag)">
+ <summary>
+ Kontofortschreibung jährlich zum übergebenen Jahrestag.
+ </summary>
+ <param name="referenz"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Turnusinformation.Keine">
+ <summary>
+ Keine Kontofortschreibung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Kontostandsinformation">
+ <summary>
+ Beschreibt, wie ein Kontostand zu interpretieren ist.
+ </summary>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Kontostandsinformation.Kapital">
+ <summary>
+ Erzeugt eine Kapitalkontostandsinformation.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Kontostandsinformation.Jahresrente(Pension.Leistungsberechnung.Beschreibung.HibliAbsicherungsart,System.Decimal)">
+ <summary>
+ Erzeugt eine Jahresrentenkontostandsinformation.
+ </summary>
+ <param name="hibliabsicherung"></param>
+ <param name="hibliprozentsatz"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Kontostandsinformation.Monatsrente(Pension.Leistungsberechnung.Beschreibung.HibliAbsicherungsart,System.Decimal)">
+ <summary>
+ Erzeugt eine Monatsrentenkontostandsinformation.
+ </summary>
+ <param name="hibliabsicherung"></param>
+ <param name="hibliprozentsatz"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Monatsrentenkontostandsinformation">
+ <summary>
+ Kontostand als Monatsrente.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Jahresrentenkontostandsinformation">
+ <summary>
+ Kontostand als Jahresrente.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Kapitalkontostandsinformation">
+ <summary>
+ Kontostand als Kapital.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Unverfallbarkeitsart">
+ <summary>
+ Enum der Möglichen Arten wie eine Unverfallbarkeit bestimmt werden soll.
+ </summary>
+</member>
+<member name="F:Pension.Zusagenbeschreibung.Unverfallbarkeitsart.Unbekannt">
+ <summary>
+ Ungülitge Ausprägung.
+ </summary>
+</member>
+<member name="F:Pension.Zusagenbeschreibung.Unverfallbarkeitsart.Gesetzlich">
+ <summary>
+ Es gelten die gesetzlichen Bestimmungen.
+ </summary>
+</member>
+<member name="F:Pension.Zusagenbeschreibung.Unverfallbarkeitsart.VertraglichSofort">
+ <summary>
+ Das Konto ist automatisch unverfallbar.
+ </summary>
+</member>
+<member name="F:Pension.Zusagenbeschreibung.Unverfallbarkeitsart.Vertraglich">
+ <summary>
+ Führt zum Customizing-Hook IAustrittsberechnungCustomizingprovider.BerechneVertraglicheUnverfallbarkeitsinformationen im Austrittsberechner.
+ </summary>
+</member>
+<member name="F:Pension.Zusagenbeschreibung.Unverfallbarkeitsart.GemäßKontokennzeichen">
+ <summary>
+ Das Konto gilt als vertraglich unverfallbar, wenn das entsprechende Kennzeichen im Konto gesetzt ist.
+ Falls das Kennzeichen nicht gesetzt ist zieht die gesetzliche Unverfallbarkeitsbestimmung.
+ </summary>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.ZusagenProjekt">
+ <summary>
+ Wurzelobjekt der Zusagenbeschreibung
+ </summary>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.ZusagenProjekt.Zusagendetails">
+ <summary>
+ Zusagendetails
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.ZusagenProjekt.Prozesse">
+ <summary>
+ Diese Prozessdefinitionen werden per Dsc ausgeliefert.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.ZusagenProjekt.Kontoauszugsinfo">
+ <summary>
+ Beschreibung der Kontoauszugserstellung. Siehe <see cref="T:Pension.Kontoauszugserstellung.Beschreibung.Kontoauszugserstellungsinfo"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Prozessdefinition">
+ <summary>
+ 	Beschreibt die Existenz eines Massenprozesses. Wenn einem Zusagenprojekt eine Prozessdefinition zugeordnet ist, so steht der Prozess dem Projekt zur Verfügung. Es ist keine weitere Einrichtung notwendig bis auf das Implementieren der zum Prozess gehörenden CustomizingProvider.
+ </summary>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Prozessdefinition.Name">
+ <summary>
+ Der Name des Prozesses auf der Oberfläche.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Prozessdefinition.Verantwortlicher">
+ <summary>
+ Prozess-Verantwortlicher.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Prozessdefinition.Kontofortschreibung(System.String,System.String,Pension.Kontofortschreibung.Beschreibung.KontofortschreibungsZusagenkomponente[])">
+ <summary>
+ Erzeugt eine Kontofortschreibungsprozessdefinition.
+ </summary>
+ <param name="name"></param>
+ <param name="zusagenkomponenten"></param>
+ <param name="verantwortlicher"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Prozessdefinition.Kontofortschreibung(System.String,System.Collections.Generic.List{Pension.Kontofortschreibung.Beschreibung.KontofortschreibungsZusagenkomponente},System.String)">
+ <summary>
+ Erzeugt eine Kontofortschreibungsprozessdefinition.
+ </summary>
+ <param name="name"></param>
+ <param name="zusagenkomponenten"></param>
+ <param name="verantwortlicher"></param>
+ <returns></returns>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Zusagendetail">
+ <summary>
+ Beschreibung einer konkreten Zusage.
+ </summary>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.KontoKennzeichen">
+ <summary>
+ CustomEnum mit Namen CustomEnumNames.KontokennzeichenName.
+ Identifiziert das <see cref="T:Pension.Zusagenbeschreibung.Zusagendetail"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Zusagenkennzeichen">
+ <summary>
+ CustomEnum mit Namen CustomEnumNames.ZusagenkennzeichenName.
+ Identifiziert die <see cref="T:Pension.Zusagenbeschreibung.Zusage"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.ZusagenKomponenten">
+ <summary>
+ ZusagenKomponenten
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Finanzierungsart">
+ <summary>
+ Arbeitgeber oder Arbeitnehmer
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Unverfallbarkeitsart">
+ <summary>
+ Unverfallbarkeitsart der Zusage.
+ "Vertraglich" führt bei der UV-Berechnung zum Aufruf des Customizing-Hooks 
+ IAustrittsberechnungCustomizingprovider.BerechneVertraglicheUnverfallbarkeitsinformationen im Austrittsberechner.
+ "GemäßKontokennzeichen" bedeutet, dass das Konto vertraglich unverfallbar ist, wenn das entsprechende Kennzeichen im Konto gesetzt ist.
+ Falls das Kennzeichen nicht gesetzt ist zieht die gesetzliche Unverfallbarkeitsbestimmung.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.GeVoDefinitionen">
+ <summary>
+ Liste der Geschäftsvorfalldefinitionen, an denen Konten dieses Zusagendetails teilnehmen sollen.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Altersleistungspaket">
+ <summary>
+ Kann über Leistungspaket.Alter erzeugt werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Invalidenleistungspaket">
+ <summary>
+ Kann über Leistungspaket.Invalidität erzeugt werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Todesfallleistungspaket">
+ <summary>
+ Kann über Leistungspaket.Tod erzeugt werden.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.KontostandbestimmendeZusagenkomponenteKennzeichen">
+ <summary>
+ Das Kennzeichen der ZusagenKomponente, die zuständig für die Berechnung des "Kontostandes" ist.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.RentenanpassungsProzent">
+ <summary>
+ Der Rentenanpassungsprozent, der bei der Barwertberechnung der Leistungsberechnung verwendet wird
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.RechnungszinsProzent">
+ <summary>
+ Der Rechnungszins, der bei der Barwertberechnung der Leistungsberechnung verwendet wird
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagendetail.Kontoauszugsinformation">
+ <summary>
+ Gibt an, in welchem Turnus Kontoauszüge erstellt werden. Siehe <see cref="T:Pension.Zusagenbeschreibung.Turnusinformation"/>.
+ Keine, Monatlich, Jährlich.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Pension.Zusagenbeschreibung.Zusagenkomponente">
+ <summary>
+   Definiert die Art wie eine (Teil-)Anwartschaft berechnet wird. 
+   Bestimmt wie ein (Teil-)Kontostand definiert ist und berechnet wird. 
+   Zuständig für "Kontofortschreibung.
+ </summary>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagenkomponente.Kennzeichen">
+ <summary>
+ CustomEnum mit Name CustomEnumNames.BerechnungskennzeichenName
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagenkomponente.Kontostandsinformation">
+ <summary>
+ Jahresrente, Monatsrente, Kapital, Raten. Siehe Kontostandsinformation.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Pension.Zusagenbeschreibung.Zusagenkomponente.Fortschreibungsinformation">
+ <summary>
+ Gibt an, in welchem Turnus die Kontofortschreibung für diese Komponente stattfindet. Siehe Kontofortschreibungsinformation.
+ Keine, Monatlich, Jährlich.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Beitragsberechnung(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,System.Collections.Generic.IEnumerable{Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition})">
+ <summary>
+ Erzeugt eine Beitragsberechnungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="beitragsdefinitionen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Beitragsberechnung(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,Pension.Zusagenbeschreibung.Turnusinformation,System.Collections.Generic.IEnumerable{Pension.Beitragsberechnung.Beschreibung.Beitragsdefinition})">
+ <summary>
+ Erzeugt eine Beitragsberechnungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="fortschreibungsinformation"></param>
+ <param name="beitragsdefinitionen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Bausteinberechnung(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,System.Collections.Generic.IEnumerable{Pension.Bausteinberechnung.Beschreibung.Bausteindefinition})">
+ <summary>
+ Erzeugt eine Bausteinberechnungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="bausteindefinitionen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Bausteinberechnung(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,Pension.Zusagenbeschreibung.Turnusinformation,System.Collections.Generic.IEnumerable{Pension.Bausteinberechnung.Beschreibung.Bausteindefinition})">
+ <summary>
+ Erzeugt eine Bausteinberechnungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="fortschreibungsinformation"></param>
+ <param name="bausteindefinitionen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Beitragsverzinsung(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,System.Collections.Generic.IEnumerable{Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungsdefinition})">
+ <summary>
+ Erzeugt eine Beitragsverzinsungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="verzinsungsdefinitionen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Beitragsverzinsung(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,Pension.Zusagenbeschreibung.Turnusinformation,System.Collections.Generic.IEnumerable{Pension.Beitragsverzinsung.Beschreibung.Beitragsverzinsungsdefinition})">
+ <summary>
+ Erzeugt eine Beitragsverzinsungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="fortschreibungsinformation"></param>
+ <param name="verzinsungsdefinitionen"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Dienstzeitabhängig(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel)">
+ <summary>
+ Erzeugt eine Dienstzeitberechnungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="leistungsformel"></param>
+ <returns></returns>
+</member>
+<member name="M:Pension.Zusagenbeschreibung.Zusagenkomponente.Dienstzeitabhängig(System.Int32,Pension.Zusagenbeschreibung.Kontostandsinformation,Pension.Zusagenbeschreibung.Turnusinformation,Pension.Dienstzeitberechnung.Beschreibung.Leistungsformel)">
+ <summary>
+ Erzeugt eine Dienstzeitberechnungskomponente.
+ </summary>
+ <param name="kennzeichen"></param>
+ <param name="kontostandsinformation"></param>
+ <param name="fortschreibungsinformation"></param>
+ <param name="leistungsformel"></param>
+ <returns></returns>
+</member>
+<member name="P:Pension.ZusagencustomizingLocatorBase`4.OptionalMembers(System.Int32)">
+ <summary> Accesspoint for customizing code that is implemented as interface member. </summary>
+</member>
+<member name="P:Pension.LocatorBase`3.OptionalMembers">
+ <summary> Accesspoint for customizing code that is implemented as interface member. </summary>
+</member>
+<member name="T:Pension.Validierung.ValidierungsUtilities">
+ <summary>
+ ValidierungsUtilities
+ </summary>
+</member>
+<member name="M:Pension.Validierung.ValidierungsUtilities.TryGetMatchingItemInCollection``1(System.Collections.Generic.IEnumerable{``0},``0)">
+ <summary>
+  Looks for a item in the collection that mathces the newItem regarding the Keyset
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="collection"></param>
+ <param name="newItem"></param>
+ <returns>The matching item if it exists. Otherwise Nothing</returns>
+</member>
+</members>
+</doc>

@@ -11,8 +11,8 @@ namespace EzDoc {
     static async System.Threading.Tasks.Task<int> Main(string[] args) {
       string[] categories = { };
       string[] namespacesToStrip = { };
-      string docuFile = "D:/Raftek/EzDoc/EzDoc/TW.BCGer.Extensions.ZusagenFramework.xml";
-      string outputPath = "D:/Raftek/EzDoc/EzDoc";
+      string docuFile = "D:/Raftek/EzDoc/EzDoc1/EzDoc/Api.xml";
+      string outputPath = "D:/Raftek/EzDoc/EzDoc1";
       if (args.Length == 2) {
         docuFile = args[0];
         outputPath = args[1];
