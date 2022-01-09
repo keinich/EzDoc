@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-  <a class="nav-link active" aria-current="page" href="Api.html">Api Documentation</a>
+  <a class="nav-link active" aria-current="page" href="Api.html">Api</a>
 </li><li class="nav-item">
   <a class="nav-link active" aria-current="page" href="Handbuch.html">Handbuch</a>
 </li>
@@ -80,6 +80,10 @@
 <p><a href="Api.html?elementId=Bedingung">Bedingung</a></p>
 <h3 id="noch-ein-link">Noch ein Link:</h3>
 <p><a href="Handbuch.html?elementId=Tutorial">Tutorial</a></p>
+<p>Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text.
+Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text.
+Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text.
+Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text.</p>
 
 </div>
 <div id="Tutorial" class="content">
@@ -102,9 +106,6 @@
 </table>
 
 </div>
-<div id="Handbuch" class="content">
-  
-</div>
 
         </div>
       </div>
@@ -115,22 +116,17 @@
   <script src="js/navtree.js"></script>
   <script>
     var root = new TreeNode("root");
-var Handbuch = new TreeNode("Handbuch");
-Handbuch.on('select', function (e, node) {
-    onNodeClick(Handbuch)
-});
-
 var Einstieg = new TreeNode("Einstieg");
 Einstieg.on('select', function (e, node) {
     onNodeClick(Einstieg)
 });
 
-Handbuch.addChild(Einstieg);var Tutorial = new TreeNode("Tutorial");
+root.addChild(Einstieg);var Tutorial = new TreeNode("Tutorial");
 Tutorial.on('select', function (e, node) {
     onNodeClick(Tutorial)
 });
 
-Handbuch.addChild(Tutorial);root.addChild(Handbuch);
+root.addChild(Tutorial);
 treeView = new TreeView(root, "#container");
 setupTree();
   </script>

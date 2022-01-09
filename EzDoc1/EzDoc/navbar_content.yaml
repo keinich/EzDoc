@@ -1,4 +1,7 @@
-- name: Api Documentation
-  href: Api
-- name: Handbuch
-  href: Handbuch
+- name: Api
+  folder: Api
+- folder: Handbuch
+  name: Handbuch
+  pages:
+    - Einstieg
+    - Tutorial

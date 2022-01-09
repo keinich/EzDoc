@@ -30,7 +30,7 @@ namespace EzDoc.HtmlDoucBuilding {
       }
       string nodeName = nodeNames.First();
       nodeNames = nodeNames.Skip(1);
-      Node currentNode = this.Nodes.FirstOrDefault(x => x.Name == nodeName);
+      Node currentNode = nodes.FirstOrDefault(x => x.Name == nodeName);
       if (currentNode is null) {
         currentNode = new Node() { Name = nodeName };
         nodes.Add(currentNode);

@@ -1,3 +1,23 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0.1, 0.1, 0.1, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 body {
   /* Dark Mode */
   background-color: rgb(57, 53, 53);
@@ -19,6 +39,7 @@ body {
   margin-left: 10px;
   overflow-y: auto;
   height: 80vh;
+  width: 71vw;
 }
 
 .active-content {
@@ -48,7 +69,7 @@ h1, h2 {
   margin-top: 30px;
 }
 
-h2 { 
+h2 {
   margin-bottom: 40px;
 }
 
@@ -78,7 +99,6 @@ table {
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 15px;
   border-width: 1px;
-  
 }
 
   table td, table th {

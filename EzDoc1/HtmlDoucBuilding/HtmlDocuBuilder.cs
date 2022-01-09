@@ -1,5 +1,6 @@
 ﻿using EzDoc.DocuGeneration;
 using EzDoc.PlacehoderResolving;
+using EzDoc1.HtmlDoucBuilding;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,14 +26,8 @@ namespace EzDoc.HtmlDoucBuilding {
       string navbarFilepath = System.IO.Path.Combine(path, navbarFilename);
       EnsureNavbarFileExists(navbarFilepath);
       TableOfContent toc = ReadTableOfContent(navbarFilepath);
-      foreach (TableOfContent.Entry entry in toc.Entries) {
-        if (entry.Items.Count == 0) {
-          await BuildPageAsync(path, outputPath, toc, entry, navTree, frameworkName);
-        } else {
-          foreach (TableOfContent.Entry item in entry.Items) {
-            await BuildPageAsync(path, outputPath, toc, item, navTree, frameworkName);
-          }
-        }
+      foreach (TableOfContent.Folder folder in toc.Folders) {
+        await BuildPageAsync(path, outputPath, toc, folder, navTree, frameworkName);
       }
 
     }
@@ -82,6 +77,8 @@ namespace EzDoc.HtmlDoucBuilding {
           string newLink = $"<a href=\"" + innerLink + "\">" + elemendId + "</a>";
           result = result.Replace(patternFull, newLink);
           currentStartIndex = text.IndexOf(searchPattern, currentStartIndex + 1);
+        } else {
+          currentStartIndex = -1;
         }
 
       }
@@ -166,11 +163,11 @@ namespace EzDoc.HtmlDoucBuilding {
     private static async Task BuildPageAsync(
       string inputPath, string outputPath,
       TableOfContent toc,
-      TableOfContent.Entry entry,
+      TableOfContent.Folder folder,
       DocuTree navTree,
       string frameworkName
     ) {
-      string link = entry.Href;
+      string link = folder.FolderName;
 
       // navbar
       string navbarContent = BuildNavbarHtml(toc, frameworkName);
@@ -179,13 +176,13 @@ namespace EzDoc.HtmlDoucBuilding {
       string filename = Path.Combine(outputPath, link);
       filename += ".html";
       PageStructure pageStructure;
-      if (entry.Href == "Api") {
+      if (folder.FolderName == "Api") {
         pageStructure = BuildPageStructureFromApi(navTree);
       } else {
-        pageStructure = BuildPageStructureFromFolder(Path.Combine(inputPath, link));
+        pageStructure = BuildPageStructureFromFolder(Path.Combine(inputPath, link), folder);
       }
       StringBuilder content = new StringBuilder();
-      string navTreeHtml = CreateNavTreeHtml(entry.Text);
+      string navTreeHtml = CreateNavTreeHtml(folder.FolderName);
       string navTreeJs = CreateNavTreeJsAndContentHtml(pageStructure.Nodes, content);
 
       // Create the final html
@@ -222,7 +219,7 @@ namespace EzDoc.HtmlDoucBuilding {
         string childHtml = PlaceholderResolver.Resolve(
           navTreeChildTemplate,
           Rule.Get("parentVariable", "root"),
-          Rule.Get("childVariable", node.Name)
+          Rule.Get("childVariable", node.Name.Replace(" ",""))
         );
         navTreeItems.Append(childHtml);
       }
@@ -237,7 +234,7 @@ namespace EzDoc.HtmlDoucBuilding {
       string navTreeItemTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navtree_js_item_template.html");
       string navTreeItem = PlaceholderResolver.Resolve(
         navTreeItemTemplate,
-        Rule.Get("nodeName", node.Name)
+        Rule.Get("nodeName", node.Name.MakeCodeReady())
       );
       navTreeItems.Append(navTreeItem);
 
@@ -246,8 +243,8 @@ namespace EzDoc.HtmlDoucBuilding {
         string navTreeChildTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navtree_js_child_template.html");
         string childHtml = PlaceholderResolver.Resolve(
           navTreeChildTemplate,
-          Rule.Get("parentVariable", node.Name),
-          Rule.Get("childVariable", childNode.Name)
+          Rule.Get("parentVariable", node.Name.MakeCodeReady()),
+          Rule.Get("childVariable", childNode.Name.MakeCodeReady())
         );
         navTreeItems.Append(childHtml);
       }
@@ -259,20 +256,43 @@ namespace EzDoc.HtmlDoucBuilding {
 
     }
 
-    private static PageStructure BuildPageStructureFromFolder(string path) {
+    private static PageStructure BuildPageStructureFromFolder(string path, TableOfContent.Folder folder) {
       PageStructure result = new PageStructure();
-      foreach (string file in Directory.EnumerateFiles(path, "*.md")) {
-        string filename = Path.GetFileName(file);
-        string fileContentMd = File.ReadAllText(file);
+      FillPageStructurePages(new List<string>(), folder.Pages, path, result);
+      foreach (TableOfContent.Node node in folder.Nodes) {
+        List<string> parentNodes = new List<string>() { node.Name };
+        FillPageStructure(parentNodes, node, path, result);
+      }
+
+      return result;
+    }
+
+    private static void FillPageStructure(
+      List<string> parentNodes, TableOfContent.Node node, string path, PageStructure result) {
+      FillPageStructurePages(parentNodes, node.Pages, path, result);
+      foreach (TableOfContent.Node subNode in node.Nodes) {
+        List<string> newNodes = new List<string>();
+        foreach (string parentNode in parentNodes) {
+          newNodes.Add(parentNode);
+        }
+        newNodes.Add(subNode.Name);
+        FillPageStructure(newNodes, subNode, path, result);
+      }
+    }
+
+    private static void FillPageStructurePages(List<string> parentNodes, List<string> pages, string path, PageStructure result) {
+      foreach (string page in pages) {
+        string filename = Path.Combine(path, page + ".md");
+        string fileContentMd = File.ReadAllText(filename);
         fileContentMd = ConvertLinks(fileContentMd);
         string fileContentHtml = MdConverter.ConvertToHtml(fileContentMd);
-        List<string> parts = filename.Split('.').ToList();
-        parts.Remove(parts[parts.Count - 1]);
-
-        result.InsertNode(parts, fileContentHtml);
-
+        List<string> nodes = new List<string>();
+        foreach (string parentNode in parentNodes) {
+          nodes.Add(parentNode);
+        }
+        nodes.Add(page);
+        result.InsertNode(nodes, fileContentHtml);
       }
-      return result;
     }
 
     private static PageStructure BuildPageStructureFromApi(DocuTree navTree) {
@@ -316,26 +336,26 @@ namespace EzDoc.HtmlDoucBuilding {
       string navbarItemTemplate = ResourceHelper.LoadResource("EzDoc1.HtmlTemplates.navbar_item_template.html");
 
       StringBuilder navbarItems = new StringBuilder();
-      foreach (TableOfContent.Entry entry in toc.Entries) {
-        if (entry.Items.Count == 0) {
+      foreach (TableOfContent.Folder folder in toc.Folders) {
+        if (folder.Folders.Count == 0) {
           string navbarItem = PlaceholderResolver.Resolve(
-            navbarItemTemplate, Rule.Get("text", entry.Text), Rule.Get("link", entry.Href + ".html")
+            navbarItemTemplate, Rule.Get("text", folder.TabName), Rule.Get("link", folder.FolderName + ".html")
           );
           navbarItems.Append(navbarItem);
         } else {
           StringBuilder navbarDropdownItemEntries = new StringBuilder();
-          foreach (TableOfContent.Entry item in entry.Items) {
+          foreach (TableOfContent.Folder subFolder in folder.Folders) {
             navbarDropdownItemEntries.Append(
               PlaceholderResolver.Resolve(
                 navbarDropdownItemEntryTemplate,
-                Rule.Get("text", item.Text), Rule.Get("link", item.Href + ".html")
+                Rule.Get("text", subFolder.TabName), Rule.Get("link", subFolder.FolderName + ".html")
               )
             );
           }
           string navbarDropdownItem = PlaceholderResolver.Resolve(
             navbarDropdownItemTemplate,
             Rule.Get("entries", navbarDropdownItemEntries.ToString()),
-            Rule.Get("text", entry.Text)
+            Rule.Get("text", folder.TabName)
           );
           navbarItems.Append(navbarDropdownItem);
         }
@@ -349,7 +369,7 @@ namespace EzDoc.HtmlDoucBuilding {
 
     private static TableOfContent ReadTableOfContent(string navbarFilepath) {
       TableOfContent result = new TableOfContent();
-      using (var reader = new StreamReader(navbarFilepath)) {
+      using (var reader = new StreamReader(navbarFilepath, Encoding.UTF7)) {
         var yaml = new YamlStream();
         yaml.Load(reader);
         var x = 0;
@@ -358,8 +378,8 @@ namespace EzDoc.HtmlDoucBuilding {
           if (rootNode is YamlSequenceNode) {
             YamlSequenceNode yamlSequenceNode = (YamlSequenceNode)rootNode;
             foreach (var childNode in yamlSequenceNode.Children) {
-              TableOfContent.Entry entry = GetTocEntry(childNode);
-              result.Entries.Add(entry);
+              TableOfContent.Folder folder = GetTocFolder(childNode);
+              result.Folders.Add(folder);
             }
           }
         }
@@ -368,20 +388,66 @@ namespace EzDoc.HtmlDoucBuilding {
       return result;
     }
 
-    private static TableOfContent.Entry GetTocEntry(YamlNode childNode) {
-      TableOfContent.Entry result = new TableOfContent.Entry();
+    private static TableOfContent.Folder GetTocFolder(YamlNode childNode) {
+      TableOfContent.Folder result = new TableOfContent.Folder();
       YamlMappingNode keyValuePairs = (YamlMappingNode)childNode;
-      result.Text = keyValuePairs.Where(
+      result.TabName = keyValuePairs.Where(
         x => x.Key.ToString() == "name"
       ).Select(x => x.Value.ToString()).Single();
-      result.Href = keyValuePairs.Where(
-        x => x.Key.ToString() == "href"
+      result.FolderName = keyValuePairs.Where(
+        x => x.Key.ToString() == "folder"
       ).Select(x => x.Value.ToString()).Single();
-      YamlNode itemsNode = keyValuePairs.Where(x => x.Key.ToString() == "items").Select(x => x.Value).FirstOrDefault();
-      if (!(itemsNode is null)) {
-        YamlSequenceNode itemsList = (YamlSequenceNode)itemsNode;
-        foreach (YamlNode item in itemsList) {
-          result.Items.Add(GetTocEntry(item));
+
+      // Pages
+      YamlNode pagesNode = keyValuePairs.Where(
+        x => x.Key.ToString() == "pages"
+      ).Select(x => x.Value).FirstOrDefault();
+      if (!(pagesNode is null)) {
+        YamlSequenceNode pagesList = (YamlSequenceNode)pagesNode;
+        foreach (string pageNode in pagesList) {
+          result.Pages.Add(pageNode);
+        }
+      }
+
+      // Nodes
+      YamlNode nodesNode = keyValuePairs.Where(
+        x => x.Key.ToString() == "nodes"
+      ).Select(x => x.Value).FirstOrDefault();
+      if (!(nodesNode is null)) {
+        YamlSequenceNode nodesList = (YamlSequenceNode)nodesNode;
+        foreach (YamlNode nodeNode in nodesList) {
+          result.Nodes.Add(GetTocNode(nodeNode));
+        }
+      }
+      return result;
+    }
+
+    private static TableOfContent.Node GetTocNode(YamlNode childNode) {
+      TableOfContent.Node result = new TableOfContent.Node();
+      YamlMappingNode keyValuePairs = (YamlMappingNode)childNode;
+      result.Name = keyValuePairs.Where(
+        x => x.Key.ToString() == "name"
+      ).Select(x => x.Value.ToString()).Single();
+
+      // Pages
+      YamlNode pagesNode = keyValuePairs.Where(
+        x => x.Key.ToString() == "pages"
+      ).Select(x => x.Value).FirstOrDefault();
+      if (!(pagesNode is null)) {
+        YamlSequenceNode pagesList = (YamlSequenceNode)pagesNode;
+        foreach (string pageNode in pagesList) {
+          result.Pages.Add(pageNode);
+        }
+      }
+
+      // Nodes
+      YamlNode nodesNode = keyValuePairs.Where(
+        x => x.Key.ToString() == "nodes"
+      ).Select(x => x.Value).FirstOrDefault();
+      if (!(nodesNode is null)) {
+        YamlSequenceNode nodesList = (YamlSequenceNode)nodesNode;
+        foreach (YamlNode nodeNode in nodesList) {
+          result.Nodes.Add(GetTocNode(nodeNode));
         }
       }
       return result;

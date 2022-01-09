@@ -1,6 +1,15 @@
 {
   "filter": {
-    "exclude": [ "Pension.*"],
-    "include": [ "Pension.Kontofortschreibung.*" ]
+    "exclude": [ "Pension.*" ],
+    "include": [
+      "Pension.Kontofortschreibung.*",
+      "Pension.Beitragsberechnung.*",
+      "Pension.Bausteinberechnung.*",
+      "Pension.Geschäftsvorfälle.Austritt.*",
+      "Pension.Geschäftsvorfälle.Altersleistung.*",
+      "Pension.Geschäftsvorfälle.Eigenleistung.*",
+      "Pension.Leistungsberechnung.*",
+      "Pension.Zusagenbeschreibung.*"
+    ]
   }
 }

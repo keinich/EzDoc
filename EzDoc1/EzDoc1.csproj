@@ -75,6 +75,7 @@
     <Compile Include="DocuGeneration\DocuTreeNodeType.cs" />
     <Compile Include="DocuGeneration\XmlDocuParser.cs" />
     <Compile Include="HtmlDoucBuilding\Config.cs" />
+    <Compile Include="HtmlDoucBuilding\Extensions.cs" />
     <Compile Include="HtmlDoucBuilding\HtmlDocuBuilder.cs" />
     <Compile Include="HtmlDoucBuilding\MdConverter.cs" />
     <Compile Include="HtmlDoucBuilding\PageStructure.cs" />
@@ -88,8 +89,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="EzDoc\EzDoc.json" />
-    <None Include="EzDoc\Handbuch\Handbuch.Tutorial.md" />
-    <None Include="EzDoc\Handbuch\Handbuch.Einstieg.md" />
+    <None Include="EzDoc\Handbuch\Tutorial.md" />
+    <None Include="EzDoc\Handbuch\Einstieg.md" />
     <None Include="EzDoc\navbar_content.yaml" />
     <EmbeddedResource Include="HtmlStaticFiles\navbar_default.yaml" />
     <EmbeddedResource Include="HtmlStaticFiles\EzDoc.json" />

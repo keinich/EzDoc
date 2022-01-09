@@ -73,7 +73,7 @@ namespace EzDocVsix {
       string projectFile = project.FileName;
       var config = project.ConfigurationManager;
       if (string.IsNullOrEmpty(projectFile)) {
-        return Result.Failed("No Porject File");
+        return Result.Failed("No Project File");
       }
       string compileOutputPath = TryGetOutputPath(projectFile);
       string docuFile = TryGetDocuFile(compileOutputPath, projectFile);
@@ -117,6 +117,9 @@ namespace EzDocVsix {
                 if (Path.IsPathRooted(result)) {
                   return result;
                 } else {
+                  if (Path.GetFileName(result) == result) {
+                    return Path.Combine(compileOutputPath, result);
+                  }
                   string basePath = Path.GetDirectoryName(filename);
                   return Path.Combine(basePath, result);
                 }
