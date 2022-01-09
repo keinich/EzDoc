@@ -290,7 +290,7 @@ namespace EzDoc.HtmlDoucBuilding {
         foreach (string parentNode in parentNodes) {
           nodes.Add(parentNode);
         }
-        nodes.Add(page);
+        nodes.Add(Path.GetFileName(page));
         result.InsertNode(nodes, fileContentHtml);
       }
     }

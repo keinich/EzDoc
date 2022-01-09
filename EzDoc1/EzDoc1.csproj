@@ -89,6 +89,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="EzDoc\EzDoc.json" />
+    <None Include="EzDoc\Handbuch\Test\Einstieg2.md" />
     <None Include="EzDoc\Handbuch\Tutorial.md" />
     <None Include="EzDoc\Handbuch\Einstieg.md" />
     <None Include="EzDoc\navbar_content.yaml" />

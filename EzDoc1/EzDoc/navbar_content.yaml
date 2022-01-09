@@ -5,3 +5,7 @@
   pages:
     - Einstieg
     - Tutorial
+  nodes:
+    - name: GeVos
+      pages:
+        - Test\Einstieg2

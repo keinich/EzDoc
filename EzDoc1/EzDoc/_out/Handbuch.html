@@ -106,6 +106,34 @@ Sehr langer Text. Sehr langer Text. Sehr langer Text. Sehr langer Text.</p>
 </table>
 
 </div>
+<div id="Einstieg2" class="content">
+  <h1 id="handbuch">Handbuch</h1>
+<h2 id="hallo-welt">Hallo Welt</h2>
+<h3 id="es-ist-gut-so">Es ist gut so</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GÜnter</td>
+<td>Gesichtsgünter</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ein-ez-link">Ein EZ-Link:</h3>
+<p><a href="Api.html?elementId=Bedingung">Bedingung</a></p>
+<h3 id="noch-ein-link">Noch ein Link:</h3>
+<p><a href="Handbuch.html?elementId=Tutorial">Tutorial</a></p>
+<p>Sehr gut.</p>
+
+</div>
+<div id="GeVos" class="content">
+  
+</div>
 
         </div>
       </div>
@@ -126,7 +154,17 @@ Tutorial.on('select', function (e, node) {
     onNodeClick(Tutorial)
 });
 
-root.addChild(Tutorial);
+root.addChild(Tutorial);var GeVos = new TreeNode("GeVos");
+GeVos.on('select', function (e, node) {
+    onNodeClick(GeVos)
+});
+
+var Einstieg2 = new TreeNode("Einstieg2");
+Einstieg2.on('select', function (e, node) {
+    onNodeClick(Einstieg2)
+});
+
+GeVos.addChild(Einstieg2);root.addChild(GeVos);
 treeView = new TreeView(root, "#container");
 setupTree();
   </script>

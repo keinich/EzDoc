@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="EzDocVsix.a8e620eb-6d15-4bf1-9d04-6996a5b8d6aa" Version="1.3.2" Language="en-US" Publisher="Rafael Weschle" />
+        <Identity Id="EzDocVsix.a8e620eb-6d15-4bf1-9d04-6996a5b8d6aa" Version="1.3.4" Language="en-US" Publisher="Rafael Weschle" />
         <DisplayName>EzDoc</DisplayName>
         <Description xml:space="preserve">Generates HTML Documentation.</Description>
         <Icon>Book.png</Icon>
